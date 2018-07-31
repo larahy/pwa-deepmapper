@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {connect} from 'react-redux';
 import Placecasts from '../components/Placecasts/Placecasts'
+import {fetchPlacecastsRequested} from '../actions/placecasts'
 
 class AllPlacecasts extends Component {
     render() {
@@ -35,7 +36,7 @@ class AllPlacecasts extends Component {
 AllPlacecasts.propTypes = {
     fetching: PropTypes.bool,
     placecasts: PropTypes.array,
-    error: PropTypes.func,
+    error: PropTypes.object,
     onRequestPlacecast: PropTypes.func
 }
 
@@ -50,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRequestPlacecast: () => dispatch({type: 'PLACECASTS_REQUEST'})
+        onRequestPlacecast: () => dispatch(fetchPlacecastsRequested())
     };
 };
 
