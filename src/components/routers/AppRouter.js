@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import {Header} from '../Header/Header';
 import {HomePage} from '../../containers/HomePage';
 import {AboutPage} from '../../containers/AboutPage';
-import {ZipCodesPage} from '../../containers/ZipCodesPage';
 import Counter from '../../containers/Counter';
 import AllExperts from '../../containers/AllExperts'
-import AllPlacecasts from '../../containers/AllPlacecastsPage'
+import PlacecastsPage from '../../containers/PlacecastsPage'
 import IndividualExpert from '../../containers/IndividualExpert'
 import {ConnectedRouter} from 'connected-react-router'
 
@@ -19,12 +18,11 @@ const AppRouter = (props) => (
             <section className="section">
                 <Switch>
                     <Route path='/' component={HomePage} exact={true}/>
-                    <Route path='/zipcodes' component={ZipCodesPage}/>
                     <Route path='/about' component={AboutPage}/>
                     <Route path='/counter' component={Counter}/>
                     <Route exact path='/experts' component={AllExperts}/>
                     <Route path='/experts/:number' component={IndividualExpert}/>
-                    <Route exact path='/placecasts' component={AllPlacecasts}/>
+                    <Route exact path='/placecasts' component={PlacecastsPage}/>
                     <Redirect to="/"/>
                 </Switch>
             </section>

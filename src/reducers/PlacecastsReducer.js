@@ -3,7 +3,7 @@ import {fetchPlacecastsSucceeded, fetchPlacecastsFailed, fetchPlacecastsRequeste
 
 const initialState = {
     fetching: false,
-    items: null,
+    items: [],
     error: null
 };
 

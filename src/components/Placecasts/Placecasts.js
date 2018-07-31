@@ -1,12 +1,43 @@
-import * as React from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
+import Placecast from './Placecast'
 
-export default class Placecasts extends React.Component {
+class Placecasts2 extends React.Component {
+    static propTypes = {
+        placecasts: PropTypes.array,
+    }
+
     render() {
-        return <ul>{this.props.placecasts.map((placecast, i) => <li key={i}>{placecast.title}</li>)}</ul>
+        const noPlacecastsYetElement = (
+            <div>
+                <p>
+                    Loading placecasts&hellip;
+                </p>
+            </div>
+        )
+        const emptyElement = <div/>
+
+        const placecastsLoadingMessage = (this.props.placecasts.length < 1)
+            ? noPlacecastsYetElement
+            : emptyElement
+
+        const recipeCards = this.props.placecasts.map(placecast => {
+            return (<Placecast
+                key={placecast.id}
+                placecast={placecast}/>)
+        })
+
+        return (
+            <div>
+                <div>
+                    {placecastsLoadingMessage}
+                    <div>
+                        {recipeCards}
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 
-Placecasts.propTypes = {
-    placecasts: PropTypes.array.isRequired,
-}
+export default Placecasts2
