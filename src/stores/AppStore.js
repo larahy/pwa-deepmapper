@@ -1,14 +1,14 @@
 import {createStore, applyMiddleware, compose} from 'redux';
+import {AppReducer} from '../reducers/AppReducer';
 import createHistory from 'history/createBrowserHistory'
 import {connectRouter, routerMiddleware} from 'connected-react-router'
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
-
+import createSagaMiddleware from 'redux-saga'
 export const history = createHistory();
+const sagaMiddleware = createSagaMiddleware()
 
-import {AppReducer} from '../reducers/AppReducer';
-
-const middleware = [thunk, promiseMiddleware(), routerMiddleware(history)];
+const middleware = [thunk, promiseMiddleware(), routerMiddleware(history), sagaMiddleware];
 const initialState = {};
 
 const composeEnhancers =

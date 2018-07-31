@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ZipCodeBrowser } from '../ZipCodeBrowser/ZipCodeBrowser';
+import { ZipCodeBrowser } from '../components/ZipCodeBrowser/ZipCodeBrowser';
 
 export const ZipCodesPage = () => (
     <div className="p-3">

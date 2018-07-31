@@ -3,14 +3,14 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {Header} from '../Header/Header';
-import {HomePage} from '../pages/HomePage';
-import {AboutPage} from '../pages/AboutPage';
-import {ZipCodesPage} from '../pages/ZipCodesPage';
-import Counter from '../pages/Counter';
-import AllExperts from '../pages/AllExperts'
-import IndividualExpert from '../pages/IndividualExpert'
+import {HomePage} from '../../containers/HomePage';
+import {AboutPage} from '../../containers/AboutPage';
+import {ZipCodesPage} from '../../containers/ZipCodesPage';
+import Counter from '../../containers/Counter';
+import AllExperts from '../../containers/AllExperts'
+import AllPlacecasts from '../../containers/AllPlacecastsPage'
+import IndividualExpert from '../../containers/IndividualExpert'
 import {ConnectedRouter} from 'connected-react-router'
-
 
 const AppRouter = (props) => (
     <ConnectedRouter history={props.history}>
@@ -24,6 +24,7 @@ const AppRouter = (props) => (
                     <Route path='/counter' component={Counter}/>
                     <Route exact path='/experts' component={AllExperts}/>
                     <Route path='/experts/:number' component={IndividualExpert}/>
+                    <Route exact path='/placecasts' component={AllPlacecasts}/>
                     <Redirect to="/"/>
                 </Switch>
             </section>

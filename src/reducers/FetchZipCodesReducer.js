@@ -2,7 +2,7 @@ import {
     FETCH_ZIPCODES_PENDING,
     FETCH_ZIPCODES_FULFILLED,
     FETCH_ZIPCODES_REJECTED
-} from '../actions/ZipCodeActions';
+} from '../components/state/actions/ZipCodeActions';
 
 const initialState = {
     zipCodes: [],

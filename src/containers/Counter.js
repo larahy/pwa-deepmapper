@@ -9,7 +9,7 @@ import {
     incrementAsync,
     decrement,
     decrementAsync
-} from '../state/reducers/CounterReducer'
+} from '../reducers/CounterReducer'
 
 const Counter = props => (
     <div className="container">
