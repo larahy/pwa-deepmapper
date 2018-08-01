@@ -7,6 +7,6 @@ export default class PlacecastsList extends React.Component {
     }
 }
 
-Placecasts.propTypes = {
+PlacecastsList.propTypes = {
     placecasts: PropTypes.array.isRequired,
 }
