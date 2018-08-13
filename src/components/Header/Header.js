@@ -31,9 +31,9 @@ export const Header = () => (
 
 
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>FAVOURS</NavLink>
-                        <NavLink to='/zipcodes' className="navbar-item" activeClassName='menu selected'>THE</NavLink>
+                        <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>s3</NavLink>
 
-                        <NavLink to='/counter' className="navbar-item" activeClassName='menu selected'>BOLD</NavLink>
+                        {/*<NavLink to='/counter' className="navbar-item" activeClassName='menu selected'>BOLD</NavLink>*/}
                         <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>placecasts</NavLink>
 
                         <div className="navbar-item has-dropdown is-hoverable">

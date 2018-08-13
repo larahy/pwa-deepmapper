@@ -62,6 +62,10 @@ const config = {
             template: commonPaths.template,
             favicon: commonPaths.favicon,
             inject: true
+        }),
+        new webpack.DefinePlugin({
+            AWS_ACCESS_KEY_ID: JSON.stringify(''),
+            AWS_SECRET_ACCESS_KEY: JSON.stringify(''),
         })
     ]
 };

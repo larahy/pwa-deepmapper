@@ -21,7 +21,7 @@ class Placecasts2 extends React.Component {
             ? noPlacecastsYetElement
             : emptyElement
 
-        const recipeCards = this.props.placecasts.map(placecast => {
+        const placeCastsCards = this.props.placecasts.map(placecast => {
             return (<Placecast
                 key={placecast.id}
                 placecast={placecast}/>)
@@ -32,7 +32,7 @@ class Placecasts2 extends React.Component {
                 <div>
                     {placecastsLoadingMessage}
                     <div>
-                        {recipeCards}
+                        {placeCastsCards}
                     </div>
                 </div>
             </div>
