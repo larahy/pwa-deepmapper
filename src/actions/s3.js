@@ -1,17 +1,10 @@
-var AWS = require('aws-sdk');
+import {createAction} from 'redux-actions'
 
-/* eslint-disable no-undef */
-AWS.config.update({region: 'us-east-1', credentials: {accessKeyId: AWS_ACCESS_KEY_ID, secretAccessKey: AWS_SECRET_ACCESS_KEY}});
-/* eslint-disable no-undef */
+export const fetchBucketContentsRequested = createAction('FETCH_BUCKET_CONTENTS_REQUESTED')
+export const fetchBucketContentsSucceeded = createAction('FETCH_BUCKET_CONTENTS_SUCCEEDED')
+export const fetchBucketContentsFailed = createAction('FETCH_BUCKET_CONTENTS_FAILURE')
 
-var s3 = new AWS.S3({apiVersion: '2006-03-01'});
+export const uploadAudioClipRequested = createAction('UPLOAD_AUDIO_CLIP_REQUESTED')
+export const uploadAudioClipSucceeded = createAction('UPLOAD_AUDIO_CLIP_SUCCEEDED')
+export const uploadAudioClipFailed = createAction('UPLOAD_AUDIO_CLIP_FAILURE')
 
-
-function listObjects(bucket, callback) {
-    s3.listObjects({
-        Bucket: bucket
-    }, callback);
-}
-
-// Export the handler function
-module.exports = listObjects;

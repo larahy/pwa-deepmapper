@@ -5,7 +5,7 @@ import {ConnectedRouter} from 'connected-react-router'
 
 import {Header} from '../Header/Header';
 import {HomePage} from '../../containers/HomePage';
-import {AboutPage} from '../../containers/AboutPage';
+import {StreetViewPage} from '../../containers/StreetViewPage';
 import Counter from '../../containers/Counter';
 import AllExperts from '../../containers/AllExperts'
 import PlacecastsPage from '../../containers/PlacecastsPage'
@@ -19,7 +19,7 @@ const AppRouter = (props) => (
             <section className="section">
                 <Switch>
                     <Route path='/' component={HomePage} exact={true}/>
-                    <Route path='/about' component={AboutPage}/>
+                    <Route path='/street-view' component={StreetViewPage}/>
                     <Route path='/counter' component={Counter}/>
                     <Route path='/s3' component={S3Page}/>
                     <Route exact path='/experts' component={AllExperts}/>

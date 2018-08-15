@@ -30,7 +30,7 @@ export const Header = () => (
                         </Link>
 
 
-                        <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>FAVOURS</NavLink>
+                        <NavLink to='/street-view' className="navbar-item" activeClassName='menu selected'>STREET VIEW</NavLink>
                         <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>s3</NavLink>
 
                         {/*<NavLink to='/counter' className="navbar-item" activeClassName='menu selected'>BOLD</NavLink>*/}
