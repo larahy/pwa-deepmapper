@@ -1,9 +1,5 @@
 import React from 'react';
-// import SimpleMap from '../components/Maps/SimpleMap'
-// import NotSoSimpleMap from '../components/Maps/NotSoSimpleMap'
-// import StreetView1 from '../components/Maps/StreetView1'
-import StreetView2 from '../components/Maps/StreetView2'
-// import LargeMap from '../components/Maps/LargeMap'
+import ReactStreetViewStreetView from '../components/Maps/ReactStreetViewStreetView'
 const StreetViewPage = () => (
     <div className='container is-fluid'>
         <div className='card'>
@@ -19,9 +15,8 @@ const StreetViewPage = () => (
             </div>
         </div>
         <div className='map'>
-            {/*<LargeMap />*/}
-            {/*<StreetView1 center={{ lat: 49.2853171, lng: -123.1119202 }} />*/}
-            <StreetView2 />
+            {/*<ReactGoogleMapsStreetView center={{ lat: 49.2853171, lng: -123.1119202 }} />*/}
+            <ReactStreetViewStreetView />
         </div>
     </div>
 );

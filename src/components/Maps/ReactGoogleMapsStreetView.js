@@ -12,7 +12,7 @@ const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 /* eslint-disable no-undef */
 
 
-export default class StreetView extends Component {
+export default class ReactGoogleMapsStreetView extends Component {
     render() {
         const GoogleMapExample = withScriptjs(withGoogleMap((props) =>
             <GoogleMap
@@ -37,6 +37,6 @@ export default class StreetView extends Component {
     }
 }
 
-StreetView.propTypes = {
+ReactGoogleMapsStreetView.propTypes = {
     center: PropTypes.object.isRequired,
 }

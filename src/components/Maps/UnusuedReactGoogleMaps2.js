@@ -44,7 +44,7 @@ const StyledMapWithAnInfoBox = compose(
     </GoogleMap>
 );
 
-export default class NotSoSimpleMap extends React.PureComponent {
+export default class UnusuedReactGoogleMaps2 extends React.PureComponent {
     state = {
         isMarkerShown: true,
     }

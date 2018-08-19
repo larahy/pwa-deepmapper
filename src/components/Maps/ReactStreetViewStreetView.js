@@ -5,7 +5,7 @@ import ReactStreetview from 'react-streetview';
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 /* eslint-disable no-undef */
 
-export default class StreetView2 extends Component {
+export default class ReactStreetViewStreetView extends Component {
     constructor(props) {
         super(props);
         this.state = {
