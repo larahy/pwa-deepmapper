@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import PropTypes from 'prop-types'
+/* eslint-disable no-undef */
+const googleMapsApiKey = GOOGLE_MAPS_API_KEY
+/* eslint-disable no-undef */
 
 const AnyReactComponent = ({ text }) => (
     <div style={{
@@ -36,7 +39,7 @@ class SimpleMap extends Component {
             // Important! Always set the container height explicitly
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'INSERT KEY' }}
+                    bootstrapURLKeys={{ key: googleMapsApiKey }}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                 >

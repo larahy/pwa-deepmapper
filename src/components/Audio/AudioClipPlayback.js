@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-export default class AudioClip extends React.Component {
+export default class AudioClipPlayback extends React.Component {
     render() {
         return <div>
             <audio controls>
@@ -13,7 +13,7 @@ export default class AudioClip extends React.Component {
     }
 }
 
-AudioClip.propTypes = {
+AudioClipPlayback.propTypes = {
     placecast: PropTypes.object.isRequired,
 }
 

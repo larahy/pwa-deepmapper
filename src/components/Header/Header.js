@@ -25,21 +25,15 @@ export const Header = () => (
                 <div id="navMenuDocumentation" className="navbar-menu">
                     {/*NAVBAR RIGHT*/}
                     <div className="navbar-start">
-                        <Link to="/experts" className="navbar-item is-active">
-                            FORTUNE
-                        </Link>
-
 
                         <NavLink to='/street-view' className="navbar-item" activeClassName='menu selected'>STREET VIEW</NavLink>
-                        <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>s3</NavLink>
-
-                        {/*<NavLink to='/counter' className="navbar-item" activeClassName='menu selected'>BOLD</NavLink>*/}
-                        <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>placecasts</NavLink>
+                        <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>S3</NavLink>
+                        <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
 
                         <div className="navbar-item has-dropdown is-hoverable">
 
                             <a className="navbar-link" href="">
-                                qui
+                                DROPDOWN
                             </a>
 
                             <div id="moreDropdown" className="navbar-dropdown">
@@ -71,26 +65,19 @@ export const Header = () => (
                     {/*NAVBAR LEFT*/}
 
                     <div className="navbar-end">
-                        <a className="navbar-item is-hidden-touch is-hidden-desktop-only" href="" target="_blank">
-                            vivra
-                        </a>
-
-                        <a className="navbar-item is-hidden-touch is-hidden-desktop-only" href="" target="_blank">
-                            verra
-                        </a>
 
                         <div className="navbar-item">
                             <div className="field is-grouped is-grouped-multiline">
                                 <p className="control">
                                     <a className="button" href="" target="_blank">
                                         <img src={logo} width="30" height="30"/>
-                                        <strong>hello</strong>
+                                        <strong>BUTTON</strong>
                                     </a>
 
                                 </p>
                                 <p className="control">
                                     <a className="button is-primary" href="">
-                                        <strong>BRENDA</strong>
+                                        <strong>BUTTON</strong>
                                     </a>
                                 </p>
                             </div>

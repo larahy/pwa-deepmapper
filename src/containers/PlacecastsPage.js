@@ -33,11 +33,11 @@ PlacecastsPage.propTypes = {
     dispatch: PropTypes.func
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({placecasts}) => {
     return {
-        fetching: state.placecasts.fetching,
-        placecasts: state.placecasts.items,
-        error: state.placecasts.error
+        fetching: placecasts.fetching,
+        placecasts: placecasts.items,
+        error: placecasts.error
     };
 };
 
