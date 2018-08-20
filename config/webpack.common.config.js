@@ -66,7 +66,8 @@ const config = {
         new webpack.DefinePlugin({
             AWS_ACCESS_KEY_ID: JSON.stringify(''),
             AWS_SECRET_ACCESS_KEY: JSON.stringify(''),
-            GOOGLE_MAPS_API_KEY: JSON.stringify('')
+            GOOGLE_MAPS_API_KEY: JSON.stringify(''),
+            MAPBOX_API_TOKEN: JSON.stringify('')
         })
     ]
 };

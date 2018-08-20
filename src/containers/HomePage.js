@@ -1,5 +1,5 @@
 import React from 'react';
-import SimpleMap from '../components/Maps/SimpleMap'
+import SimpleMap from '../components/Maps/GoogleMapReact/SimpleMap'
 // import LargeMap from '../components/Maps/LargeMap'
 // import NotSoSimpleMap from '../components/Maps/NotSoSimpleMap'
 const HomePage = () => (

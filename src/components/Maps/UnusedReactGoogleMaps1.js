@@ -4,7 +4,7 @@ const {
     withGoogleMap,
     GoogleMap,
 } = require('react-google-maps');
-import Markers from './Markers'
+import ReactGoogleMapsMarkers from './Markers/ReactGoogleMapsMarkers'
 
 export default class LargeMap extends Component {
     render() {
@@ -21,7 +21,7 @@ export default class LargeMap extends Component {
                 <GoogleMapExample
                     containerElement={<div style={{height: '500px', width: '500px'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}>
-                    <Markers/>
+                    <ReactGoogleMapsMarkers/>
                 </GoogleMapExample>
             </div>
         );

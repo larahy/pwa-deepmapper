@@ -1,10 +1,9 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 const {
     Marker
 } = require('react-google-maps');
 
-export default class Markers extends React.Component {
+export default class ReactGoogleMapsMarkers extends React.Component {
     render() {
         return (
             <div className="marker">

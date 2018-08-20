@@ -29,6 +29,7 @@ export const Header = () => (
                         <NavLink to='/street-view' className="navbar-item" activeClassName='menu selected'>STREET VIEW</NavLink>
                         <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>S3</NavLink>
                         <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
+                        <NavLink to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>MAPBOX</NavLink>
 
                         <div className="navbar-item has-dropdown is-hoverable">
 
