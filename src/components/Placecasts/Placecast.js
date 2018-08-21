@@ -11,8 +11,8 @@ export default class Placecast extends React.Component {
             <p>{this.props.placecast.title}</p>
             <p>{this.props.placecast.s3_audio_filename}</p>
             <p>{this.props.placecast.subtitle}</p>
-            <p>{this.props.placecast.coordinates}</p>
-
+            <p>Latitude is: {this.props.placecast.latitude}</p>
+            <p>Longitude is: {this.props.placecast.longitude}</p>
 
         </div>
     }

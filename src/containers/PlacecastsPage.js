@@ -10,7 +10,7 @@ class PlacecastsPage extends Component {
     }
 
     render() {
-        const {fetching, placecasts, error} = this.props;
+        const {fetching, error} = this.props;
 
         if (error) {
             return <div>Error! {error.message}</div>;
@@ -21,23 +21,21 @@ class PlacecastsPage extends Component {
         }
 
         return (
-            <Placecasts placecasts={placecasts}/>
+            <Placecasts />
         );
     }
 }
 
 PlacecastsPage.propTypes = {
     fetching: PropTypes.bool,
-    placecasts: PropTypes.array,
     error: PropTypes.object,
     dispatch: PropTypes.func
 }
 
-const mapStateToProps = ({placecasts}) => {
+const mapStateToProps = (state) => {
     return {
-        fetching: placecasts.fetching,
-        placecasts: placecasts.items,
-        error: placecasts.error
+        fetching: state.placecasts.fetching,
+        error: state.placecasts.error
     };
 };
 

@@ -1,13 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
 import Placecast from './Placecast'
+import {getPlacecasts} from '../../selectors/placecasts'
 
-class Placecasts2 extends React.Component {
+class Placecasts extends React.Component {
     static propTypes = {
         placecasts: PropTypes.array,
     }
 
     render() {
+        const { placecasts = [] } = this.props;
+
         const noPlacecastsYetElement = (
             <div>
                 <p>
@@ -21,7 +25,7 @@ class Placecasts2 extends React.Component {
             ? noPlacecastsYetElement
             : emptyElement
 
-        const placeCastsCards = this.props.placecasts.map(placecast => {
+        const placeCastsCards = placecasts.map(placecast => {
             return (<Placecast
                 key={placecast.id}
                 placecast={placecast}/>)
@@ -40,4 +44,14 @@ class Placecasts2 extends React.Component {
     }
 }
 
-export default Placecasts2
+Placecasts.propTypes = {
+    placecasts: PropTypes.array,
+}
+
+const mapStateToProps = (state) => {
+    return {
+        placecasts: getPlacecasts(state),
+    };
+};
+
+export default connect(mapStateToProps)(Placecasts);
