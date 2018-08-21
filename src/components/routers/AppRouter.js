@@ -3,7 +3,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {ConnectedRouter} from 'connected-react-router'
 
-import {Header} from '../Header/Header';
+import Header from '../Header/Header';
 import {HomePage} from '../../containers/HomePage';
 import {StreetViewPage} from '../../containers/StreetViewPage';
 import PlacecastsPage from '../../containers/PlacecastsPage'

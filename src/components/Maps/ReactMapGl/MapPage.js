@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
 import PropTypes from 'prop-types'
-import ControlPanel from './ControlPanel';
-import CityPin from './CityPin';
-import CityInfo from './CityInfo';
+import PlacecastPin from './PlacecastPin';
+import PlacecastInfo from './PlacecastInfo';
 import {getPlacecasts} from '../../../selectors/placecasts'
+import {fetchPlacecastsRequested} from '../../../actions/placecasts'
 
 /* eslint-disable no-undef */
 const mapboxApiToken = MAPBOX_API_TOKEN
@@ -37,6 +37,7 @@ class MapPage extends Component {
     }
 
     componentDidMount() {
+        this.props.dispatch(fetchPlacecastsRequested());
         window.addEventListener('resize', this._resize);
         this._resize();
     }
@@ -62,7 +63,7 @@ class MapPage extends Component {
     _renderCityMarker = (placecast, index) => {
         return (
             <Marker key={`marker-${index}`} longitude={placecast.longitude} latitude={placecast.latitude}>
-                <CityPin size={20} onClick={() => this.setState({popupInfo: placecast})}/>
+                <PlacecastPin size={40} onClick={() => this.setState({popupInfo: placecast})}/>
             </Marker>
         );
     }
@@ -71,8 +72,8 @@ class MapPage extends Component {
         const {popupInfo} = this.state;
 
         return popupInfo && (
-            <Popup tipSize={5} anchor="top" longitude={popupInfo.longitude} latitude={popupInfo.latitude} onClose={() => this.setState({popupInfo: null})}>
-                <CityInfo info={popupInfo}/>
+            <Popup tipSize={5} anchor="top" longitude={popupInfo.longitude} latitude={popupInfo.latitude} closeOnClick={false} onClose={() => this.setState({popupInfo: null})}>
+                <PlacecastInfo info={popupInfo}/>
             </Popup>
         );
     }
@@ -80,6 +81,14 @@ class MapPage extends Component {
     render() {
         const {placecasts = []} = this.props;
         const {viewport} = this.state;
+        const {fetching, error} = this.props;
+        if (error) {
+            return <div>Error! {error.message}</div>;
+        }
+
+        if (fetching) {
+            return <div>Loading...</div>;
+        }
 
         return (
             <MapGL
@@ -89,14 +98,11 @@ class MapPage extends Component {
                 mapboxApiAccessToken={mapboxApiToken}>
 
                 {placecasts.map(this._renderCityMarker)}
-                {/*<ul>{CITIES.map((city, i) => <li key={i}>{city.city}</li>)}</ul>*/}
                 {this._renderPopup()}
 
                 <div className="nav" style={navStyle}>
                     <NavigationControl onViewportChange={this._updateViewport}/>
                 </div>
-
-                <ControlPanel containerComponent={this.props.containerComponent}/>
 
             </MapGL>
         );
@@ -108,12 +114,17 @@ MapPage.propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
     containerComponent: PropTypes.object,
-    placecasts: PropTypes.array
+    placecasts: PropTypes.array,
+    dispatch: PropTypes.func,
+    fetching: PropTypes.bool,
+    error: PropTypes.object,
 }
 
 const mapStateToProps = (state) => {
     return {
         placecasts: getPlacecasts(state),
+        fetching: state.placecasts.fetching,
+        error: state.placecasts.error
     };
 };
 
