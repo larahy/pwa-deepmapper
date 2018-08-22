@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:300');
 @import url('https://fonts.googleapis.com/css?family=Alegreya+SC');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 
 // Set your brand colors
 $myYellow: #FFE77C;
@@ -42,4 +43,8 @@ $navbar-item-img-max-height: 2.75rem;
 
 .title {
   font-family: 'Alegreya SC', serif;
+}
+
+html,body {
+  font-family: 'Open Sans', serif;
 }
