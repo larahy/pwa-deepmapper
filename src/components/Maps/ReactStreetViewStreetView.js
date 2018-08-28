@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReactStreetview from 'react-streetview';
+import PropTypes from 'prop-types'
 
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
@@ -16,18 +17,19 @@ export default class ReactStreetViewStreetView extends Component {
 
 
     render() {
+        const {placecast} = this.props;
+
         const streetViewPanoramaOptions = {
-            position: {lat: 46.9171876, lng: 17.8951832},
-            pov: {heading: 100, pitch: 0},
-            zoom: 1
+            position: {lat: placecast.latitude, lng: placecast.longitude},
+            pov: {heading: 90, pitch: 0},
+            zoom: 0
         };
 
         return (
             <div>
                 <div style={{
-                    width: '800px',
-                    height: '450px',
-                    backgroundColor: '#eeeeee'
+                    width: '450px',
+                    height: '300px',
                 }}>
                     <ReactStreetview
                         apiKey={googleMapsApiKey}
@@ -43,4 +45,8 @@ export default class ReactStreetViewStreetView extends Component {
             </div>
         );
     }
+}
+
+ReactStreetViewStreetView.propTypes = {
+    placecast: PropTypes.object.isRequired,
 }

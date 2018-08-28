@@ -7,6 +7,7 @@ import PlacecastPin from './PlacecastPin';
 import PlacecastInfo from './PlacecastInfo';
 import {getPlacecasts} from '../../../selectors/placecasts'
 import {fetchPlacecastsRequested} from '../../../actions/placecasts'
+import GoogleStreetViewModal from '../../shared/Modal/GoogleStreetViewModal'
 
 /* eslint-disable no-undef */
 const mapboxApiToken = MAPBOX_API_TOKEN
@@ -91,20 +92,23 @@ class MapPage extends Component {
         }
 
         return (
-            <MapGL
-                {...viewport}
-                mapStyle="mapbox://styles/mapbox/dark-v9"
-                onViewportChange={this._updateViewport}
-                mapboxApiAccessToken={mapboxApiToken}>
+            <div>
+                <MapGL
+                    {...viewport}
+                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    onViewportChange={this._updateViewport}
+                    mapboxApiAccessToken={mapboxApiToken}>
 
-                {placecasts.map(this._renderCityMarker)}
-                {this._renderPopup()}
+                    {placecasts.map(this._renderCityMarker)}
+                    {this._renderPopup()}
 
-                <div className="nav" style={navStyle}>
-                    <NavigationControl onViewportChange={this._updateViewport}/>
-                </div>
+                    <div className="nav" style={navStyle}>
+                        <NavigationControl onViewportChange={this._updateViewport}/>
+                    </div>
 
-            </MapGL>
+                </MapGL>
+                <GoogleStreetViewModal />
+            </div>
         );
     }
 
