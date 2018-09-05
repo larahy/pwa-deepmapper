@@ -18,7 +18,8 @@
         "react"
     ],
     "rules": {
-        "no-console": "off",        
+        "no-console": "off",
+        "react/no-unescaped-entities": "off",
         "indent": ["error", 4, { "SwitchCase": 1 }],
         "quotes": [
             "error",

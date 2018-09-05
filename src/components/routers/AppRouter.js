@@ -3,22 +3,28 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {ConnectedRouter} from 'connected-react-router'
 import Header from '../Header/Header';
-import {HomePage} from '../../containers/HomePage';
-import {StreetViewPage} from '../../containers/StreetViewPage';
+// import {HomePage} from '../../containers/HomePage';
+// import {StreetViewPage} from '../../containers/StreetViewPage';
 import PlacecastsPage from '../../containers/PlacecastsPage'
 import S3Page from '../../containers/S3Page'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
+import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
+import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
 import LoginPage from '../../containers/LoginPage'
+import RecordPage from '../../containers/RecordPage'
+import {AboutPage} from '../../containers/AboutPage'
 
 const AppRouter = (props) => (
     <ConnectedRouter history={props.history}>
         <Fragment>
             <Header/>
             <Switch>
-                <Route path='/' component={HomePage} exact={true}/>
+                <Route path='/' component={LargeMap} exact={true}/>
+                <Route path='/about' component={AboutPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
-                <Route path='/street-view' component={StreetViewPage}/>
+                <Route path='/street-view' component={ReactGoogleMapsStreetView}/>
                 <Route path='/s3' component={S3Page}/>
+                <Route path="/record" component={RecordPage} />
                 <Route path='/login' component={LoginPage}/>
                 {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>

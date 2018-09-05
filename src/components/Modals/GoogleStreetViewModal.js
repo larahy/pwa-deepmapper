@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactStreetview from 'react-streetview';
 import {connect} from 'react-redux'
-import {getStreetViewPlacecast} from '../../../selectors/placecasts'
+import {getStreetViewPlacecast} from '../../selectors/placecasts'
 
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY

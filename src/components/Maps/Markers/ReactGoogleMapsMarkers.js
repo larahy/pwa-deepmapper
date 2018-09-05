@@ -4,13 +4,19 @@ const {
 } = require('react-google-maps');
 
 export default class ReactGoogleMapsMarkers extends React.Component {
+
+    onMarkerDragEnd = (evt) => {
+        const { latLng } = evt;
+        const lat = latLng.lat();
+        const lng = latLng.lng();
+        console.log(lat, lng);
+    };
     render() {
         return (
             <div className="marker">
                 <Marker
-                    position={{lat: 40.756795, lng: -73.954298}}
-                />
-                <Marker
+                    draggable={true}
+                    onDragEnd={this.onMarkerDragEnd}
                     position={{lat: 40.7565, lng: -73.9543}}
                 />
             </div>

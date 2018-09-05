@@ -7,7 +7,7 @@ import PlacecastPin from './PlacecastPin';
 import PlacecastInfo from './PlacecastInfo';
 import {getPlacecasts} from '../../../selectors/placecasts'
 import {fetchPlacecastsRequested} from '../../../actions/placecasts'
-import GoogleStreetViewModal from '../../shared/Modal/GoogleStreetViewModal'
+import GoogleStreetViewModal from '../../Modals/GoogleStreetViewModal'
 
 /* eslint-disable no-undef */
 const mapboxApiToken = MAPBOX_API_TOKEN
