@@ -1,0 +1,37 @@
+.navbar-brand {
+    font-size: 30px;
+    .navbar-item {
+        color: #4AA1C0;
+    }
+    .navbar-item:hover {
+        color: #2F3236;
+    }
+}
+div.navbar-burger.burger {
+    height: 60px;
+    width: 60px;
+}
+.footer {
+    //background-color: $calamine;
+    //border-top: 1px solid #59A4C0;
+    padding: 1.25rem !important;
+
+    a{
+        font-size: 1.5rem
+    }
+    .column {
+        padding: 0 0.75rem
+    }
+}
+
+.column.middle-icon {
+    text-align: center
+}
+
+.column.left-icon {
+    text-align: left
+}
+
+.column.right-icon {
+    text-align: right
+}

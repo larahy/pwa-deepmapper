@@ -54,6 +54,10 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-regular-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/react-fontawesome": "^0.1.2",
     "axios": "^0.18.0",
     "connected-react-router": "^4.4.1",
     "google-map-react": "^1.0.6",
