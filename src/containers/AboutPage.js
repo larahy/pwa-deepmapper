@@ -3,7 +3,7 @@ import React, {Fragment} from 'react';
 const AboutPage = () => (
     <Fragment>
         <section className="hero is-info is-medium is-bold">
-            <div className="hero-body">
+            <div className="hero-body about-page">
                 <div className="container has-text-centered">
                     <p className="title is-2">Inner Geography</p>
                     <p className="subtitle is-4">Deepmapper is a tool that allows a city's inhabitants to create and maintain a deep map - a navigable cultural map of the city populated with unique user-generated 'placecasts' - short, place-specific podcasts.</p>

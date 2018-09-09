@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPlusSquare} from '@fortawesome/free-regular-svg-icons'
 import {faFingerprint, faGlobe} from '@fortawesome/free-solid-svg-icons'
@@ -6,15 +8,14 @@ import './navigation.scss'
 
 export default class Footer extends React.Component {
 
-
     render() {
         return (
             <footer className="footer">
                 <div className="columns is-mobile">
                     <div className="column left-icon">
-                        <a>
+                        <Link to="/create/photo">
                             <span className="icon is-large"><FontAwesomeIcon icon={faPlusSquare}/></span>
-                        </a>
+                        </Link>
                     </div>
                     <div className="column middle-icon">
                         <a>

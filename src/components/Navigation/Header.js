@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, NavLink} from 'react-router-dom'
 import './navigation.scss'
 // import logo2 from './logo2.svg'
 
@@ -23,7 +24,7 @@ export default class Header extends React.Component {
         return (
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
+                    <Link to="/" className="navbar-item">
                         {/*<img src={logo2} width="75" height="75"/>*/}
                         {/*<svg height="75" viewBox='0 0 100 125' style={pinStyle}>*/}
                         {/*<g>*/}
@@ -31,7 +32,7 @@ export default class Header extends React.Component {
                         {/*</g>*/}
                         {/*</svg>*/}
                         DEEPMAPPER
-                    </a>
+                    </Link>
                     <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
                         <span></span>
@@ -41,31 +42,28 @@ export default class Header extends React.Component {
 
                 <div id="navbarExampleTransparentExample" className="navbar-menu">
                     <div className="navbar-end">
-                        <a className="navbar-item" href="/about">
-                            About
-                        </a>
-                        <a className="navbar-item" href="/become-an-expert">
-                            Become an expert
-                        </a>
-                        <a className="navbar-item" href="/login">
-                            Login
-                        </a>
-                        {/*<a className="navbar-item" href="/placecasts">*/}
-                        {/*PLACECASTS*/}
-                        {/*</a>*/}
-                        {/*<a className="navbar-item" href="/mapbox-map">*/}
-                        {/*MAPBOX*/}
-                        {/*</a>*/}
-                        {/*<a className="navbar-item" href="/record">*/}
-                        {/*RECORD*/}
-                        {/*</a>*/}
-                        {/*<a className="navbar-item" href="/s3">*/}
-                        {/*S3*/}
-                        {/*</a>*/}
+
+                        <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
+                        <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
+                        <NavLink to='/' className="navbar-item" activeClassName='menu selected'>Become anExpert</NavLink>
+
+                        <div className="navbar-item has-dropdown is-hoverable">
+
+                            <a className="navbar-link" href="">
+                                TB HIDDEN
+                            </a>
+
+                            <div id="moreDropdown" className="navbar-dropdown">
+                                <NavLink to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>MAPBOX</NavLink>
+                                <NavLink to='/street-view' className="navbar-item" activeClassName='menu selected'>STREETVIEW</NavLink>
+                                <NavLink to='/s3' className="navbar-item" activeClassName='menu selected'>S3</NavLink>
+                                <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
+                                <NavLink to='/record' className="navbar-item" activeClassName='menu selected'>RECORD</NavLink>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
         )
     }
 }
-
