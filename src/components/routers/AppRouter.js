@@ -1,13 +1,13 @@
 import React, {Fragment} from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {ConnectedRouter} from 'connected-react-router'
+import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
+// import {ConnectedRouter} from 'connected-react-router'
 import Header from '../Navigation/Header';
 import Footer from '../Navigation/Footer';
 // import {HomePage} from '../../containers/HomePage';
 // import {StreetViewPage} from '../../containers/StreetViewPage';
 import PlacecastsPage from '../../containers/PlacecastsPage'
 import S3Page from '../../containers/S3Page'
+import PhotoPage from '../../containers/Placecasts/Create/PhotoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
 import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
@@ -15,13 +15,14 @@ import LoginPage from '../../containers/LoginPage'
 import RecordPage from '../../containers/RecordPage'
 import {AboutPage} from '../../containers/AboutPage'
 
-const AppRouter = (props) => (
-    <ConnectedRouter history={props.history}>
+const AppRouter = () => (
+    <HashRouter >
         <Fragment>
             <Header/>
             <Switch>
                 <Route path='/' component={LargeMap} exact={true}/>
                 <Route path='/about' component={AboutPage} exact={true}/>
+                <Route path='/create/photo' component={PhotoPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
                 <Route path='/street-view' component={ReactGoogleMapsStreetView}/>
                 <Route path='/s3' component={S3Page}/>
@@ -33,11 +34,7 @@ const AppRouter = (props) => (
             </Switch>
             <Footer/>
         </Fragment>
-    </ConnectedRouter>
+    </HashRouter>
 );
-
-AppRouter.propTypes = {
-    history: PropTypes.object
-}
 
 export {AppRouter};

@@ -1,12 +1,12 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import {AppReducer} from '../reducers/AppReducer';
-import createHistory from 'history/createBrowserHistory'
+import { createHashHistory } from 'history'
+export const history = createHashHistory();
 import {connectRouter, routerMiddleware} from 'connected-react-router'
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import createSagaMiddleware, { END } from 'redux-saga'
 const sagaMiddleware = createSagaMiddleware()
-export const history = createHistory();
 const middleware = [thunk, promiseMiddleware(), routerMiddleware(history), sagaMiddleware];
 const composeEnhancers =
     typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
