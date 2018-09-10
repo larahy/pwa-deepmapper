@@ -5,7 +5,6 @@ import {
     fetchPlacecastsRequested,
     openStreetViewModal,
     closeStreetViewModal,
-    photoSkippedSuccess
 } from '../actions/placecasts';
 
 const initialState = {
@@ -14,8 +13,6 @@ const initialState = {
     error: null,
     showStreetViewModal: false,
     streetViewId: null,
-    photoSkipped: false
-
 };
 
 export const PlacecastsReducer = handleActions({
@@ -36,8 +33,4 @@ export const PlacecastsReducer = handleActions({
     [closeStreetViewModal]: (state, ) => {
         return { ...state, showStreetViewModal: false }
     },
-    [photoSkippedSuccess]: state => ({
-        ...state,
-        photoSkipped: true
-    }),
 }, initialState)

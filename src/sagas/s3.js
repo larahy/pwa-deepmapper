@@ -45,6 +45,7 @@ function uploadAudioClip(action) {
     return addObjectPromise.then(function(data) {
         return data
     }).catch(function(err) {
+        console.log('err', err)
         return err
     })
 }

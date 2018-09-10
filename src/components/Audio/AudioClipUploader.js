@@ -30,7 +30,6 @@ class AudioClipUploader extends React.Component {
     handleFile(event) {
         const file = event.target.files[0]
         this.setState({file: file, readyToSubmit: true})
-
     }
 
     render() {
@@ -82,7 +81,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleUpload: file => dispatch(uploadAudioClipRequested({file}))
-
     };
 };
 

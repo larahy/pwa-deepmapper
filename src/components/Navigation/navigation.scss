@@ -11,9 +11,10 @@ div.navbar-burger.burger {
     height: 60px;
     width: 60px;
 }
+nav.navbar {
+    background-color: #fafafa;
+}
 .footer {
-    //background-color: $calamine;
-    //border-top: 1px solid #59A4C0;
     padding: 1.25rem !important;
 
     a{

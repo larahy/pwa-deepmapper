@@ -1,14 +1,16 @@
 import StepHeader from '../../../components/Placecasts/StepHeader'
 import {connect} from 'react-redux'
-import {photoSkipped} from '../../../actions/placecasts/create'
 
-export const mapStateToProps = (_, ownProps) => {
-    return ownProps
+export const mapStateToProps = (state, ownProps) => {
+    return  {
+        ...ownProps,
+    }
 }
 
-export const mapDispatchToProps = dispatch => {
+export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onSkip: () => dispatch(photoSkipped())
+        onSkip: () => dispatch(ownProps.onSkip),
+        onNext: () => dispatch(ownProps.onNext)
     }
 }
 
