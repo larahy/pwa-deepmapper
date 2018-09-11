@@ -41,7 +41,7 @@ const mapStateToProps = state => {
     return {
         fetching: state.s3.fetching,
         s3: state.s3.items,
-        error: state.s3.error,
+        error: state.s3.audioError,
     };
 };
 

@@ -1,6 +1,6 @@
 import { history } from '../../stores/configureStore.dev'
 import {createAction} from 'redux-actions'
-import {uploadAudioClipRequested} from '../s3'
+import {uploadRequested} from '../s3'
 export const photoStepCompletedSuccess = createAction('PHOTO_STEP_COMPLETED_SUCCESS')
 export const photoSkippedSuccess = createAction('PHOTO_SKIPPED_SUCCESS')
 export const photoSelectedSuccess = createAction('PHOTO_SELECTED_SUCCESS')
@@ -19,6 +19,6 @@ export const photoStepCompleted = (file) => {
 
 export const photoStepCompletedThunk = (file) => dispatch => {
     dispatch(photoStepCompletedSuccess({file}))
-    dispatch(uploadAudioClipRequested({file}))
+    dispatch(uploadRequested({file}))
 }
 

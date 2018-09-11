@@ -3,7 +3,9 @@ import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
     uploadAudioClipSucceeded,
-    uploadAudioClipFailed
+    uploadAudioClipFailed,
+    uploadPhotoFailed,
+    uploadPhotoSucceeded
 } from '../actions/s3'
 
 var AWS = require('aws-sdk');
@@ -50,6 +52,23 @@ function uploadAudioClip(action) {
     })
 }
 
+function uploadPhoto(action) {
+    const filename = action.payload.file.name
+    const file = action.payload.file
+
+    const addObjectPromise = s3.upload({
+        Key: filename,
+        Body: file,
+        ACL: 'public-read'
+    }).promise()
+    return addObjectPromise.then(function(data) {
+        return data
+    }).catch(function(err) {
+        console.log('err', err)
+        return err
+    })
+}
+
 export function* s3WorkerSaga() {
     try {
         const response = yield call(fetchBucketContents);
@@ -61,13 +80,27 @@ export function* s3WorkerSaga() {
     }
 }
 
-export function* AudioUploadSaga(action) {
-    try {
-        const response = yield call(uploadAudioClip, action);
+export function* uploadSaga(action) {
+    const fileType = action.payload.file.type
 
-        yield put({type: uploadAudioClipSucceeded().type, response});
+    if (fileType.match('image/w*')) {
+        try {
+            const response = yield call(uploadPhoto, action);
 
-    } catch (error) {
-        yield put({type: uploadAudioClipFailed().type, error});
+            yield put({type: uploadPhotoSucceeded().type, response});
+
+        } catch (error) {
+            yield put({type: uploadPhotoFailed().type, error});
+        }
+    }
+    if (fileType.match('audio/w*')) {
+        try {
+            const response = yield call(uploadAudioClip, action);
+
+            yield put({type: uploadAudioClipSucceeded().type, response});
+
+        } catch (error) {
+            yield put({type: uploadAudioClipFailed().type, error});
+        }
     }
 }

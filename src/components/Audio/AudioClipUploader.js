@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {
-    uploadAudioClipRequested
+    uploadRequested
 } from '../../actions/s3'
 
 class AudioClipUploader extends React.Component {
@@ -33,7 +33,7 @@ class AudioClipUploader extends React.Component {
     }
 
     render() {
-        const {error, fileUploadSuccess} = this.props;
+        const {error, audioUploadSuccess} = this.props;
         return (
             <div className='container is-fluid'>
                 <div>
@@ -41,7 +41,7 @@ class AudioClipUploader extends React.Component {
                 </div>
                 <div>
                     <div>
-                        {fileUploadSuccess ? (
+                        {audioUploadSuccess ? (
                             <div className="notification is-danger">
                                 <button className="delete"></button>
                                 Primar lorem ipsum dolor sit amet, consectetur
@@ -65,7 +65,7 @@ class AudioClipUploader extends React.Component {
 
 
 AudioClipUploader.propTypes = {
-    fileUploadSuccess: PropTypes.bool,
+    audioUploadSuccess: PropTypes.bool,
     error: PropTypes.object,
     handleUpload: PropTypes.func,
 
@@ -74,13 +74,13 @@ AudioClipUploader.propTypes = {
 const mapStateToProps = state => {
     return {
         error: state.s3.error,
-        fileUploadSuccess: state.s3.fileUploadSuccess
+        audioUploadSuccess: state.s3.audioUploadSuccess
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleUpload: file => dispatch(uploadAudioClipRequested({file}))
+        handleUpload: file => dispatch(uploadRequested({file}))
     };
 };
 

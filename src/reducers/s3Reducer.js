@@ -1,12 +1,23 @@
 import { handleActions } from 'redux-actions';
-import {fetchBucketContentsSucceeded, fetchBucketContentsFailed, fetchBucketContentsRequested, uploadAudioClipRequested, uploadAudioClipFailed, uploadAudioClipSucceeded} from '../actions/s3';
+import {
+    fetchBucketContentsSucceeded,
+    fetchBucketContentsFailed,
+    fetchBucketContentsRequested,
+    uploadRequested,
+    uploadAudioClipFailed,
+    uploadAudioClipSucceeded,
+    uploadPhotoSucceeded,
+    uploadPhotoFailed
+} from '../actions/s3';
 
 const initialState = {
     fetching: false,
     items: [],
-    error: null,
-    fileUploadProcessing: false,
-    fileUploadSuccess: false
+    photoError: null,
+    audioError: null,
+    uploadProcessing: false,
+    audioUploadSuccess: false,
+    photoUploadSuccess: false
 };
 
 export const s3Reducer = handleActions({
@@ -21,7 +32,9 @@ export const s3Reducer = handleActions({
     [fetchBucketContentsFailed().type]: (state, action) => {
         return { ...state, fetching: false, items: null, error: action.error }
     },
-    [uploadAudioClipRequested]: state => ({ ...state, error: null, fileUploadProcessing: true }),
-    [uploadAudioClipFailed]: (state, action) => ({ ...state, error: action.error, fileUploadProcessing: false }),
-    [uploadAudioClipSucceeded]: state => ({ ...state, fileUploadSuccess: true, fileUploadProcessing: false }),
+    [uploadRequested]: state => ({ ...state, error: null, uploadProcessing: true }),
+    [uploadAudioClipFailed]: (state, action) => ({ ...state, audioError: action.error, uploadProcessing: false }),
+    [uploadAudioClipSucceeded]: state => ({ ...state, audioUploadSuccess: true, uploadProcessing: false }),
+    [uploadPhotoFailed]: (state, action) => ({ ...state, photoError: action.error, uploadProcessing: false }),
+    [uploadPhotoSucceeded]: state => ({ ...state, photoUploadSuccess: true, uploadProcessing: false }),
 }, initialState)
