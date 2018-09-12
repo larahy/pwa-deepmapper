@@ -13,7 +13,7 @@ export default class Footer extends React.Component {
             <footer className="footer">
                 <div className="columns is-mobile">
                     <div className="column left-icon">
-                        <Link to="/create/photo">
+                        <Link to="/create/info">
                             <span className="icon is-large"><FontAwesomeIcon icon={faPlusSquare}/></span>
                         </Link>
                     </div>

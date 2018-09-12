@@ -8,6 +8,7 @@ import Footer from '../Navigation/Footer';
 import PlacecastsPage from '../../containers/PlacecastsPage'
 import S3Page from '../../containers/S3Page'
 import PhotoPage from '../../containers/Placecasts/Create/PhotoPage'
+import InfoPage from '../../containers/Placecasts/Create/InfoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
 import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
@@ -23,6 +24,7 @@ const AppRouter = () => (
                 <Route path='/' component={LargeMap} exact={true}/>
                 <Route path='/about' component={AboutPage} exact={true}/>
                 <Route path='/create/photo' component={PhotoPage} exact={true}/>
+                <Route path='/create/info' component={InfoPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
                 <Route path='/street-view' component={ReactGoogleMapsStreetView}/>
                 <Route path='/s3' component={S3Page}/>

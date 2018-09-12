@@ -42,12 +42,10 @@ class PhotoPage extends Component {
     render() {
         const imageClasses = this.state.readyToSubmit ? '' : 'is-hidden'
         const instructionsClasses = this.state.readyToSubmit ? 'is-hidden' : ''
-        console.log('ready', this.state.readyToSubmit);
         return (
             <Fragment>
                 <SkippableStepHeader
                     title='PHOTO'
-                    enableNextButton={this.state.readyToSubmit}
                     onSkip={photoSkipped()}
                     onNext={photoStepCompleted(this.state.file)}/>
                 <div className="steps-container">
