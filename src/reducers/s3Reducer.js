@@ -36,5 +36,7 @@ export const s3Reducer = handleActions({
     [uploadAudioClipFailed]: (state, action) => ({ ...state, audioError: action.error, uploadProcessing: false }),
     [uploadAudioClipSucceeded]: state => ({ ...state, audioUploadSuccess: true, uploadProcessing: false }),
     [uploadPhotoFailed]: (state, action) => ({ ...state, photoError: action.error, uploadProcessing: false }),
-    [uploadPhotoSucceeded]: state => ({ ...state, photoUploadSuccess: true, uploadProcessing: false }),
+    [uploadPhotoSucceeded]: (state) => {
+        return ({ ...state, photoUploadSuccess: true, uploadProcessing: false })
+    }
 }, initialState)

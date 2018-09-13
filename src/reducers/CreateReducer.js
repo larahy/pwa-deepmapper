@@ -1,13 +1,13 @@
 import { handleActions } from 'redux-actions';
 import {
     photoSkippedSuccess,
-    photoStepCompletedSuccess,
     infoStepCompletedSuccess
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
+import {uploadPhotoSucceeded} from '../actions/s3'
 const initialState = {
     photoSkipped: false,
-    imageName: '',
+    photoSrc: '',
     attributes: []
 };
 
@@ -18,10 +18,10 @@ export const CreateReducer = handleActions({
         ...state,
         photoSkipped: true
     }),
-    [photoStepCompletedSuccess]: (state, action) => {
-        return { ...state, photoSkipped: false, imageName: action.payload.file.name}
-    },
     [infoStepCompletedSuccess]: (state) => {
         return { ...state, photoSkipped: false}
     },
+    [uploadPhotoSucceeded]: (state, action) => {
+        return ({ ...state, photoSrc: action.response.Location})
+    }
 }, initialState)

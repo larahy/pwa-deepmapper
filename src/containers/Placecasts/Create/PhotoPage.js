@@ -3,8 +3,15 @@ import {connect} from 'react-redux';
 import SkippableStepHeader from './SkippableStepHeader'
 import {photoSkipped} from '../../../actions/placecasts/create'
 import {photoStepCompleted} from '../../../actions/placecasts/create'
+import {getTitle} from '../../../selectors/create'
+import PropTypes from 'prop-types'
 
 class PhotoPage extends Component {
+
+    static propTypes = {
+        placeCastTitle: PropTypes.string
+    }
+
     constructor(props) {
         super(props)
         this.state = {
@@ -49,7 +56,7 @@ class PhotoPage extends Component {
                     title='PHOTO'
                     readyToSubmitPhoto={this.state.readyToSubmit}
                     onSkip={photoSkipped()}
-                    onNext={photoStepCompleted(this.state.file)}/>
+                    onNext={photoStepCompleted(this.state.file, this.props.placeCastTitle)}/>
                 <div className="steps-container">
                     <div className="container has-text-centered">
                         <div className={imageClasses}>
@@ -83,8 +90,10 @@ class PhotoPage extends Component {
     }
 }
 
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = (state) => {
+    return {
+        placeCastTitle: getTitle(state)
+    };
 };
 const mapDispatchToProps = () => {
     return {};

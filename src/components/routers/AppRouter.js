@@ -1,10 +1,10 @@
+/* eslint-disable */
+
 import React, {Fragment} from 'react';
 import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 // import {ConnectedRouter} from 'connected-react-router'
 import Header from '../Navigation/Header';
 import Footer from '../Navigation/Footer';
-// import {HomePage} from '../../containers/HomePage';
-// import {StreetViewPage} from '../../containers/StreetViewPage';
 import PlacecastsPage from '../../containers/PlacecastsPage'
 import S3Page from '../../containers/S3Page'
 import PhotoPage from '../../containers/Placecasts/Create/PhotoPage'

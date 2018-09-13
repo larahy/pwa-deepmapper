@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import SkippableStepHeader from './SkippableStepHeader'
 import UpdatableInfoFields from './UpdatableInfoFields'
-import {photoSkipped} from '../../../actions/placecasts/create'
 import {infoStepCompleted} from '../../../actions/placecasts/create'
 import {
     isReadyToSubmitInfo,
@@ -27,7 +26,6 @@ class InfoPage extends Component {
                 <SkippableStepHeader
                     title='STEP 1: BASIC INFO'
                     phase={1}
-                    onSkip={photoSkipped()}
                     onNext={infoStepCompleted()}/>
                 <UpdatableInfoFields />
             </Fragment>

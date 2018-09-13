@@ -22,6 +22,5 @@ export const validAttributeFor = (fieldStateOrAttribute, errors = []) => {
 }
 
 export const invalidAttributeFor = (fieldStateOrAttribute, errors) => {
-    console.log('invalid honk honk');
     return newAttributeFor(fieldStateOrAttribute, Validity.INVALID, errors)
 }

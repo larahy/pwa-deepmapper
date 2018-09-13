@@ -12,6 +12,10 @@ export default class StepHeader extends React.Component {
         readyToSubmitPhoto: PropTypes.bool
     }
 
+    static defaultProps = {
+        onSkip: () => {}
+    }
+
     constructor() {
         super()
         this.handleSkip = this.handleSkip.bind(this)
@@ -28,39 +32,53 @@ export default class StepHeader extends React.Component {
 
     render() {
         const {title, phase, readyToSubmitInfo, readyToSubmitPhoto} = this.props
+
         let readyToSubmit
+        let skipButton
+        let nextButton
+        let buttonClasses
         if (phase === 1) {
             readyToSubmit = readyToSubmitInfo
+            buttonClasses = readyToSubmit ? 'button is-large is-fullwidth is-backlit' : 'button is-large is-fullwidth is-white'
+            skipButton = (<div></div>)
+            nextButton = (<a className={buttonClasses} onClick={this.handleNext} disabled={!readyToSubmit}>
+                <p className="subtitle">
+                    NEXT
+                    <span className="icon is-medium">
+                        <i className="fas fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </p>
+            </a>)
         } else {
             readyToSubmit = readyToSubmitPhoto
+            buttonClasses = readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
+
+            skipButton = (<a className="button is-small is-fullwidth is-white skip" onClick={this.handleSkip}>
+                <p className="subtitle">SKIP
+                    <span className="icon is-medium"><i className="fas fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </p>
+            </a>)
+            nextButton = (<a className={buttonClasses} onClick={this.handleNext} disabled={!readyToSubmit}>
+                <p className="subtitle">
+                    NEXT
+                    <span className="icon is-medium">
+                        <i className="fas fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </p>
+            </a>)
         }
-        const buttonClasses = readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
         return (
 
             <div className="step-header columns is-mobile is-centered">
                 <div className="column step-header">
-                    <p className="subtitle text-center">{title}</p>
+                    <a className="button is-large is-fullwidth is-white" >
+                        <p className="subtitle text-center">{title}</p>
+                    </a>
                 </div>
                 <div className="column step-header">
-                    <a className="button is-small is-fullwidth is-white skip" onClick={this.handleSkip}>
-                        <p className="subtitle">
-                            SKIP
-                            <span className="icon is-medium">
-                                <i className="fas fa-angle-right" aria-hidden="true">
-                                </i>
-                            </span>
-                        </p>
-                    </a>
-
-                    <a className={buttonClasses} onClick={this.handleNext} disabled={!readyToSubmit}>
-                        <p className="subtitle">
-                            NEXT
-                            <span className="icon is-medium">
-                                <i className="fas fa-angle-right" aria-hidden="true">
-                                </i>
-                            </span>
-                        </p>
-                    </a>
+                    {skipButton}
+                    {nextButton}
                 </div>
             </div>
         )

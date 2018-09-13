@@ -23,8 +23,6 @@ export default class InfoFields extends React.Component {
     }
 
     handleSubmit (event) {
-
-        console.log('handling submit');
         event.preventDefault()
         this.props.onNext()
     }

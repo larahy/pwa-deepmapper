@@ -1,4 +1,5 @@
 import {call, put} from 'redux-saga/effects';
+import {snakeCase} from 'lodash';
 import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
@@ -28,9 +29,9 @@ function fetchBucketContents() {
     const listObjectsPromise = s3.listObjects({
         Bucket: bucket
     }).promise()
-    return listObjectsPromise.then(function(data) {
+    return listObjectsPromise.then(function (data) {
         return data.Contents
-    }).catch(function(err) {
+    }).catch(function (err) {
         return err
     })
 }
@@ -44,16 +45,16 @@ function uploadAudioClip(action) {
         Body: file,
         ACL: 'public-read'
     }).promise()
-    return addObjectPromise.then(function(data) {
+    return addObjectPromise.then(function (data) {
         return data
-    }).catch(function(err) {
+    }).catch(function (err) {
         console.log('err', err)
         return err
     })
 }
 
 function uploadPhoto(action) {
-    const filename = action.payload.file.name
+    const filename = snakeCase(action.payload.title)
     const file = action.payload.file
 
     const addObjectPromise = s3.upload({
@@ -61,10 +62,9 @@ function uploadPhoto(action) {
         Body: file,
         ACL: 'public-read'
     }).promise()
-    return addObjectPromise.then(function(data) {
+    return addObjectPromise.then(function (data) {
         return data
-    }).catch(function(err) {
-        console.log('err', err)
+    }).catch(function (err) {
         return err
     })
 }
@@ -86,9 +86,7 @@ export function* uploadSaga(action) {
     if (fileType.match('image/w*')) {
         try {
             const response = yield call(uploadPhoto, action);
-
             yield put({type: uploadPhotoSucceeded().type, response});
-
         } catch (error) {
             yield put({type: uploadPhotoFailed().type, error});
         }
