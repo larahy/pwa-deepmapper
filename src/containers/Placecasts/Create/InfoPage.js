@@ -4,8 +4,15 @@ import SkippableStepHeader from './SkippableStepHeader'
 import UpdatableInfoFields from './UpdatableInfoFields'
 import {photoSkipped} from '../../../actions/placecasts/create'
 import {infoStepCompleted} from '../../../actions/placecasts/create'
-
+import {
+    isReadyToSubmitInfo,
+} from '../../../selectors/create'
+import PropTypes from 'prop-types'
 class InfoPage extends Component {
+
+    static propTypes = {
+        isReadyToSubmitInfo: PropTypes.bool
+    }
     constructor(props) {
         super(props)
         this.state = {
@@ -19,6 +26,7 @@ class InfoPage extends Component {
             <Fragment>
                 <SkippableStepHeader
                     title='STEP 1: BASIC INFO'
+                    phase={1}
                     onSkip={photoSkipped()}
                     onNext={infoStepCompleted()}/>
                 <UpdatableInfoFields />
@@ -27,8 +35,10 @@ class InfoPage extends Component {
     }
 }
 
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = (state) => {
+    return {
+        isReadyToSubmitInfo: isReadyToSubmitInfo(state)
+    };
 };
 const mapDispatchToProps = () => {
     return {};

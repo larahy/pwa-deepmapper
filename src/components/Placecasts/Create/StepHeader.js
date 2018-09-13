@@ -7,7 +7,9 @@ export default class StepHeader extends React.Component {
         title: PropTypes.string.isRequired,
         onSkip: PropTypes.func,
         onNext: PropTypes.func,
-        readyToSubmit: PropTypes.bool
+        phase: PropTypes.number,
+        readyToSubmitInfo: PropTypes.bool,
+        readyToSubmitPhoto: PropTypes.bool
     }
 
     constructor() {
@@ -25,12 +27,19 @@ export default class StepHeader extends React.Component {
     }
 
     render() {
-        const buttonClasses = this.props.readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
+        const {title, phase, readyToSubmitInfo, readyToSubmitPhoto} = this.props
+        let readyToSubmit
+        if (phase === 1) {
+            readyToSubmit = readyToSubmitInfo
+        } else {
+            readyToSubmit = readyToSubmitPhoto
+        }
+        const buttonClasses = readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
         return (
 
             <div className="step-header columns is-mobile is-centered">
                 <div className="column step-header">
-                    <p className="subtitle text-center">{this.props.title}</p>
+                    <p className="subtitle text-center">{title}</p>
                 </div>
                 <div className="column step-header">
                     <a className="button is-small is-fullwidth is-white skip" onClick={this.handleSkip}>
@@ -43,7 +52,7 @@ export default class StepHeader extends React.Component {
                         </p>
                     </a>
 
-                    <a className={buttonClasses} onClick={this.handleNext} disabled={!this.props.readyToSubmit}>
+                    <a className={buttonClasses} onClick={this.handleNext} disabled={!readyToSubmit}>
                         <p className="subtitle">
                             NEXT
                             <span className="icon is-medium">

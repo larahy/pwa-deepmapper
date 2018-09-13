@@ -42,23 +42,22 @@ class PhotoPage extends Component {
     render() {
         const imageClasses = this.state.readyToSubmit ? '' : 'is-hidden'
         const instructionsClasses = this.state.readyToSubmit ? 'is-hidden' : ''
+        const buttonText = this.state.readyToSubmit ? 'Choose a different photo' : 'Choose a photo'
         return (
             <Fragment>
                 <SkippableStepHeader
                     title='PHOTO'
+                    readyToSubmitPhoto={this.state.readyToSubmit}
                     onSkip={photoSkipped()}
                     onNext={photoStepCompleted(this.state.file)}/>
                 <div className="steps-container">
                     <div className="container has-text-centered">
                         <div className={imageClasses}>
-                            <figure className="image is-3by2">
+                            <figure className="image is-4by3">
                                 <img id="output"/>
                             </figure>
                         </div>
                         <div className={instructionsClasses}>
-                            <h1 className="title is-2">
-                                Step 1:
-                            </h1>
                             <h2 className="subtitle is-4">
                                 Please choose or take a photo to accompany your placecast
                             </h2>
@@ -72,7 +71,7 @@ class PhotoPage extends Component {
                                         <span className="file-icon">
                                             <i className="fas fa-upload"></i>
                                         </span>
-                                        <span className="file-label">Choose a Photo…</span>
+                                        <span className="file-label">{buttonText}</span>
                                     </span>
                                 </label>
                             </div>

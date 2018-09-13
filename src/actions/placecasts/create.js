@@ -1,7 +1,7 @@
 import { history } from '../../stores/configureStore.dev'
 import {createAction} from 'redux-actions'
-import {includes, every} from 'lodash'
-import {AttributeScopes, Validity} from '../../constants/attributes'
+import {includes, every, filter} from 'lodash'
+import {AttributeScopes, Validity, Tags} from '../../constants/attributes'
 import {uploadRequested} from '../s3'
 import {validationsTriggered} from '../common'
 
@@ -34,13 +34,33 @@ export const infoStepCompleted = () =>  {
     return infoStepCompletedThunk()
 }
 export const infoStepCompletedThunk = () => (dispatch, getState) => {
-    return proceedOrValidateFor('/create/photo', getState(), dispatch, infoStepCompletedSuccess)
+    return proceedOrValidateFor(Tags.INFO, '/create/photo', getState(), dispatch, infoStepCompletedSuccess)
 }
 
-const proceedOrValidateFor = (nextLocation, state, dispatch, actionCreator) => {
+// const proceedOrValidateFor = (nextLocation, state, dispatch, actionCreator) => {
+//     const attributes = state.create.attributes
+//     const allowedValidities = [Validity.VALID, Validity.NOT_APPLICABLE]
+//     const readyToProceed = every(attributes, attribute => {
+//         return includes(allowedValidities, attribute.validity)
+//     })
+//
+//     if (readyToProceed) {
+//         dispatch(actionCreator())
+//         dispatch(history.push(nextLocation))
+//     } else {
+//         dispatch(validationsTriggered({
+//             scope: AttributeScopes.CREATE,
+//         }))
+//     }
+// }
+
+const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {
     const attributes = state.create.attributes
+    const currentAttributes = filter(attributes, attribute => {
+        return includes(attribute.tags, tag)
+    })
     const allowedValidities = [Validity.VALID, Validity.NOT_APPLICABLE]
-    const readyToProceed = every(attributes, attribute => {
+    const readyToProceed = every(currentAttributes, attribute => {
         return includes(allowedValidities, attribute.validity)
     })
 
@@ -50,6 +70,7 @@ const proceedOrValidateFor = (nextLocation, state, dispatch, actionCreator) => {
     } else {
         dispatch(validationsTriggered({
             scope: AttributeScopes.CREATE,
+            tags: [tag]
         }))
     }
 }

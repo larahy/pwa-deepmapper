@@ -1,4 +1,4 @@
-import {map, filter, reduce, isEmpty, reject} from 'lodash'
+import {map, filter, reduce, isEmpty, reject, intersection} from 'lodash'
 import {whereSupported, requiresValidation, satisfies} from './validations'
 import {hasAttributeFor} from './queries'
 import {
@@ -22,6 +22,10 @@ export const ifForScope = (scope, state, fieldStateOrAttribute, fn) => {
     return fieldStateOrAttribute.scope === scope
         ? fn(fieldStateOrAttribute, state)
         : state
+}
+
+export const whereHasAnyTagIn = tags => {
+    return attribute => !isEmpty(intersection(attribute.tags, tags))
 }
 
 export const withInitialAttributeFor = fieldStateOrAttribute => attributes => {
@@ -86,7 +90,6 @@ export const updateAttributeValueValidityAndErrors = (state, fieldStateOrAttribu
 }
 
 export const updateAttributeValueAndValidity = (state, fieldStateOrAttribute) => {
-    console.log('updating attribute ', fieldStateOrAttribute)
     return validateAttribute(state, fieldStateOrAttribute, false)
 }
 

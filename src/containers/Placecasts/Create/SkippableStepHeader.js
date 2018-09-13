@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
 import {
-    isReadyToSubmit,
+    isReadyToSubmitInfo,
 } from '../../../selectors/create'
 import StepHeader from '../../../components/Placecasts/Create/StepHeader'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
-        readyToSubmit: isReadyToSubmit(state)
+        readyToSubmitInfo: isReadyToSubmitInfo(state)
     }
 }
 

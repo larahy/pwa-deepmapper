@@ -2,7 +2,7 @@ import {Validity} from '../constants/attributes'
 import {isEmpty, pick} from 'lodash'
 
 const newAttributeFor = (fieldStateOrAttribute, validity, errors = []) => {
-    return {...pick(fieldStateOrAttribute, 'name', 'value', 'validations'), validity, errors}
+    return { ...pick(fieldStateOrAttribute, 'name', 'value', 'tags', 'validations'), validity, errors }
 }
 
 export const initialAttributeFor = fieldStateOrAttribute => isEmpty(fieldStateOrAttribute.validations)

@@ -14,5 +14,13 @@ export const Validations = {
     MAX_LENGTH: 'max-length',
 }
 
+export const Tags = {
+    INFO: 'info',
+    PHOTO: 'photo',
+    LOCATION: 'location',
+    STREET_VIEW: 'street-view',
+    AUDIO: 'audio',
+}
+
 
 

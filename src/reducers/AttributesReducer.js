@@ -1,3 +1,4 @@
+import { includes, some, isEmpty } from 'lodash'
 import {
     fieldInitialised,
     fieldCompleted,
@@ -29,11 +30,16 @@ export const attributesReducersFor = scope => ({
             return updateAttributeValueAndValidity(state, payload)
         })
     },
-    [validationsTriggered]: (state, {payload}) => {
+    [validationsTriggered]: (state, { payload }) => {
         return ifForScope(scope, state, payload, () => {
-            return mapAttributesIn(state, attribute => {
-                return validatedAttributeFor(attribute)
+            const stateWithValidationAttributes = mapAttributesIn(state, attribute => {
+                if (isEmpty(payload.tags) || some(payload.tags, tag => includes(attribute.tags, tag))) {
+                    return validatedAttributeFor(attribute)
+                } else {
+                    return attribute
+                }
             })
+            return stateWithValidationAttributes
         })
     },
 })

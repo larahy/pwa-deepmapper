@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../styles.scss'
 import NotifyingInput from '../../../containers/Shared/NotifyingInput'
 import NotifyingTextarea from '../../../containers/Shared/NotifyingTextarea'
-import {AttributeScopes, Validations} from '../../../constants/attributes'
+import {AttributeScopes, Validations, Tags} from '../../../constants/attributes'
 
 export default class InfoFields extends React.Component {
     static propTypes = {
@@ -48,6 +48,7 @@ export default class InfoFields extends React.Component {
                                 {name: Validations.MANDATORY}
                             ]}
                             scope={AttributeScopes.CREATE}
+                            tags={[Tags.INFO]}
                             helperText='Title is compulsory'
                         />
                         <NotifyingTextarea
@@ -55,9 +56,11 @@ export default class InfoFields extends React.Component {
                             description='subtitle'
                             type='text'
                             scope={AttributeScopes.CREATE}
+                            tags={[Tags.INFO]}
                             maxLength='255'
                             helperText='Subtitle must be fewer than 255 characters'
                         />
+                        <button type="submit" className="button">alternative button</button>
                     </form>
                 </div>
             </div>

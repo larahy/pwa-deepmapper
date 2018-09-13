@@ -13,6 +13,7 @@ export default class Field extends React.Component {
         onChange: PropTypes.func,
         validity: PropTypes.string,
         scope: PropTypes.string,
+        tags: PropTypes.array
     }
 
     static defaultProps = {
@@ -24,6 +25,7 @@ export default class Field extends React.Component {
         onChange: () => {
         },
         validity: Validity.NOT_APPLICABLE,
+        tags: []
     }
 
     constructor(props) {
@@ -40,9 +42,9 @@ export default class Field extends React.Component {
     }
 
     getFieldState() {
-        const {name, scope} = this.props
+        const {name, scope, tags} = this.props
         const {value} = this.state
-        return {name, value, scope, validations: []}
+        return {name, value, scope, tags, validations: []}
     }
 
     render() {
