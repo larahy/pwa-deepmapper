@@ -15,7 +15,7 @@ nav.navbar {
     background-color: #fafafa;
 }
 .footer {
-    padding: 1.25rem !important;
+    padding: 1rem !important;
 
     a{
         font-size: 1.5rem
@@ -35,4 +35,11 @@ nav.navbar {
 
 .column.right-icon {
     text-align: right
+}
+
+@media screen and (min-width: 1088px) {
+    nav#navbarBottom {
+        align-items: stretch;
+       display: inline
+    }
 }
