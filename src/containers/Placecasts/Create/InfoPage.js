@@ -14,9 +14,6 @@ class InfoPage extends Component {
     }
     constructor(props) {
         super(props)
-        this.state = {
-            readyToSubmit: false
-        }
     }
 
     render() {

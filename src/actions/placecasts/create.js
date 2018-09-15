@@ -6,8 +6,8 @@ import {AttributeScopes, Validity, Tags} from '../../constants/attributes'
 import {uploadRequested} from '../s3'
 import {validationsTriggered} from '../common'
 
-export const photoSkippedSuccess = createAction('PHOTO_SKIPPED_SUCCESS')
 export const photoSelectedSuccess = createAction('PHOTO_SELECTED_SUCCESS')
+export const photoSkippedSuccess = createAction('PHOTO_SKIPPED_SUCCESS')
 export const photoSkipped = () => {
     return photoSkippedThunk()
 }
@@ -23,6 +23,7 @@ export const photoStepCompleted = (file, title) => {
 
 export const photoStepCompletedThunk = (file, title) => dispatch => {
     dispatch(uploadRequested({file, title}))
+    dispatch(push('/create/audio'))
 }
 
 export const infoStepCompletedSuccess = createAction('INFO_STEP_COMPLETED_SUCCESS')
@@ -33,6 +34,15 @@ export const infoStepCompletedThunk = () => (dispatch) => {
     dispatch(infoStepCompletedSuccess())
     dispatch(push('/create/photo'))
     // return proceedOrValidateFor(Tags.INFO, '/create/photo', getState(), dispatch, infoStepCompletedSuccess)
+}
+
+export const audioSkippedSuccess = createAction('AUDIO_SKIPPED_SUCCESS')
+export const audioSkipped = () => {
+    return audioSkippedThunk()
+}
+export const audioSkippedThunk = () => dispatch => {
+    dispatch(audioSkippedSuccess())
+    dispatch(push('/create/street-view'))
 }
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {
