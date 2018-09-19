@@ -9,7 +9,8 @@ import PropTypes from 'prop-types'
 class PhotoPage extends Component {
 
     static propTypes = {
-        placeCastTitle: PropTypes.string
+        placeCastTitle: PropTypes.string,
+        error: PropTypes.object,
     }
 
     constructor(props) {
@@ -47,6 +48,7 @@ class PhotoPage extends Component {
 
 
     render() {
+        const {error} = this.props;
         const imageClasses = this.state.readyToSubmit ? '' : 'is-hidden'
         const instructionsClasses = this.state.readyToSubmit ? 'is-hidden' : ''
         const buttonText = this.state.readyToSubmit ? 'Choose a different photo' : 'Choose a photo'
@@ -83,6 +85,9 @@ class PhotoPage extends Component {
                                 </label>
                             </div>
                         </div>
+                        <div>
+                            {error && <p style={{color: 'red'}}>Uh oh - something went wrong!</p>}
+                        </div>
                     </div>
                 </div>
             </Fragment>
@@ -92,7 +97,9 @@ class PhotoPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        placeCastTitle: getTitle(state)
+        placeCastTitle: getTitle(state),
+        error: state.s3.photoError
+
     };
 };
 const mapDispatchToProps = () => {

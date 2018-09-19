@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faPause, faPlay, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
-import './Audio.scss'
+import '../Audio/Audio.scss'
 
 export default class PlaybackPanel extends React.Component {
     componentDidMount() {

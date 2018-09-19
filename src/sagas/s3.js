@@ -1,4 +1,5 @@
 import {call, put} from 'redux-saga/effects';
+import {push} from 'react-router-redux'
 import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
@@ -46,9 +47,6 @@ function uploadAudioClip(action) {
     }).promise()
     return addObjectPromise.then(function (data) {
         return data
-    }).catch(function (err) {
-        console.log('err', err)
-        return err
     })
 }
 
@@ -63,8 +61,6 @@ function uploadPhoto(action) {
     }).promise()
     return addObjectPromise.then(function (data) {
         return data
-    }).catch(function (err) {
-        return err
     })
 }
 
@@ -86,6 +82,7 @@ export function* uploadSaga(action) {
         try {
             const response = yield call(uploadPhoto, action);
             yield put({type: uploadPhotoSucceeded().type, response});
+            yield put(push('/create/audio'));
         } catch (error) {
             yield put({type: uploadPhotoFailed().type, error});
         }
@@ -93,8 +90,8 @@ export function* uploadSaga(action) {
     if (fileType.match('audio/w*')) {
         try {
             const response = yield call(uploadAudioClip, action);
-
             yield put({type: uploadAudioClipSucceeded().type, response});
+            yield put(push('/create/street-view'));
 
         } catch (error) {
             yield put({type: uploadAudioClipFailed().type, error});

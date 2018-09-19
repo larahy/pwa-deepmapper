@@ -39,7 +39,6 @@ export const photoStepCompleted = (file, title) => {
 
 export const photoStepCompletedThunk = (file, title) => dispatch => {
     dispatch(uploadRequested({file, title}))
-    dispatch(push('/create/audio'))
 }
 
 //STEP 3 AUDIO //
@@ -61,7 +60,6 @@ export const audioStepCompleted = (file, title) => {
 }
 export const audioStepCompletedThunk = (file, title) => (dispatch) => {
     dispatch(uploadRequested({file, title}))
-    dispatch(push('/create/street-view'))
 }
 
 
