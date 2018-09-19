@@ -53,10 +53,10 @@ class PhotoPage extends Component {
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='PHOTO'
+                    title='STEP 2: PHOTO'
                     readyToSubmitPhoto={this.state.readyToSubmit}
                     onSkip={photoSkipped()}
-                    onNext={photoStepCompleted(this.state.file, this.props.placeCastTitle)}/>
+                    onNext={dispatch => (dispatch(photoStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
                 <div className="steps-container">
                     <div className="container has-text-centered">
                         <div className={imageClasses}>

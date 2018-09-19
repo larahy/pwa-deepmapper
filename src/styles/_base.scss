@@ -1,37 +1,9 @@
 @charset "utf-8";
-
+@import "./variables";
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 @import url('https://fonts.googleapis.com/css?family=Lato:300');
 @import url('https://fonts.googleapis.com/css?family=Alegreya+SC');
-
-// Set your brand colors
-$myBlue: #59A4C0;
-$myMauve: #7F656A;
-$nancysBlushes: #F9B8B7;
-$calamine: #F4DED9;
-$brown: #757763;
-$beige-light: #D0D1CD;
-$beige-lighter: #EFF0EB;
-$greatWhite: #E7E7DE;
-$railings: #2F3236;
-$cabbageWhite: #E9F1E9;
-$wevet: #F7F3EC;
-// Update Bulma's global variables
-$family-sans-serif: "Lato", sans-serif;
-$grey-dark: $railings;
-$grey-light: $greatWhite;
-$primary: $myBlue;
-$link: $myBlue;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-//$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-$navbar-item-img-max-height: 2.75rem;
 
 // Import only what you need from Bulma
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
@@ -39,6 +11,7 @@ $navbar-item-img-max-height: 2.75rem;
 @import "../../node_modules/bulma/sass/components/card.sass";
 @import "../../node_modules/bulma/sass/components/modal.sass";
 @import "../../node_modules/bulma/sass/components/tabs.sass";
+@import "../../node_modules/bulma/sass/components/breadcrumb.sass";
 @import "../../node_modules/bulma/sass/base/_all.sass";
 @import "../../node_modules/bulma/sass/elements/button.sass";
 @import "../../node_modules/bulma/sass/elements/container.sass";

@@ -1,5 +1,4 @@
 import {call, put} from 'redux-saga/effects';
-import {snakeCase} from 'lodash';
 import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
@@ -37,7 +36,7 @@ function fetchBucketContents() {
 }
 
 function uploadAudioClip(action) {
-    const filename = action.payload.file.name
+    const filename = action.payload.title
     const file = action.payload.file
 
     const addObjectPromise = s3.upload({
@@ -54,7 +53,7 @@ function uploadAudioClip(action) {
 }
 
 function uploadPhoto(action) {
-    const filename = snakeCase(action.payload.title)
+    const filename = action.payload.title
     const file = action.payload.file
 
     const addObjectPromise = s3.upload({

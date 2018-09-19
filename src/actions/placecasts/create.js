@@ -1,33 +1,14 @@
 /* eslint-disable */
-import { push } from 'react-router-redux'
+import {push} from 'react-router-redux'
 import {createAction} from 'redux-actions'
-import {includes, every, filter} from 'lodash'
+import {includes, every, filter, words, snakeCase} from 'lodash'
 import {AttributeScopes, Validity, Tags} from '../../constants/attributes'
 import {uploadRequested} from '../s3'
 import {validationsTriggered} from '../common'
 
-export const photoSelectedSuccess = createAction('PHOTO_SELECTED_SUCCESS')
-export const photoSkippedSuccess = createAction('PHOTO_SKIPPED_SUCCESS')
-export const photoSkipped = () => {
-    return photoSkippedThunk()
-}
-export const photoSkippedThunk = () => dispatch => {
-    dispatch(photoSkippedSuccess())
-    dispatch(push('/create/audio'))
-}
-
-export const photoStepCompletedSuccess = createAction('PHOTO_STEP_COMPLETED_SUCCESS')
-export const photoStepCompleted = (file, title) => {
-    return photoStepCompletedThunk(file, title)
-}
-
-export const photoStepCompletedThunk = (file, title) => dispatch => {
-    dispatch(uploadRequested({file, title}))
-    dispatch(push('/create/audio'))
-}
-
+//STEP 1 INFO //
 export const infoStepCompletedSuccess = createAction('INFO_STEP_COMPLETED_SUCCESS')
-export const infoStepCompleted = () =>  {
+export const infoStepCompleted = () => {
     return infoStepCompletedThunk()
 }
 export const infoStepCompletedThunk = () => (dispatch) => {
@@ -36,6 +17,34 @@ export const infoStepCompletedThunk = () => (dispatch) => {
     // return proceedOrValidateFor(Tags.INFO, '/create/photo', getState(), dispatch, infoStepCompletedSuccess)
 }
 
+//STEP 2 PHOTO //
+
+export const photoSelectedSuccess = createAction('PHOTO_SELECTED_SUCCESS')
+
+//SKIP//
+export const photoSkippedSuccess = createAction('PHOTO_SKIPPED_SUCCESS')
+export const photoSkipped = () => {
+    return photoSkippedThunk()
+}
+export const photoSkippedThunk = () => dispatch => {
+    dispatch(photoSkippedSuccess())
+    dispatch(push('/create/audio'))
+}
+//COMPLETE STEP//
+export const photoStepCompletedSuccess = createAction('PHOTO_STEP_COMPLETED_SUCCESS')
+export const photoStepCompleted = (file, title) => {
+    const newTitle = appendFileType(file, title)
+    return photoStepCompletedThunk(file, newTitle)
+}
+
+export const photoStepCompletedThunk = (file, title) => dispatch => {
+    dispatch(uploadRequested({file, title}))
+    dispatch(push('/create/audio'))
+}
+
+//STEP 3 AUDIO //
+
+//SKIP//
 export const audioSkippedSuccess = createAction('AUDIO_SKIPPED_SUCCESS')
 export const audioSkipped = () => {
     return audioSkippedThunk()
@@ -44,6 +53,17 @@ export const audioSkippedThunk = () => dispatch => {
     dispatch(audioSkippedSuccess())
     dispatch(push('/create/street-view'))
 }
+//COMPLETE STEP//
+export const audioStepCompletedSuccess = createAction('AUDIO_STEP_COMPLETED_SUCCESS')
+export const audioStepCompleted = (file, title) => {
+    const newTitle = appendFileType(file, title)
+    return audioStepCompletedThunk(file, newTitle)
+}
+export const audioStepCompletedThunk = (file, title) => (dispatch) => {
+    dispatch(uploadRequested({file, title}))
+    dispatch(push('/create/street-view'))
+}
+
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {
     const attributes = state.create.attributes
@@ -64,6 +84,11 @@ const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator)
             tags: [tag]
         }))
     }
+}
+
+const appendFileType = (file, title) => {
+    const fileType = words(file.type, '[^\\/]+$')
+    return `${snakeCase(title)}.${fileType[0]}`
 }
 
 

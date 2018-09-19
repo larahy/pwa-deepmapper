@@ -2,14 +2,16 @@ import { handleActions } from 'redux-actions';
 import {
     photoSkippedSuccess,
     audioSkippedSuccess,
-    infoStepCompletedSuccess
+    infoStepCompletedSuccess,
+    audioStepCompletedSuccess
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
-import {uploadPhotoSucceeded} from '../actions/s3'
+import {uploadPhotoSucceeded, uploadAudioClipSucceeded} from '../actions/s3'
 const initialState = {
     photoSkipped: false,
     audioSkipped: false,
     photoSrc: '',
+    audioSrc: '',
     attributes: []
 };
 
@@ -25,9 +27,15 @@ export const CreateReducer = handleActions({
         audioSkipped: true
     }),
     [infoStepCompletedSuccess]: (state) => {
-        return { ...state, photoSkipped: false}
+        return { ...state}
+    },
+    [audioStepCompletedSuccess]: (state) => {
+        return {...state}
     },
     [uploadPhotoSucceeded]: (state, action) => {
         return ({ ...state, photoSrc: action.response.Location})
+    },
+    [uploadAudioClipSucceeded]: (state, action) => {
+        return ({ ...state, audioSrc: action.response.Location})
     }
 }, initialState)

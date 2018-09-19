@@ -28,11 +28,8 @@ export default class RecordPage extends React.Component {
     }
 
     onStop(recordedBlob) {
-        console.log('recordedBlob is: ', recordedBlob);
-        console.log('blob url: ', recordedBlob.blobURL);
         var player = document.getElementById('player');
         try {
-            console.log('in here', typeof recordedBlob.blob )
             player.src = recordedBlob.blobURL;
         } catch (error) {
             console.log(error);
