@@ -13,7 +13,8 @@ class GoogleStreetViewModal extends React.Component {
     render() {
         const {placecast = {} } = this.props
         const {showStreetViewModal} = this.props
-
+        console.log('modal lat : ', placecast.latitude)
+        console.log('modal ong: ', placecast.longitude)
         let children = []
         const streetViewPanoramaOptions = {
             position: {lat: placecast.latitude, lng: placecast.longitude},

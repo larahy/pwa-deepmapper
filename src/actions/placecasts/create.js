@@ -62,6 +62,29 @@ export const audioStepCompletedThunk = (file, title) => (dispatch) => {
     dispatch(uploadRequested({file, title}))
 }
 
+//STEP 4 STREET-VIEW //
+export const selectPlacecastAddress = createAction('SELECT_PLACECAST_ADDRESS')
+export const updatePlacecastCoordinates = createAction('UPDATE_PLACECAST_COORDINATES')
+export const addPlacecastPOV = createAction('ADD_PLACECAST_POV')
+//SKIP//
+export const streetViewSkippedSuccess = createAction('STREET_VIEW_SKIPPED_SUCCESS')
+export const streetViewSkipped = () => {
+    return streetViewSkippedThunk()
+}
+export const streetViewSkippedThunk = () => dispatch => {
+    dispatch(streetViewSkippedSuccess())
+    dispatch(push('/create/review'))
+}
+//COMPLETE STEP//
+export const streetViewStepCompletedSuccess = createAction('STREET_VIEW_STEP_COMPLETED_SUCCESS')
+export const streetViewStepCompleted = (options) => {
+    return streetViewStepCompletedThunk(options)
+}
+export const streetViewStepCompletedThunk = (options) => (dispatch) => {
+    dispatch(streetViewStepCompletedSuccess({options}))
+    dispatch(push('/create/review'))
+}
+
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {
     const attributes = state.create.attributes

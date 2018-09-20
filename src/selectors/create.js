@@ -1,6 +1,12 @@
 import {AttributeScopes, Validity, Tags} from '../constants/attributes';
 import {createSelector} from 'reselect';
-import {hasAllAttributesWithValidity, propertyOrNull, propertyOrEmptyArray, propertyOrEmptyString} from './common';
+import {
+    hasAllAttributesWithValidity,
+    propertyOrNull,
+    propertyOrEmptyArray,
+    propertyOrEmptyString,
+    propertyOrEmptyObject
+} from './common';
 import {includes, filter} from 'lodash';
 import {findAttributeValueFor} from '../helpers/queries'
 
@@ -23,3 +29,4 @@ export const getTitle = createSelector(
     attributes => findAttributeValueFor(attributes, 'title'))
 
 export const getPhotoSrc = createSelector([getCreate], create => propertyOrEmptyString(create, 'photoSrc'))
+export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))
