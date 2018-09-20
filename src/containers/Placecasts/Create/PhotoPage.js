@@ -56,7 +56,7 @@ class PhotoPage extends Component {
             <Fragment>
                 <SkippableStepHeader
                     title='STEP 2: PHOTO'
-                    readyToSubmitPhoto={this.state.readyToSubmit}
+                    readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={photoSkipped()}
                     onNext={dispatch => (dispatch(photoStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
                 <div className="steps-container">
@@ -86,7 +86,9 @@ class PhotoPage extends Component {
                             </div>
                         </div>
                         <div>
-                            {error && <p style={{color: 'red'}}>Uh oh - something went wrong!</p>}
+                            {error && <div className="notification is-warning">
+                               Oh dear .. something went wrong. Please check your internet connection is active and try again.
+                            </div>}
                         </div>
                     </div>
                 </div>

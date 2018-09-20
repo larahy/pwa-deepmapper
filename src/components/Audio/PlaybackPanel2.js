@@ -9,52 +9,42 @@ export default class PlaybackPanel2 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            playPauseIcon: faPlay
+            playPauseIcon: faPlay,
+            currentTime: '0.00',
+            totalTime: '0.00',
+            progress: {width: '0%'}
         }
     }
 
-    componentDidMount() {
-        var audioPlayer = document.querySelector('.audio-player');
-        var playpauseBtn = audioPlayer.querySelector('.play-pause-btn');
-        var progress = audioPlayer.querySelector('.progress');
+    static formatTime(time) {
+        const min = Math.floor(time / 60);
+        const sec = Math.floor(time % 60);
+        return min + ':' + ((sec<10) ? ('0' + sec) : sec);
+    }
 
-        var player = audioPlayer.querySelector('audio');
-        var currentTime = audioPlayer.querySelector('.current-time');
-        var totalTime = audioPlayer.querySelector('.total-time');
+    displayTime =(event) => {
+        const player = document.querySelector('.audio-player audio');
 
+        this.setState({
+            totalTime: PlaybackPanel2.formatTime(player.duration),
+        })
+        event.preventDefault()
+    }
 
-        player.addEventListener('timeupdate', updateProgress);
-        player.addEventListener('loadedmetadata', () => {
-            totalTime.textContent = formatTime(player.duration);
-        });
-        player.addEventListener('canplay', makePlay);
-        player.addEventListener('ended', function(){
-            player.currentTime = 0;
-        });
-        function updateProgress() {
-            var current = player.currentTime;
-            var percent = (current / player.duration) * 100;
-            progress.style.width = percent + '%';
-            currentTime.textContent = formatTime(current);
-        }
-
-
-        function formatTime(time) {
-            var min = Math.floor(time / 60);
-            var sec = Math.floor(time % 60);
-            return min + ':' + ((sec<10) ? ('0' + sec) : sec);
-        }
-
-        function makePlay() {
-            playpauseBtn.style.display = 'block';
-        }
+    updateProgress = (event) => {
+        const player = document.querySelector('.audio-player audio');
+        const current = player.currentTime;
+        const percent = (current / player.duration) * 100;
+        this.setState({
+            currentTime: PlaybackPanel2.formatTime(current),
+            progress: {width: percent + '%'}
+        })
+        event.preventDefault()
     }
 
     getCoefficient = (event) => {
-        var audioPlayer = document.querySelector('.audio-player');
-        var player = audioPlayer.querySelector('audio');
-        const slider = audioPlayer.querySelector('.slider');
-
+        const player = document.querySelector('.audio-player audio');
+        const slider = document.querySelector('.audio-player.slider');
         let offsetX = event.clientX - slider.offsetLeft;
         let width = slider.clientWidth;
         const K = offsetX / width;
@@ -62,8 +52,8 @@ export default class PlaybackPanel2 extends React.Component {
     }
 
     togglePlay = (event) => {
-        let audioPlayer = document.querySelector('.audio-player');
-        const player = audioPlayer.querySelector('audio')
+        const player = document.querySelector('.audio-player audio');
+
         if(player.paused) {
             this.setState({
                 playPauseIcon: faPause,
@@ -78,9 +68,19 @@ export default class PlaybackPanel2 extends React.Component {
         event.preventDefault()
     }
 
+    audioEnded = (event) => {
+        const player = document.querySelector('.audio-player audio');
+        player.currentTime = 0;
+        this.setState({
+            playPauseIcon: faPlay,
+        })
+        event.preventDefault()
+    }
+
 
     render() {
         const {src} = this.props;
+        const {currentTime, progress, totalTime} = this.state;
 
         return <div className="media">
             <div className="audio audio-player">
@@ -91,18 +91,16 @@ export default class PlaybackPanel2 extends React.Component {
                 </a>
 
                 <div className="controls">
-                    <span className="current-time">0:00</span>
+                    <span className="current-time">{currentTime}</span>
                     <div className="slider" data-direction="horizontal">
-                        <div className="progress">
+                        <div className="progress" style={progress}>
                             <div draggable={true} className="pin" id="progress-pin" onDragEndCapture={this.getCoefficient} ></div>
                         </div>
                     </div>
-                    <span className="total-time">0:00</span>
+                    <span className="total-time">{totalTime}</span>
                 </div>
 
-                <audio crossOrigin>
-                    <source src={src}
-                            type="audio/mpeg" />
+                <audio src={src} type="audio/mpeg" onTimeUpdate={this.updateProgress} onEnded={this.audioEnded} onLoadedMetadata={this.displayTime}>
                 </audio>
             </div>
         </div>

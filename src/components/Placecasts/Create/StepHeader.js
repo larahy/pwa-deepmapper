@@ -9,7 +9,7 @@ export default class StepHeader extends React.Component {
         onNext: PropTypes.func,
         phase: PropTypes.number,
         readyToSubmitInfo: PropTypes.bool,
-        readyToSubmitPhoto: PropTypes.bool
+        readyToSubmitOther: PropTypes.bool
     }
 
     static defaultProps = {
@@ -31,7 +31,7 @@ export default class StepHeader extends React.Component {
     }
 
     render() {
-        const {title, phase, readyToSubmitInfo, readyToSubmitPhoto} = this.props
+        const {title, phase, readyToSubmitInfo, readyToSubmitOther} = this.props
 
         let readyToSubmit
         let skipButton
@@ -50,7 +50,7 @@ export default class StepHeader extends React.Component {
                 </p>
             </a>)
         } else {
-            readyToSubmit = readyToSubmitPhoto
+            readyToSubmit = readyToSubmitOther
             buttonClasses = readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
 
             skipButton = (<a className="button is-small is-fullwidth is-white skip" onClick={this.handleSkip}>

@@ -10,7 +10,7 @@ import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import PlaybackPanel2 from '../../../components/Audio/PlaybackPanel2'
+import UpdatablePlaybackPanel from './UpdatablePlaybackPanel'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -80,9 +80,9 @@ class AudioPage extends Component {
 
     render() {
         const {isRecording, recording} = this.state;
-        const {photoSrc} = this.props
-        const playbackElement = isEmpty(recording) ? <audio></audio> : <PlaybackPanel2 src={this.state.recording.src}/>
-        const imageSrcUrl = isEmpty(photoSrc) ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
+        const {photoSrc, error} = this.props
+        const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording.src}/>
+        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const recordingElement = isRecording ?
           <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record} >
                                                     <span className="icon is-large">
@@ -96,13 +96,11 @@ class AudioPage extends Component {
                                                     </span>
           </a>
 
-
-
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 3: RECORD PLACECAST'
-                    readyToSubmitPhoto={this.state.readyToSubmit}
+                    title='STEP 3: AUDIO'
+                    readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
                 <div className="steps-container is-centered">
@@ -149,6 +147,11 @@ class AudioPage extends Component {
                                         </div>
                                     </article>
                                 </div>
+                                <div>
+                                    {error && <div className="notification is-warning">
+                                        Oh dear .. something went wrong. Please check your internet connection is active and try again.
+                                    </div>}
+                                </div>
                             </div>
                         </div>
 
@@ -162,7 +165,8 @@ class AudioPage extends Component {
 const mapStateToProps = (state) => {
     return {
         placeCastTitle: getTitle(state),
-        photoSrc: getPhotoSrc(state)
+        photoSrc: getPhotoSrc(state),
+        error: state.s3.audioError
     };
 };
 const mapDispatchToProps = () => {
