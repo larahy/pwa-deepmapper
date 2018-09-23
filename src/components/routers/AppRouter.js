@@ -18,6 +18,7 @@ import {AboutPage} from '../../containers/AboutPage'
 import AudioPage from '../../containers/Placecasts/Create/AudioPage'
 import StreetViewPage from '../../containers/Placecasts/Create/StreetViewPage'
 import CreateMapPage from '../../containers/Placecasts/Create/MapPage'
+import ReviewPage from '../../containers/Placecasts/Create/ReviewPage'
 
 const AppRouter = () => (
     <HashRouter >
@@ -31,6 +32,7 @@ const AppRouter = () => (
                 <Route path='/create/audio' component={AudioPage} exact={true}/>
                 <Route path='/create/street-view' component={StreetViewPage} exact={true}/>
                 <Route path='/create/map' component={CreateMapPage} exact={true}/>
+                <Route path='/create/review' component={ReviewPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
                 <Route path='/street-view' component={ReactGoogleMapsStreetView}/>
                 <Route path='/s3' component={S3Page}/>

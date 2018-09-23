@@ -105,6 +105,25 @@ export const mapStepCompletedThunk = () => (dispatch) => {
     dispatch(push('/create/review'))
 }
 
+//STEP 6 REVIEW //
+export const savePlacecastSuccess = createAction('SAVE_PLACECAST_SUCCESS')
+export const savePlacecast = () => {
+    return savePlacecastThunk()
+}
+export const savePlacecastThunk = () => (dispatch) => {
+    dispatch(savePlacecastSuccess())
+    dispatch(push('/'))
+}
+
+export const publishPlacecastSuccess = createAction('PUBLISH_PLACECAST_SUCCESS')
+export const publishPlacecast = () => {
+    return publishPlacecastThunk()
+}
+export const publishPlacecastThunk = () => (dispatch) => {
+    dispatch(publishPlacecastSuccess())
+    dispatch(push('/'))
+}
+
 
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {

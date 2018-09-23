@@ -29,4 +29,5 @@ export const getTitle = createSelector(
     attributes => findAttributeValueFor(attributes, 'title'))
 
 export const getPhotoSrc = createSelector([getCreate], create => propertyOrEmptyString(create, 'photoSrc'))
+export const getAudioSrc = createSelector([getCreate], create => propertyOrEmptyString(create, 'audioSrc'))
 export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))
