@@ -9,7 +9,7 @@
     "build:dev:bundlebuddy": "npm run build:dev -- --env.addons=bundlebuddy",
     "serve:dev": "webpack-dev-server --open --env.env=dev --hot",
     "serve:dev:dashboard": "webpack-dashboard -- webpack-dev-server --hot --env.env=dev --env.addons=dashboard",
-    "build:prod": "npm run build -- -p --env.env=prod",
+    "build:prod": "npm run build -- --env.env=prod",
     "build:prod:watch": "npm run build:prod -- --watch",
     "build:prod:bundleanalyze": "npm run build:prod -- --env.addons=bundleanalyze",
     "build:prod:bundlebuddy": "npm run build:prod -- --env.addons=bundlebuddy",

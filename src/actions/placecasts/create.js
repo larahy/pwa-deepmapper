@@ -77,11 +77,11 @@ export const streetViewSkippedThunk = () => dispatch => {
 }
 //COMPLETE STEP//
 export const streetViewStepCompletedSuccess = createAction('STREET_VIEW_STEP_COMPLETED_SUCCESS')
-export const streetViewStepCompleted = (options) => {
-    return streetViewStepCompletedThunk(options)
+export const streetViewStepCompleted = () => {
+    return streetViewStepCompletedThunk()
 }
-export const streetViewStepCompletedThunk = (options) => (dispatch) => {
-    dispatch(streetViewStepCompletedSuccess({options}))
+export const streetViewStepCompletedThunk = () => (dispatch) => {
+    dispatch(streetViewStepCompletedSuccess())
     dispatch(push('/create/review'))
 }
 

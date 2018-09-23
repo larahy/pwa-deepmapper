@@ -6,7 +6,9 @@ import {
     infoStepCompletedSuccess,
     audioStepCompletedSuccess,
     selectPlacecastAddress,
-    updatePlacecastCoordinates, addPlacecastPOV
+    updatePlacecastCoordinates,
+    addPlacecastPOV,
+    streetViewStepCompletedSuccess
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
 import {uploadPhotoSucceeded, uploadAudioClipSucceeded} from '../actions/s3'
@@ -39,6 +41,9 @@ export const CreateReducer = handleActions({
         return { ...state}
     },
     [audioStepCompletedSuccess]: (state) => {
+        return {...state}
+    },
+    [streetViewStepCompletedSuccess]: (state) => {
         return {...state}
     },
     [uploadPhotoSucceeded]: (state, action) => {

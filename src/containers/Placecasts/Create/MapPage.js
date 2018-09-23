@@ -9,7 +9,7 @@ import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
 import SkippableStepHeader from './SkippableStepHeader'
-import {streetViewSkipped, streetViewStepCompleted} from '../../../actions/placecasts/create'
+import {streetViewSkipped, audioStepCompleted} from '../../../actions/placecasts/create'
 
 class StreetViewPage extends Component {
 
@@ -22,14 +22,12 @@ class StreetViewPage extends Component {
         this.handleStreetViewOpen = this.handleStreetViewOpen.bind(this)
         this.state = {
             showStreetView: false,
-            readyToSubmit: false
         }
     }
 
     toggleModal() {
         this.setState({
             showStreetView: !this.state.showStreetView,
-            readyToSubmit: !this.state.readyToSubmit
         })
     }
 
@@ -59,7 +57,7 @@ class StreetViewPage extends Component {
                     title='STEP 3: AUDIO'
                     readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={streetViewSkipped()}
-                    onNext={dispatch => (dispatch(streetViewStepCompleted()))}/>
+                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
                     loadingElement={<div style={{height: '100%'}}/>}
