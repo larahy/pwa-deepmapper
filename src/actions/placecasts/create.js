@@ -73,7 +73,7 @@ export const streetViewSkipped = () => {
 }
 export const streetViewSkippedThunk = () => dispatch => {
     dispatch(streetViewSkippedSuccess())
-    dispatch(push('/create/review'))
+    dispatch(push('/create/map'))
 }
 //COMPLETE STEP//
 export const streetViewStepCompletedSuccess = createAction('STREET_VIEW_STEP_COMPLETED_SUCCESS')
@@ -84,6 +84,27 @@ export const streetViewStepCompletedThunk = () => (dispatch) => {
     dispatch(streetViewStepCompletedSuccess())
     dispatch(push('/create/review'))
 }
+
+//STEP 5 MAP //
+//SKIP//
+export const mapSkippedSuccess = createAction('MAP_SKIPPED_SUCCESS')
+export const mapSkipped = () => {
+    return mapSkippedThunk()
+}
+export const mapSkippedThunk = () => dispatch => {
+    dispatch(mapSkippedSuccess())
+    dispatch(push('/create/review'))
+}
+//COMPLETE STEP//
+export const mapStepCompletedSuccess = createAction('MAP_STEP_COMPLETED_SUCCESS')
+export const mapStepCompleted = () => {
+    return mapStepCompletedThunk()
+}
+export const mapStepCompletedThunk = () => (dispatch) => {
+    dispatch(mapStepCompletedSuccess())
+    dispatch(push('/create/review'))
+}
+
 
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {

@@ -56,7 +56,7 @@ class StreetViewPage extends Component {
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 3: AUDIO'
+                    title='STEP 4: STREET VIEW'
                     readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={streetViewSkipped()}
                     onNext={dispatch => (dispatch(streetViewStepCompleted()))}/>

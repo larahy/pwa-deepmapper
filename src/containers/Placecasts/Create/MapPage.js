@@ -2,51 +2,60 @@
 import React, {Component, Fragment} from 'react'
 import GoogleMapsWrapper from './GoogleMapsWrapper'
 import NotifyingSearchBar from './NotifyingSearchBar'
-import NotifyingStreetViewView from './NotifyingStreetViewView'
+import NotifyingMap from './NotifyingMap'
 import {getAddress} from '../../../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
 import SkippableStepHeader from './SkippableStepHeader'
-import {streetViewSkipped, audioStepCompleted} from '../../../actions/placecasts/create'
+import {mapSkipped, mapStepCompleted} from '../../../actions/placecasts/create'
 
-class StreetViewPage extends Component {
+class CreateMapPage extends Component {
 
     static propTypes = {
-        streetViewAddress: PropTypes.object,
+        mapAddress: PropTypes.object,
     }
 
     constructor(props) {
         super(props)
-        this.handleStreetViewOpen = this.handleStreetViewOpen.bind(this)
+        this.handlemapOpen = this.handlemapOpen.bind(this)
         this.state = {
-            showStreetView: false,
+            showMap: false,
+            readyToSubmit: false
+
         }
     }
 
     toggleModal() {
         this.setState({
-            showStreetView: !this.state.showStreetView,
+            showMap: !this.state.showMap,
+            readyToSubmit: !this.state.readyToSubmit
+
         })
     }
 
-    handleStreetViewOpen(event) {
+    handlemapOpen(event) {
         this.toggleModal()
         event.preventDefault()
     }
 
     render() {
-        const {streetViewAddress} = this.props
-        const streetViewButtonClasses = isEmpty(streetViewAddress) ? 'button is-medium is-fullwidth' : 'button is-medium is-fullwidth is-primary'
-        const searchBarElement = !this.state.showStreetView ? <NotifyingSearchBar/> : null
-        const searchBarButton = !this.state.showStreetView ?
-            <a className={streetViewButtonClasses} onClick={this.handleStreetViewOpen} disabled={isEmpty(streetViewAddress)}>
-                Load StreetView
+        const {mapAddress} = this.props
+        const mapButtonClasses = isEmpty(mapAddress) ? 'button is-medium is-fullwidth' : 'button is-medium is-fullwidth is-primary'
+        const searchBarElement = !this.state.showMap ? <NotifyingSearchBar/> : null
+        const searchBarButton = !this.state.showMap ?
+            <a className={mapButtonClasses} onClick={this.handlemapOpen} disabled={isEmpty(mapAddress)}>
+                Load map
             </a> : null
-        const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
-        const searchAgainButton = this.state.showStreetView ?
-            <a className='button is-medium is-light is-fullwidth' onClick={this.handleStreetViewOpen}>
+        const mapElement = this.state.showMap ?
+            <NotifyingMap
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+            />
+            : null
+        const searchAgainButton = this.state.showMap ?
+            <a className='button is-medium is-light is-fullwidth' onClick={this.handlemapOpen}>
                 search again
             </a> : null
 
@@ -54,10 +63,10 @@ class StreetViewPage extends Component {
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 3: AUDIO'
+                    title='STEP 5: MAP'
                     readyToSubmitOther={this.state.readyToSubmit}
-                    onSkip={streetViewSkipped()}
-                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
+                    onSkip={mapSkipped()}
+                    onNext={dispatch => (dispatch(mapStepCompleted()))}/>
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
                     loadingElement={<div style={{height: '100%'}}/>}
@@ -70,7 +79,7 @@ class StreetViewPage extends Component {
                                 <div className="column is-two-thirds is-centered">
                                     <div className="tile is-parent">
                                         <article className="tile is-child">
-                                            <p className="title">Adjust street view</p>
+                                            <p className="title">Add location</p>
                                             <p className="subtitle">bla bla bla</p>
                                         </article>
                                     </div>
@@ -79,7 +88,7 @@ class StreetViewPage extends Component {
                                             <div className="columns is-centered">
                                                 <div className="column">
                                                     {searchBarElement}
-                                                    {streetViewElement}
+                                                    {mapElement}
                                                 </div>
                                             </div>
                                             <div className="columns is-mobile">
@@ -104,8 +113,8 @@ class StreetViewPage extends Component {
 
 export const mapStateToProps = (state) => {
     return {
-        streetViewAddress: getAddress(state)
+        mapAddress: getAddress(state)
     }
 }
 
-export default connect(mapStateToProps)(StreetViewPage);
+export default connect(mapStateToProps)(CreateMapPage);
