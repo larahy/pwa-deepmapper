@@ -11,6 +11,7 @@ class PhotoPage extends Component {
     static propTypes = {
         placeCastTitle: PropTypes.string,
         error: PropTypes.object,
+        loading: PropTypes.bool
     }
 
     constructor(props) {
@@ -48,10 +49,12 @@ class PhotoPage extends Component {
 
 
     render() {
-        const {error} = this.props;
+        const {error, loading} = this.props;
         const imageClasses = this.state.readyToSubmit ? '' : 'is-hidden'
         const instructionsClasses = this.state.readyToSubmit ? 'is-hidden' : ''
         const buttonText = this.state.readyToSubmit ? 'Choose a different photo' : 'Choose a photo'
+        const loadingElementClasses = loading ? '' : 'is-hidden'
+
         return (
             <Fragment>
                 <SkippableStepHeader
@@ -61,6 +64,11 @@ class PhotoPage extends Component {
                     onNext={dispatch => (dispatch(photoStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
                 <div className="steps-container">
                     <div className="container has-text-centered">
+                        <div className={loadingElementClasses}>
+                            <p>
+                                Loading photo&hellip;
+                            </p>
+                        </div>
                         <div className={imageClasses}>
                             <figure className="image is-4by3">
                                 <img id="output"/>
@@ -100,8 +108,8 @@ class PhotoPage extends Component {
 const mapStateToProps = (state) => {
     return {
         placeCastTitle: getTitle(state),
-        error: state.s3.photoError
-
+        error: state.s3.photoError,
+        loading: state.s3.uploadProcessing,
     };
 };
 const mapDispatchToProps = () => {

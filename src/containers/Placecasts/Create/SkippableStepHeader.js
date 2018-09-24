@@ -7,7 +7,8 @@ import StepHeader from '../../../components/Placecasts/Create/StepHeader'
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
-        readyToSubmitInfo: isReadyToSubmitInfo(state)
+        readyToSubmitInfo: isReadyToSubmitInfo(state),
+        loading: state.s3.uploadProcessing,
     }
 }
 

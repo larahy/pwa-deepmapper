@@ -1,3 +1,6 @@
+@import "../../styles/variables";
+
+
 .is-hidden {
   display: none;
 }
@@ -12,13 +15,13 @@
   text-align: center;
 }
 .step-header.columns {
-  border: 1px solid #59A4C0;;
+  border: 1px solid $myBlue;;
   margin-top: 0px
 }
 
 .step-header.column {
   padding: 0px;
-  border-right: 1px solid #59A4C0;
+  border-right: 1px solid $myBlue;
 }
 a.button.is-fullwidth.is-white.skip {
   border-bottom: 1px solid #59A4C0;
@@ -32,6 +35,7 @@ a.button.is-fullwidth.is-white.skip {
   margin-bottom: 0px !important;
 }
 .button.is-backlit {
-  background-color: #F4DED9;
-  border-radius: 0px
+  background-color: $myBlue;
+  border-radius: 0px;
+  border-color: $myBlue
 }

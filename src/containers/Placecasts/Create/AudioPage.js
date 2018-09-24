@@ -20,7 +20,8 @@ class AudioPage extends Component {
 
     static propTypes = {
         placeCastTitle: PropTypes.string,
-        photoSrc: PropTypes.string
+        photoSrc: PropTypes.string,
+        loading: PropTypes.bool
     }
 
     constructor(props) {
@@ -80,7 +81,9 @@ class AudioPage extends Component {
 
     render() {
         const {isRecording, recording} = this.state;
-        const {photoSrc, error} = this.props
+        const {photoSrc, error, loading} = this.props
+        const loadingElementClasses = loading ? '' : 'is-hidden'
+
         const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording.src}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const recordingElement = isRecording ?
@@ -106,6 +109,11 @@ class AudioPage extends Component {
                 <div className="steps-container is-centered">
                     <div className="container">
                         <div className="columns is-centered">
+                            <div className={loadingElementClasses}>
+                                <p>
+                                    Loading audio&hellip;
+                                </p>
+                            </div>
                             <div className="column is-two-thirds is-centered">
                                 <div className="tile is-parent">
                                     <article className="tile is-child">
@@ -166,7 +174,8 @@ const mapStateToProps = (state) => {
     return {
         placeCastTitle: getTitle(state),
         photoSrc: getPhotoSrc(state),
-        error: state.s3.audioError
+        error: state.s3.audioError,
+        loading: state.s3.uploadProcessing,
     };
 };
 const mapDispatchToProps = () => {

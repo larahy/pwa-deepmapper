@@ -47,10 +47,11 @@ export const CreateReducer = handleActions({
         return {...state}
     },
     [uploadPhotoSucceeded]: (state, action) => {
-        return ({ ...state, photoSrc: action.response.Location})
+        return ({ ...state, photoSrc: action.response.Key})
     },
     [uploadAudioClipSucceeded]: (state, action) => {
-        return ({ ...state, audioSrc: action.response.Location})
+        console.log('action.response', action.response)
+        return ({ ...state, audioSrc: action.response.Key})
     },
     [selectPlacecastAddress]: (state, action) => {
         return ({ ...state, address: action.payload})

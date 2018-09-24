@@ -9,7 +9,8 @@ export default class StepHeader extends React.Component {
         onNext: PropTypes.func,
         phase: PropTypes.number,
         readyToSubmitInfo: PropTypes.bool,
-        readyToSubmitOther: PropTypes.bool
+        readyToSubmitOther: PropTypes.bool,
+        loading: PropTypes.bool
     }
 
     static defaultProps = {
@@ -31,12 +32,13 @@ export default class StepHeader extends React.Component {
     }
 
     render() {
-        const {title, phase, readyToSubmitInfo, readyToSubmitOther} = this.props
+        const {title, phase, readyToSubmitInfo, readyToSubmitOther, loading} = this.props
 
         let readyToSubmit
         let skipButton
         let nextButton
         let buttonClasses
+        let buttonLabelDisplayClasses
         if (phase === 1) {
             readyToSubmit = readyToSubmitInfo
             buttonClasses = readyToSubmit ? 'button is-large is-fullwidth is-backlit' : 'button is-large is-fullwidth is-white'
@@ -50,8 +52,16 @@ export default class StepHeader extends React.Component {
                 </p>
             </a>)
         } else {
+            buttonLabelDisplayClasses = !loading ? 'subtitle' : 'is-hidden'
             readyToSubmit = readyToSubmitOther
-            buttonClasses = readyToSubmit ? 'button is-small is-fullwidth is-backlit' : 'button is-small is-fullwidth is-white'
+            if (readyToSubmit && !loading) {
+                buttonClasses = 'button is-small is-fullwidth is-backlit'
+            } else if (readyToSubmit && loading) {
+                buttonClasses = 'button is-small is-fullwidth is-backlit is-loading'
+            } else {
+                buttonClasses = 'button is-small is-fullwidth is-white'
+
+            }
 
             skipButton = (<a className="button is-small is-fullwidth is-white skip" onClick={this.handleSkip}>
                 <p className="subtitle">SKIP
@@ -60,7 +70,7 @@ export default class StepHeader extends React.Component {
                 </p>
             </a>)
             nextButton = (<a className={buttonClasses} onClick={this.handleNext} disabled={!readyToSubmit}>
-                <p className="subtitle">
+                <p className={buttonLabelDisplayClasses}>
                     NEXT
                     <span className="icon is-medium">
                         <i className="fas fa-angle-right" aria-hidden="true"></i>
