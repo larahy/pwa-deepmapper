@@ -29,11 +29,10 @@ export const getTitle = createSelector(
     attributes => findAttributeValueFor(attributes, 'title'))
 
 export const getPhotoSrc = createSelector([getCreate], create => {
-    const key = propertyOrEmptyString(create, 'photoSrc')
-    return `https://d31dl1irjvblxj.cloudfront.net/${key}`
+    return propertyOrEmptyString(create, 'photoFile')
 })
+
 export const getAudioSrc = createSelector([getCreate], create => {
-    const key = propertyOrEmptyString(create, 'audioSrc')
-    return `https://d31dl1irjvblxj.cloudfront.net/${key}`
+    return propertyOrEmptyString(create, 'audioSrc')
 })
 export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))

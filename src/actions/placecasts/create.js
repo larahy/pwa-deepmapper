@@ -6,6 +6,7 @@ import {AttributeScopes, Validity, Tags} from '../../constants/attributes'
 import {uploadRequested} from '../s3'
 import {validationsTriggered} from '../common'
 
+export const loadPhotoFile = createAction('LOAD_PHOTO_FILE')
 //STEP 1 INFO //
 export const infoStepCompletedSuccess = createAction('INFO_STEP_COMPLETED_SUCCESS')
 export const infoStepCompleted = () => {
@@ -31,14 +32,15 @@ export const photoSkippedThunk = () => dispatch => {
     dispatch(push('/create/audio'))
 }
 //COMPLETE STEP//
+
 export const photoStepCompletedSuccess = createAction('PHOTO_STEP_COMPLETED_SUCCESS')
-export const photoStepCompleted = (file, title) => {
-    const newTitle = appendFileType(file, title)
-    return photoStepCompletedThunk(file, newTitle)
+export const photoStepCompleted = () => {
+    return photoStepCompletedThunk()
 }
 
-export const photoStepCompletedThunk = (file, title) => dispatch => {
-    dispatch(uploadRequested({file, title}))
+export const photoStepCompletedThunk = () => dispatch => {
+    dispatch(photoStepCompletedSuccess())
+    dispatch(push('/create/audio'))
 }
 
 //STEP 3 AUDIO //
@@ -54,12 +56,12 @@ export const audioSkippedThunk = () => dispatch => {
 }
 //COMPLETE STEP//
 export const audioStepCompletedSuccess = createAction('AUDIO_STEP_COMPLETED_SUCCESS')
-export const audioStepCompleted = (file, title) => {
-    const newTitle = appendFileType(file, title)
-    return audioStepCompletedThunk(file, newTitle)
+export const audioStepCompleted = (audioSrc) => {
+    return audioStepCompletedThunk(audioSrc)
 }
-export const audioStepCompletedThunk = (file, title) => (dispatch) => {
-    dispatch(uploadRequested({file, title}))
+export const audioStepCompletedThunk = (audioSrc) => (dispatch) => {
+    dispatch(audioStepCompletedSuccess(audioSrc))
+    dispatch(push('/create/street-view'))
 }
 
 //STEP 4 STREET-VIEW //
@@ -116,14 +118,14 @@ export const savePlacecastThunk = () => (dispatch) => {
 }
 
 export const publishPlacecastSuccess = createAction('PUBLISH_PLACECAST_SUCCESS')
-export const publishPlacecast = () => {
-    return publishPlacecastThunk()
+export const publishPlacecast = (photoSrc, audioSrc, title) => {
+    return publishPlacecastThunk(photoSrc, audioSrc, title)
 }
-export const publishPlacecastThunk = () => (dispatch) => {
-    dispatch(publishPlacecastSuccess())
+export const publishPlacecastThunk = (photoSrc, audioSrc, title) => (dispatch) => {
+    dispatch(uploadRequested({photoSrc, audioSrc, title}))
+    // dispatch(publishPlacecastSuccess())
     dispatch(push('/'))
 }
-
 
 
 const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator) => {

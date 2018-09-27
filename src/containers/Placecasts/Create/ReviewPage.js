@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import SkippableStepHeader from './SkippableStepHeader'
 import {publishPlacecast, savePlacecast} from '../../../actions/placecasts/create'
-import {getAudioSrc, getPhotoSrc, getTitle} from '../../../selectors/create'
+import {getAudioSrc, getAudioSrcFile, getPhotoSrc, getTitle} from '../../../selectors/create'
 import PropTypes from 'prop-types'
 import {isEmpty} from 'lodash'
 import UpdatablePlaybackPanel from './UpdatablePlaybackPanel'
@@ -27,7 +27,7 @@ class ReviewPage extends Component {
 
 
     render() {
-        const {photoSrc, audioSrc} = this.props
+        const {photoSrc, audioSrc, placeCastTitle} = this.props
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
 
@@ -37,7 +37,7 @@ class ReviewPage extends Component {
                     title='FINALLY: REVIEW'
                     readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={savePlacecast()}
-                    onNext={dispatch => (dispatch(publishPlacecast()))}/>
+                    onNext={dispatch => (dispatch(publishPlacecast(photoSrc, audioSrc, placeCastTitle)))}/>
                 <div className="steps-container is-centered">
                     <div className="container">
                         <div className="columns is-centered">

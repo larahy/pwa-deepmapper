@@ -21,7 +21,8 @@ class AudioPage extends Component {
     static propTypes = {
         placeCastTitle: PropTypes.string,
         photoSrc: PropTypes.string,
-        loading: PropTypes.bool
+        loading: PropTypes.bool,
+        file: PropTypes.string
     }
 
     constructor(props) {
@@ -81,7 +82,7 @@ class AudioPage extends Component {
 
     render() {
         const {isRecording, recording} = this.state;
-        const {photoSrc, error, loading} = this.props
+        const {photoSrc, loading} = this.props
         const loadingElementClasses = loading ? '' : 'is-hidden'
 
         const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording.src}/>
@@ -105,7 +106,7 @@ class AudioPage extends Component {
                     title='STEP 3: AUDIO'
                     readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
-                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.file, this.props.placeCastTitle)))}/>
+                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording.src)))}/>
                 <div className="steps-container is-centered">
                     <div className="container">
                         <div className="columns is-centered">
@@ -155,11 +156,6 @@ class AudioPage extends Component {
                                         </div>
                                     </article>
                                 </div>
-                                <div>
-                                    {error && <div className="notification is-warning">
-                                        Oh dear .. something went wrong. Please check your internet connection is active and try again.
-                                    </div>}
-                                </div>
                             </div>
                         </div>
 
@@ -174,8 +170,7 @@ const mapStateToProps = (state) => {
     return {
         placeCastTitle: getTitle(state),
         photoSrc: getPhotoSrc(state),
-        error: state.s3.audioError,
-        loading: state.s3.uploadProcessing,
+        loading: state.s3.uploadProcessing
     };
 };
 const mapDispatchToProps = () => {
