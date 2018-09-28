@@ -36,7 +36,7 @@ class UploadPhotoFile extends Component {
 
     render() {
 
-        const buttonText = this.props.readyToSubmit ? 'Choose a different photo' : 'Choose a photo'
+        const buttonText = this.props.readyToSubmit ? 'Select a different photo' : 'Select photo'
         return (
             <div className="field">
                 <div className="file is-centered">

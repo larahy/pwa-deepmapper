@@ -38,26 +38,25 @@ export default class StreetViewStreetView extends Component {
 
     render() {
         const {address} = this.props;
+        const pitch = address.pitch ? address.pitch : 0
+        const heading = address.heading ? address.heading : 0
+        const zoom = address.zoom ? address.zoom : 0
 
         const streetViewPanoramaOptions = {
             position: {lat: address.lat, lng: address.lng},
-            pov: {heading: 90, pitch: 0},
-            zoom: 0
+            pov: {heading: heading, pitch: pitch},
+            zoom: zoom
         };
 
         return (
             <div>
-                <div className="street-view-view">
+                <div className="street-view-view is-centered">
                     <ReactStreetview
                         apiKey={googleMapsApiKey}
                         streetViewPanoramaOptions={streetViewPanoramaOptions}
                         onPositionChanged={position => this.handleUpdatePosition(position)}
                         onPovChanged={pov => this.handleUpdatePOV(pov)}
                     />
-                </div>
-                <div className='helper'>
-                    Position: {JSON.stringify(this.state.position)}<br/>
-                    Pov: {JSON.stringify(this.state.pov)}
                 </div>
             </div>
         );

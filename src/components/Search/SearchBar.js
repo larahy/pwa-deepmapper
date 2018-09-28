@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StandaloneSearchBox from 'react-google-maps/lib/components/places/StandaloneSearchBox'
 
 import './Search.scss'
+
 // import GoogleMap from '../Maps/GoogleMap'
 
 class Search extends Component {
@@ -37,12 +38,14 @@ class Search extends Component {
     render() {
         return (
             <Fragment>
-                <StandaloneSearchBox
-                    ref={this.onSearchBoxMounted}
-                    onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
-                >
-                    <input type='text' placeholder='Type an address...' className='searchBox'/>
-                </StandaloneSearchBox>
+                <div className="column">
+                    <StandaloneSearchBox
+                        ref={this.onSearchBoxMounted}
+                        onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
+                    >
+                        <input type='text' placeholder='Type an address...' className='searchBox'/>
+                    </StandaloneSearchBox>
+                </div>
             </Fragment>
         )
     }

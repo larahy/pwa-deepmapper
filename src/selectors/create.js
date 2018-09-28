@@ -5,7 +5,7 @@ import {
     propertyOrNull,
     propertyOrEmptyArray,
     propertyOrEmptyString,
-    propertyOrEmptyObject
+    propertyOrEmptyObject, propertyOrZero
 } from './common';
 import {includes, filter} from 'lodash';
 import {findAttributeValueFor} from '../helpers/queries'
@@ -13,6 +13,7 @@ import {findAttributeValueFor} from '../helpers/queries'
 export const getCreate = state => propertyOrNull(state, AttributeScopes.CREATE)
 
 export const getCreateAttributes = state => propertyOrEmptyArray(state, [AttributeScopes.CREATE, 'attributes'])
+export const getAddress = state => propertyOrEmptyObject(state, [AttributeScopes.CREATE, 'address'])
 
 const getCreateAttributesForTag = tag => createSelector(
     [getCreateAttributes],
@@ -35,4 +36,12 @@ export const getPhotoSrc = createSelector([getCreate], create => {
 export const getAudioSrc = createSelector([getCreate], create => {
     return propertyOrEmptyString(create, 'audioSrc')
 })
-export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))
+export const getLatitude = createSelector([getAddress], address => {
+    const num = propertyOrZero(address, 'lat')
+    return num.toFixed(5)
+})
+export const getLongitude = createSelector([getAddress], address => {
+    const num = propertyOrZero(address, 'lng')
+    return num.toFixed(5)
+})
+// export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))

@@ -13,7 +13,7 @@ export default class Footer extends React.Component {
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
                 <div className="columns is-mobile">
                     <div className="column left-icon">
-                        <Link to="/create/info">
+                        <Link to="/create/photo">
                             <span className="icon is-large"><FontAwesomeIcon icon={faPlusSquare}/></span>
                         </Link>
                     </div>

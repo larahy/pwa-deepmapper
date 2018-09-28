@@ -43,8 +43,9 @@ class StreetViewPage extends Component {
         const streetViewButtonClasses = isEmpty(streetViewAddress) ? 'button is-medium is-fullwidth' : 'button is-medium is-fullwidth is-primary'
         const searchBarElement = !this.state.showStreetView ? <NotifyingSearchBar/> : null
         const searchBarButton = !this.state.showStreetView ?
-            <a className={streetViewButtonClasses} onClick={this.handleStreetViewOpen} disabled={isEmpty(streetViewAddress)}>
-                Load StreetView
+            <a className={streetViewButtonClasses} onClick={this.handleStreetViewOpen}
+               disabled={isEmpty(streetViewAddress)}>
+                StreetView
             </a> : null
         const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
         const searchAgainButton = this.state.showStreetView ?
@@ -63,40 +64,32 @@ class StreetViewPage extends Component {
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
                     loadingElement={<div style={{height: '100%'}}/>}
-                    containerElement={<div style={{height: '50px'}}/>}
+                    containerElement={<div style={{height: '80px'}}/>}
                     mapElement={<span style={{display: 'none'}}/>}
                 >
-                    <div className="steps-container is-centered">
-                        <div className="container">
-                            <div className="columns is-centered">
-                                <div className="column is-two-thirds is-centered">
-                                    <div className="tile is-parent">
-                                        <article className="tile is-child">
-                                            <p className="title">Adjust street view</p>
-                                            <p className="subtitle">bla bla bla</p>
-                                        </article>
-                                    </div>
-                                    <div className="tile is-parent">
-                                        <article className="tile is-child">
-                                            <div className="columns is-centered">
-                                                <div className="column">
-                                                    {searchBarElement}
-                                                    {streetViewElement}
+                        {streetViewElement}
+                        <div className="steps-container is-centered">
+                            <div className="container">
+                                <div className="columns is-centered">
+                                    <div className="column is-two-thirds is-centered">
+                                        <div className="tile is-parent">
+                                            <article className="tile is-child">
+                                                <div className="columns is-centered">
+                                                        {searchBarElement}
                                                 </div>
-                                            </div>
-                                            <div className="columns is-mobile">
-                                                <div className="column is-half is-offset-one-quarter">
-                                                    {searchBarButton}
-                                                    {searchAgainButton}
+                                                <div className="columns is-mobile">
+                                                    <div className="column is-half is-offset-one-quarter">
+                                                        {searchBarButton}
+                                                        {searchAgainButton}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </article>
+                                            </article>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
-                    </div>
 
                 </GoogleMapsWrapper>
             </Fragment>

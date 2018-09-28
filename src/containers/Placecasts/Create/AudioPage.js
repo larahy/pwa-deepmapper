@@ -88,43 +88,33 @@ class AudioPage extends Component {
         const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording.src}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const recordingElement = isRecording ?
-          <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record} >
+            <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record}>
                                                     <span className="icon is-large">
                                                     <FontAwesomeIcon icon={faStop}/>
                                                     </span>
-          </a>
-          :
-          <a className='button is-medium is-light is-fullwidth' onClick={this.record} >
+            </a>
+            :
+            <a className='button is-medium is-light is-fullwidth' onClick={this.record}>
                                                     <span className="icon is-large">
                                                     <FontAwesomeIcon icon={faMicrophone}/>
                                                     </span>
-          </a>
+            </a>
 
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 3: AUDIO'
+                    title='AUDIO'
                     readyToSubmitOther={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording.src)))}/>
+                <figure className="image is-4by3">
+                    <img src={imageSrcUrl}/>
+                </figure>
+
                 <div className="steps-container is-centered">
                     <div className="container">
                         <div className="columns is-centered">
-                            <div className={loadingElementClasses}>
-                                <p>
-                                    Loading audio&hellip;
-                                </p>
-                            </div>
                             <div className="column is-two-thirds is-centered">
-                                <div className="tile is-parent">
-                                    <article className="tile is-child">
-                                        <p className="title">Record your placecast</p>
-                                        <p className="subtitle">Please try to minimise background noise</p>
-                                        <figure className="image is-4by3">
-                                            <img src={imageSrcUrl} />
-                                        </figure>
-                                    </article>
-                                </div>
                                 {playbackElement}
                                 <div className="tile is-parent">
                                     <article className="tile is-child">
@@ -142,7 +132,8 @@ class AudioPage extends Component {
                                                 <div className="field recorder-controls">
                                                     <div className="file is-centered is-light">
                                                         <label className="file-label">
-                                                            <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture id="recorder"/>
+                                                            <input className="file-input" type="file" accept="audio/*"
+                                                                   onChange={this.onAudioChosen} capture id="recorder"/>
                                                             <span className="file-cta icon is-large">
                                                                 <span className="icon is-large">
                                                                     <FontAwesomeIcon icon={faFileUpload}/>

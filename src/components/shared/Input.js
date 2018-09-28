@@ -68,9 +68,9 @@ export default class Input extends Field {
 
     render() {
         const {value} = this.state
-        const {name, description, type, maxLength, disabled, helperText, errors} = this.props
-        const inputClasses = !isEmpty(errors) ? 'input is-medium is-primary is-danger' : 'input is-medium is-primary'
-        const helperClasses = !isEmpty(errors) ? 'help is-danger' : 'help'
+        const {name, description, type, maxLength, disabled, errors} = this.props
+        const inputClasses = !isEmpty(errors) ? 'input is-primary is-danger' : 'input is-primary'
+        // const helperClasses = !isEmpty(errors) ? 'help is-danger' : 'help'
         const inputElement = (
             <div className="control">
                 <input
@@ -83,21 +83,23 @@ export default class Input extends Field {
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                     maxLength={maxLength}
-                    disabled={disabled}/>
+                    disabled={disabled}
+                    placeholder={description}
+                />
             </div>)
 
-        const labelElement = (
-            <label className="label is-uppercase" htmlFor={name}>{description}</label>
-        )
-        const helperElement = (
-            <p className={helperClasses}>{helperText}</p>
-        )
+        // const labelElement = (
+        //     <label className="label is-uppercase" htmlFor={name}>{description}</label>
+        // )
+        // const helperElement = (
+        //     <p className={helperClasses}>{helperText}</p>
+        // )
 
         return (
             <div className="field">
-                {labelElement}
+                {/*{labelElement}*/}
                 {inputElement}
-                {helperElement}
+                {/*{helperElement}*/}
                 {this.getValidationErrorElement()}
                 {this.props.children}
             </div>

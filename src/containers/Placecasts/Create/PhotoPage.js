@@ -18,32 +18,23 @@ class PhotoPage extends Component {
     render() {
         const {readyToSubmit, photoSrc} = this.props;
         const imageClasses = readyToSubmit ? '' : 'is-hidden'
-        const instructionsClasses = readyToSubmit ? 'is-hidden' : ''
 
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 2: PHOTO'
+                    title='PHOTO'
                     readyToSubmitOther={readyToSubmit}
                     onSkip={photoSkipped()}
                     onNext={dispatch => (dispatch(photoStepCompleted()))}/>
-                <div className="steps-container">
-                    <div className="container has-text-centered">
-                        <div className={imageClasses}>
-                            <figure className="image is-4by3">
-                                <img src={photoSrc}/>
-                            </figure>
-                        </div>
-                        <div className={instructionsClasses}>
-                            <h2 className="subtitle is-4">
-                                Please choose or take a photo to accompany your placecast
-                            </h2>
-                        </div>
-                        <br></br>
-                    </div>
-                </div>
 
-                <UploadPhotoFile />
+                <div className={imageClasses}>
+                    <figure className="image is-4by3">
+                        <img src={photoSrc}/>
+                    </figure>
+                </div>
+                <br></br>
+
+                <UploadPhotoFile/>
             </Fragment>
         )
     }

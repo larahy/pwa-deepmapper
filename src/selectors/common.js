@@ -25,6 +25,7 @@ export const propertyOrNull = (object, property) => propertyOr(null, object, pro
 export const propertyOrEmptyArray = (object, property) => propertyOr([], object, property)
 export const propertyOrUndefined = (object, property) => propertyOr(undefined, object, property)
 export const propertyOrEmptyString = (object, property) => propertyOr('', object, property)
+export const propertyOrZero = (object, property) => propertyOr(0, object, property)
 export const propertyOrEmptyObject = (object, property) => propertyOr({}, object, property)
 
 export const hasAllAttributesWithValidity = (attributesSelector, validities) => createSelector(
