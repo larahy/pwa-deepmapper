@@ -7,6 +7,7 @@ import {
     uploadSucceeded,
     uploadFailed
 } from '../actions/s3';
+import {postPlacecastSucceeded} from '../actions/placecasts'
 
 const initialState = {
     fetching: false,
@@ -31,6 +32,11 @@ export const s3Reducer = handleActions({
     [uploadRequested]: state => ({ ...state, error: null, uploadProcessing: true }),
     [uploadFailed]: (state, action) => ({ ...state, error: action.error, uploadProcessing: false }),
     [uploadSucceeded]: (state) => {
-        return ({ ...state, uploadSuccess: true, uploadProcessing: false })
-    }
+        return ({ ...state, uploadSuccess: true})
+    },
+    [postPlacecastSucceeded().type]: (state, action) => {
+        return { ...state,
+            uploadProcessing: false
+        }
+    },
 }, initialState)

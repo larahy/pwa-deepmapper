@@ -79,8 +79,11 @@ class ReviewPage extends Component {
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const coordinates = `[ ${lat} , ${lng} ]`
         const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
+        const streetViewElementClasses = this.state.showStreetView ?  'is-active' : ''
         const photoElement = this.state.showPhoto ?   <figure className="image is-4by3"><img src={imageSrcUrl}/></figure> : null
+        const photoElementClasses = this.state.showPhoto ?  'is-active' : ''
         const mapElement = this.state.showMap ? 'this is a map' : null
+        const mapElementClasses = this.state.showMap ? 'is-active' : ''
         return (
             <Fragment>
 
@@ -88,21 +91,21 @@ class ReviewPage extends Component {
                     title='REVIEW'
                     readyToSubmitOther={isReadyToSubmit}
                     onSkip={savePlacecast()}
-                    onNext={dispatch => (dispatch(publishPlacecast(photoSrc, audioSrc, placeCastTitle)))}/>
+                    onNext={dispatch => (dispatch(publishPlacecast()))}/>
 
                 <div className="tabs is-toggle is-fullwidth is-large">
                     <ul>
-                        <li className="is-active">
+                        <li className={photoElementClasses}>
                             <a onClick={this.togglePhotoOn}>
                                 <span className="icon is-large"><FontAwesomeIcon icon={faImage}/></span>
                             </a>
                         </li>
-                        <li>
+                        <li className={streetViewElementClasses}>
                             <a onClick={this.toggleStreetViewOn}>
                                 <span className="icon is-large"><FontAwesomeIcon icon={faStreetView}/></span>
                             </a>
                         </li>
-                        <li>
+                        <li className={mapElementClasses}>
                             <a onClick={this.toggleMapOn}>
                                 <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
                             </a>

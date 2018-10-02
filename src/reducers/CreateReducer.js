@@ -14,6 +14,7 @@ import {
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
 import {uploadSucceeded} from '../actions/s3'
+import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
 const initialState = {
     photoSkipped: false,
     audioSkipped: false,
@@ -23,7 +24,9 @@ const initialState = {
     audioSrc: '',
     attributes: [],
     address: {},
-    photoFile: ''
+    photoFile: '',
+    saved: false,
+    published: false
 };
 
 export const CreateReducer = handleActions({
@@ -64,8 +67,19 @@ export const CreateReducer = handleActions({
         return ({ ...state, address: mergedaddress } )
     },
     [loadPhotoFile]: (state, action) => {
-
         return ({ ...state, photoFile: action.payload, readyToSubmitPhoto: true } )
+    },
+    [postPlacecastSucceeded().type]: (state, action) => {
+        return { ...state,
+            saved: true,
+            published: action.createdPlacecast.content.published,
+            location: action.createdPlacecast.location,
+            photoSrc: action.createdPlacecast.content.s3_photo_filename,
+            photoFile: ''
+        }
+    },
+    [postPlacecastFailed().type]: (state, action) => {
+        return { ...state, published: false}
     },
     [addPlacecastPOV]: (state, action) => {
         const mergedaddress = { ...state.address, ...action.payload };

@@ -67,7 +67,8 @@ const config = {
             AWS_ACCESS_KEY_ID: JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
             AWS_SECRET_ACCESS_KEY: JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
             GOOGLE_MAPS_API_KEY: JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
-            MAPBOX_API_TOKEN: JSON.stringify(process.env.MAPBOX_API_TOKEN)
+            MAPBOX_API_TOKEN: JSON.stringify(process.env.MAPBOX_API_TOKEN),
+            API_URL: JSON.stringify(process.env.API_URL)
         })
     ]
 };

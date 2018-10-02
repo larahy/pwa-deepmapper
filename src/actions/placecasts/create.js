@@ -114,7 +114,6 @@ export const savePlacecast = () => {
 }
 export const savePlacecastThunk = () => (dispatch) => {
     dispatch(savePlacecastSuccess())
-    dispatch(push('/'))
 }
 
 export const publishPlacecastSuccess = createAction('PUBLISH_PLACECAST_SUCCESS')
@@ -123,8 +122,6 @@ export const publishPlacecast = (photoSrc, audioSrc, title) => {
 }
 export const publishPlacecastThunk = (photoSrc, audioSrc, title) => (dispatch) => {
     dispatch(uploadRequested({photoSrc, audioSrc, title}))
-    // dispatch(publishPlacecastSuccess())
-    dispatch(push('/'))
 }
 
 

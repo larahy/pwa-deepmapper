@@ -44,4 +44,14 @@ export const getLongitude = createSelector([getAddress], address => {
     const num = propertyOrZero(address, 'lng')
     return num.toFixed(5)
 })
+
+export const getPitch = createSelector([getAddress], create => {
+    return propertyOrZero(create, 'pitch')
+})
+export const getHeading = createSelector([getAddress], create => {
+    return propertyOrZero(create, 'heading')
+})
+export const getZoom = createSelector([getAddress], create => {
+    return propertyOrZero(create, 'zoom')
+})
 // export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))
