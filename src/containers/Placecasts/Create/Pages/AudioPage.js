@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import SkippableStepHeader from '../SkippableStepHeader'
 import {audioSkipped} from '../../../../actions/placecasts/create'
 import {audioStepCompleted} from '../../../../actions/placecasts/create'
-import {getPhotoSrc, getTitle} from '../../../../selectors/create'
+import {getAudioSrc, getPhotoSrc, getTitle} from '../../../../selectors/create'
 import PropTypes from 'prop-types'
 import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -21,6 +21,7 @@ class AudioPage extends Component {
     static propTypes = {
         placeCastTitle: PropTypes.string,
         photoSrc: PropTypes.string,
+        audioSrc: PropTypes.string,
         loading: PropTypes.bool,
         file: PropTypes.string
     }
@@ -31,7 +32,7 @@ class AudioPage extends Component {
             readyToSubmit: false,
             isLoading: false,
             isRecording: false,
-            recording: {},
+            recording: this.props.audioSrc,
             file: null
         }
     }
@@ -45,7 +46,7 @@ class AudioPage extends Component {
             this.setState({
                 isLoading: false,
                 isRecording: false,
-                recording: {src: URL.createObjectURL(blob)},
+                recording: URL.createObjectURL(blob),
                 file: file,
                 readyToSubmit: true
             })
@@ -65,7 +66,7 @@ class AudioPage extends Component {
     onAudioChosen = (e) => {
         const file = e.target.files[0];
         this.setState({
-            recording: {src: URL.createObjectURL(file)},
+            recording: URL.createObjectURL(file),
             readyToSubmit: true,
             file: file
         })
@@ -82,10 +83,9 @@ class AudioPage extends Component {
 
     render() {
         const {isRecording, recording} = this.state;
-        const {photoSrc, loading} = this.props
-        const loadingElementClasses = loading ? '' : 'is-hidden'
+        const {photoSrc} = this.props
 
-        const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording.src}/>
+        const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const recordingElement = isRecording ?
             <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record}>
@@ -106,7 +106,7 @@ class AudioPage extends Component {
                     title='AUDIO'
                     readyToSubmit={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
-                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording.src)))}/>
+                    onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording)))}/>
                 <figure className="image is-4by3">
                     <img src={imageSrcUrl}/>
                 </figure>
@@ -161,7 +161,7 @@ const mapStateToProps = (state) => {
     return {
         placeCastTitle: getTitle(state),
         photoSrc: getPhotoSrc(state),
-        loading: state.s3.uploadProcessing
+        audioSrc: getAudioSrc(state),
     };
 };
 const mapDispatchToProps = () => {
