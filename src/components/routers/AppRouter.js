@@ -11,7 +11,7 @@ import PhotoPage from '../../containers/Placecasts/Create/PhotoPage'
 import InfoPage from '../../containers/Placecasts/Create/InfoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
-import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
+// import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
 import LoginPage from '../../containers/LoginPage'
 import RecordPage from '../../containers/RecordPage'
 import {AboutPage} from '../../containers/AboutPage'
@@ -25,7 +25,7 @@ const AppRouter = () => (
         <Fragment>
             <Header/>
             <Switch>
-                <Route path='/' component={LargeMap} exact={true}/>
+                <Route path='/' component={MapPage} exact={true}/>
                 <Route path='/about' component={AboutPage} exact={true}/>
                 <Route path='/create/photo' component={PhotoPage} exact={true}/>
                 <Route path='/create/info' component={InfoPage} exact={true}/>

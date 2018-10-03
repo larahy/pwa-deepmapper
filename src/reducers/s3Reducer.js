@@ -34,7 +34,7 @@ export const s3Reducer = handleActions({
     [uploadSucceeded]: (state) => {
         return ({ ...state, uploadSuccess: true})
     },
-    [postPlacecastSucceeded().type]: (state, action) => {
+    [postPlacecastSucceeded().type]: (state) => {
         return { ...state,
             uploadProcessing: false
         }

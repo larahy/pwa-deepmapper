@@ -27,7 +27,7 @@ class MapPage extends Component {
             viewport: {
                 latitude: 51.5675,
                 longitude: 0,
-                zoom: 9.5,
+                zoom: 5.5,
                 bearing: 0,
                 pitch: 0,
                 width: 500,
@@ -95,7 +95,7 @@ class MapPage extends Component {
             <div>
                 <MapGL
                     {...viewport}
-                    mapStyle="mapbox://styles/mapbox/dark-v9"
+                    mapStyle="mapbox://styles/larahy/cjms4f3saa8rt2smznqkpiia3"
                     onViewportChange={this._updateViewport}
                     mapboxApiAccessToken={mapboxApiToken}>
 

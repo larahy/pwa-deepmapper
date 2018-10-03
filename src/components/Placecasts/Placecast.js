@@ -9,25 +9,12 @@ import {openStreetViewModal} from '../../actions/placecasts';
 class Placecast extends React.Component {
 
     render() {
+        // const audioSrc = `https://d31dl1irjvblxj.cloudfront.net/${this.props.placecast.s3_audio_filename}`
 
-        return (<div className="card">
-            <div className="card-image">
-                <figure className="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
-                </figure>
+        return (
+            <div>
+                <AudioClipPlayback key={this.props.placecast.id} placecast={this.props.placecast}/>
             </div>
-            <div className="card-content">
-                <AudioClipPlayback
-                    key={this.props.placecast.id}
-                    placecast={this.props.placecast}/>
-                <p>{this.props.placecast.subtitle}</p>
-                <a
-                    className='is-primary is-large modal-button'
-                    onClick={() => this.props.openStreetViewModal(this.props.placecast.id)}>
-                    Launch StreetView
-                </a>
-            </div>
-        </div>
         )
 
     }
@@ -46,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        openStreetViewModal: (id) =>  {
+        openStreetViewModal: (id) => {
             dispatch(openStreetViewModal(id))
         }
     };

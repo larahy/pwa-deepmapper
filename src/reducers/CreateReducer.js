@@ -78,7 +78,7 @@ export const CreateReducer = handleActions({
             photoFile: ''
         }
     },
-    [postPlacecastFailed().type]: (state, action) => {
+    [postPlacecastFailed().type]: (state) => {
         return { ...state, published: false}
     },
     [addPlacecastPOV]: (state, action) => {
