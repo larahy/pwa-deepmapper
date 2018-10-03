@@ -17,7 +17,7 @@ class PhotoPage extends Component {
     render() {
         const {photoSrc} = this.props;
         const readyToSubmit = !isEmpty(photoSrc)
-        const imageClasses = readyToSubmit ? '' : 'is-hidden'
+        const imageClasses = readyToSubmit ? 'column is-8 is-offset-2' : 'is-hidden'
 
         return (
             <Fragment>
@@ -26,11 +26,12 @@ class PhotoPage extends Component {
                     readyToSubmit={readyToSubmit}
                     onSkip={photoSkipped()}
                     onNext={dispatch => (dispatch(photoStepCompleted()))}/>
-
-                <div className={imageClasses}>
-                    <figure className="image is-4by3">
-                        <img src={photoSrc}/>
-                    </figure>
+                <div className="columns is-desktop">
+                    <div className={imageClasses}>
+                        <figure className="image is-4by3">
+                            <img src={photoSrc}/>
+                        </figure>
+                    </div>
                 </div>
                 <br></br>
 

@@ -1,11 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from './SkippableStepHeader'
-import UpdatableInfoFields from './UpdatableInfoFields'
-import {infoStepCompleted} from '../../../actions/placecasts/create'
+import SkippableStepHeader from '../../containers/Placecasts/Create/SkippableStepHeader'
+import UpdatableInfoFields from '../../containers/Placecasts/Create/UpdatableInfoFields'
+import {infoStepCompleted} from '../../actions/placecasts/create'
 import {
     isReadyToSubmitInfo,
-} from '../../../selectors/create'
+} from '../../selectors/create'
 import PropTypes from 'prop-types'
 class InfoPage extends Component {
 

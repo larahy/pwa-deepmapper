@@ -107,10 +107,13 @@ class AudioPage extends Component {
                     readyToSubmit={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording)))}/>
-                <figure className="image is-4by3">
-                    <img src={imageSrcUrl}/>
-                </figure>
-
+                <div className="columns is-desktop">
+                    <div className='column is-8 is-offset-2'>
+                        <figure className="image is-4by3">
+                            <img src={photoSrc}/>
+                        </figure>
+                    </div>
+                </div>
                 <div className="steps-container is-centered">
                     <div className="container">
                         <div className="columns is-centered">

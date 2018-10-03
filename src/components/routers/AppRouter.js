@@ -6,14 +6,14 @@ import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 import Header from '../Navigation/Header';
 import Footer from '../Navigation/Footer';
 import PlacecastsPage from '../../containers/PlacecastsPage'
-import S3Page from '../../containers/S3Page'
+import S3Page from '../Unused/S3Page'
 import PhotoPage from '../../containers/Placecasts/Create/Pages/PhotoPage'
-import InfoPage from '../../containers/Placecasts/Create/InfoPage'
+import InfoPage from '../Unused/InfoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
 // import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
 import LoginPage from '../../containers/LoginPage'
-import RecordPage from '../../containers/RecordPage'
+import RecordPage from '../Unused/RecordPage'
 import {AboutPage} from '../../containers/AboutPage'
 import AudioPage from '../../containers/Placecasts/Create/Pages/AudioPage'
 import StreetViewPage from '../../containers/Placecasts/Create/Pages/StreetViewPage'

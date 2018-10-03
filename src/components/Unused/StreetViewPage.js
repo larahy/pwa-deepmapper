@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactStreetViewStreetView from '../components/Maps/ReactStreetViewStreetView'
+import ReactStreetViewStreetView from '../Maps/ReactStreetViewStreetView'
 
 const StreetViewPage = () => (
     <div>
