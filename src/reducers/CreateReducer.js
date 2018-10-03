@@ -13,7 +13,7 @@ import {
     loadPhotoFile
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
-import {uploadSucceeded} from '../actions/s3'
+import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
 const initialState = {
     photoSkipped: false,
@@ -25,7 +25,9 @@ const initialState = {
     address: {},
     photoFile: '',
     saved: false,
-    published: false
+    published: false,
+    uploadProcessing: false,
+    error: null,
 };
 
 export const CreateReducer = handleActions({
@@ -68,18 +70,26 @@ export const CreateReducer = handleActions({
     [loadPhotoFile]: (state, action) => {
         return ({ ...state, photoFile: action.payload } )
     },
+    [uploadRequested]: state => ({ ...state, uploadProcessing: true }),
     [postPlacecastSucceeded().type]: (state, action) => {
         return { ...state,
             saved: true,
             published: action.createdPlacecast.content.published,
             location: action.createdPlacecast.location,
             photoSrc: action.createdPlacecast.content.s3_photo_filename,
-            photoFile: ''
+            photoFile: '',
+            uploadProcessing: false
         }
     },
-    [postPlacecastFailed().type]: (state) => {
-        return { ...state, published: false}
+    [postPlacecastFailed().type]: (state, action) => {
+        console.log('action in post failure', )
+        return { ...state,
+            uploadProcessing: false,
+            published: false,
+            error: action.error.response.data.content
+        }
     },
+    [uploadFailed]: (state) => ({ ...state, uploadProcessing: false }),
     [addPlacecastPOV]: (state, action) => {
         const mergedaddress = { ...state.address, ...action.payload };
         return ({ ...state, address: mergedaddress } )    }

@@ -3,11 +3,8 @@ import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
     fetchBucketContentsRequested,
-    uploadRequested,
-    uploadSucceeded,
     uploadFailed
 } from '../actions/s3';
-import {postPlacecastSucceeded} from '../actions/placecasts'
 
 const initialState = {
     fetching: false,
@@ -29,14 +26,8 @@ export const s3Reducer = handleActions({
     [fetchBucketContentsFailed().type]: (state, action) => {
         return { ...state, fetching: false, items: null, error: action.error }
     },
-    [uploadRequested]: state => ({ ...state, error: null, uploadProcessing: true }),
-    [uploadFailed]: (state, action) => ({ ...state, error: action.error, uploadProcessing: false }),
-    [uploadSucceeded]: (state) => {
-        return ({ ...state, uploadSuccess: true})
-    },
-    [postPlacecastSucceeded().type]: (state) => {
-        return { ...state,
-            uploadProcessing: false
-        }
+    [uploadFailed]: (state, action) => {
+        console.log('action', action.error.message)
+        return {...state, error: action.error.message, uploadProcessing: false }
     },
 }, initialState)

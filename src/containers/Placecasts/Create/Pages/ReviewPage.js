@@ -28,7 +28,9 @@ class ReviewPage extends Component {
         audioSrc: PropTypes.string,
         lat: PropTypes.string,
         lng: PropTypes.string,
-        isReadyToSubmitInfo: PropTypes.bool
+        isReadyToSubmitInfo: PropTypes.bool,
+        s3Error: PropTypes.string,
+        APIError: PropTypes.string,
     }
 
     constructor(props) {
@@ -74,7 +76,7 @@ class ReviewPage extends Component {
 
 
     render() {
-        const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo} = this.props
+        const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
@@ -85,6 +87,8 @@ class ReviewPage extends Component {
         const photoElementClasses = this.state.showPhoto ?  'is-active' : ''
         const mapElement = this.state.showMap ? 'this is a map' : null
         const mapElementClasses = this.state.showMap ? 'is-active' : ''
+        const s3errorElement = s3Error ? <div>SOMETHING WENT WRONG</div> : null
+        const APIErrorElement = APIError ? <div>{APIError}</div> : null
         return (
             <Fragment>
 
@@ -114,9 +118,11 @@ class ReviewPage extends Component {
                     </ul>
                 </div>
                 <div className='review-panel'>
-                        {photoElement}
-                        {streetViewElement}
-                        {mapElement}
+                    {s3errorElement}
+                    {APIErrorElement}
+                    {photoElement}
+                    {streetViewElement}
+                    {mapElement}
                 </div>
                     {playbackElement}
                     <UpdatableInfoFields/>
@@ -135,7 +141,9 @@ const mapStateToProps = (state) => {
         audioSrc: getAudioSrc(state),
         lat: getLatitude(state),
         lng: getLongitude(state),
-        isReadyToSubmitInfo: isReadyToSubmitInfo(state)
+        isReadyToSubmitInfo: isReadyToSubmitInfo(state),
+        s3Error: state.s3.error,
+        APIError: state.create.error
     };
 };
 const mapDispatchToProps = () => {
