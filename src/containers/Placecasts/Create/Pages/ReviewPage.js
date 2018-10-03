@@ -28,7 +28,7 @@ class ReviewPage extends Component {
         audioSrc: PropTypes.string,
         lat: PropTypes.string,
         lng: PropTypes.string,
-        isReadyToSubmit: PropTypes.bool
+        isReadyToSubmitInfo: PropTypes.bool
     }
 
     constructor(props) {
@@ -74,7 +74,8 @@ class ReviewPage extends Component {
 
 
     render() {
-        const {photoSrc, audioSrc, lat, lng, isReadyToSubmit} = this.props
+        const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo} = this.props
+        const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const coordinates = `[ ${lat} , ${lng} ]`
@@ -134,7 +135,7 @@ const mapStateToProps = (state) => {
         audioSrc: getAudioSrc(state),
         lat: getLatitude(state),
         lng: getLongitude(state),
-        isReadyToSubmit: isReadyToSubmitInfo(state)
+        isReadyToSubmitInfo: isReadyToSubmitInfo(state)
     };
 };
 const mapDispatchToProps = () => {
