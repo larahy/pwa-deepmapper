@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from './SkippableStepHeader'
-import {publishPlacecast, savePlacecast} from '../../../actions/placecasts/create'
+import SkippableStepHeader from '../SkippableStepHeader'
+import {publishPlacecast, savePlacecast} from '../../../../actions/placecasts/create'
 import {
     getAudioSrc,
     getLatitude,
@@ -10,14 +10,14 @@ import {
     getPhotoSrc,
     getTitle,
     isReadyToSubmitInfo
-} from '../../../selectors/create'
+} from '../../../../selectors/create'
 import PropTypes from 'prop-types'
 import {isEmpty} from 'lodash'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStreetView, faImage, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
-import UpdatablePlaybackPanel from './UpdatablePlaybackPanel'
-import UpdatableInfoFields from './UpdatableInfoFields'
-import NotifyingStreetViewView from './NotifyingStreetViewView'
+import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
+import UpdatableInfoFields from '../UpdatableInfoFields'
+import NotifyingStreetViewView from '../NotifyingStreetViewView'
 
 
 class ReviewPage extends Component {
@@ -74,7 +74,7 @@ class ReviewPage extends Component {
 
 
     render() {
-        const {photoSrc, audioSrc, placeCastTitle, lat, lng, isReadyToSubmit} = this.props
+        const {photoSrc, audioSrc, lat, lng, isReadyToSubmit} = this.props
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
         const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
         const coordinates = `[ ${lat} , ${lng} ]`
@@ -89,7 +89,7 @@ class ReviewPage extends Component {
 
                 <SkippableStepHeader
                     title='REVIEW'
-                    readyToSubmitOther={isReadyToSubmit}
+                    readyToSubmit={isReadyToSubmit}
                     onSkip={savePlacecast()}
                     onNext={dispatch => (dispatch(publishPlacecast()))}/>
 

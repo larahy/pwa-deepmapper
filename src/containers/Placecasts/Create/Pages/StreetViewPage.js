@@ -1,15 +1,15 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react'
-import GoogleMapsWrapper from './GoogleMapsWrapper'
-import NotifyingSearchBar from './NotifyingSearchBar'
-import NotifyingStreetViewView from './NotifyingStreetViewView'
-import {getAddress} from '../../../selectors/create'
+import GoogleMapsWrapper from '../GoogleMapsWrapper'
+import NotifyingSearchBar from '../NotifyingSearchBar'
+import NotifyingStreetViewView from '../NotifyingStreetViewView'
+import {getAddress} from '../../../../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import SkippableStepHeader from './SkippableStepHeader'
-import {streetViewSkipped, streetViewStepCompleted} from '../../../actions/placecasts/create'
+import SkippableStepHeader from '../SkippableStepHeader'
+import {streetViewSkipped, streetViewStepCompleted} from '../../../../actions/placecasts/create'
 
 class StreetViewPage extends Component {
 
@@ -57,8 +57,8 @@ class StreetViewPage extends Component {
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 4: STREET VIEW'
-                    readyToSubmitOther={this.state.readyToSubmit}
+                    title='STREET VIEW'
+                    readyToSubmit={this.state.readyToSubmit}
                     onSkip={streetViewSkipped()}
                     onNext={dispatch => (dispatch(streetViewStepCompleted()))}/>
                 <GoogleMapsWrapper

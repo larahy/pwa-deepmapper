@@ -1,13 +1,9 @@
 import {connect} from 'react-redux'
-import {
-    isReadyToSubmitInfo,
-} from '../../../selectors/create'
 import StepHeader from '../../../components/Placecasts/Create/StepHeader'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
-        readyToSubmitInfo: isReadyToSubmitInfo(state),
         loading: state.s3.uploadProcessing,
     }
 }

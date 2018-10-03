@@ -7,7 +7,7 @@ import Header from '../Navigation/Header';
 import Footer from '../Navigation/Footer';
 import PlacecastsPage from '../../containers/PlacecastsPage'
 import S3Page from '../../containers/S3Page'
-import PhotoPage from '../../containers/Placecasts/Create/PhotoPage'
+import PhotoPage from '../../containers/Placecasts/Create/Pages/PhotoPage'
 import InfoPage from '../../containers/Placecasts/Create/InfoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
@@ -15,10 +15,10 @@ import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStre
 import LoginPage from '../../containers/LoginPage'
 import RecordPage from '../../containers/RecordPage'
 import {AboutPage} from '../../containers/AboutPage'
-import AudioPage from '../../containers/Placecasts/Create/AudioPage'
-import StreetViewPage from '../../containers/Placecasts/Create/StreetViewPage'
-import CreateMapPage from '../../containers/Placecasts/Create/MapPage'
-import ReviewPage from '../../containers/Placecasts/Create/ReviewPage'
+import AudioPage from '../../containers/Placecasts/Create/Pages/AudioPage'
+import StreetViewPage from '../../containers/Placecasts/Create/Pages/StreetViewPage'
+import CreateMapPage from '../../containers/Placecasts/Create/Pages/MapPage'
+import ReviewPage from '../../containers/Placecasts/Create/Pages/ReviewPage'
 
 const AppRouter = () => (
     <HashRouter >

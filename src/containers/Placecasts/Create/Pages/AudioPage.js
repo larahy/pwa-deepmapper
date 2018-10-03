@@ -1,16 +1,16 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from './SkippableStepHeader'
-import {audioSkipped} from '../../../actions/placecasts/create'
-import {audioStepCompleted} from '../../../actions/placecasts/create'
-import {getPhotoSrc, getTitle} from '../../../selectors/create'
+import SkippableStepHeader from '../SkippableStepHeader'
+import {audioSkipped} from '../../../../actions/placecasts/create'
+import {audioStepCompleted} from '../../../../actions/placecasts/create'
+import {getPhotoSrc, getTitle} from '../../../../selectors/create'
 import PropTypes from 'prop-types'
 import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import UpdatablePlaybackPanel from './UpdatablePlaybackPanel'
+import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -104,7 +104,7 @@ class AudioPage extends Component {
             <Fragment>
                 <SkippableStepHeader
                     title='AUDIO'
-                    readyToSubmitOther={this.state.readyToSubmit}
+                    readyToSubmit={this.state.readyToSubmit}
                     onSkip={audioSkipped()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording.src)))}/>
                 <figure className="image is-4by3">

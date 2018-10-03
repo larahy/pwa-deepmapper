@@ -22,7 +22,6 @@ class InfoPage extends Component {
             <Fragment>
                 <SkippableStepHeader
                     title='STEP 1: BASIC INFO'
-                    phase={1}
                     onNext={infoStepCompleted()}/>
                 <UpdatableInfoFields />
             </Fragment>

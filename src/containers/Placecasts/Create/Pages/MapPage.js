@@ -1,15 +1,15 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react'
-import GoogleMapsWrapper from './GoogleMapsWrapper'
-import NotifyingSearchBar from './NotifyingSearchBar'
-import NotifyingMap from './NotifyingMap'
-import {getAddress} from '../../../selectors/create'
+import GoogleMapsWrapper from '../GoogleMapsWrapper'
+import NotifyingSearchBar from '../NotifyingSearchBar'
+import NotifyingMap from '../NotifyingMap'
+import {getAddress} from '../../../../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import SkippableStepHeader from './SkippableStepHeader'
-import {mapSkipped, mapStepCompleted} from '../../../actions/placecasts/create'
+import SkippableStepHeader from '../SkippableStepHeader'
+import {mapSkipped, mapStepCompleted} from '../../../../actions/placecasts/create'
 
 class CreateMapPage extends Component {
 
@@ -63,8 +63,8 @@ class CreateMapPage extends Component {
         return (
             <Fragment>
                 <SkippableStepHeader
-                    title='STEP 5: MAP'
-                    readyToSubmitOther={this.state.readyToSubmit}
+                    title='MAP'
+                    readyToSubmit={this.state.readyToSubmit}
                     onSkip={mapSkipped()}
                     onNext={dispatch => (dispatch(mapStepCompleted()))}/>
                 <GoogleMapsWrapper

@@ -19,7 +19,6 @@ const initialState = {
     photoSkipped: false,
     audioSkipped: false,
     streetViewSkipped: false,
-    readyToSubmitPhoto: false,
     photoSrc: '',
     audioSrc: '',
     attributes: [],
@@ -67,7 +66,7 @@ export const CreateReducer = handleActions({
         return ({ ...state, address: mergedaddress } )
     },
     [loadPhotoFile]: (state, action) => {
-        return ({ ...state, photoFile: action.payload, readyToSubmitPhoto: true } )
+        return ({ ...state, photoFile: action.payload } )
     },
     [postPlacecastSucceeded().type]: (state, action) => {
         return { ...state,
