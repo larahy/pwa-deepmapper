@@ -18,6 +18,7 @@ import {faStreetView, faImage, faMapMarkerAlt} from '@fortawesome/free-solid-svg
 import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
 import UpdatableInfoFields from '../UpdatableInfoFields'
 import NotifyingStreetViewView from '../NotifyingStreetViewView'
+import PhotoPanel from '../../../../components/Photo/PhotoPanel'
 
 
 class ReviewPage extends Component {
@@ -79,12 +80,10 @@ class ReviewPage extends Component {
         const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
-        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/480x480.png' : photoSrc
         const coordinates = `[ ${lat} , ${lng} ]`
         const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
         const streetViewElementClasses = this.state.showStreetView ? 'is-active' : ''
-        const photoElement = this.state.showPhoto ?
-            <figure className="image is-square"><img src={imageSrcUrl}/></figure> : null
+        const photoElement = this.state.showPhoto ? <PhotoPanel sourceUrl={photoSrc}/> : null
         const photoElementClasses = this.state.showPhoto ? 'is-active' : ''
         const mapElement = this.state.showMap ? 'this is a map' : null
         const mapElementClasses = this.state.showMap ? 'is-active' : ''

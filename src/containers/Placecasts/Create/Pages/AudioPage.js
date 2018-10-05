@@ -11,6 +11,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
 import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
+import PhotoPanel from '../../../../components/Photo/PhotoPanel'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -86,7 +87,6 @@ class AudioPage extends Component {
         const {photoSrc} = this.props
 
         const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording}/>
-        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/480x480.png' : photoSrc
         const recordingElement = isRecording ?
             <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record}>
                                                     <span className="icon is-large">
@@ -109,9 +109,7 @@ class AudioPage extends Component {
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording)))}/>
                 <div className="columns is-desktop">
                     <div className='column is-6 is-offset-3'>
-                        <figure className="image is-square">
-                            <img src={imageSrcUrl}/>
-                        </figure>
+                        <PhotoPanel sourceUrl={photoSrc}/>
                         <div className="column">
                             {playbackElement}
                         </div>

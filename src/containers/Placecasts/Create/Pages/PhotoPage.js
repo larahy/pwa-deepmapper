@@ -6,6 +6,7 @@ import {photoSkipped, photoStepCompleted} from '../../../../actions/placecasts/c
 import {getPhotoSrc, getTitle} from '../../../../selectors/create'
 import PropTypes from 'prop-types'
 import UploadPhotoFile from '../../../../components/Photo/UploadPhotoFile'
+import PhotoPanel from '../../../../components/Photo/PhotoPanel'
 
 class PhotoPage extends Component {
 
@@ -29,9 +30,7 @@ class PhotoPage extends Component {
                 <div className="columns is-desktop">
                     <div className="column is-6 is-offset-3">
                         <div className={imageClasses}>
-                            <figure className="image is-square">
-                                <img src={photoSrc}/>
-                            </figure>
+                            <PhotoPanel sourceUrl={photoSrc}/>
                         </div>
                         <br></br>
                         <UploadPhotoFile/>
