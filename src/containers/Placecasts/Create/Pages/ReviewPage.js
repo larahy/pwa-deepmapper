@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import SkippableStepHeader from '../SkippableStepHeader'
 import {publishPlacecast, savePlacecast} from '../../../../actions/placecasts/create'
 import {
+    getAddress,
     getAudioSrc,
     getLatitude,
     getLongitude,
@@ -17,8 +18,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStreetView, faImage, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
 import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
 import UpdatableInfoFields from '../UpdatableInfoFields'
-import NotifyingStreetViewView from '../NotifyingStreetViewView'
 import PhotoPanel from '../../../../components/Photo/PhotoPanel'
+import StaticStreetViewView from '../../../../components/Maps/StreetView/StaticStreetViewView'
 
 
 class ReviewPage extends Component {
@@ -32,6 +33,8 @@ class ReviewPage extends Component {
         isReadyToSubmitInfo: PropTypes.bool,
         s3Error: PropTypes.string,
         APIError: PropTypes.string,
+        address: PropTypes.object
+
     }
 
     constructor(props) {
@@ -77,11 +80,11 @@ class ReviewPage extends Component {
 
 
     render() {
-        const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError} = this.props
+        const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError, address} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
         const coordinates = `[ ${lat} , ${lng} ]`
-        const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
+        const streetViewElement = this.state.showStreetView ? <StaticStreetViewView address={address}/> : null
         const streetViewElementClasses = this.state.showStreetView ? 'is-active' : ''
         const photoElement = this.state.showPhoto ? <PhotoPanel sourceUrl={photoSrc}/> : null
         const photoElementClasses = this.state.showPhoto ? 'is-active' : ''
@@ -147,7 +150,8 @@ const mapStateToProps = (state) => {
         lng: getLongitude(state),
         isReadyToSubmitInfo: isReadyToSubmitInfo(state),
         s3Error: state.s3.error,
-        APIError: state.create.error
+        APIError: state.create.error,
+        address: getAddress(state)
     };
 };
 const mapDispatchToProps = () => {
