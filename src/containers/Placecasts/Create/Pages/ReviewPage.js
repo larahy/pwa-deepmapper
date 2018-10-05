@@ -79,12 +79,13 @@ class ReviewPage extends Component {
         const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
         const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
-        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
+        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/480x480.png' : photoSrc
         const coordinates = `[ ${lat} , ${lng} ]`
         const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
-        const streetViewElementClasses = this.state.showStreetView ?  'is-active' : ''
-        const photoElement = this.state.showPhoto ?   <figure className="image is-4by3"><img src={imageSrcUrl}/></figure> : null
-        const photoElementClasses = this.state.showPhoto ?  'is-active' : ''
+        const streetViewElementClasses = this.state.showStreetView ? 'is-active' : ''
+        const photoElement = this.state.showPhoto ?
+            <figure className="image is-square"><img src={imageSrcUrl}/></figure> : null
+        const photoElementClasses = this.state.showPhoto ? 'is-active' : ''
         const mapElement = this.state.showMap ? 'this is a map' : null
         const mapElementClasses = this.state.showMap ? 'is-active' : ''
         const s3errorElement = s3Error ? <div>SOMETHING WENT WRONG</div> : null
@@ -117,18 +118,22 @@ class ReviewPage extends Component {
                         </li>
                     </ul>
                 </div>
-                <div className='review-panel'>
-                    {s3errorElement}
-                    {APIErrorElement}
-                    {photoElement}
-                    {streetViewElement}
-                    {mapElement}
-                </div>
-                    {playbackElement}
-                    <UpdatableInfoFields/>
-                    <div className='steps-container is-primary'>
-                        {coordinates}
+                <div className="columns is-desktop">
+                    <div className='column is-6 is-offset-3'>
+                        <div className='review-panel'>
+                            {s3errorElement}
+                            {APIErrorElement}
+                            {photoElement}
+                            {streetViewElement}
+                            {mapElement}
+                        </div>
+                        {playbackElement}
+                        <UpdatableInfoFields/>
+                        <div className='steps-container is-primary'>
+                            {coordinates}
+                        </div>
                     </div>
+                </div>
             </Fragment>
         )
     }

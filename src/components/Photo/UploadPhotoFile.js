@@ -4,6 +4,8 @@ import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
 import {loadPhotoFile} from '../../actions/placecasts/create'
 import imageCompression from 'browser-image-compression';
+import {isEmpty} from 'lodash'
+import {getPhotoSrc} from '../../selectors/create'
 
 class UploadPhotoFile extends Component {
 
@@ -11,15 +13,11 @@ class UploadPhotoFile extends Component {
     handleLoadLocalFile = (event) => {
         event.preventDefault();
         var imageFile = event.target.files[0];
-        // console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-        // console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
 
         var maxSizeMB = 1;
         var maxWidthOrHeight = 1920; // compressedFile will scale down by ratio to a point that width or height is smaller than maxWidthOrHeight
         const compressedFilePromise = imageCompression(imageFile, maxSizeMB, maxWidthOrHeight) // maxSizeMB, maxWidthOrHeight are optional
             .then(function (compressedFile) {
-                // console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
-                // console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
                 return compressedFile
             })
             .catch(function (error) {
@@ -35,8 +33,11 @@ class UploadPhotoFile extends Component {
     }
 
     render() {
+        const {photoSrc} = this.props;
 
-        const buttonText = this.props.readyToSubmit ? 'Select a different photo' : 'Select photo'
+        const readyToSubmit = !isEmpty(photoSrc)
+
+        const buttonText = readyToSubmit ? 'Select a different photo' : 'Select photo'
         return (
             <div className="field">
                 <div className="file is-centered">
@@ -57,7 +58,7 @@ class UploadPhotoFile extends Component {
 
 UploadPhotoFile.propTypes = {
     onFileLoaded: PropTypes.func.isRequired,
-    readyToSubmit: PropTypes.bool
+    photoSrc: PropTypes.string
 };
 
 const mapDispatchToProps = dispatch => {
@@ -68,7 +69,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state) => {
     return {
-        readyToSubmit: state.create.readyToSubmitPhoto
+        photoSrc: getPhotoSrc(state),
     };
 };
 

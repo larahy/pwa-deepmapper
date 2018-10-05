@@ -86,7 +86,7 @@ class AudioPage extends Component {
         const {photoSrc} = this.props
 
         const playbackElement = isEmpty(recording) ? <audio></audio> : <UpdatablePlaybackPanel src={recording}/>
-        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/640x480.png' : photoSrc
+        const imageSrcUrl = photoSrc === "" ? 'https://bulma.io/images/placeholders/480x480.png' : photoSrc
         const recordingElement = isRecording ?
             <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record}>
                                                     <span className="icon is-large">
@@ -108,47 +108,34 @@ class AudioPage extends Component {
                     onSkip={audioSkipped()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording)))}/>
                 <div className="columns is-desktop">
-                    <div className='column is-8 is-offset-2'>
-                        <figure className="image is-4by3">
-                            <img src={photoSrc}/>
+                    <div className='column is-6 is-offset-3'>
+                        <figure className="image is-square">
+                            <img src={imageSrcUrl}/>
                         </figure>
-                    </div>
-                </div>
-                <div className="steps-container is-centered">
-                    <div className="container">
-                        <div className="columns is-centered">
-                            <div className="column is-two-thirds is-centered">
-                                {playbackElement}
-                                <div className="tile is-parent">
-                                    <article className="tile is-child">
-                                        <div className="columns is-mobile is-centered">
-                                            <div className="column">
-                                                {recordingElement}
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div className="tile is-parent">
-                                    <article className="tile is-child">
-                                        <div className="columns is-mobile is-centered">
-                                            <div className="column">
-                                                <div className="field recorder-controls">
-                                                    <div className="file is-centered is-light">
-                                                        <label className="file-label">
-                                                            <input className="file-input" type="file" accept="audio/*"
-                                                                   onChange={this.onAudioChosen} capture id="recorder"/>
-                                                            <span className="file-cta icon is-large">
-                                                                <span className="icon is-large">
-                                                                    <FontAwesomeIcon icon={faFileUpload}/>
-                                                                </span>
-                                                                <span className="file-label">Upload audio</span>
-                                                            </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
+                        <div className="column">
+                            {playbackElement}
+                        </div>
+
+                        <div className="column">
+                            {recordingElement}
+                        </div>
+
+
+                        <div className="column">
+                            <div className="field recorder-controls">
+                                <div className="file is-centered is-light">
+                                    <label className="file-label">
+                                        <input className="file-input" type="file"
+                                               accept="audio/*"
+                                               onChange={this.onAudioChosen} capture
+                                               id="recorder"/>
+                                        <span className="file-cta icon is-large">
+                                             <span className="icon is-large">
+                                                 <FontAwesomeIcon icon={faFileUpload}/>
+                                             </span>
+                                             <span className="file-label">Upload audio</span>
+                                        </span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
