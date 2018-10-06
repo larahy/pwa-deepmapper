@@ -12,13 +12,14 @@ import InfoPage from '../Unused/InfoPage'
 import MapPage from '../../components/Maps/ReactMapGl/MapPage'
 import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
 // import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
-import LoginPage from '../../containers/LoginPage'
+import LoginPage from '../../containers/Users/LoginPage'
 import RecordPage from '../Unused/RecordPage'
 import {AboutPage} from '../../containers/AboutPage'
 import AudioPage from '../../containers/Placecasts/Create/Pages/AudioPage'
 import StreetViewPage from '../../containers/Placecasts/Create/Pages/StreetViewPage'
 import CreateMapPage from '../../containers/Placecasts/Create/Pages/MapPage'
 import ReviewPage from '../../containers/Placecasts/Create/Pages/ReviewPage'
+import Placecast from '../../containers/Placecasts/Placecast'
 
 const AppRouter = () => (
     <HashRouter >
@@ -40,6 +41,7 @@ const AppRouter = () => (
                 <Route path='/login' component={LoginPage}/>
                 {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
+                <Route path='/placecasts/:id' component={Placecast}/>
                 <Redirect to="/"/>
             </Switch>
             <Footer/>

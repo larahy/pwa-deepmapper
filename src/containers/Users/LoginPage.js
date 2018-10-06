@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import './login.scss'
+import '../login.scss'
 
 class LoginPage extends React.Component {
     render() {

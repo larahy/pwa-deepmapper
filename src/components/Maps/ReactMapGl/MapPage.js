@@ -63,7 +63,7 @@ class MapPage extends Component {
 
     _renderCityMarker = (placecast, index) => {
         return (
-            <Marker key={`marker-${index}`} longitude={placecast.longitude} latitude={placecast.latitude}>
+            <Marker key={`marker-${index}`} longitude={placecast.address.lng} latitude={placecast.address.lat}>
                 <PlacecastPin size={40} onClick={() => this.setState({popupInfo: placecast})}/>
             </Marker>
         );
@@ -73,7 +73,7 @@ class MapPage extends Component {
         const {popupInfo} = this.state;
 
         return popupInfo && (
-            <Popup tipSize={5} anchor="top" longitude={popupInfo.longitude} latitude={popupInfo.latitude} closeOnClick={false} onClose={() => this.setState({popupInfo: null})}>
+            <Popup tipSize={5} anchor="top" longitude={popupInfo.address.lng} latitude={popupInfo.address.lat} closeOnClick={false} onClose={() => this.setState({popupInfo: null})}>
                 <PlacecastInfo info={popupInfo}/>
             </Popup>
         );

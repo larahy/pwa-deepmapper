@@ -20,7 +20,7 @@ export default class ReactStreetViewStreetView extends Component {
         const {placecast} = this.props;
 
         const streetViewPanoramaOptions = {
-            position: {lat: placecast.latitude, lng: placecast.longitude},
+            position: {lat: placecast.address.lat, lng: placecast.address.lng},
             pov: {heading: 90, pitch: 0},
             zoom: 0
         };
