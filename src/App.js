@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
 import createSagaMiddleware from 'redux-saga'
 
-import {AppRouter} from './components/routers/AppRouter';
+import {AppRouter} from './pages/AppRouter';
 import {AppReducer} from './reducers/AppReducer';
 import { watcherSaga } from './sagas'
 

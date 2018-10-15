@@ -1,17 +1,17 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from '../SkippableStepHeader'
-import {audioSkipped} from '../../../../actions/placecasts/create'
-import {audioStepCompleted} from '../../../../actions/placecasts/create'
-import {getAudioSrc, getPhotoSrc, getTitle} from '../../../../selectors/create'
+import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
+import {audioSkipped} from '../actions/placecasts/create'
+import {audioStepCompleted} from '../actions/placecasts/create'
+import {getAudioSrc, getPhotoSrc, getTitle} from '../selectors/create'
 import PropTypes from 'prop-types'
 import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
-import PhotoPanel from '../../../../components/Photo/PhotoPanel'
+import UpdatablePlaybackPanel from '../containers/Placecasts/Create/UpdatablePlaybackPanel'
+import PhotoPanel from '../components/Photo/PhotoPanel'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'

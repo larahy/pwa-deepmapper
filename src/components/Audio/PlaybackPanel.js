@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faPause, faPlay} from '@fortawesome/free-solid-svg-icons'
 
-export default class PlaybackPanel2 extends React.Component {
+export default class PlaybackPanel extends React.Component {
 
     constructor(props) {
         super(props)
@@ -26,7 +26,7 @@ export default class PlaybackPanel2 extends React.Component {
         const player = document.querySelector('.audio-player audio');
 
         this.setState({
-            totalTime: PlaybackPanel2.formatTime(player.duration),
+            totalTime: PlaybackPanel.formatTime(player.duration),
         })
         event.preventDefault()
     }
@@ -36,7 +36,7 @@ export default class PlaybackPanel2 extends React.Component {
         const current = player.currentTime;
         const percent = (current / player.duration) * 100;
         this.setState({
-            currentTime: PlaybackPanel2.formatTime(current),
+            currentTime: PlaybackPanel.formatTime(current),
             progress: {width: percent + '%'}
         })
         event.preventDefault()
@@ -107,7 +107,7 @@ export default class PlaybackPanel2 extends React.Component {
     }
 }
 
-PlaybackPanel2.propTypes = {
+PlaybackPanel.propTypes = {
     src: PropTypes.string.isRequired,
 }
 

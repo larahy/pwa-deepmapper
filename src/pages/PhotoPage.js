@@ -1,12 +1,12 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
-import SkippableStepHeader from '../SkippableStepHeader'
-import {photoSkipped, photoStepCompleted} from '../../../../actions/placecasts/create'
-import {getPhotoSrc, getTitle} from '../../../../selectors/create'
+import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
+import {photoSkipped, photoStepCompleted} from '../actions/placecasts/create'
+import {getPhotoSrc, getTitle} from '../selectors/create'
 import PropTypes from 'prop-types'
-import UploadPhotoFile from '../../../../components/Photo/UploadPhotoFile'
-import PhotoPanel from '../../../../components/Photo/PhotoPanel'
+import UploadPhotoFile from '../components/Photo/UploadPhotoFile'
+import PhotoPanel from '../components/Photo/PhotoPanel'
 
 class PhotoPage extends Component {
 

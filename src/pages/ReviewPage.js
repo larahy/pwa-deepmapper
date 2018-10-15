@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from '../SkippableStepHeader'
-import {loadPhotoFile, publishPlacecast, savePlacecast} from '../../../../actions/placecasts/create'
+import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
+import {loadPhotoFile, publishPlacecast, savePlacecast} from '../actions/placecasts/create'
 import {
     getAddress,
     getAudioSrc,
@@ -11,15 +11,15 @@ import {
     getPhotoSrc,
     getTitle,
     isReadyToSubmitInfo
-} from '../../../../selectors/create'
+} from '../selectors/create'
 import PropTypes from 'prop-types'
 import {isEmpty} from 'lodash'
-import UpdatablePlaybackPanel from '../UpdatablePlaybackPanel'
-import UpdatableInfoFields from '../UpdatableInfoFields'
-import PhotoPanel from '../../../../components/Photo/PhotoPanel'
-import StaticStreetViewView from '../../../../components/Maps/StreetView/StaticStreetViewView'
-import {updateCurrentViewTo} from '../../../../actions/placecasts'
-import PlacecastViewToggler from '../../../../components/Navigation/PlacecastViewToggler'
+import UpdatablePlaybackPanel from '../containers/Placecasts/Create/UpdatablePlaybackPanel'
+import UpdatableInfoFields from '../containers/Placecasts/Create/UpdatableInfoFields'
+import PhotoPanel from '../components/Photo/PhotoPanel'
+import StaticStreetViewView from '../components/Maps/StreetView/StaticStreetViewView'
+import {updateCurrentViewTo} from '../actions/placecasts'
+import PlacecastViewToggler from '../components/Navigation/PlacecastViewToggler'
 
 
 class ReviewPage extends Component {

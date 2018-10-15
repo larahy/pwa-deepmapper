@@ -1,8 +1,8 @@
 import React from 'react'
-import PlacecastDetails from './PlacecastDetails'
+import PlacecastDetails from '../containers/Placecasts/View/PlacecastDetails'
 import PropTypes from 'prop-types'
 
-export default class Placecast extends React.Component {
+export default class PlacecastPage extends React.Component {
 
     render () {
         return (
@@ -13,6 +13,6 @@ export default class Placecast extends React.Component {
     }
 }
 
-Placecast.propTypes = {
+PlacecastPage.propTypes = {
     match: PropTypes.object
 }

@@ -1,15 +1,15 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react'
-import GoogleMapsWrapper from '../GoogleMapsWrapper'
-import NotifyingSearchBar from '../NotifyingSearchBar'
-import NotifyingStreetViewView from '../NotifyingStreetViewView'
-import {getAddress} from '../../../../selectors/create'
+import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
+import NotifyingSearchBar from '../containers/Placecasts/Create/NotifyingSearchBar'
+import NotifyingStreetViewView from '../containers/Placecasts/Create/NotifyingStreetViewView'
+import {getAddress} from '../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import SkippableStepHeader from '../SkippableStepHeader'
-import {streetViewSkipped, streetViewStepCompleted} from '../../../../actions/placecasts/create'
+import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
+import {streetViewSkipped, streetViewStepCompleted} from '../actions/placecasts/create'
 
 class StreetViewPage extends Component {
 

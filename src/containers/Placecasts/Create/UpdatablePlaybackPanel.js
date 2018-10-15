@@ -1,18 +1,15 @@
 import {connect} from 'react-redux'
-// import {
-//     isReadyToSubmitInfo,
-// } from '../../../selectors/create'
-import PlaybackPanel2 from '../../../components/Audio/PlaybackPanel2'
+
+import PlaybackPanel from '../../../components/Audio/PlaybackPanel'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
-        // src: isReadyToSubmitInfo(state)
     }
 }
 
 const UpdatablePlaybackPanel = connect(
     mapStateToProps
-)(PlaybackPanel2)
+)(PlaybackPanel)
 
 export default UpdatablePlaybackPanel

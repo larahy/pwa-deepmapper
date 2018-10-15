@@ -3,9 +3,9 @@ import { filter } from 'lodash'
 
 import {
     fetchPlacecastsRequested,
-} from '../../actions/placecasts'
-import PlacecastCardDetail from '../../components/Placecasts/PlacecastCardDetail'
-import {getPlacecasts} from '../../selectors/placecasts'
+} from '../../../actions/placecasts'
+import PlacecastCardDetail from '../../../components/Placecasts/View/PlacecastCardDetail'
+import {getPlacecasts} from '../../../selectors/placecasts'
 
 export const mapStateToProps = (state, ownProps) => {
     const allPlacecasts = getPlacecasts(state)

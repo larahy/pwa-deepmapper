@@ -3,23 +3,23 @@
 import React, {Fragment} from 'react';
 import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 // import {ConnectedRouter} from 'connected-react-router'
-import Header from '../Navigation/Header';
-import Footer from '../Navigation/Footer';
-import PlacecastsPage from '../../containers/PlacecastsPage'
-import S3Page from '../Unused/S3Page'
-import PhotoPage from '../../containers/Placecasts/Create/Pages/PhotoPage'
-import InfoPage from '../Unused/InfoPage'
-import MapPage from '../../components/Maps/ReactMapGl/MapPage'
-import ReactGoogleMapsStreetView from '../../components/Maps/ReactGoogleMapsStreetView'
+import Header from '../components/Navigation/Header';
+import Footer from '../components/Navigation/Footer';
+import PlacecastsPage from './PlacecastsPage'
+import S3Page from '../components/Unused/S3Page'
+import PhotoPage from './PhotoPage'
+import InfoPage from '../components/Unused/InfoPage'
+import MapPage from '../components/Maps/ReactMapGl/MapPage'
+import ReactGoogleMapsStreetView from '../components/Maps/ReactGoogleMapsStreetView'
 // import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
-import LoginPage from '../../containers/Users/LoginPage'
-import RecordPage from '../Unused/RecordPage'
-import {AboutPage} from '../../containers/AboutPage'
-import AudioPage from '../../containers/Placecasts/Create/Pages/AudioPage'
-import StreetViewPage from '../../containers/Placecasts/Create/Pages/StreetViewPage'
-import CreateMapPage from '../../containers/Placecasts/Create/Pages/MapPage'
-import ReviewPage from '../../containers/Placecasts/Create/Pages/ReviewPage'
-import Placecast from '../../containers/Placecasts/Placecast'
+import LoginPage from '../containers/Users/LoginPage'
+import RecordPage from '../components/Unused/RecordPage'
+import {AboutPage} from './AboutPage'
+import AudioPage from './AudioPage'
+import StreetViewPage from './StreetViewPage'
+import CreateMapPage from './MapPage'
+import ReviewPage from './ReviewPage'
+import PlacecastPage from './PlacecastPage'
 
 const AppRouter = () => (
     <HashRouter >
@@ -41,7 +41,7 @@ const AppRouter = () => (
                 <Route path='/login' component={LoginPage}/>
                 {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
-                <Route path='/placecasts/:id' component={Placecast}/>
+                <Route path='/placecasts/:id' component={PlacecastPage}/>
                 <Redirect to="/"/>
             </Switch>
             <Footer/>
