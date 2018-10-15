@@ -9,9 +9,7 @@ import PlacecastsPage from './PlacecastsPage'
 import S3Page from '../components/Unused/S3Page'
 import PhotoPage from './PhotoPage'
 import InfoPage from '../components/Unused/InfoPage'
-import MapPage from '../components/Maps/ReactMapGl/MapPage'
-import ReactGoogleMapsStreetView from '../components/Maps/ReactGoogleMapsStreetView'
-// import LargeMap from '../../components/Maps/UnusedReactGoogleMaps1'
+import MapPage from '../components/Maps/Mapbox/MapPage'
 import LoginPage from '../containers/Users/LoginPage'
 import RecordPage from '../components/Unused/RecordPage'
 import {AboutPage} from './AboutPage'
@@ -35,7 +33,6 @@ const AppRouter = () => (
                 <Route path='/create/map' component={CreateMapPage} exact={true}/>
                 <Route path='/create/review' component={ReviewPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
-                <Route path='/street-view' component={ReactGoogleMapsStreetView}/>
                 <Route path='/s3' component={S3Page}/>
                 <Route path="/record" component={RecordPage}/>
                 <Route path='/login' component={LoginPage}/>

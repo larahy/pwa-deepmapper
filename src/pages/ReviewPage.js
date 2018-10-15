@@ -14,12 +14,14 @@ import {
 } from '../selectors/create'
 import PropTypes from 'prop-types'
 import {isEmpty} from 'lodash'
-import UpdatablePlaybackPanel from '../containers/Placecasts/Create/UpdatablePlaybackPanel'
+import PlaybackPanelContainer from '../containers/Placecasts/Create/PlaybackPanelContainer'
 import UpdatableInfoFields from '../containers/Placecasts/Create/UpdatableInfoFields'
 import PhotoPanel from '../components/Photo/PhotoPanel'
-import StaticStreetViewView from '../components/Maps/StreetView/StaticStreetViewView'
 import {updateCurrentViewTo} from '../actions/placecasts'
 import PlacecastViewToggler from '../components/Navigation/PlacecastViewToggler'
+import StaticStreetViewContainer from '../containers/Placecasts/Create/StaticStreetViewContainer'
+import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
+import MapContainer from '../containers/Placecasts/Create/MapContainer'
 
 
 class ReviewPage extends Component {
@@ -49,11 +51,17 @@ class ReviewPage extends Component {
     render() {
         const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError, address, currentView} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
-        const playbackElement = audioSrc === "" ? <audio></audio> : <UpdatablePlaybackPanel src={audioSrc}/>
+        const playbackElement = audioSrc === "" ? <audio></audio> : <PlaybackPanelContainer src={audioSrc}/>
         const coordinates = `[ ${lat} , ${lng} ]`
-        const streetViewElement = currentView === 'street-view' ? <StaticStreetViewView address={address}/> : null
+        const streetViewElement = currentView === 'street-view' ? <StaticStreetViewContainer address={address}/> : null
         const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
-        const mapElement = currentView === 'map' ? 'this is a map' : null
+        const mapElement = currentView === 'map' ?
+            <MapContainer
+                isDraggable={false}
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+            />
+            : null
         const s3errorElement = s3Error ? <div>SOMETHING WENT WRONG</div> : null
         const APIErrorElement = APIError ? <div>{APIError}</div> : null
         return (
@@ -64,24 +72,31 @@ class ReviewPage extends Component {
                     readyToSubmit={isReadyToSubmit}
                     onSkip={savePlacecast()}
                     onNext={dispatch => (dispatch(publishPlacecast()))}/>
+                <GoogleMapsWrapper
+                    googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
+                    loadingElement={<div style={{height: '100%'}}/>}
+                    containerElement={<div style={{height: '50px'}}/>}
+                    mapElement={<span style={{display: 'none'}}/>}
+                >
 
-                <PlacecastViewToggler />
-                <div className="columns is-desktop">
-                    <div className='column is-6 is-offset-3'>
-                        <div className='review-panel'>
-                            {s3errorElement}
-                            {APIErrorElement}
-                            {photoElement}
-                            {streetViewElement}
-                            {mapElement}
-                        </div>
-                        {playbackElement}
-                        <UpdatableInfoFields/>
-                        <div className='steps-container is-primary'>
-                            {coordinates}
+                    <PlacecastViewToggler />
+                    <div className="columns is-desktop">
+                        <div className='column is-6 is-offset-3'>
+                            <div className='review-panel'>
+                                {s3errorElement}
+                                {APIErrorElement}
+                                {photoElement}
+                                {streetViewElement}
+                                {mapElement}
+                            </div>
+                            {playbackElement}
+                            <UpdatableInfoFields/>
+                            <div className='steps-container is-primary'>
+                                {coordinates}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </GoogleMapsWrapper>
             </Fragment>
         )
     }

@@ -1,23 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import {connect} from 'react-redux';
-
-import AudioClipPlayback from '../Audio/AudioClipPlayback'
 import {openStreetViewModal} from '../../actions/placecasts';
 import {Link} from 'react-router-dom'
+import PlaybackPanel2 from '../Audio/PlaybackPanel2'
 
 
-class Placecast extends React.Component {
+class PlacecastFeedView extends React.Component {
 
     render() {
-        // const audioSrc = `https://d31dl1irjvblxj.cloudfront.net/${this.props.placecast.s3_audio_filename}`
         const linkToPlacecast = `placecasts/${this.props.placecast.id}`
 
         return (
             <div>
                 <Link to={linkToPlacecast}>
-                    <AudioClipPlayback key={this.props.placecast.id} placecast={this.props.placecast}/>
+                    <PlaybackPanel2 key={this.props.placecast.id} placecast={this.props.placecast}/>
                 </Link>
             </div>
         )
@@ -25,7 +22,7 @@ class Placecast extends React.Component {
     }
 }
 
-Placecast.propTypes = {
+PlacecastFeedView.propTypes = {
     placecast: PropTypes.object.isRequired,
     openStreetViewModal: PropTypes.func,
 }
@@ -45,5 +42,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Placecast);
+export default connect(mapStateToProps, mapDispatchToProps)(PlacecastFeedView);
 

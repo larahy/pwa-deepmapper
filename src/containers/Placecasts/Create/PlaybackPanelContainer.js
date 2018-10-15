@@ -8,8 +8,8 @@ export const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const UpdatablePlaybackPanel = connect(
+const PlaybackPanelContainer = connect(
     mapStateToProps
 )(PlaybackPanel)
 
-export default UpdatablePlaybackPanel
+export default PlaybackPanelContainer

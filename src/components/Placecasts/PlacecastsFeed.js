@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux';
-import Placecast from './Placecast'
-import {getPlacecasts} from '../../selectors/placecasts'
+import PlacecastFeedView from './PlacecastFeedView'
 
-class Placecasts extends React.Component {
+export default class PlacecastsFeed extends React.Component {
     static propTypes = {
         placecasts: PropTypes.array,
     }
@@ -26,7 +24,7 @@ class Placecasts extends React.Component {
             : emptyElement
 
         const placeCastsCards = placecasts.map(placecast => {
-            return (<Placecast
+            return (<PlacecastFeedView
                 key={placecast.id}
                 placecast={placecast}/>)
         })
@@ -43,15 +41,3 @@ class Placecasts extends React.Component {
         )
     }
 }
-
-Placecasts.propTypes = {
-    placecasts: PropTypes.array,
-}
-
-const mapStateToProps = (state) => {
-    return {
-        placecasts: getPlacecasts(state),
-    };
-};
-
-export default connect(mapStateToProps)(Placecasts);

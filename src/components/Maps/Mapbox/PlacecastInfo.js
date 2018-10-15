@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types'
-import Placecast from '../../Placecasts/Placecast'
 import './map.scss'
+import PlacecastFeedView from '../../Placecasts/PlacecastFeedView'
 
 class PlacecastInfo extends PureComponent {
 
@@ -9,7 +9,7 @@ class PlacecastInfo extends PureComponent {
         const {info} = this.props;
         return (
             <div>
-                <Placecast placecast={info}/>
+                <PlacecastFeedView placecast={info}/>
             </div>
         );
     }

@@ -1,18 +1,18 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 
 const {
     withGoogleMap,
-    withScriptjs,
-    GoogleMap
+    GoogleMap,
+    withScriptjs
 } = require('react-google-maps');
-import WithStreetView from './WithStreetView'
+
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 /* eslint-disable no-undef */
 
+import ReactGoogleMapsMarkers from './ReactGoogleMapsMarkers'
 
-export default class ReactGoogleMapsStreetView extends Component {
+export default class LargeMap extends Component {
     render() {
         const GoogleMapExample = withScriptjs(withGoogleMap((props) =>
             <GoogleMap
@@ -25,18 +25,13 @@ export default class ReactGoogleMapsStreetView extends Component {
         return (
             <div>
                 <GoogleMapExample
+                    loadingElement={<div style={{height: '100%px'}}/>}
                     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&v=3.exp&libraries=geometry,drawing,places`}
                     containerElement={<div style={{height: '500px', width: '500px'}}/>}
-                    loadingElement={<div style={{height: '100%px'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}>
-                    <WithStreetView center={this.props.center}/>
-
+                    <ReactGoogleMapsMarkers className="marker"/>
                 </GoogleMapExample>
             </div>
         );
     }
-}
-
-ReactGoogleMapsStreetView.propTypes = {
-    center: PropTypes.object.isRequired,
 }

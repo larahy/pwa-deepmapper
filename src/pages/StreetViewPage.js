@@ -2,7 +2,6 @@
 import React, {Component, Fragment} from 'react'
 import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
 import NotifyingSearchBar from '../containers/Placecasts/Create/NotifyingSearchBar'
-import NotifyingStreetViewView from '../containers/Placecasts/Create/NotifyingStreetViewView'
 import {getAddress} from '../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
@@ -10,6 +9,7 @@ import {isEmpty} from 'lodash'
 import PropTypes from 'prop-types'
 import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
 import {streetViewSkipped, streetViewStepCompleted} from '../actions/placecasts/create'
+import NotifyingStreetViewContainer from '../containers/Placecasts/Create/NotifyingStreetViewContainer'
 
 class StreetViewPage extends Component {
 
@@ -47,7 +47,7 @@ class StreetViewPage extends Component {
                disabled={isEmpty(streetViewAddress)}>
                 StreetView
             </a> : null
-        const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewView/> : null
+        const streetViewElement = this.state.showStreetView ? <NotifyingStreetViewContainer /> : null
         const searchAgainButton = this.state.showStreetView ?
             <a className='button is-medium is-light is-fullwidth' onClick={this.handleStreetViewOpen}>
                 search again

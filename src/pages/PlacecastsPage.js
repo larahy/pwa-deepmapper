@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import Placecasts from '../components/Placecasts/Placecasts'
+import PlacecastFeedContainer from '../containers/Placecasts/PlacecastFeedContainer'
 import {fetchPlacecastsRequested} from '../actions/placecasts'
 
 class PlacecastsPage extends Component {
@@ -21,7 +21,7 @@ class PlacecastsPage extends Component {
         }
 
         return (
-            <Placecasts />
+            <PlacecastFeedContainer />
         );
     }
 }

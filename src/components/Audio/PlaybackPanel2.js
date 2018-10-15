@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Audio.scss'
 
-export default class AudioClipPlayback extends React.Component {
+export default class PlaybackPanel2 extends React.Component {
     componentDidMount() {
 
         var aud = document.querySelector('audio');
@@ -42,7 +42,7 @@ export default class AudioClipPlayback extends React.Component {
     }
 }
 
-AudioClipPlayback.propTypes = {
+PlaybackPanel2.propTypes = {
     placecast: PropTypes.object.isRequired,
 }
 

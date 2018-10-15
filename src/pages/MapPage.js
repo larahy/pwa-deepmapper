@@ -2,7 +2,6 @@
 import React, {Component, Fragment} from 'react'
 import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
 import NotifyingSearchBar from '../containers/Placecasts/Create/NotifyingSearchBar'
-import NotifyingMap from '../containers/Placecasts/Create/NotifyingMap'
 import {getAddress} from '../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
@@ -10,6 +9,7 @@ import {isEmpty} from 'lodash'
 import PropTypes from 'prop-types'
 import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
 import {mapSkipped, mapStepCompleted} from '../actions/placecasts/create'
+import MapContainer from '../containers/Placecasts/Create/MapContainer'
 
 class CreateMapPage extends Component {
 
@@ -49,7 +49,8 @@ class CreateMapPage extends Component {
                 Load map
             </a> : null
         const mapElement = this.state.showMap ?
-            <NotifyingMap
+            <MapContainer
+                isDraggable={true}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />

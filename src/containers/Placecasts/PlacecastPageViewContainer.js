@@ -3,9 +3,9 @@ import { filter } from 'lodash'
 
 import {
     fetchPlacecastsRequested,
-} from '../../../actions/placecasts'
-import PlacecastCardDetail from '../../../components/Placecasts/View/PlacecastCardDetail'
-import {getPlacecasts} from '../../../selectors/placecasts'
+} from '../../actions/placecasts'
+import PlacecastPageView from '../../components/Placecasts/PlacecastPageView'
+import {getPlacecasts} from '../../selectors/placecasts'
 
 export const mapStateToProps = (state, ownProps) => {
     const allPlacecasts = getPlacecasts(state)
@@ -15,10 +15,12 @@ export const mapStateToProps = (state, ownProps) => {
     if (placecast !== undefined) {
         return {
             placecast: placecast[0],
+            currentView: state.placecasts.currentView
         }
     } else {
         return {
             placecast: undefined,
+            currentView: state.placecasts.currentView
         }
     }
 }
@@ -29,9 +31,9 @@ export const mapDispatchToProps = dispatch => {
     }
 }
 
-const PlacecastDetails = connect(
+const PlacecastPageViewContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(PlacecastCardDetail)
+)(PlacecastPageView)
 
-export default PlacecastDetails
+export default PlacecastPageViewContainer
