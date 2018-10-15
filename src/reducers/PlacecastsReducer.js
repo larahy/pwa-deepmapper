@@ -5,6 +5,7 @@ import {
     fetchPlacecastsRequested,
     openStreetViewModal,
     closeStreetViewModal,
+    updateCurrentViewTo
 } from '../actions/placecasts';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
     error: null,
     showStreetViewModal: false,
     streetViewId: null,
+    currentView: 'photo'
 };
 
 export const PlacecastsReducer = handleActions({
@@ -32,5 +34,8 @@ export const PlacecastsReducer = handleActions({
     },
     [closeStreetViewModal]: (state, ) => {
         return { ...state, showStreetViewModal: false }
+    },
+    [updateCurrentViewTo]: (state, action ) => {
+        return { ...state, currentView: action.payload }
     },
 }, initialState)
