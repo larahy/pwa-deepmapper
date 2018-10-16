@@ -21,7 +21,9 @@ import {updateCurrentViewTo} from '../actions/placecasts'
 import PlacecastViewToggler from '../components/Navigation/PlacecastViewToggler'
 import StaticStreetViewContainer from '../containers/Placecasts/Create/StaticStreetViewContainer'
 import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
-import MapContainer from '../containers/Placecasts/Create/MapContainer'
+import MapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 
 class ReviewPage extends Component {
@@ -47,26 +49,25 @@ class ReviewPage extends Component {
     }
 
 
-
     render() {
         const {photoSrc, audioSrc, lat, lng, isReadyToSubmitInfo, s3Error, APIError, address, currentView} = this.props
         const isReadyToSubmit = !isEmpty(photoSrc) && isReadyToSubmitInfo && !isEmpty(audioSrc)
-        const playbackElement = audioSrc === "" ? <audio></audio> : <PlaybackPanelContainer src={audioSrc}/>
+        const playbackElement = audioSrc === "" ? <audio></audio> : <audio controls src={audioSrc}/>
         const coordinates = `[ ${lat} , ${lng} ]`
         const streetViewElement = currentView === 'street-view' ? <StaticStreetViewContainer address={address}/> : null
         const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
         const mapElement = currentView === 'map' ?
             <MapContainer
                 isDraggable={false}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{height: `400px`}}/>}
+                mapElement={<div style={{height: `100%`}}/>}
             />
             : null
         const s3errorElement = s3Error ? <div>SOMETHING WENT WRONG</div> : null
         const APIErrorElement = APIError ? <div>{APIError}</div> : null
         return (
             <Fragment>
-
+                <SimpleHeader title={Headers.REVIEW}/>
                 <SkippableStepHeader
                     title='REVIEW'
                     readyToSubmit={isReadyToSubmit}
@@ -79,22 +80,20 @@ class ReviewPage extends Component {
                     mapElement={<span style={{display: 'none'}}/>}
                 >
 
-                    <PlacecastViewToggler />
-                    <div className="columns is-desktop">
-                        <div className='column is-6 is-offset-3'>
-                            <div className='review-panel'>
-                                {s3errorElement}
-                                {APIErrorElement}
-                                {photoElement}
-                                {streetViewElement}
-                                {mapElement}
-                            </div>
-                            {playbackElement}
-                            <UpdatableInfoFields/>
-                            <div className='steps-container is-primary'>
-                                {coordinates}
-                            </div>
-                        </div>
+                    <PlacecastViewToggler/>
+                    <div className="box">
+                        {playbackElement}
+                    </div>
+                    <div>
+                        <UpdatableInfoFields />
+                        {coordinates}
+                    </div>
+                    <div>
+                        {s3errorElement}
+                        {APIErrorElement}
+                        {photoElement}
+                        {streetViewElement}
+                        {mapElement}
                     </div>
                 </GoogleMapsWrapper>
             </Fragment>

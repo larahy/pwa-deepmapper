@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import PlacecastFeedContainer from '../containers/Placecasts/PlacecastFeedContainer'
 import {fetchPlacecastsRequested} from '../actions/placecasts'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 class PlacecastsPage extends Component {
     componentDidMount() {
@@ -21,7 +23,10 @@ class PlacecastsPage extends Component {
         }
 
         return (
-            <PlacecastFeedContainer />
+            <Fragment>
+                <SimpleHeader title={Headers.DEEPMAPPER}/>
+                <PlacecastFeedContainer/>
+            </Fragment>
         );
     }
 }

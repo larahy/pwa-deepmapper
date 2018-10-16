@@ -9,7 +9,9 @@ import {isEmpty} from 'lodash'
 import PropTypes from 'prop-types'
 import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
 import {mapSkipped, mapStepCompleted} from '../actions/placecasts/create'
-import MapContainer from '../containers/Placecasts/Create/MapContainer'
+import GoogleMapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 class CreateMapPage extends Component {
 
@@ -49,7 +51,7 @@ class CreateMapPage extends Component {
                 Load map
             </a> : null
         const mapElement = this.state.showMap ?
-            <MapContainer
+            <GoogleMapContainer
                 isDraggable={true}
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
@@ -63,6 +65,8 @@ class CreateMapPage extends Component {
 
         return (
             <Fragment>
+                <SimpleHeader title={Headers.MAP}/>
+
                 <SkippableStepHeader
                     title='MAP'
                     readyToSubmit={this.state.readyToSubmit}

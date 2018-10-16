@@ -1,15 +1,18 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types'
 import './map.scss'
-import PlacecastFeedView from '../../Placecasts/PlacecastFeedView'
+import {Link} from 'react-router-dom'
 
 class PlacecastInfo extends PureComponent {
 
     render() {
-        const {info} = this.props;
+        const {title, id} = this.props.info
+        const linkToPlacecast = `placecasts/${id}`
         return (
             <div>
-                <PlacecastFeedView placecast={info}/>
+                <Link to={linkToPlacecast}>
+                    <div>{title}</div>
+                </Link>
             </div>
         );
     }

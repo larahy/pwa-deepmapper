@@ -10,6 +10,8 @@ import PropTypes from 'prop-types'
 import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
 import {streetViewSkipped, streetViewStepCompleted} from '../actions/placecasts/create'
 import NotifyingStreetViewContainer from '../containers/Placecasts/Create/NotifyingStreetViewContainer'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 class StreetViewPage extends Component {
 
@@ -56,6 +58,8 @@ class StreetViewPage extends Component {
 
         return (
             <Fragment>
+                <SimpleHeader title={Headers.STREET_VIEW}/>
+
                 <SkippableStepHeader
                     title='STREET VIEW'
                     readyToSubmit={this.state.readyToSubmit}

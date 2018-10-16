@@ -3,8 +3,6 @@
 import React, {Fragment} from 'react';
 import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 // import {ConnectedRouter} from 'connected-react-router'
-import Header from '../components/Navigation/Header';
-import Footer from '../components/Navigation/Footer';
 import PlacecastsPage from './PlacecastsPage'
 import S3Page from '../components/Unused/S3Page'
 import PhotoPage from './PhotoPage'
@@ -18,11 +16,11 @@ import StreetViewPage from './StreetViewPage'
 import CreateMapPage from './MapPage'
 import ReviewPage from './ReviewPage'
 import PlacecastPage from './PlacecastPage'
+import FooterContainer from '../containers/Shared/FooterContainer'
 
 const AppRouter = () => (
     <HashRouter >
         <Fragment>
-            <Header/>
             <Switch>
                 <Route path='/' component={MapPage} exact={true}/>
                 <Route path='/about' component={AboutPage} exact={true}/>
@@ -41,7 +39,7 @@ const AppRouter = () => (
                 <Route path='/placecasts/:id' component={PlacecastPage}/>
                 <Redirect to="/"/>
             </Switch>
-            <Footer/>
+            <FooterContainer isLoggedIn={true} />
         </Fragment>
     </HashRouter>
 );

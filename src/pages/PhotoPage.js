@@ -7,6 +7,8 @@ import {getPhotoSrc, getTitle} from '../selectors/create'
 import PropTypes from 'prop-types'
 import UploadPhotoFile from '../components/Photo/UploadPhotoFile'
 import PhotoPanel from '../components/Photo/PhotoPanel'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 class PhotoPage extends Component {
 
@@ -22,6 +24,7 @@ class PhotoPage extends Component {
 
         return (
             <Fragment>
+                <SimpleHeader title={Headers.PHOTO}/>
                 <SkippableStepHeader
                     title='PHOTO'
                     readyToSubmit={readyToSubmit}

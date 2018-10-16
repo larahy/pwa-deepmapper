@@ -10,8 +10,9 @@ import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import PlaybackPanelContainer from '../containers/Placecasts/Create/PlaybackPanelContainer'
 import PhotoPanel from '../components/Photo/PhotoPanel'
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -86,7 +87,7 @@ class AudioPage extends Component {
         const {isRecording, recording} = this.state;
         const {photoSrc} = this.props
 
-        const playbackElement = isEmpty(recording) ? <audio></audio> : <PlaybackPanelContainer src={recording}/>
+        const playbackElement = isEmpty(recording) ? <audio></audio> : <audio controls src={recording}></audio>
         const recordingElement = isRecording ?
             <a className='button is-medium is-danger is-inverted is-fullwidth' onClick={this.record}>
                                                     <span className="icon is-large">
@@ -102,6 +103,8 @@ class AudioPage extends Component {
 
         return (
             <Fragment>
+                <SimpleHeader title={Headers.AUDIO}/>
+
                 <SkippableStepHeader
                     title='AUDIO'
                     readyToSubmit={this.state.readyToSubmit}
@@ -110,7 +113,7 @@ class AudioPage extends Component {
                 <div className="columns is-desktop">
                     <div className='column is-6 is-offset-3'>
                         <PhotoPanel sourceUrl={photoSrc}/>
-                        <div className="column">
+                        <div className="box">
                             {playbackElement}
                         </div>
 

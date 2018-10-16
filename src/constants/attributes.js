@@ -1,5 +1,17 @@
 export const AttributeScopes = {
-    CREATE: 'create'
+    CREATE: 'create',
+    USER: 'user'
+}
+
+export const Headers = {
+    DEEPMAPPER: 'DEEPMAPPER',
+    MY_DEEPMAPPER: 'MY DEEPMAPPER',
+    BECOME_A_DEEPMAPPER: 'BECOME A DEEPMAPPER',
+    MAP: 'MAP',
+    PHOTO: 'PHOTO',
+    AUDIO: 'AUDIO',
+    STREET_VIEW: 'STREET VIEW',
+    REVIEW: 'REVIEW'
 }
 
 export const Validity = {

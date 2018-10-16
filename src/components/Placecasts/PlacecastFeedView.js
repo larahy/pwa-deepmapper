@@ -1,20 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import {openStreetViewModal} from '../../actions/placecasts';
 import {Link} from 'react-router-dom'
-import PlaybackPanel2 from '../Audio/PlaybackPanel2'
+import PhotoPanel from '../Photo/PhotoPanel'
 
 
 class PlacecastFeedView extends React.Component {
 
     render() {
-        const linkToPlacecast = `placecasts/${this.props.placecast.id}`
-
+        const {title, id, address, photoSrc, audioSrc, currentView} = this.props.placecast
+        const linkToPlacecast = `placecasts/${id}`
+        const coordinates = `[ ${address.lat} , ${address.lng} ]`
+        const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
         return (
             <div>
                 <Link to={linkToPlacecast}>
-                    <PlaybackPanel2 key={this.props.placecast.id} placecast={this.props.placecast}/>
+                    <div>{title}</div>
+                    <div>{coordinates}</div>
+                    {photoElement}
+                    <div className="box">
+                        <audio controls src={audioSrc}></audio>
+                    </div>
                 </Link>
             </div>
         )
@@ -24,7 +30,6 @@ class PlacecastFeedView extends React.Component {
 
 PlacecastFeedView.propTypes = {
     placecast: PropTypes.object.isRequired,
-    openStreetViewModal: PropTypes.func,
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -33,14 +38,8 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        openStreetViewModal: (id) => {
-            dispatch(openStreetViewModal(id))
-        }
-    };
-};
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlacecastFeedView);
+
+export default connect(mapStateToProps)(PlacecastFeedView);
 

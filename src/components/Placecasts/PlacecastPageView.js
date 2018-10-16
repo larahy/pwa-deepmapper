@@ -2,9 +2,10 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types'
 import PlacecastViewToggler from '../Navigation/PlacecastViewToggler'
 import PhotoPanel from '../Photo/PhotoPanel'
-import PlaybackPanelContainer from '../../containers/Placecasts/Create/PlaybackPanelContainer'
 import StaticStreetViewContainer from '../../containers/Placecasts/Create/StaticStreetViewContainer'
-import MapContainer from '../../containers/Placecasts/Create/MapContainer'
+import MapContainer from '../../containers/Placecasts/Create/GoogleMapContainer'
+import {SimpleHeader} from '../Navigation/SimpleHeader'
+import {Headers} from '../../constants/attributes'
 
 export default class PlacecastPageView extends React.Component {
     static propTypes = {
@@ -18,8 +19,7 @@ export default class PlacecastPageView extends React.Component {
     }
 
     render() {
-        const {title, id, address, audioSrc, photoSrc, currentView} = this.props.placecast
-        const playbackElement = <PlaybackPanelContainer src={audioSrc}/>
+        const {title, address, audioSrc, photoSrc, currentView} = this.props.placecast
         const coordinates = `[ ${address.lat} , ${address.lng} ]`
         const streetViewElement = currentView === 'street-view' ? <StaticStreetViewContainer address={address}/> : null
         const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
@@ -32,21 +32,21 @@ export default class PlacecastPageView extends React.Component {
             : null
         return (
             <Fragment>
+                <SimpleHeader title={Headers.DEEPMAPPER}/>
 
                 <PlacecastViewToggler />
                 <div className="columns is-desktop">
                     <div className='column is-6 is-offset-3'>
-                        <div className='review-panel'>
+                        <div>
                             {photoElement}
                             {streetViewElement}
                             {mapElement}
                         </div>
-                        {playbackElement}
-                        <div>{title}</div>
-                        <div>{id}</div>
-                        <div className='steps-container is-primary'>
-                            {coordinates}
+                        <div className='box'>
+                            <audio controls src={audioSrc}></audio>
                         </div>
+                        <div>{title}</div>
+                        <div>{coordinates}</div>
                     </div>
                 </div>
             </Fragment>
