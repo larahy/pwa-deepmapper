@@ -15,6 +15,7 @@ import {
 import { attributesReducersFor } from './AttributesReducer'
 import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
+import {Scopes} from '../constants/attributes'
 const initialState = {
     photoSkipped: false,
     audioSkipped: false,
@@ -31,7 +32,7 @@ const initialState = {
 };
 
 export const CreateReducer = handleActions({
-    ...attributesReducersFor('create'),
+    ...attributesReducersFor(Scopes.CREATE),
 
     [photoSkippedSuccess]: state => ({
         ...state,

@@ -8,7 +8,7 @@ import S3Page from '../components/Unused/S3Page'
 import PhotoPage from './PhotoPage'
 import InfoPage from '../components/Unused/InfoPage'
 import MapPage from '../components/Maps/Mapbox/MapPage'
-import LoginPage from '../containers/Users/LoginPage'
+import LoginPage from './LoginPage'
 import RecordPage from '../components/Unused/RecordPage'
 import {AboutPage} from './AboutPage'
 import AudioPage from './AudioPage'
@@ -39,7 +39,7 @@ const AppRouter = () => (
                 <Route path='/placecasts/:id' component={PlacecastPage}/>
                 <Redirect to="/"/>
             </Switch>
-            <FooterContainer isLoggedIn={true} />
+            <FooterContainer />
         </Fragment>
     </HashRouter>
 );

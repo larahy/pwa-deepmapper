@@ -2,7 +2,7 @@
 import {push} from 'react-router-redux'
 import {createAction} from 'redux-actions'
 import {includes, every, filter, words, snakeCase} from 'lodash'
-import {AttributeScopes, Validity, Tags} from '../../constants/attributes'
+import {Scopes, Validity, Tags} from '../../constants/attributes'
 import {uploadRequested} from '../s3'
 import {validationsTriggered} from '../common'
 
@@ -140,7 +140,7 @@ const proceedOrValidateFor = (tag, nextLocation, state, dispatch, actionCreator)
         dispatch(push(nextLocation))
     } else {
         dispatch(validationsTriggered({
-            scope: AttributeScopes.CREATE,
+            scope: Scopes.CREATE,
             tags: [tag]
         }))
     }

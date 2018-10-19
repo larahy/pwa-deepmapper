@@ -1,6 +1,8 @@
-export const AttributeScopes = {
+export const Scopes = {
     CREATE: 'create',
-    USER: 'user'
+    USER: 'user',
+    LOGIN: 'login',
+    SESSION: 'session'
 }
 
 export const Headers = {
@@ -11,7 +13,8 @@ export const Headers = {
     PHOTO: 'PHOTO',
     AUDIO: 'AUDIO',
     STREET_VIEW: 'STREET VIEW',
-    REVIEW: 'REVIEW'
+    REVIEW: 'REVIEW',
+    LOGIN: 'LOGIN'
 }
 
 export const Validity = {
@@ -33,6 +36,12 @@ export const Tags = {
     STREET_VIEW: 'street-view',
     AUDIO: 'audio',
 }
+
+export const InputTypes = {
+    EMAIL: 'email',
+    PASSWORD: 'password',
+}
+
 
 
 

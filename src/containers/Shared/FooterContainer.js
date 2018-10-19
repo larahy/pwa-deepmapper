@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
-// import {getLoginStatus} from '../../selectors/user'
 import Footer from '../../components/Navigation/Footer'
+import {isLoggedIn} from '../../selectors/session'
 
 
 export const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
+        isLoggedIn: isLoggedIn(state)
     }
 }
 

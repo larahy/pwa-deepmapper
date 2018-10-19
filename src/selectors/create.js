@@ -1,4 +1,4 @@
-import {AttributeScopes, Validity, Tags} from '../constants/attributes';
+import {Scopes, Validity, Tags} from '../constants/attributes';
 import {createSelector} from 'reselect';
 import {
     hasAllAttributesWithValidity,
@@ -10,10 +10,10 @@ import {
 import {includes, filter} from 'lodash';
 import {findAttributeValueFor} from '../helpers/queries'
 
-export const getCreate = state => propertyOrNull(state, AttributeScopes.CREATE)
+export const getCreate = state => propertyOrNull(state, Scopes.CREATE)
 
-export const getCreateAttributes = state => propertyOrEmptyArray(state, [AttributeScopes.CREATE, 'attributes'])
-export const getAddress = state => propertyOrEmptyObject(state, [AttributeScopes.CREATE, 'address'])
+export const getCreateAttributes = state => propertyOrEmptyArray(state, [Scopes.CREATE, 'attributes'])
+export const getAddress = state => propertyOrEmptyObject(state, [Scopes.CREATE, 'address'])
 
 const getCreateAttributesForTag = tag => createSelector(
     [getCreateAttributes],

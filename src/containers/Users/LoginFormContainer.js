@@ -1,0 +1,16 @@
+import { connect } from 'react-redux'
+import LoginForm from '../../components/User/LoginForm'
+import {loginRequested} from '../../actions/user/session'
+
+export const mapDispatchToProps = dispatch => {
+    return {
+        onLogin: () => dispatch(loginRequested())
+    }
+}
+
+const LoginFormContainer = connect(
+    null,
+    mapDispatchToProps
+)(LoginForm)
+
+export default LoginFormContainer
