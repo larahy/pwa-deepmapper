@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import {loginSucceeded, logoutSucceeded} from '../actions/user/session'
+import {loginSucceeded, logoutSucceeded} from '../actions/session'
 
 const initialState = {}
 

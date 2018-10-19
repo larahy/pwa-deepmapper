@@ -2,8 +2,8 @@ import { call, select, put } from 'redux-saga/effects'
 import {getLoggedInUserId, getToken, isLoggedIn} from '../selectors/session'
 import axios from 'axios'
 import { push } from 'react-router-redux'
-import {fetchLoggedInUserFailed, fetchLoggedInUserSucceeded} from '../actions/user/user'
-import {logoutSucceeded} from '../actions/user/session'
+import {fetchLoggedInUserFailed, fetchLoggedInUserSucceeded} from '../actions/user'
+import {logoutSucceeded} from '../actions/session'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL

@@ -5,7 +5,7 @@ const apiUrl = API_URL
 import {
     loginSucceeded,
     loginFailed
-} from '../actions/user/session'
+} from '../actions/session'
 import {
     validationsTriggered
 } from '../actions/common'
@@ -38,8 +38,7 @@ export function* loginSaga () {
         if (response.status === 200) {
             yield put(loginSucceeded(response.data.content))
             yield call(fetchLoggedInUser)
-            yield put(push('/'))
-            // yield put(push('/my-profile'));
+            yield put(push('/my-profile'));
 
         } else {
             yield put(loginFailed(response))

@@ -17,6 +17,7 @@ import CreateMapPage from './MapPage'
 import ReviewPage from './ReviewPage'
 import PlacecastPage from './PlacecastPage'
 import FooterContainer from '../containers/Shared/FooterContainer'
+import MyProfilePage from './MyProfilePage'
 
 const AppRouter = () => (
     <HashRouter >
@@ -34,6 +35,7 @@ const AppRouter = () => (
                 <Route path='/s3' component={S3Page}/>
                 <Route path="/record" component={RecordPage}/>
                 <Route path='/login' component={LoginPage}/>
+                <Route path='/my-profile' component={MyProfilePage}/>
                 {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
                 <Route path='/placecasts/:id' component={PlacecastPage}/>

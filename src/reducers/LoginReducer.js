@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions'
 import { attributesReducersFor } from './AttributesReducer'
 import { Scopes } from '../constants/attributes'
-import {loginSucceeded} from '../actions/user/session'
+import {loginSucceeded} from '../actions/session'
 
 const initialState = { attributes: [] }
 

@@ -1,6 +1,6 @@
-import {createSelector} from 'reselect'
-import { propertyOrNull, propertyOrUndefined} from './common'
+// import {createSelector} from 'reselect'
+import { propertyOrNull} from './common'
 import {Scopes} from '../constants/attributes'
 
-export const getUser = state => propertyOrNull(state, Scopes.USER)
+export const getCurrentUser = state => propertyOrNull(state, Scopes.USER)
 

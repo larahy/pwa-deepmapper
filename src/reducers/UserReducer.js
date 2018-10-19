@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
-import {logoutSucceeded} from '../actions/user/session'
-import {fetchLoggedInUserFailed, fetchLoggedInUserSucceeded} from '../actions/user/user'
+import {logoutSucceeded} from '../actions/session'
+import {fetchLoggedInUserFailed, fetchLoggedInUserSucceeded} from '../actions/user'
 
 const initialState = {}
 

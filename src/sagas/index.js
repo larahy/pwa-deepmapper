@@ -5,8 +5,8 @@ import {placecastsWorkerSaga} from './placecasts'
 import {s3WorkerSaga} from './s3'
 import {uploadSaga} from './create'
 import {loginSaga} from './session'
-import {loginRequested} from '../actions/user/session'
-import {fetchLoggedInUserRequested} from '../actions/user/user'
+import {loginRequested} from '../actions/session'
+import {fetchLoggedInUserRequested} from '../actions/user'
 import {fetchLoggedInUser} from './user'
 
 export function* watcherSaga() {
