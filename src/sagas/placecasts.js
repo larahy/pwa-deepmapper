@@ -14,6 +14,7 @@ import {
     getTitle,
     getZoom
 } from '../selectors/create'
+import {getLoggedInUserId} from '../selectors/session'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -27,7 +28,7 @@ function fetchPlacecasts() {
 }
 
 function postPlacecast({placecast}) {
-    const {title, pitch, heading, zoom, lat, lng, s3_audio_filename, s3_photo_filename} = placecast
+    const {title, pitch, heading, zoom, lat, lng, s3_audio_filename, s3_photo_filename, userId} = placecast
     return axios.post(`${apiUrl}/api/v1/placecasts`, {
         'title': title,
         'subtitle': 'ignore me',
@@ -35,7 +36,7 @@ function postPlacecast({placecast}) {
             parseFloat(lng),
             parseFloat(lat)
         ],
-        'user_id': 1,
+        'user_id': userId,
         's3_audio_filename': s3_audio_filename,
         's3_photo_filename': s3_photo_filename,
         'pitch': pitch,
@@ -56,13 +57,14 @@ export function* placecastsWorkerSaga() {
 }
 
 export function* postPlacecastSaga({response}) {
-    const [ heading, pitch, zoom, lat, lng, title] = yield [
+    const [ heading, pitch, zoom, lat, lng, title, userId] = yield [
         select(getHeading),
         select(getPitch),
         select(getZoom),
         select(getLatitude),
         select(getLongitude),
-        select(getTitle)
+        select(getTitle),
+        select(getLoggedInUserId)
     ]
     const placecast = {
         heading,
@@ -71,6 +73,7 @@ export function* postPlacecastSaga({response}) {
         lat,
         lng,
         title,
+        userId,
         s3_audio_filename: response.audioFileName,
         s3_photo_filename: response.photoFileName
     }
