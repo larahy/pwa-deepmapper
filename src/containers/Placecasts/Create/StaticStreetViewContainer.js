@@ -2,9 +2,9 @@ import {connect} from 'react-redux'
 import StreetView from '../../../components/Placecasts/Create/StreetView'
 import {getAddress} from '../../../selectors/create'
 
-export const mapStateToProps = (state) => {
+export const mapStateToProps = (state, ownProps) => {
     return {
-        address: getAddress(state)
+        address: ownProps.address || getAddress(state)
     }
 }
 
