@@ -8,16 +8,17 @@ import PhotoPanel from '../Photo/PhotoPanel'
 class PlacecastFeedView extends React.Component {
 
     render() {
-        const {title, id, address, photoSrc, audioSrc, currentView} = this.props.placecast
+        const {title, id, address, photoSrc, audioSrc} = this.props.placecast
         const linkToPlacecast = `placecasts/${id}`
         const coordinates = `[ ${address.lat} , ${address.lng} ]`
-        const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
         return (
             <div>
                 <Link to={linkToPlacecast}>
                     <div>{title}</div>
                     <div>{coordinates}</div>
-                    {photoElement}
+                    <div>
+                        <PhotoPanel sourceUrl={photoSrc}/>
+                    </div>
                     <div className="box">
                         <audio controls src={audioSrc}></audio>
                     </div>
@@ -37,8 +38,6 @@ const mapStateToProps = (state, ownProps) => {
         ...ownProps,
     };
 };
-
-
 
 
 export default connect(mapStateToProps)(PlacecastFeedView);
