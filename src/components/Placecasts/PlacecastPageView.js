@@ -19,7 +19,8 @@ export default class PlacecastPageView extends React.Component {
     }
 
     render() {
-        const {title, address, audioSrc, photoSrc, currentView} = this.props.placecast
+        const {title, address, audioSrc, photoSrc} = this.props.placecast
+        const {currentView} = this.props
         const coordinates = `[ ${address.lat} , ${address.lng} ]`
         const streetViewElement = currentView === 'street-view' ? <StaticStreetViewContainer address={address}/> : null
         const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
