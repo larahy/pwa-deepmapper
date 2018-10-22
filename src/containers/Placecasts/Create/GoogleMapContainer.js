@@ -6,7 +6,7 @@ import GoogleMap from '../../../components/Maps/GoogleMap'
 export const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
-        address: getAddress(state)
+        address: ownProps.address || getAddress(state)
     }
 }
 

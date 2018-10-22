@@ -26,6 +26,7 @@ export default class PlacecastPageView extends React.Component {
         const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
         const mapElement = currentView === 'map' ?
             <MapContainer
+                address={address}
                 isDraggable={false}
                 containerElement={<div style={{ height: '400px' }} />}
                 mapElement={<div style={{ height: '100%' }} />}
