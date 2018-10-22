@@ -1,16 +1,4 @@
-.navbar-brand {
-    font-size: 30px;
-    .navbar-item {
-        color: #4AA1C0;
-    }
-    .navbar-item:hover {
-        color: #2F3236;
-    }
-}
-div.navbar-burger.burger {
-    height: 60px;
-    width: 60px;
-}
+
 nav.navbar {
     background-color: #fafafa;
 }
@@ -25,21 +13,3 @@ nav.navbar {
     }
 }
 
-.column.middle-icon {
-    text-align: center
-}
-
-.column.left-icon {
-    text-align: left
-}
-
-.column.right-icon {
-    text-align: right
-}
-
-@media screen and (min-width: 1088px) {
-    nav#navbarBottom {
-        align-items: stretch;
-       display: inline
-    }
-}
