@@ -1,15 +1,25 @@
-
 nav.navbar {
     background-color: #fafafa;
 }
+nav#navbarTop {
+    align-items: center;
+    padding-top: 6px;
+    min-height: 3.25rem
+}
 .footer {
-    padding: 1rem !important;
+    padding: 0rem !important;
 
     a{
         font-size: 1.5rem
     }
     .column {
         padding: 0 0.75rem
+    }
+}
+
+@media screen and (min-width: 1088px) {
+    nav#navbarTop {
+       display: grid;
     }
 }
 
