@@ -1,8 +1,7 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
-import {publishPlacecast, savePlacecast} from '../actions/placecasts/create'
+import {publishPlacecast, savePlacecast, streetViewStepCompleted} from '../actions/placecasts/create'
 import {
     getAddress,
     getAudioSrc,
@@ -22,8 +21,9 @@ import PlacecastViewToggler from '../components/Navigation/PlacecastViewToggler'
 import StaticStreetViewContainer from '../containers/Placecasts/Create/StaticStreetViewContainer'
 import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
 import MapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
-import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
+import {goToCreateAudioPage} from '../actions/navigation'
+import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 
 
 class ReviewPage extends Component {
@@ -67,11 +67,12 @@ class ReviewPage extends Component {
         const APIErrorElement = APIError ? <div>{APIError}</div> : null
         return (
             <Fragment>
-                <SimpleHeader title={Headers.REVIEW}/>
-                <SkippableStepHeader
-                    title='REVIEW'
+                <HeaderWithNavigationContainer
+                    displayBackButton={true}
+                    displayNextButton={false}
+                    title={Headers.REVIEW}
                     readyToSubmit={isReadyToSubmit}
-                    onSkip={savePlacecast()}
+                    onBack={goToCreateAudioPage()}
                     onNext={dispatch => (dispatch(publishPlacecast()))}/>
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'

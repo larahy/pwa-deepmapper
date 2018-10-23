@@ -1,40 +1,34 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
-import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
-import {photoSkipped, photoStepCompleted} from '../actions/placecasts/create'
-import {getPhotoSrc, getTitle} from '../selectors/create'
+import {photoStepCompleted} from '../actions/placecasts/create'
+import {getPhotoSrc} from '../selectors/create'
 import PropTypes from 'prop-types'
 import UploadPhotoFile from '../components/Photo/UploadPhotoFile'
 import PhotoPanel from '../components/Photo/PhotoPanel'
-import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
+import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 
 class PhotoPage extends Component {
 
     static propTypes = {
-        placeCastTitle: PropTypes.string,
         photoSrc: PropTypes.string
     }
 
     render() {
         const {photoSrc} = this.props;
         const readyToSubmit = !isEmpty(photoSrc)
-        const imageClasses = readyToSubmit ? '' : 'is-hidden'
-
         return (
             <Fragment>
-                <SimpleHeader title={Headers.PHOTO}/>
-                <SkippableStepHeader
-                    title='PHOTO'
+                <HeaderWithNavigationContainer
+                    displayBackButton={false}
+                    displayNextButton={true}
+                    title={Headers.PHOTO}
                     readyToSubmit={readyToSubmit}
-                    onSkip={photoSkipped()}
                     onNext={dispatch => (dispatch(photoStepCompleted()))}/>
                 <div className="columns is-desktop">
                     <div className="column is-6 is-offset-3">
-                        <div className={imageClasses}>
-                            <PhotoPanel sourceUrl={photoSrc}/>
-                        </div>
+                        <PhotoPanel sourceUrl={photoSrc}/>
                         <br></br>
                         <UploadPhotoFile/>
                     </div>
@@ -46,7 +40,6 @@ class PhotoPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        placeCastTitle: getTitle(state),
         photoSrc: getPhotoSrc(state),
     };
 };

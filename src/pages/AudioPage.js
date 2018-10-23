@@ -1,8 +1,6 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
-import {audioSkipped} from '../actions/placecasts/create'
 import {audioStepCompleted} from '../actions/placecasts/create'
 import {getAudioSrc, getPhotoSrc, getTitle} from '../selectors/create'
 import PropTypes from 'prop-types'
@@ -11,8 +9,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
 import PhotoPanel from '../components/Photo/PhotoPanel'
-import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
+import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
+import {goToCreatePhotoPage} from '../actions/navigation'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -103,13 +102,14 @@ class AudioPage extends Component {
 
         return (
             <Fragment>
-                <SimpleHeader title={Headers.AUDIO}/>
-
-                <SkippableStepHeader
-                    title='AUDIO'
+                <HeaderWithNavigationContainer
+                    displayBackButton={true}
+                    displayNextButton={true}
+                    title={Headers.AUDIO}
                     readyToSubmit={this.state.readyToSubmit}
-                    onSkip={audioSkipped()}
+                    onBack={goToCreatePhotoPage()}
                     onNext={dispatch => (dispatch(audioStepCompleted(this.state.recording)))}/>
+
                 <div className="columns is-desktop">
                     <div className='column is-6 is-offset-3'>
                         <PhotoPanel sourceUrl={photoSrc}/>

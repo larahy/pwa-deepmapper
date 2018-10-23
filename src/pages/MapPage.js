@@ -7,11 +7,12 @@ import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
-import {mapSkipped, mapStepCompleted} from '../actions/placecasts/create'
+import {mapStepCompleted} from '../actions/placecasts/create'
 import GoogleMapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
+import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
+import {goToCreateAudioPage} from '../actions/navigation'
 
 class CreateMapPage extends Component {
 
@@ -66,11 +67,12 @@ class CreateMapPage extends Component {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MAP}/>
-
-                <SkippableStepHeader
-                    title='MAP'
+                <HeaderWithNavigationContainer
+                    displayBackButton={true}
+                    displayNextButton={true}
+                    title={Headers.MAP}
                     readyToSubmit={this.state.readyToSubmit}
-                    onSkip={mapSkipped()}
+                    onBack={goToCreateAudioPage()}
                     onNext={dispatch => (dispatch(mapStepCompleted()))}/>
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'

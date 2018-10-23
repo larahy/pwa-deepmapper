@@ -1,23 +1,25 @@
 import {connect} from 'react-redux'
-import StepHeader from '../../../components/Placecasts/Create/StepHeader'
+import HeaderWithNavigation from '../../components/Navigation/HeaderWithNavigation'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
+        title: ownProps.title,
+        readyToSubmit: ownProps.readyToSubmit,
         loading: state.create.uploadProcessing,
     }
 }
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onSkip: () => dispatch(ownProps.onSkip),
+        onBack: () => dispatch(ownProps.onBack),
         onNext: () => dispatch(ownProps.onNext)
     }
 }
 
-const SkippableStepHeader = connect(
+const HeaderWithNavigationContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(StepHeader)
+)(HeaderWithNavigation)
 
-export default SkippableStepHeader
+export default HeaderWithNavigationContainer

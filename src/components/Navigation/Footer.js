@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome, faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import {faHome} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
 import UploadPhotoFile from '../Photo/UploadPhotoFile'
@@ -22,12 +22,7 @@ export default class Footer extends React.Component {
     }
 
     render() {
-        console.log('is logged in', this.props.isLoggedIn)
-        const createIcon = this.props.isLoggedIn
-            ? <Link to="/create/photo" className="navbar-item">
-                <span className="icon is-large"><FontAwesomeIcon icon={faPlusSquare}/></span>
-            </Link>
-            : <UploadPhotoFile />
+        const createIcon = this.props.isLoggedIn ? <UploadPhotoFile /> : null
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">

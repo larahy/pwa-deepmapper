@@ -30,6 +30,10 @@ nav#navbarTop {
     }
 }
 
+.tabs ul {
+    border-bottom: none !important;
+}
+
 @media screen and (min-width: 1088px) {
     nav#navbarTop {
        display: grid;
