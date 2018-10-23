@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome, faPlusSquare} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
+import UploadPhotoFile from '../Photo/UploadPhotoFile'
 
 
 export default class Footer extends React.Component {
@@ -26,7 +27,7 @@ export default class Footer extends React.Component {
             ? <Link to="/create/photo" className="navbar-item">
                 <span className="icon is-large"><FontAwesomeIcon icon={faPlusSquare}/></span>
             </Link>
-            : null
+            : <UploadPhotoFile />
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">

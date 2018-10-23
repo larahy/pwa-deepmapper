@@ -3,14 +3,13 @@ import {
     photoSkippedSuccess,
     audioSkippedSuccess,
     streetViewSkippedSuccess,
-    infoStepCompletedSuccess,
     audioStepCompletedSuccess,
     photoStepCompletedSuccess,
     selectPlacecastAddress,
     updatePlacecastCoordinates,
     addPlacecastPOV,
     streetViewStepCompletedSuccess,
-    loadPhotoFile
+    loadPhotoFileSuccess
 } from '../actions/placecasts/create'
 import { attributesReducersFor } from './AttributesReducer'
 import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
@@ -46,9 +45,6 @@ export const CreateReducer = handleActions({
         ...state,
         streetViewSkipped: true
     }),
-    [infoStepCompletedSuccess]: (state) => {
-        return { ...state}
-    },
     [audioStepCompletedSuccess]: (state, action) => {
         return {...state, audioSrc: action.payload }
     },
@@ -68,7 +64,7 @@ export const CreateReducer = handleActions({
         const mergedaddress = { ...state.address, ...action.payload };
         return ({ ...state, address: mergedaddress } )
     },
-    [loadPhotoFile]: (state, action) => {
+    [loadPhotoFileSuccess]: (state, action) => {
         return ({ ...state, photoFile: action.payload } )
     },
     [uploadRequested]: state => ({ ...state, uploadProcessing: true }),

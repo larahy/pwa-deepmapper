@@ -2,7 +2,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import SkippableStepHeader from '../containers/Placecasts/Create/SkippableStepHeader'
-import {loadPhotoFile, publishPlacecast, savePlacecast} from '../actions/placecasts/create'
+import {publishPlacecast, savePlacecast} from '../actions/placecasts/create'
 import {
     getAddress,
     getAudioSrc,
@@ -14,7 +14,7 @@ import {
 } from '../selectors/create'
 import PropTypes from 'prop-types'
 import {isEmpty} from 'lodash'
-import PlaybackPanelContainer from '../containers/Placecasts/Create/PlaybackPanelContainer'
+// import PlaybackPanelContainer from '../containers/Placecasts/Create/PlaybackPanelContainer'
 import UpdatableInfoFields from '../containers/Placecasts/Create/UpdatableInfoFields'
 import PhotoPanel from '../components/Photo/PhotoPanel'
 import {updateCurrentViewTo} from '../actions/placecasts'

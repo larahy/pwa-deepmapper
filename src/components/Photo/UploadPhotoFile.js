@@ -4,8 +4,6 @@ import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
 import {loadPhotoFile} from '../../actions/placecasts/create'
 import imageCompression from 'browser-image-compression';
-import {isEmpty} from 'lodash'
-import {getPhotoSrc} from '../../selectors/create'
 
 class UploadPhotoFile extends Component {
 
@@ -33,21 +31,16 @@ class UploadPhotoFile extends Component {
     }
 
     render() {
-        const {photoSrc} = this.props;
-
-        const readyToSubmit = !isEmpty(photoSrc)
-
-        const buttonText = readyToSubmit ? 'Select a different photo' : 'Select photo'
         return (
-            <div className="field">
+            <div className="field navbar-item">
                 <div className="file is-centered">
                     <label className="file-label">
                         <input className="file-input" type="file" accept="image/*" onChange={this.handleLoadLocalFile}/>
                         <span className="file-cta">
                             <span className="file-icon">
-                                <i className="fas fa-upload"></i>
+                                <i className="fas fa-plus"></i>
                             </span>
-                            <span className="file-label">{buttonText}</span>
+                            <span className="file-label">Choose a different photo</span>
                         </span>
                     </label>
                 </div>
@@ -58,7 +51,6 @@ class UploadPhotoFile extends Component {
 
 UploadPhotoFile.propTypes = {
     onFileLoaded: PropTypes.func.isRequired,
-    photoSrc: PropTypes.string
 };
 
 const mapDispatchToProps = dispatch => {
@@ -67,10 +59,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const mapStateToProps = (state) => {
-    return {
-        photoSrc: getPhotoSrc(state),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UploadPhotoFile);
+export default connect(null, mapDispatchToProps)(UploadPhotoFile);
