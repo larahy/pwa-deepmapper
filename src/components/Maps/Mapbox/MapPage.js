@@ -8,6 +8,9 @@ import PlacecastInfo from './PlacecastInfo';
 import {getPlacecasts} from '../../../selectors/placecasts'
 import {fetchPlacecastsRequested} from '../../../actions/placecasts'
 import GoogleStreetViewModal from '../../Modals/GoogleStreetViewModal'
+import {SimpleHeader} from '../../Navigation/SimpleHeader'
+import {Headers} from '../../../constants/attributes'
+
 
 /* eslint-disable no-undef */
 const mapboxApiToken = MAPBOX_API_TOKEN
@@ -93,6 +96,7 @@ class MapPage extends Component {
 
         return (
             <div>
+                <SimpleHeader title={Headers.DEEPMAPPER}/>
                 <MapGL
                     {...viewport}
                     mapStyle="mapbox://styles/larahy/cjms4f3saa8rt2smznqkpiia3"
