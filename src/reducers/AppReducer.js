@@ -6,6 +6,7 @@ import {CreateReducer} from './createReducer'
 import {SessionReducer} from './SessionReducer'
 import {LoginReducer} from './LoginReducer'
 import {UserReducer} from './UserReducer'
+import { dependencies } from './dependencies'
 
 export const AppReducer = combineReducers({
     placecasts: PlacecastsReducer,
@@ -14,5 +15,6 @@ export const AppReducer = combineReducers({
     session: SessionReducer,
     login: LoginReducer,
     user: UserReducer,
+    dependencies: dependencies,
     routing: routerReducer
 });

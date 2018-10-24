@@ -18,12 +18,13 @@ import ReviewPage from './ReviewPage'
 import PlacecastPage from './PlacecastPage'
 import FooterContainer from '../containers/Shared/FooterContainer'
 import MyProfilePage from './MyProfilePage'
+import HomePage from './HomePage'
 
 const AppRouter = () => (
     <HashRouter >
         <Fragment>
             <Switch>
-                <Route path='/' component={MapPage} exact={true}/>
+                <Route path='/' component={HomePage} exact={true}/>
                 <Route path='/about' component={AboutPage} exact={true}/>
                 <Route path='/create/photo' component={PhotoPage} exact={true}/>
                 <Route path='/create/info' component={InfoPage} exact={true}/>

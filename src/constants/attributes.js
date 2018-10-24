@@ -1,3 +1,5 @@
+import {fetchPlacecastsRequested} from '../actions/placecasts'
+
 export const Scopes = {
     CREATE: 'create',
     USER: 'user',
@@ -40,6 +42,29 @@ export const Tags = {
 export const InputTypes = {
     EMAIL: 'email',
     PASSWORD: 'password',
+}
+
+export const Dependencies = {
+    EXPERTS: 'experts',
+    PLACECASTS: 'placecasts'
+}
+
+export const DependencyActions = {
+    [Dependencies.PLACECASTS]: fetchPlacecastsRequested,
+    // [Dependencies.EXPERTS]: fetchExpertsRequested,
+}
+
+export const FetchDependenciesStatus = {
+    SUCCESS: 'success',
+    IN_PROGRESS: 'in-progress',
+    FAILED: 'failed'
+}
+
+export const RequestStatus = {
+    PENDING: 'pending',
+    IN_PROGRESS: 'in-progress',
+    SUCCEEDED: 'succeeded',
+    FAILED: 'failed'
 }
 
 
