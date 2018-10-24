@@ -10,8 +10,15 @@ class PlacecastViewToggler extends Component {
 
     static propTypes = {
         currentView: PropTypes.string,
-        changeViewTo: PropTypes.func
+        changeViewTo: PropTypes.func,
+        displayExpertView: PropTypes.bool,
+
     }
+
+    static defaultProps = {
+        displayExpertView: true
+    }
+
 
     constructor(props) {
         super(props)
@@ -24,12 +31,19 @@ class PlacecastViewToggler extends Component {
 
 
     render() {
-        const {currentView} = this.props
+        const {currentView, displayExpertView} = this.props
 
         const streetViewElementClasses = currentView === 'street-view' ? 'is-active' : ''
         const photoElementClasses = currentView === 'photo' ? 'is-active' : ''
         const mapElementClasses = currentView === 'map' ? 'is-active' : ''
         const expertElementClasses = currentView === 'expert' ? 'is-active' : ''
+        const expertElementLink = displayExpertView ?
+            <li className={expertElementClasses}>
+                <a onClick={() => this.toggleOn('expert')}>
+                    <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
+                </a>
+            </li> :
+            null
         return (
             <Fragment>
 
@@ -50,11 +64,7 @@ class PlacecastViewToggler extends Component {
                                 <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
                             </a>
                         </li>
-                        <li className={expertElementClasses}>
-                            <a onClick={() => this.toggleOn('expert')}>
-                                <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
-                            </a>
-                        </li>
+                        {expertElementLink}
                     </ul>
                 </div>
             </Fragment>

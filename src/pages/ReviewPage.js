@@ -81,7 +81,7 @@ class ReviewPage extends Component {
                     mapElement={<span style={{display: 'none'}}/>}
                 >
 
-                    <PlacecastViewToggler/>
+                    <PlacecastViewToggler displayExpertView={false}/>
                     <div className="box">
                         {playbackElement}
                     </div>
