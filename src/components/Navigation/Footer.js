@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
@@ -10,6 +10,12 @@ import UploadPhotoFile from '../Photo/UploadPhotoFile'
 export default class Footer extends React.Component {
     static propTypes = {
         isLoggedIn: PropTypes.bool,
+        onGoHome: PropTypes.func
+    }
+
+    constructor() {
+        super()
+        this.handleGoHome = this.handleGoHome.bind(this)
     }
 
     componentDidMount() {
@@ -21,16 +27,23 @@ export default class Footer extends React.Component {
         });
     }
 
+    handleGoHome() {
+        this.props.onGoHome()
+    }
+
     render() {
-        const createIcon = this.props.isLoggedIn ? <UploadPhotoFile /> : null
+        const createIcon = this.props.isLoggedIn ? <UploadPhotoFile/> : null
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
 
                 <div className="navbar-brand">
-                    <Link to="/" className="navbar-item">
+                    <a className="navbar-item" onClick={this.handleGoHome}>
                         <span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>
-                    </Link>
+                    </a>
+                    {/*<Link to="/" className="navbar-item">*/}
+                    {/*<span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>*/}
+                    {/*</Link>*/}
                     {createIcon}
                     <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
@@ -44,7 +57,8 @@ export default class Footer extends React.Component {
 
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
                         <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-                        <NavLink to='/' className="navbar-item" activeClassName='menu selected'>Become anExpert</NavLink>
+                        <NavLink to='/' className="navbar-item" activeClassName='menu selected'>Become
+                            anExpert</NavLink>
                         <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
                     </div>
                 </div>

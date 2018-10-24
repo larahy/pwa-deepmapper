@@ -4,10 +4,11 @@ import PlacecastViewToggler from '../Navigation/PlacecastViewToggler'
 import PhotoPanel from '../Photo/PhotoPanel'
 import StaticStreetViewContainer from '../../containers/Placecasts/Create/StaticStreetViewContainer'
 import MapContainer from '../../containers/Placecasts/Create/GoogleMapContainer'
-import {SimpleHeader} from '../Navigation/SimpleHeader'
 import {Headers} from '../../constants/attributes'
 import ExpertProfileContainer from '../../containers/Users/ExpertProfileContainer'
 import GoogleMapsWrapper from '../../containers/Placecasts/Create/GoogleMapsWrapper'
+import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
+import {goToHomePageThunk} from '../../actions/navigation'
 
 export default class PlacecastPageView extends React.Component {
     static propTypes = {
@@ -37,7 +38,11 @@ export default class PlacecastPageView extends React.Component {
             : null
         return (
             <Fragment>
-                <SimpleHeader title={Headers.DEEPMAPPER}/>
+                <HeaderWithNavigationContainer
+                    displayBackButton={true}
+                    displayNextButton={false}
+                    title={Headers.DEEPMAPPER}
+                    onBack={goToHomePageThunk()}/>
                 <GoogleMapsWrapper
                     googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
                     loadingElement={<div style={{height: '100%'}}/>}

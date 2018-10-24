@@ -4,7 +4,7 @@ import {push} from 'react-router-redux'
 
 import {
     fetchPlacecastsSucceeded,
-    fetchPlacecastsFailed, postPlacecastSucceeded, postPlacecastFailed
+    fetchPlacecastsFailed, postPlacecastSucceeded, postPlacecastFailed, updateCurrentViewTo
 } from '../actions/placecasts'
 import {
     getHeading,
@@ -83,6 +83,7 @@ export function* postPlacecastSaga({response}) {
         const createdPlacecast = response.data;
 
         yield put({type: postPlacecastSucceeded().type, createdPlacecast});
+        yield put(updateCurrentViewTo('photo'));
         yield put(push('/'));
 
     } catch (error) {
