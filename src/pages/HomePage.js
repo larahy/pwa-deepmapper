@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import FilterablePlacecastTiles from '../containers/FilterablePlacecastsContainer'
 import {fetchDependencies} from '../helpers/fetchDependencies'
-import {Headers} from '../constants/attributes'
+import {Dependencies, Headers} from '../constants/attributes'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 
 let HomePage = class extends React.Component {
@@ -17,6 +17,8 @@ let HomePage = class extends React.Component {
     }
 }
 
-HomePage = fetchDependencies([])(HomePage)
+HomePage = fetchDependencies([
+    Dependencies.EXPERTS
+])(HomePage)
 
 export default HomePage

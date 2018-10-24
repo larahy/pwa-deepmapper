@@ -9,8 +9,8 @@ import {getPlacecasts} from '../../selectors/placecasts'
 
 export const mapStateToProps = (state, ownProps) => {
     const allPlacecasts = getPlacecasts(state)
-    const placecast = filter(allPlacecasts, placeast => {
-        return JSON.stringify(placeast.id) === ownProps.id
+    const placecast = filter(allPlacecasts, placecast => {
+        return JSON.stringify(placecast.id) === ownProps.id
     } )
     if (placecast !== undefined) {
         return {

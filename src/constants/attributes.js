@@ -1,10 +1,12 @@
 import {fetchPlacecastsRequested} from '../actions/placecasts'
+import {fetchExpertsRequested} from '../actions/experts'
 
 export const Scopes = {
     CREATE: 'create',
     USER: 'user',
     LOGIN: 'login',
-    SESSION: 'session'
+    SESSION: 'session',
+    EXPERTS: 'experts'
 }
 
 export const Headers = {
@@ -51,7 +53,7 @@ export const Dependencies = {
 
 export const DependencyActions = {
     [Dependencies.PLACECASTS]: fetchPlacecastsRequested,
-    // [Dependencies.EXPERTS]: fetchExpertsRequested,
+    [Dependencies.EXPERTS]: fetchExpertsRequested,
 }
 
 export const FetchDependenciesStatus = {

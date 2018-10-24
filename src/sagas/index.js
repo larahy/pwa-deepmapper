@@ -10,9 +10,12 @@ import {fetchLoggedInUserRequested} from '../actions/user'
 import {fetchLoggedInUser} from './user'
 import {fetchDependenciesRequested} from '../actions/dependencies'
 import {fetchDependencies} from './dependencies'
+import {fetchExpertsRequested} from '../actions/experts'
+import {fetchExpertsSaga} from './experts'
 
 export function* watcherSaga() {
     yield takeLatest(fetchPlacecastsRequested, placecastsWorkerSaga);
+    yield takeLatest(fetchExpertsRequested, fetchExpertsSaga);
     yield takeLatest(fetchBucketContentsRequested, s3WorkerSaga);
     yield takeLatest(uploadRequested, uploadSaga);
     yield takeLatest(loginRequested, loginSaga);

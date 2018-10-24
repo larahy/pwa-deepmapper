@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faStreetView, faImage, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons'
+import {faStreetView, faImage, faMapMarkerAlt, faInfo} from '@fortawesome/free-solid-svg-icons'
 import {updateCurrentViewTo} from '../../actions/placecasts'
 
 
@@ -29,6 +29,7 @@ class PlacecastViewToggler extends Component {
         const streetViewElementClasses = currentView === 'street-view' ? 'is-active' : ''
         const photoElementClasses = currentView === 'photo' ? 'is-active' : ''
         const mapElementClasses = currentView === 'map' ? 'is-active' : ''
+        const expertElementClasses = currentView === 'expert' ? 'is-active' : ''
         return (
             <Fragment>
 
@@ -47,6 +48,11 @@ class PlacecastViewToggler extends Component {
                         <li className={mapElementClasses}>
                             <a onClick={() => this.toggleOn('map')}>
                                 <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
+                            </a>
+                        </li>
+                        <li className={expertElementClasses}>
+                            <a onClick={() => this.toggleOn('expert')}>
+                                <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
                             </a>
                         </li>
                     </ul>

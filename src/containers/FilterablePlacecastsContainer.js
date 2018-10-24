@@ -22,7 +22,6 @@ let FilterablePlacecastTiles = connect(
 
 FilterablePlacecastTiles = fetchDependencies([
     Dependencies.PLACECASTS,
-    // Dependencies.FETCH_EXPERTS
 ])(FilterablePlacecastTiles)
 
 export default FilterablePlacecastTiles
