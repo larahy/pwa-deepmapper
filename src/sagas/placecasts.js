@@ -14,7 +14,7 @@ import {
     getTitle,
     getZoom
 } from '../selectors/create'
-import {getLoggedInUserId} from '../selectors/session'
+import {getLoggedInUserId, getToken} from '../selectors/session'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -28,22 +28,32 @@ function fetchPlacecasts() {
 }
 
 function postPlacecast({placecast}) {
-    const {title, pitch, heading, zoom, lat, lng, s3_audio_filename, s3_photo_filename, userId} = placecast
-    return axios.post(`${apiUrl}/api/v1/placecasts`, {
-        'title': title,
-        'subtitle': 'ignore me',
-        'coordinates': [
-            parseFloat(lng),
-            parseFloat(lat)
-        ],
-        'user_id': userId,
-        's3_audio_filename': s3_audio_filename,
-        's3_photo_filename': s3_photo_filename,
-        'pitch': pitch,
-        'heading': heading,
-        'zoom': parseInt(zoom),
-        'published': true
-    })
+    const {title, pitch, heading, zoom, lat, lng, s3_audio_filename, s3_photo_filename, userId, token} = placecast
+    return axios({
+        method: 'post',
+        url: `${apiUrl}/api/v1/placecasts`,
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Token': token
+        },
+        data: {
+            'title': title,
+            'subtitle': 'ignore me',
+            'coordinates': [
+                parseFloat(lng),
+                parseFloat(lat)
+            ],
+            'user_id': userId,
+            's3_audio_filename': s3_audio_filename,
+            's3_photo_filename': s3_photo_filename,
+            'pitch': pitch,
+            'heading': heading,
+            'zoom': parseInt(zoom),
+            'published': true
+        }
+    });
+
+
 }
 
 export function* placecastsWorkerSaga() {
@@ -57,14 +67,15 @@ export function* placecastsWorkerSaga() {
 }
 
 export function* postPlacecastSaga({response}) {
-    const [ heading, pitch, zoom, lat, lng, title, userId] = yield [
+    const [ heading, pitch, zoom, lat, lng, title, userId, token] = yield [
         select(getHeading),
         select(getPitch),
         select(getZoom),
         select(getLatitude),
         select(getLongitude),
         select(getTitle),
-        select(getLoggedInUserId)
+        select(getLoggedInUserId),
+        select(getToken)
     ]
     const placecast = {
         heading,
@@ -74,6 +85,7 @@ export function* postPlacecastSaga({response}) {
         lng,
         title,
         userId,
+        token,
         s3_audio_filename: response.audioFileName,
         s3_photo_filename: response.photoFileName
     }
