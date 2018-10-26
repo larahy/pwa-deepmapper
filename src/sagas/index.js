@@ -6,7 +6,7 @@ import {s3WorkerSaga} from './s3'
 import {uploadSaga} from './create'
 import {loginSaga} from './session'
 import {loginRequested} from '../actions/session'
-import {becomeADeepmapperRequested, fetchLoggedInUserRequested} from '../actions/user'
+import {becomeADeepmapperRequested, fetchLoggedInExpertRequested} from '../actions/user'
 import {fetchLoggedInUser} from './user'
 import {fetchDependenciesRequested} from '../actions/dependencies'
 import {fetchDependencies} from './dependencies'
@@ -19,7 +19,7 @@ export function* watcherSaga() {
     yield takeLatest(fetchBucketContentsRequested, s3WorkerSaga);
     yield takeLatest(uploadRequested, uploadSaga);
     yield takeLatest(loginRequested, loginSaga);
-    yield takeLatest(fetchLoggedInUserRequested, fetchLoggedInUser);
+    yield takeLatest(fetchLoggedInExpertRequested, fetchLoggedInUser);
     yield takeLatest(fetchDependenciesRequested, fetchDependencies);
     yield takeLatest(becomeADeepmapperRequested, applicationSaga);
 

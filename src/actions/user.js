@@ -1,8 +1,8 @@
 import { createAction } from 'redux-actions'
 
-export const fetchLoggedInUserRequested = createAction('FETCH_LOGGED_IN_USER_REQUESTED')
-export const fetchLoggedInUserSucceeded = createAction('FETCH_LOGGED_IN_USER_SUCCEEDED')
-export const fetchLoggedInUserFailed = createAction('FETCH_LOGGED_IN_USER_FAILED')
+export const fetchLoggedInExpertRequested = createAction('FETCH_LOGGED_IN_EXPERT_REQUESTED')
+export const fetchLoggedInExpertSucceeded = createAction('FETCH_LOGGED_IN_EXPERT_SUCCEEDED')
+export const fetchLoggedInExpertFailed = createAction('FETCH_LOGGED_IN_EXPERT_FAILED')
 
 export const becomeADeepmapperRequested = createAction('BECOME_A_DEEPMAPPER_REQUESTED')
 export const becomeADeepmapperSucceeded = createAction('BECOME_A_DEEPMAPPER_SUCCEEDED')
