@@ -24,6 +24,7 @@ import MapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
 import {Headers} from '../constants/attributes'
 import {goToCreateAudioPage} from '../actions/navigation'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
+import {getCurrentView} from '../selectors/placecasts'
 
 
 class ReviewPage extends Component {
@@ -113,7 +114,7 @@ const mapStateToProps = (state) => {
         s3Error: state.s3.error,
         APIError: state.create.error,
         address: getAddress(state),
-        currentView: state.placecasts.currentView
+        currentView: getCurrentView(state)
     };
 };
 

@@ -5,7 +5,7 @@ import {
     fetchPlacecastsRequested,
 } from '../../actions/placecasts'
 import PlacecastPageView from '../../components/Placecasts/PlacecastPageView'
-import {getPlacecasts} from '../../selectors/placecasts'
+import {getCurrentView, getPlacecasts} from '../../selectors/placecasts'
 
 export const mapStateToProps = (state, ownProps) => {
     const allPlacecasts = getPlacecasts(state)
@@ -15,12 +15,12 @@ export const mapStateToProps = (state, ownProps) => {
     if (placecast !== undefined) {
         return {
             placecast: placecast[0],
-            currentView: state.placecasts.currentView
+            currentView: getCurrentView(state)
         }
     } else {
         return {
             placecast: undefined,
-            currentView: state.placecasts.currentView
+            currentView: getCurrentView(state)
         }
     }
 }

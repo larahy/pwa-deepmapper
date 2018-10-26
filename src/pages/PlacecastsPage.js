@@ -5,6 +5,7 @@ import PlacecastFeedContainer from '../containers/Placecasts/PlacecastFeedContai
 import {fetchPlacecastsRequested} from '../actions/placecasts'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
+import {getPlacecastErrors, isFetchingPlacecasts} from '../selectors/placecasts'
 
 class PlacecastsPage extends Component {
     componentDidMount() {
@@ -39,8 +40,8 @@ PlacecastsPage.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        fetching: state.placecasts.fetching,
-        error: state.placecasts.error
+        fetching: isFetchingPlacecasts(state),
+        error: getPlacecastErrors(state)
     };
 };
 

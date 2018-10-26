@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStreetView, faImage, faMapMarkerAlt, faInfo} from '@fortawesome/free-solid-svg-icons'
 import {updateCurrentViewTo} from '../../actions/placecasts'
+import {getCurrentView} from '../../selectors/placecasts'
 
 
 class PlacecastViewToggler extends Component {
@@ -74,7 +75,7 @@ class PlacecastViewToggler extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentView: state.placecasts.currentView
+        currentView: getCurrentView(state)
     };
 };
 const mapDispatchToProps = dispatch => {

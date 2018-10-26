@@ -5,7 +5,7 @@ import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
 import PropTypes from 'prop-types'
 import PlacecastPin from './PlacecastPin';
 import PlacecastInfo from './PlacecastInfo';
-import {getPlacecasts} from '../../../selectors/placecasts'
+import {getPlacecastErrors, getPlacecasts, isFetchingPlacecasts} from '../../../selectors/placecasts'
 import {fetchPlacecastsRequested} from '../../../actions/placecasts'
 import {SimpleHeader} from '../../Navigation/SimpleHeader'
 import {Headers} from '../../../constants/attributes'
@@ -129,8 +129,8 @@ MapPage.propTypes = {
 const mapStateToProps = (state) => {
     return {
         placecasts: getPlacecasts(state),
-        fetching: state.placecasts.fetching,
-        error: state.placecasts.error
+        fetching: isFetchingPlacecasts(state),
+        error: getPlacecastErrors(state)
     };
 };
 
