@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+import {toLower} from 'lodash'
 import {hasAllAttributesWithValidity, propertyOrNull} from './common'
 import {Validity, Fields, Scopes} from '../constants/attributes'
 import {findAttributeValueFor} from '../helpers/queries'
@@ -15,7 +16,7 @@ export const isReadyToLogin = hasAllAttributesWithValidity(
 
 export const getLoginEmail = createSelector(
     [ getLoginAttributes ],
-    attributes => findAttributeValueFor(attributes, Fields.EMAIL))
+    attributes => toLower(findAttributeValueFor(attributes, Fields.EMAIL)))
 
 export const getLoginPassword = createSelector(
     [ getLoginAttributes ],
