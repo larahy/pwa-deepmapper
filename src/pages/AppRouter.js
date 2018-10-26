@@ -19,6 +19,7 @@ import PlacecastPage from './PlacecastPage'
 import FooterContainer from '../containers/Shared/FooterContainer'
 import MyProfilePage from './MyProfilePage'
 import HomePage from './HomePage'
+import BecomeADeepmapperPage from './BecomeADeepmapperPage'
 
 const AppRouter = () => (
     <HashRouter >
@@ -37,6 +38,7 @@ const AppRouter = () => (
                 <Route path="/record" component={RecordPage}/>
                 <Route path='/login' component={LoginPage}/>
                 <Route path='/my-profile' component={MyProfilePage}/>
+                <Route path='/apply' component={BecomeADeepmapperPage}/>
                 {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
                 <Route path='/placecasts/:id' component={PlacecastPage}/>

@@ -4,14 +4,9 @@ import PropTypes from 'prop-types'
 import {Validations, Scopes, Fields} from '../../constants/attributes'
 import NotifyingInput from '../../containers/Shared/NotifyingInput'
 
-export default class LoginForm extends React.Component {
+export default class BecomeADeepmapperForm extends React.Component {
     static propTypes = {
-        onLogin: PropTypes.func
-    }
-
-    static defaultProps = {
-        onLogin: () => {
-        }
+        onSubmit: PropTypes.func
     }
 
     constructor() {
@@ -20,7 +15,7 @@ export default class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
-        this.props.onLogin()
+        this.props.onSubmit()
         event.preventDefault()
     }
 
@@ -29,6 +24,28 @@ export default class LoginForm extends React.Component {
 
             <form className='form' onSubmit={this.handleSubmit} noValidate>
                 <div>
+                    <NotifyingInput
+                        name={Fields.FIRST_NAME}
+                        description={Fields.FIRST_NAME}
+                        shortDescription='First Name'
+                        placeholder={Fields.FIRST_NAME}
+                        type='text'
+                        validations={[
+                            {name: Validations.MANDATORY},
+                        ]}
+                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                    />
+                    <NotifyingInput
+                        name={Fields.SURNAME}
+                        description={Fields.SURNAME}
+                        shortDescription='Surname'
+                        placeholder={Fields.SURNAME}
+                        type='text'
+                        validations={[
+                            {name: Validations.MANDATORY},
+                        ]}
+                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                    />
                     <NotifyingInput
                         name={Fields.EMAIL}
                         description={Fields.EMAIL}
@@ -39,7 +56,7 @@ export default class LoginForm extends React.Component {
                             {name: Validations.MANDATORY},
                             // {name: Validations.EMAIL}
                         ]}
-                        scope={Scopes.LOGIN}
+                        scope={Scopes.BECOME_A_DEEPMAPPER}
                     />
                     <NotifyingInput
                         name={Fields.PASSWORD}
@@ -48,12 +65,12 @@ export default class LoginForm extends React.Component {
                         placeholder={Fields.PASSWORD}
                         type={Fields.PASSWORD}
                         validations={[{name: Validations.MANDATORY}]}
-                        scope={Scopes.LOGIN}
+                        scope={Scopes.BECOME_A_DEEPMAPPER}
                     />
                 </div>
 
                 <button type='submit' className='button'>
-                    Login
+                    BecomeADeepmapper
                 </button>
 
             </form>

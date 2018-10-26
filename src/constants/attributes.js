@@ -6,7 +6,8 @@ export const Scopes = {
     USER: 'user',
     LOGIN: 'login',
     SESSION: 'session',
-    EXPERTS: 'experts'
+    EXPERTS: 'experts',
+    BECOME_A_DEEPMAPPER: 'apply'
 }
 
 export const Headers = {
@@ -41,9 +42,11 @@ export const Tags = {
     AUDIO: 'audio',
 }
 
-export const InputTypes = {
+export const Fields = {
     EMAIL: 'email',
     PASSWORD: 'password',
+    FIRST_NAME: 'first name',
+    SURNAME: 'surname'
 }
 
 export const Dependencies = {

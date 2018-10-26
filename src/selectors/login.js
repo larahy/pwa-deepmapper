@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 import {hasAllAttributesWithValidity, propertyOrNull} from './common'
-import {Validity, InputTypes, Scopes} from '../constants/attributes'
+import {Validity, Fields, Scopes} from '../constants/attributes'
 import {findAttributeValueFor} from '../helpers/queries'
 
 export const getLogin = state => propertyOrNull(state, Scopes.LOGIN)
@@ -15,8 +15,8 @@ export const isReadyToLogin = hasAllAttributesWithValidity(
 
 export const getLoginEmail = createSelector(
     [ getLoginAttributes ],
-    attributes => findAttributeValueFor(attributes, InputTypes.EMAIL))
+    attributes => findAttributeValueFor(attributes, Fields.EMAIL))
 
 export const getLoginPassword = createSelector(
     [ getLoginAttributes ],
-    attributes => findAttributeValueFor(attributes, InputTypes.PASSWORD))
+    attributes => findAttributeValueFor(attributes, Fields.PASSWORD))
