@@ -13,7 +13,7 @@ import { Scopes } from '../constants/attributes'
 import {getLoginEmail, getLoginPassword, isReadyToLogin} from '../selectors/login'
 import axios from 'axios'
 import {push} from 'react-router-redux'
-import {fetchLoggedInUser} from './user'
+import {fetchLoggedInExpertSaga} from './experts'
 
 
 function login({email, password}) {
@@ -37,7 +37,7 @@ export function* loginSaga () {
         const response = yield call(login, { email, password })
         if (response.status === 200) {
             yield put(loginSucceeded(response.data.content))
-            yield call(fetchLoggedInUser)
+            yield call(fetchLoggedInExpertSaga)
             yield put(push('/my-profile'));
 
         } else {

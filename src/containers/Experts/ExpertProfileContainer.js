@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import {filter} from 'lodash'
 import {getExperts} from '../../selectors/experts'
-import ExpertProfile from '../../components/User/ExpertProfile'
+import ExpertProfile from '../../components/Experts/ExpertProfile'
 
 export const mapStateToProps = (state, ownProps) => {
     const allExperts = getExperts(state)

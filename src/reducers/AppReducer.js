@@ -5,7 +5,6 @@ import {s3Reducer} from './s3Reducer'
 import {CreateReducer} from './createReducer'
 import {SessionReducer} from './SessionReducer'
 import {LoginReducer} from './LoginReducer'
-import {UserReducer} from './UserReducer'
 import { dependencies } from './dependencies'
 import {ExpertsReducer} from './ExpertsReducer'
 import {ApplicationReducer} from './ApplicationReducer'
@@ -16,7 +15,6 @@ export const AppReducer = combineReducers({
     create: CreateReducer,
     session: SessionReducer,
     login: LoginReducer,
-    user: UserReducer,
     dependencies: dependencies,
     experts: ExpertsReducer,
     application: ApplicationReducer,

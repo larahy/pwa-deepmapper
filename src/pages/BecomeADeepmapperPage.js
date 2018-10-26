@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
-import BecomeADeepmapperFormContainer from '../containers/Users/BecomeADeepmapperFormContainer'
+import BecomeADeepmapperFormContainer from '../containers/Experts/BecomeADeepmapperFormContainer'
 
 export default class BecomeADeepmapperPage extends React.Component {
 

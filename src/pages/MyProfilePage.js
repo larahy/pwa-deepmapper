@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
-import MyProfileContainer from '../containers/Users/MyProfileContainer'
+import MyProfileContainer from '../containers/Experts/MyProfileContainer'
 
 export default class MyProfilePage extends React.Component {
 

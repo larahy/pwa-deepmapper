@@ -3,7 +3,6 @@ import {fetchExpertsRequested} from '../actions/experts'
 
 export const Scopes = {
     CREATE: 'create',
-    USER: 'user',
     LOGIN: 'login',
     SESSION: 'session',
     EXPERTS: 'experts',

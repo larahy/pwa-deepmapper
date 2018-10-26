@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
-import MyProfile from '../../components/User/MyProfile'
-import {getCurrentUser} from '../../selectors/user'
+import MyProfile from '../../components/Experts/MyProfile'
+import {getLoggedInExpert} from '../../selectors/experts'
 
 export const mapStateToProps = (state, ownProps) => {
     return {
         ...ownProps,
-        user: getCurrentUser(state)
+        user: getLoggedInExpert(state)
     }
 }
 
