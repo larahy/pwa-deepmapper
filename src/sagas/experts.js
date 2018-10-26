@@ -1,6 +1,11 @@
 import {call, put, select} from 'redux-saga/effects';
 import axios from 'axios';
-import {fetchExpertsFailed, fetchExpertsSucceeded} from '../actions/experts'
+import {
+    becomeAnExpertFailed,
+    becomeAnExpertSucceeded,
+    fetchExpertsFailed,
+    fetchExpertsSucceeded
+} from '../actions/experts'
 import {validationsTriggered} from '../actions/common'
 import {
     getApplicationBio,
@@ -9,7 +14,6 @@ import {
     getApplicationPassword,
     isReadyToApply
 } from '../selectors/apply'
-import {becomeADeepmapperFailed, becomeADeepmapperSucceeded} from '../actions/user'
 import {goToHomePage} from '../actions/navigation'
 import {Scopes} from '../constants/attributes'
 /* eslint-disable no-undef */
@@ -58,11 +62,11 @@ export function* applicationSaga () {
         ]
         const response = yield call(apply, { email, password, bio, firstName, lastName })
         if (response.status === 201) {
-            yield put(becomeADeepmapperSucceeded(response.data.content))
+            yield put(becomeAnExpertSucceeded(response.data.content))
             yield put(goToHomePage());
 
         } else {
-            yield put(becomeADeepmapperFailed(response))
+            yield put(becomeAnExpertFailed(response))
         }
     }
 }

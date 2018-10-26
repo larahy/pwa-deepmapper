@@ -6,11 +6,10 @@ import {s3WorkerSaga} from './s3'
 import {uploadSaga} from './create'
 import {loginSaga} from './session'
 import {loginRequested} from '../actions/session'
-import {becomeADeepmapperRequested, fetchLoggedInExpertRequested} from '../actions/user'
 import {fetchLoggedInUser} from './user'
 import {fetchDependenciesRequested} from '../actions/dependencies'
 import {fetchDependencies} from './dependencies'
-import {fetchExpertsRequested} from '../actions/experts'
+import {becomeAnExpertRequested, fetchExpertsRequested, fetchLoggedInExpertRequested} from '../actions/experts'
 import {applicationSaga, fetchExpertsSaga} from './experts'
 
 export function* watcherSaga() {
@@ -21,6 +20,6 @@ export function* watcherSaga() {
     yield takeLatest(loginRequested, loginSaga);
     yield takeLatest(fetchLoggedInExpertRequested, fetchLoggedInUser);
     yield takeLatest(fetchDependenciesRequested, fetchDependencies);
-    yield takeLatest(becomeADeepmapperRequested, applicationSaga);
+    yield takeLatest(becomeAnExpertRequested, applicationSaga);
 
 }

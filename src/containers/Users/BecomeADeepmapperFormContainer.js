@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import {becomeADeepmapperRequested} from '../../actions/user'
 import BecomeADeepmapperForm from '../../components/User/BecomeADeepmapperForm'
+import {becomeAnExpertRequested} from '../../actions/experts'
 
 export const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: () => dispatch(becomeADeepmapperRequested())
+        onSubmit: () => dispatch(becomeAnExpertRequested())
     }
 }
 
