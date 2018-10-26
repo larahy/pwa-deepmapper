@@ -33,18 +33,29 @@ export default class BecomeADeepmapperForm extends React.Component {
                         validations={[
                             {name: Validations.MANDATORY},
                         ]}
-                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                        scope={Scopes.APPLICATION}
                     />
                     <NotifyingInput
-                        name={Fields.SURNAME}
-                        description={Fields.SURNAME}
+                        name={Fields.LAST_NAME}
+                        description={Fields.LAST_NAME}
                         shortDescription='Surname'
-                        placeholder={Fields.SURNAME}
+                        placeholder={Fields.LAST_NAME}
                         type='text'
                         validations={[
                             {name: Validations.MANDATORY},
                         ]}
-                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                        scope={Scopes.APPLICATION}
+                    />
+                    <NotifyingInput
+                        name={Fields.BIO}
+                        description={Fields.BIO}
+                        shortDescription='biography'
+                        placeholder={Fields.BIO}
+                        type='text'
+                        validations={[
+                            {name: Validations.MANDATORY},
+                        ]}
+                        scope={Scopes.APPLICATION}
                     />
                     <NotifyingInput
                         name={Fields.EMAIL}
@@ -56,7 +67,7 @@ export default class BecomeADeepmapperForm extends React.Component {
                             {name: Validations.MANDATORY},
                             // {name: Validations.EMAIL}
                         ]}
-                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                        scope={Scopes.APPLICATION}
                     />
                     <NotifyingInput
                         name={Fields.PASSWORD}
@@ -65,7 +76,7 @@ export default class BecomeADeepmapperForm extends React.Component {
                         placeholder={Fields.PASSWORD}
                         type={Fields.PASSWORD}
                         validations={[{name: Validations.MANDATORY}]}
-                        scope={Scopes.BECOME_A_DEEPMAPPER}
+                        scope={Scopes.APPLICATION}
                     />
                 </div>
 
