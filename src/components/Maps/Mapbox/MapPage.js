@@ -7,7 +7,6 @@ import PlacecastPin from './PlacecastPin';
 import PlacecastInfo from './PlacecastInfo';
 import {getPlacecasts} from '../../../selectors/placecasts'
 import {fetchPlacecastsRequested} from '../../../actions/placecasts'
-import GoogleStreetViewModal from '../../Modals/GoogleStreetViewModal'
 import {SimpleHeader} from '../../Navigation/SimpleHeader'
 import {Headers} from '../../../constants/attributes'
 
@@ -111,7 +110,6 @@ class MapPage extends Component {
                     </div>
 
                 </MapGL>
-                <GoogleStreetViewModal />
             </div>
         );
     }

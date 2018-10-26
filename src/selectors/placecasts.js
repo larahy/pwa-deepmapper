@@ -1,11 +1,12 @@
 import {createSelector} from 'reselect'
-import {find, isEmpty} from 'lodash'
+import {propertyOrEmptyArray, propertyOrNull} from './common'
+import {Scopes} from '../constants/attributes'
 
-export const placecastsSelector = state => state.placecasts.items
-export const streetViewPlacecastSelector = state => state.placecasts.streetViewId
+export const getPlacecastsItems = state => propertyOrEmptyArray(state, [Scopes.PLACECASTS, 'items'])
+export const streetViewPlacecastSelector = state => propertyOrNull(state, [Scopes.PLACECASTS, 'streetViewId'])
 
 export const getPlacecasts = createSelector(
-    placecastsSelector,
+    getPlacecastsItems,
     items => {
         return items.map((item) => {
             const geom = JSON.parse(item.geom)
@@ -16,21 +17,5 @@ export const getPlacecasts = createSelector(
             const audioSrc = `http://d31dl1irjvblxj.cloudfront.net/${item.s3_audio_filename}`
             return {...item, audioSrc, photoSrc, address}
         })
-    }
-)
-
-export const getStreetViewPlacecast = createSelector(
-    [placecastsSelector, streetViewPlacecastSelector],
-    (items, id) => {
-        const placecast = find(items, {id})
-        if (isEmpty(placecast)) {
-            return placecast
-        }
-        else {
-            const geom = JSON.parse(placecast.geom)
-            const longitude = geom.coordinates[0]
-            const latitude = geom.coordinates[1]
-            return {address: latitude, longitude}
-        }
     }
 )

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactStreetview from 'react-streetview';
 import {connect} from 'react-redux'
-import {getStreetViewPlacecast} from '../../selectors/placecasts'
+import {getStreetViewPlacecast} from '../../../selectors/placecasts'
 
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
@@ -13,8 +13,6 @@ class GoogleStreetViewModal extends React.Component {
     render() {
         const {placecast = {} } = this.props
         const {showStreetViewModal} = this.props
-        console.log('modal lat : ', placecast.latitude)
-        console.log('modal ong: ', placecast.longitude)
         let children = []
         const streetViewPanoramaOptions = {
             position: {lat: placecast.latitude, lng: placecast.longitude},
