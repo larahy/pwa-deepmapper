@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import MyProfile from '../../components/Experts/MyProfile'
+import MyDeepmapper from '../../components/Experts/MyDeepmapper'
 import {getLoggedInExpert} from '../../selectors/experts'
 
 export const mapStateToProps = (state, ownProps) => {
@@ -9,8 +9,8 @@ export const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const MyProfileContainer = connect(
+const MyDeepmapperContainer = connect(
     mapStateToProps,
-)(MyProfile)
+)(MyDeepmapper)
 
-export default MyProfileContainer
+export default MyDeepmapperContainer

@@ -13,7 +13,7 @@ import CreateMapPage from './MapPage'
 import ReviewPage from './ReviewPage'
 import PlacecastPage from './PlacecastPage'
 import FooterContainer from '../containers/Shared/FooterContainer'
-import MyProfilePage from './MyProfilePage'
+import MyDeepmapperPage from './MyDeepmapperPage'
 import HomePage from './HomePage'
 import BecomeADeepmapperPage from './BecomeADeepmapperPage'
 
@@ -30,9 +30,8 @@ const AppRouter = () => (
                 <Route path='/create/review' component={ReviewPage} exact={true}/>
                 <Route path='/mapbox-map' component={MapPage} exact={true}/>
                 <Route path='/login' component={LoginPage}/>
-                <Route path='/my-profile' component={MyProfilePage}/>
+                <Route path='/my-deepmapper' component={MyDeepmapperPage}/>
                 <Route path='/apply' component={BecomeADeepmapperPage}/>
-                {/*<Route path='/experts/:number' component={IndividualExpert}/>*/}
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
                 <Route path='/placecasts/:id' component={PlacecastPage}/>
                 <Redirect to="/"/>

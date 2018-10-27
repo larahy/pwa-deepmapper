@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class MyProfile extends React.Component {
+export default class MyDeepmapper extends React.Component {
     static propTypes = {
         user: PropTypes.object
     }

@@ -1,15 +1,15 @@
 import React, {Fragment} from 'react'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
-import MyProfileContainer from '../containers/Experts/MyProfileContainer'
+import MyDeepmapperContainer from '../containers/Experts/MyDeepmapperContainer'
 
-export default class MyProfilePage extends React.Component {
+export default class MyDeepmapperPage extends React.Component {
 
     render() {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MY_DEEPMAPPER}/>
-                <MyProfileContainer />
+                <MyDeepmapperContainer />
             </Fragment>
         )
     }
