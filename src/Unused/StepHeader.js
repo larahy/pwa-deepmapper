@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import '../Placecasts/styles.scss'
+import '../components/Placecasts/styles.scss'
 
 export default class StepHeader extends React.Component {
     static propTypes = {

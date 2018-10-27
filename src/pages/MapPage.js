@@ -7,7 +7,7 @@ import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import {mapStepCompleted} from '../actions/placecasts/create'
+import {mapStepCompleted} from '../actions/create'
 import GoogleMapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'

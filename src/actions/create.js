@@ -2,16 +2,16 @@
 import {push} from 'react-router-redux'
 import {createAction} from 'redux-actions'
 import {includes, every, filter, words, snakeCase} from 'lodash'
-import {Scopes, Validity, Tags} from '../../constants/attributes'
-import {uploadRequested} from '../s3'
-import {validationsTriggered} from '../common'
+import {Scopes, Validity, Tags} from '../constants/attributes'
+import {uploadRequested} from './s3'
+import {validationsTriggered} from './common'
 import {
     goToCreateAudioPage,
     goToCreateMapPage,
     goToCreatePhotoPage,
     goToCreateReviewPage,
     goToCreateStreetViewPage
-} from '../navigation'
+} from './navigation'
 
 //STEP 1 PHOTO //
 export const loadPhotoFileSuccess = createAction('LOAD_PHOTO_FILE')

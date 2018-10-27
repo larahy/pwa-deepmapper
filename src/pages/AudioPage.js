@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {audioStepCompleted} from '../actions/placecasts/create'
+import {audioStepCompleted} from '../actions/create'
 import {getAudioSrc, getPhotoSrc, getTitle} from '../selectors/create'
 import PropTypes from 'prop-types'
 import vmsg from 'vmsg';

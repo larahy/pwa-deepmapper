@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
-import {photoStepCompleted} from '../actions/placecasts/create'
+import {photoStepCompleted} from '../actions/create'
 import {getPhotoSrc} from '../selectors/create'
 import PropTypes from 'prop-types'
 import UploadPhotoFile from '../components/Photo/UploadPhotoFile'

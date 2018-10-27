@@ -12,9 +12,8 @@ import {
 import { Scopes } from '../constants/attributes'
 import {getLoginEmail, getLoginPassword, isReadyToLogin} from '../selectors/login'
 import axios from 'axios'
-import {push} from 'react-router-redux'
 import {fetchLoggedInExpertSaga} from './experts'
-
+import {goToMyDeepMapper} from '../actions/navigation'
 
 function login({email, password}) {
     return axios.post(`${apiUrl}/api/v1/session`, {
@@ -38,7 +37,7 @@ export function* loginSaga () {
         if (response.status === 200) {
             yield put(loginSucceeded(response.data.content))
             yield call(fetchLoggedInExpertSaga)
-            yield put(push('/my-profile'));
+            yield put(goToMyDeepMapper());
 
         } else {
             yield put(loginFailed(response))

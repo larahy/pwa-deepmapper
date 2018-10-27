@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {isEmpty} from 'lodash'
 import PlacecastFeedContainer from '../containers/Placecasts/PlacecastFeedContainer'
 import {fetchPlacecastsRequested} from '../actions/placecasts'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
@@ -15,7 +16,7 @@ class PlacecastsPage extends Component {
     render() {
         const {fetching, error} = this.props;
 
-        if (error) {
+        if (!isEmpty(error)) {
             return <div>Error! {error.message}</div>;
         }
 

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {getAddress} from '../../../selectors/create'
-import {updatePlacecastCoordinates} from '../../../actions/placecasts/create'
+import {updatePlacecastCoordinates} from '../../../actions/create'
 import GoogleMap from '../../../components/Maps/GoogleMap'
 
 export const mapStateToProps = (state, ownProps) => {

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import StreetView from '../../../components/Placecasts/Create/StreetView'
 import {getAddress} from '../../../selectors/create'
-import {updatePlacecastCoordinates, addPlacecastPOV} from '../../../actions/placecasts/create'
+import {updatePlacecastCoordinates, addPlacecastPOV} from '../../../actions/create'
 
 
 export const mapStateToProps = (state) => {

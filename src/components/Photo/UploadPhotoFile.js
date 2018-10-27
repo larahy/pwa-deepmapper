@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
-import {loadPhotoFile} from '../../actions/placecasts/create'
+import {loadPhotoFile} from '../../actions/create'
 import imageCompression from 'browser-image-compression';
 
 class UploadPhotoFile extends Component {

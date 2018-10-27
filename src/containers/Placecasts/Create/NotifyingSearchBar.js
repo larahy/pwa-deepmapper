@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {selectPlacecastAddress} from '../../../actions/placecasts/create'
+import {selectPlacecastAddress} from '../../../actions/create'
 import SearchBar from '../../../components/Search/SearchBar'
 
 

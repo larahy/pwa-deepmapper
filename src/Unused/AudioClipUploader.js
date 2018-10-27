@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import {
     uploadRequested
-} from '../../actions/s3'
+} from '../actions/s3'
 
 class AudioClipUploader extends React.Component {
 

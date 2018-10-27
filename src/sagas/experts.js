@@ -18,7 +18,6 @@ import {goToHomePage} from '../actions/navigation'
 import {Scopes} from '../constants/attributes'
 import {getLoggedInUserId, getToken, isLoggedIn} from '../selectors/session'
 import {logoutSucceeded} from '../actions/session'
-import {push} from 'react-router-redux'
 /* eslint-disable no-undef */
 const apiUrl = API_URL
 /* eslint-disable no-undef */
@@ -100,10 +99,10 @@ export function* fetchLoggedInExpertSaga () {
         } else if (response.statusCode === 401) {
             yield put(fetchLoggedInExpertFailed())
             yield put(logoutSucceeded())
-            yield put(push('/login'))
+            yield put(goToLogin())
         } else {
             yield put(fetchLoggedInExpertFailed())
-            yield put(push('/'))
+            yield put(goToHomePage())
         }
     }
 }

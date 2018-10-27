@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {publishPlacecast, savePlacecast, streetViewStepCompleted} from '../actions/placecasts/create'
+import {publishPlacecast, savePlacecast, streetViewStepCompleted} from '../actions/create'
 import {
     getAddress,
     getAudioSrc,

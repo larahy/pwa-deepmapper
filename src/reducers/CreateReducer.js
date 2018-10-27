@@ -10,7 +10,7 @@ import {
     addPlacecastPOV,
     streetViewStepCompletedSuccess,
     loadPhotoFileSuccess
-} from '../actions/placecasts/create'
+} from '../actions/create'
 import { attributesReducersFor } from './AttributesReducer'
 import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'

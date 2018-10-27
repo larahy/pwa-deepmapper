@@ -5,7 +5,6 @@ export const fetchBucketContentsSucceeded = createAction('FETCH_BUCKET_CONTENTS_
 export const fetchBucketContentsFailed = createAction('FETCH_BUCKET_CONTENTS_FAILURE')
 
 export const uploadRequested = createAction('UPLOAD_REQUESTED')
-
 export const uploadSucceeded = createAction('UPLOAD_SUCCEEDED')
 export const uploadFailed = createAction('UPLOAD_FAILED')
 

@@ -1,6 +1,5 @@
 import {call, put, select} from 'redux-saga/effects';
 import axios from 'axios';
-import {push} from 'react-router-redux'
 
 import {
     fetchPlacecastsSucceeded,
@@ -15,6 +14,7 @@ import {
     getZoom
 } from '../selectors/create'
 import {getLoggedInUserId, getToken} from '../selectors/session'
+import {goToHomePage} from '../actions/navigation'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -96,7 +96,7 @@ export function* postPlacecastSaga({response}) {
 
         yield put({type: postPlacecastSucceeded().type, createdPlacecast});
         yield put(updateCurrentViewTo('photo'));
-        yield put(push('/'));
+        yield put(goToHomePage());
 
     } catch (error) {
         yield put({type: postPlacecastFailed().type, error});

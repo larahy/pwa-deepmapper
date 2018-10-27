@@ -7,6 +7,8 @@ export const goToCreateAudioPage = () => push('/create/audio')
 export const goToCreateStreetViewPage = () => push('/create/street-view')
 export const goToCreateMapPage = () => push('/create/map')
 export const goToCreateReviewPage = () => push('/create/review')
+export const goToLogin = () => push('/login')
+export const goToMyDeepMapper = () => push('/my-profile')
 
 export const goToHomePageThunk = () => (dispatch) => {
     dispatch(updateCurrentViewTo('photo'))
