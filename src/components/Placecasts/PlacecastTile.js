@@ -7,7 +7,7 @@ import PhotoPanel from '../Photo/PhotoPanel'
 class PlacecastTile extends React.Component {
 
     render() {
-        const {title, id, address, photoSrc, audioSrc} = this.props.placecast
+        const {title, id, address, photoSrc} = this.props.placecast
         const linkToPlacecast = `placecasts/${id}`
         const coordinates = `[ ${address.lat} , ${address.lng} ]`
         return (
@@ -17,9 +17,6 @@ class PlacecastTile extends React.Component {
                     <div>{coordinates}</div>
                     <div>
                         <PhotoPanel sourceUrl={photoSrc}/>
-                    </div>
-                    <div className="box">
-                        <audio controls src={audioSrc}></audio>
                     </div>
                 </Link>
             </div>
