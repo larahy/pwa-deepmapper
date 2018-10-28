@@ -12,3 +12,5 @@ export const fetchLoggedInExpertFailed = createAction('FETCH_LOGGED_IN_EXPERT_FA
 export const becomeAnExpertRequested = createAction('BECOME_A_EXPERT_REQUESTED')
 export const becomeAnExpertSucceeded = createAction('BECOME_A_EXPERT_SUCCEEDED')
 export const becomeAnExpertFailed = createAction('BECOME_A_EXPERT_FAILED')
+
+export const updateMyDeepmapperCurrentFeedViewTo = createAction('UPDATE_MY_DEEPMAPPER_CURRENT_FEED_VIEW_TO')

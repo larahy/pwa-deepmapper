@@ -3,7 +3,7 @@ import {
     fetchExpertsFailed,
     fetchExpertsRequested,
     fetchExpertsSucceeded,
-    fetchLoggedInExpertSucceeded
+    fetchLoggedInExpertSucceeded, updateMyDeepmapperCurrentFeedViewTo
 } from '../actions/experts'
 import {logoutSucceeded} from '../actions/session'
 
@@ -11,7 +11,8 @@ const initialState = {
     fetching: false,
     items: [],
     error: null,
-    loggedInExpert : {}
+    loggedInExpert : {},
+    loggedInExpertCurrentFeedView: 'published'
 };
 
 export const ExpertsReducer = handleActions({
@@ -28,6 +29,9 @@ export const ExpertsReducer = handleActions({
     },
     [fetchLoggedInExpertSucceeded]: (state, action) => {
         return { ...state, loggedInExpert: action.payload.response }
+    },
+    [updateMyDeepmapperCurrentFeedViewTo]: (state, action ) => {
+        return { ...state, loggedInExpertCurrentFeedView: action.payload}
     },
     [logoutSucceeded]: (state) => {
         return { ...state, loggedInExpert: {} }
