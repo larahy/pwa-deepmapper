@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import {Headers} from '../constants/attributes'
-import MyDeepmapperContainer from '../containers/Experts/MyDeepmapperContainer'
+import FilterablePlacecastTiles from '../containers/FilterablePlacecastsContainer'
 
 export default class MyDeepmapperPage extends React.Component {
 
@@ -9,7 +9,7 @@ export default class MyDeepmapperPage extends React.Component {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MY_DEEPMAPPER}/>
-                <MyDeepmapperContainer />
+                <FilterablePlacecastTiles filtered={true} />
             </Fragment>
         )
     }

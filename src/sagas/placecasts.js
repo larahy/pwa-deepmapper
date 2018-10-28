@@ -14,7 +14,7 @@ import {
     getZoom
 } from '../selectors/create'
 import {getLoggedInUserId, getToken} from '../selectors/session'
-import {goToHomePage} from '../actions/navigation'
+import {goToMyDeepMapper} from '../actions/navigation'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -96,7 +96,7 @@ export function* postPlacecastSaga({response}) {
 
         yield put({type: postPlacecastSucceeded().type, createdPlacecast});
         yield put(updateCurrentViewTo('photo'));
-        yield put(goToHomePage());
+        yield put(goToMyDeepMapper());
 
     } catch (error) {
         yield put({type: postPlacecastFailed().type, error});

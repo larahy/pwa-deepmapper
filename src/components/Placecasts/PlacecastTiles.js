@@ -11,10 +11,13 @@ import PlacecastTile from './PlacecastTile'
 
 class PlacecastTiles extends React.Component {
     static propTypes = {
-        placecasts: PropTypes.array.isRequired
+        filtered: PropTypes.bool,
+        placecasts: PropTypes.array.isRequired,
+        filteredPlacecasts: PropTypes.array
     }
 
     render() {
+        console.log('filtered', this.props.filtered)
         const noPlacecastsYetElement = (
             <div className='placecasts-loading'>
                 <p>
@@ -27,11 +30,17 @@ class PlacecastTiles extends React.Component {
             ? noPlacecastsYetElement
             : null
 
-        const placecastTiles = this.props.placecasts.map(placecast => {
-            return (
-                <PlacecastTile key={placecast.id} placecast={placecast}/>
-            )
-        })
+        const placecastTiles = this.props.filtered ?
+            this.props.filteredPlacecasts.map(placecast => {
+                return (
+                    <PlacecastTile key={placecast.id} placecast={placecast}/>
+                )
+            })
+            : this.props.placecasts.map(placecast => {
+                return (
+                    <PlacecastTile key={placecast.id} placecast={placecast}/>
+                )
+            })
 
         return (
             <div>

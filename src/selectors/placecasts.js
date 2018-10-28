@@ -1,6 +1,8 @@
 import {createSelector} from 'reselect'
 import {propertyOrEmptyArray, propertyOrEmptyObject, propertyOrEmptyString, propertyOrNull} from './common'
 import {Scopes} from '../constants/attributes'
+import {getLoggedInUserId} from './session'
+import {filter} from 'lodash'
 
 export const getPlacecastsItems = state => propertyOrEmptyArray(state, [Scopes.PLACECASTS, 'items'])
 export const getCurrentView = state => propertyOrEmptyString(state, [Scopes.PLACECASTS, 'currentView'])
@@ -21,3 +23,11 @@ export const getPlacecasts = createSelector(
         })
     }
 )
+
+export const getFilteredPlacecasts = createSelector(
+    [getPlacecasts, getLoggedInUserId],
+    (placecasts, id) => {
+        return filter(placecasts, placecast => {
+            return placecast.user_id === id
+        })
+    })

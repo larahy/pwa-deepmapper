@@ -1,13 +1,15 @@
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import { fetchDependencies } from '../helpers/fetchDependencies'
-import { Dependencies } from '../constants/attributes'
-import {getPlacecasts} from '../selectors/placecasts'
+import {fetchDependencies} from '../helpers/fetchDependencies'
+import {Dependencies} from '../constants/attributes'
+import {getFilteredPlacecasts, getPlacecasts} from '../selectors/placecasts'
 import PlacecastTiles from '../components/Placecasts/PlacecastTiles'
 
-export const mapStateToProps = state => {
+export const mapStateToProps = (state, ownProps) => {
     return {
+        filtered: ownProps.filtered || false,
         placecasts: getPlacecasts(state),
+        filteredPlacecasts: getFilteredPlacecasts(state),
     }
 }
 
