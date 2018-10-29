@@ -17,7 +17,6 @@ class PlacecastTiles extends React.Component {
     }
 
     render() {
-        console.log('filtered', this.props.filtered)
         const noPlacecastsYetElement = (
             <div className='placecasts-loading'>
                 <p>

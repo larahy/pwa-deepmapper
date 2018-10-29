@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PlacecastPageViewContainer from '../containers/Placecasts/PlacecastPageViewContainer'
+import IndividualPlacecastContainer from '../containers/Placecasts/IndividualPlacecastContainer'
 
 export default class PlacecastPage extends React.Component {
+    static displayName = 'Placecast'
 
     render () {
         return (
             <div>
-                <PlacecastPageViewContainer id={this.props.match.params.id}/>
+                <IndividualPlacecastContainer id={this.props.match.params.id}/>
             </div>
         )
     }
