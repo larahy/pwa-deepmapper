@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import FilterablePlacecastTiles from '../containers/FilterablePlacecastsContainer'
+import FilterablePlacecastTiles from '../containers/Placecasts/FilterablePlacecastsContainer'
 import {fetchDependencies} from '../helpers/fetchDependencies'
 import {Dependencies, Headers} from '../constants/attributes'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
