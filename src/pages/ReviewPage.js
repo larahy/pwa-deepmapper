@@ -17,7 +17,6 @@ import {isEmpty} from 'lodash'
 import UpdatableInfoFields from '../containers/Placecasts/Create/UpdatableInfoFields'
 import PhotoPanel from '../components/Photo/PhotoPanel'
 import {updateCurrentViewTo} from '../actions/placecasts'
-import PlacecastViewToggler from '../components/Navigation/PlacecastViewToggler'
 import StaticStreetViewContainer from '../containers/Placecasts/Create/StaticStreetViewContainer'
 import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
 import MapContainer from '../containers/Placecasts/Create/GoogleMapContainer'
@@ -25,6 +24,8 @@ import {Headers} from '../constants/attributes'
 import {goToCreateAudioPage} from '../actions/navigation'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 import {getCurrentView} from '../selectors/placecasts'
+import IndividualPlacecastViewToggle from '../components/Placecasts/IndividualPlacecastViewToggle'
+import IndividualPlacecastViewToggleContainer from '../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 
 
 class ReviewPage extends Component {
@@ -82,7 +83,7 @@ class ReviewPage extends Component {
                     mapElement={<span style={{display: 'none'}}/>}
                 >
 
-                    <PlacecastViewToggler displayExpertView={false}/>
+                    <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
                     <div className="box">
                         {playbackElement}
                     </div>

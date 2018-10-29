@@ -9,7 +9,7 @@ import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNav
 import {Headers} from '../../constants/attributes'
 import {goToHomePageThunk} from '../../actions/navigation'
 import GoogleMapsWrapper from '../../containers/Placecasts/Create/GoogleMapsWrapper'
-import PlacecastViewToggler from '../Navigation/PlacecastViewToggler'
+import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 
 class IndividualPlacecast extends React.Component {
     static propTypes = {
@@ -52,7 +52,7 @@ class IndividualPlacecast extends React.Component {
                         containerElement={<div style={{height: '50px'}}/>}
                         mapElement={<span style={{display: 'none'}}/>}
                     >
-                        <PlacecastViewToggler/>
+                        <IndividualPlacecastViewToggleContainer/>
                         <div className="columns is-desktop">
                             <div className='column is-6 is-offset-3'>
                                 <div className='box'>

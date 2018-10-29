@@ -1,19 +1,14 @@
 import React, {Component, Fragment} from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStreetView, faImage, faMapMarkerAlt, faInfo} from '@fortawesome/free-solid-svg-icons'
-import {updateCurrentViewTo} from '../../actions/placecasts'
-import {getCurrentView} from '../../selectors/placecasts'
 
-
-class PlacecastViewToggler extends Component {
+export default class IndividualPlacecastViewToggle extends Component {
 
     static propTypes = {
         currentView: PropTypes.string,
         changeViewTo: PropTypes.func,
         displayExpertView: PropTypes.bool,
-
     }
 
     static defaultProps = {
@@ -73,16 +68,6 @@ class PlacecastViewToggler extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        currentView: getCurrentView(state)
-    };
-};
-const mapDispatchToProps = dispatch => {
-    return {
-        changeViewTo: (view) => dispatch(updateCurrentViewTo(view)),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlacecastViewToggler);
+
 
