@@ -52,6 +52,8 @@ class IndividualPlacecast extends React.Component {
                         containerElement={<div style={{height: '50px'}}/>}
                         mapElement={<span style={{display: 'none'}}/>}
                     >
+                        <div>{title}</div>
+                        <div>{coordinates}</div>
                         <IndividualPlacecastViewToggleContainer/>
                         <div className="columns is-desktop">
                             <div className='column is-6 is-offset-3'>
@@ -64,8 +66,6 @@ class IndividualPlacecast extends React.Component {
                                 <div className='box'>
                                     <audio controls src={audioSrc}></audio>
                                 </div>
-                                <div>{title}</div>
-                                <div>{coordinates}</div>
                             </div>
                         </div>
                     </GoogleMapsWrapper>
