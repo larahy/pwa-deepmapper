@@ -13,7 +13,7 @@ import {
     goToCreateStreetViewPage
 } from './navigation'
 
-//STEP 1 PHOTO //
+//PHOTO //
 export const loadPhotoFileSuccess = createAction('LOAD_PHOTO_FILE')
 export const loadPhotoFile = (file) => {
     return loadPhotoFileThunk(file)

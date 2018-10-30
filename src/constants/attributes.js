@@ -7,7 +7,8 @@ export const Scopes = {
     SESSION: 'session',
     EXPERTS: 'experts',
     APPLICATION: 'application',
-    PLACECASTS: 'placecasts'
+    PLACECASTS: 'placecasts',
+    EDIT: 'edit'
 }
 
 export const Headers = {

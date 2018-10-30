@@ -10,6 +10,7 @@ import {Headers} from '../../constants/attributes'
 import {goToHomePageThunk} from '../../actions/navigation'
 import GoogleMapsWrapper from '../../containers/Placecasts/Create/GoogleMapsWrapper'
 import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
+import PlaybackPanel from '../../components/Audio/PlaybackPanel'
 
 class IndividualPlacecast extends React.Component {
     static propTypes = {
@@ -63,9 +64,7 @@ class IndividualPlacecast extends React.Component {
                                     {mapElement}
                                     {expertElement}
                                 </div>
-                                <div className='box'>
-                                    <audio controls src={audioSrc}></audio>
-                                </div>
+                                <PlaybackPanel src={audioSrc} />
                             </div>
                         </div>
                     </GoogleMapsWrapper>

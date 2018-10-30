@@ -182,7 +182,7 @@ export default class PlaybackPanel extends React.Component {
 
 
     render() {
-        const {placecast, src} = this.props;
+        const {src} = this.props;
 
         return <div className="media">
             <div className="audio green-audio-player">
@@ -232,7 +232,6 @@ export default class PlaybackPanel extends React.Component {
 }
 
 PlaybackPanel.propTypes = {
-    placecast: PropTypes.object.isRequired,
     src: PropTypes.string.isRequired,
 }
 
