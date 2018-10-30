@@ -8,6 +8,7 @@ import {LoginReducer} from './LoginReducer'
 import { dependencies } from './dependencies'
 import {ExpertsReducer} from './ExpertsReducer'
 import {ApplicationReducer} from './ApplicationReducer'
+import {EditReducer} from './EditReducer'
 
 export const AppReducer = combineReducers({
     placecasts: PlacecastsReducer,
@@ -18,5 +19,6 @@ export const AppReducer = combineReducers({
     dependencies: dependencies,
     experts: ExpertsReducer,
     application: ApplicationReducer,
+    edit: EditReducer,
     routing: routerReducer
 });

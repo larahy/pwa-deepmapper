@@ -9,6 +9,11 @@ export const goToCreateMapPage = () => push('/create/map')
 export const goToCreateReviewPage = () => push('/create/review')
 export const goToLogin = () => push('/login')
 export const goToMyDeepMapper = () => push('/my-deepmapper')
+export const goToEditPlacecastPage = () => push('/edit-placecast')
+
+export const goToPlacecastPage = ({id}) => {
+    return push(`/placecasts/${id}`)
+}
 
 export const goToHomePageThunk = () => (dispatch) => {
     dispatch(updateCurrentViewTo('photo'))

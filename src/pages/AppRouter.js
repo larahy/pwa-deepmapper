@@ -16,6 +16,7 @@ import FooterContainer from '../containers/Shared/FooterContainer'
 import MyDeepmapperPage from './MyDeepmapperPage'
 import HomePage from './HomePage'
 import BecomeADeepmapperPage from './BecomeADeepmapperPage'
+import EditPlacecastPage from './EditPlacecastPage'
 
 const AppRouter = () => (
     <HashRouter >
@@ -34,6 +35,7 @@ const AppRouter = () => (
                 <Route path='/apply' component={BecomeADeepmapperPage}/>
                 <Route exact path='/placecasts' component={PlacecastsPage}/>
                 <Route path='/placecasts/:id' component={PlacecastPage}/>
+                <Route path='/edit-placecast' component={EditPlacecastPage}/>
                 <Redirect to="/"/>
             </Switch>
             <FooterContainer />

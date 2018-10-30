@@ -52,7 +52,8 @@ export const Fields = {
 
 export const Dependencies = {
     EXPERTS: 'experts',
-    PLACECASTS: 'placecasts'
+    PLACECASTS: 'placecasts',
+    EDIT: 'edit'
 }
 
 export const DependencyActions = {
