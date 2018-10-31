@@ -19,6 +19,7 @@ class EditPlacecastVisualsButton extends React.Component {
 
     render() {
         const {displaySelf} = this.props
+        console.log('display edit button', displaySelf)
         const buttonClasses = displaySelf ? 'button' : 'is-hidden'
         return (
             <a className={buttonClasses} onClick={this.updateIsEditing}> edit </a>

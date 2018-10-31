@@ -9,9 +9,8 @@ const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 export default class StreetViewStreetView extends Component {
     static propTypes = {
         onUpdatePosition: PropTypes.func,
-        onUpdatePOV: PropTypes.func,
         address: PropTypes.object.isRequired,
-
+        isEditing: PropTypes.bool
     }
 
     constructor(props) {
@@ -26,14 +25,30 @@ export default class StreetViewStreetView extends Component {
         this.setState({
             position: newPosition
         })
-        return this.props.onUpdatePosition({lat: this.state.position.lat(), lng: this.state.position.lng()})
+        if (this.props.isEditing) {
+            return this.props.onUpdatePosition({
+                lat: this.state.position.lat(),
+                lng: this.state.position.lng(),
+                pitch: this.state.pov.pitch,
+                heading: this.state.pov.heading,
+                zoom: this.state.pov.zoom
+            })
+        }
     }
 
     handleUpdatePOV(newPov) {
         this.setState({
             pov: newPov
         })
-        return this.props.onUpdatePOV({pitch: this.state.pov.pitch, heading: this.state.pov.heading, zoom: this.state.pov.zoom})
+        if (this.props.isEditing) {
+            return this.props.onUpdatePosition({
+                lat: this.state.position.lat(),
+                lng: this.state.position.lng(),
+                pitch: this.state.pov.pitch,
+                heading: this.state.pov.heading,
+                zoom: this.state.pov.zoom
+            })
+        }
     }
 
     render() {

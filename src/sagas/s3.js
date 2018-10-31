@@ -1,7 +1,12 @@
 import {call, put, select} from 'redux-saga/effects';
 import {
     fetchBucketContentsSucceeded,
-    fetchBucketContentsFailed, uploadSucceeded, uploadFailed, uploadPhotoSucceeded, uploadPhotoFailed,
+    fetchBucketContentsFailed,
+    uploadSucceeded,
+    uploadFailed,
+    uploadPhotoSucceeded,
+    uploadPhotoFailed,
+    uploadAudioSucceeded, uploadAudioFailed,
 } from '../actions/s3'
 import Promise from 'bluebird'
 import {snakeCase, words} from 'lodash'
@@ -17,7 +22,7 @@ import {
     getZoom
 } from '../selectors/create'
 import {postPlacecastSaga} from './placecasts'
-import {getEditableTitle, getNewPhotoFile} from '../selectors/edit'
+import {getEditableTitle, getNewPhotoSrc} from '../selectors/edit'
 
 var AWS = require('aws-sdk');
 
@@ -154,7 +159,7 @@ function uploadPhoto({placecast}) {
 
 export function* uploadPhotoSaga() {
     const [ photoSrc, title ] = yield [
-        select(getNewPhotoFile),
+        select(getNewPhotoSrc),
         select(getEditableTitle)
     ]
     const placecast = {title, photoSrc}
@@ -165,6 +170,40 @@ export function* uploadPhotoSaga() {
     } catch (error) {
         console.log('error', error)
         yield put({type: uploadPhotoFailed().type, error});
+    }
+
+}
+
+
+function uploadAudio({placecast}) {
+    let audioFileName = `${snakeCase(placecast.title)}.mpeg`
+    return fetchFile(placecast.audioSrc, audioFileName)
+        .then((file) => {
+            return putObject(file, audioFileName)
+        })
+        .then(response => {
+            audioFileName = response.Key
+            return audioFileName
+        })
+        .catch(err => {
+            console.log('error', err)
+        })
+
+}
+
+export function* uploadAudioSaga() {
+    const [ audioSrc, title ] = yield [
+        select(getAudioSrc),
+        select(getTitle)
+    ]
+    const placecast = {title, audioSrc}
+    try {
+        const response = yield call(uploadAudio, {placecast});
+        console.log('resp', response)
+        yield put({type: uploadAudioSucceeded().type, response});
+    } catch (error) {
+        console.log('error', error)
+        yield put({type: uploadAudioFailed().type, error});
     }
 
 }

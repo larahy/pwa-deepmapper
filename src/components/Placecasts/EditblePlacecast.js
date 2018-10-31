@@ -11,6 +11,7 @@ import GoogleMapsWrapper from '../../containers/Placecasts/Create/GoogleMapsWrap
 import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import EditablePhotoPanelContainer from '../../containers/Placecasts/EditablePhotoPanelContainer'
 import PlaybackPanel from '../Audio/PlaybackPanel'
+import {TitleAndCoordinates} from './TitleAndCoordinates'
 
 class EditablePlacecast extends React.Component {
     static propTypes = {
@@ -26,7 +27,6 @@ class EditablePlacecast extends React.Component {
         else {
             const {title, address, audioSrc, user_id} = placecast
             const {currentView} = this.props
-            const coordinates = `[ ${address.lat} , ${address.lng} ]`
             const streetViewElement = currentView === 'street-view' ?
                 <StaticStreetViewContainer address={address}/> : null
             const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer /> : null
@@ -52,8 +52,7 @@ class EditablePlacecast extends React.Component {
                         containerElement={<div style={{height: '50px'}}/>}
                         mapElement={<span style={{display: 'none'}}/>}
                     >
-                        <div>{title}</div>
-                        <div>{coordinates}</div>
+                        <TitleAndCoordinates address={address} title={title}/>
                         <IndividualPlacecastViewToggleContainer />
                         <div className="columns is-desktop">
                             <div className='column is-6 is-offset-3'>

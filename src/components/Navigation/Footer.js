@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHome} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
-import UploadPhotoFile from '../Photo/UploadPhotoFile'
+import UploadPhotoFile from '../Photo/CreateUploadPhotoFile'
 
 
 export default class Footer extends React.Component {
@@ -56,6 +56,7 @@ export default class Footer extends React.Component {
                     <div className="navbar-end">
 
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
+                        <NavLink to='/create/info' className="navbar-item" activeClassName='menu selected'>CREATE</NavLink>
                         <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
                         <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become
                             anExpert</NavLink>

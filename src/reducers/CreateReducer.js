@@ -15,6 +15,7 @@ import { attributesReducersFor } from './AttributesReducer'
 import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
 import {Scopes} from '../constants/attributes'
+import {saveNewAddressCoordinates} from '../actions/edit'
 const initialState = {
     photoSkipped: false,
     audioSkipped: false,
@@ -63,6 +64,9 @@ export const CreateReducer = handleActions({
     [updatePlacecastCoordinates]: (state, action) => {
         const mergedaddress = { ...state.address, ...action.payload };
         return ({ ...state, address: mergedaddress } )
+    },
+    [saveNewAddressCoordinates]: (state, action) => {
+        return ({ ...state, address: action.payload } )
     },
     [loadPhotoFileSuccess]: (state, action) => {
         return ({ ...state, photoFile: action.payload } )

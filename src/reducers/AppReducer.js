@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux'
 import {PlacecastsReducer} from './PlacecastsReducer'
 import {s3Reducer} from './s3Reducer'
-import {CreateReducer} from './createReducer'
+import {CreateReducer} from './createReducer2'
 import {SessionReducer} from './SessionReducer'
 import {LoginReducer} from './LoginReducer'
 import { dependencies } from './dependencies'

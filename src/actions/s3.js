@@ -12,3 +12,7 @@ export const uploadPhotoRequested = createAction('UPLOAD_PHOTO_REQUESTED')
 export const uploadPhotoSucceeded = createAction('UPLOAD_PHOTO_SUCCEEDED')
 export const uploadPhotoFailed = createAction('UPLOAD_PHOTO_FAILED')
 
+export const uploadAudioRequested = createAction('UPLOAD_AUDIO_REQUESTED')
+export const uploadAudioSucceeded = createAction('UPLOAD_AUDIO_SUCCEEDED')
+export const uploadAudioFailed = createAction('UPLOAD_AUDIO_FAILED')
+

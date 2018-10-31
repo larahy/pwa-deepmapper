@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
-import {selectPlacecastAddress} from '../../../actions/create'
+import {selectPlacecastAddress} from '../../../actions/create2'
 import SearchBar from '../../../components/Search/SearchBar'
-
 
 export const mapDispatchToProps = dispatch => {
     return {

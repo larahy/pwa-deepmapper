@@ -13,6 +13,18 @@ import {
     goToCreateStreetViewPage
 } from './navigation'
 
+//STEP 1 INFO //
+export const infoStepCompletedSuccess = createAction('INFO_STEP_COMPLETED_SUCCESS')
+export const selectPlacecastAddress = createAction('SELECT_PLACECAST_ADDRESS')
+
+export const infoStepCompleted = () => {
+    return infoStepCompletedThunk()
+}
+export const infoStepCompletedThunk = () => (dispatch) => {
+    dispatch(infoStepCompletedSuccess())
+    dispatch(push('/create/photo'))
+    // return proceedOrValidateFor(Tags.INFO, '/create/photo', getState(), dispatch, infoStepCompletedSuccess)
+}
 //PHOTO //
 export const loadPhotoFileSuccess = createAction('LOAD_PHOTO_FILE')
 export const loadPhotoFile = (file) => {
@@ -67,7 +79,6 @@ export const audioStepCompletedThunk = (audioSrc) => (dispatch) => {
 }
 
 //STEP 3 STREET-VIEW //
-export const selectPlacecastAddress = createAction('SELECT_PLACECAST_ADDRESS')
 export const updatePlacecastCoordinates = createAction('UPDATE_PLACECAST_COORDINATES')
 export const addPlacecastPOV = createAction('ADD_PLACECAST_POV')
 //SKIP//

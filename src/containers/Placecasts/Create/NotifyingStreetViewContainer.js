@@ -1,22 +1,21 @@
 import {connect} from 'react-redux'
 import StreetView from '../../../components/Placecasts/Create/StreetView'
 import {getAddress} from '../../../selectors/create'
-import {updatePlacecastCoordinates, addPlacecastPOV} from '../../../actions/create'
+import {editAddress} from '../../../actions/edit'
+import {getIsEditing} from '../../../selectors/edit'
 
 
 export const mapStateToProps = (state) => {
     return {
-        address: getAddress(state)
+        address: getAddress(state),
+        isEditing: getIsEditing(state)
     }
 }
 
 export const mapDispatchToProps = dispatch => {
     return {
         onUpdatePosition: coords => {
-            dispatch(updatePlacecastCoordinates(coords))
-        },
-        onUpdatePOV: preferences => {
-            dispatch(addPlacecastPOV(preferences))
+            dispatch(editAddress(coords))
         }
     }
 }

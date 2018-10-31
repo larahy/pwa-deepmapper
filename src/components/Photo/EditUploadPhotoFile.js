@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
 import imageCompression from 'browser-image-compression';
-import {selectPhoto} from '../../actions/edit'
+import {editUploadPhotoFile} from '../../actions/edit'
 
-class SelectPhotoButton extends Component {
+class EditUploadPhotoFile extends Component {
 
 
     handleLoadLocalFile = (event) => {
@@ -49,14 +49,14 @@ class SelectPhotoButton extends Component {
     }
 }
 
-SelectPhotoButton.propTypes = {
+EditUploadPhotoFile.propTypes = {
     onSelectPhoto: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSelectPhoto: (file) => dispatch(selectPhoto(file)),
+        onSelectPhoto: (file) => dispatch(editUploadPhotoFile(file)),
     };
 };
 
-export default connect(null, mapDispatchToProps)(SelectPhotoButton);
+export default connect(null, mapDispatchToProps)(EditUploadPhotoFile);

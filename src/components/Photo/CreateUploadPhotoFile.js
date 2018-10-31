@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
-import {loadPhotoFile} from '../../actions/create'
+import {createUploadPhotoFile} from '../../actions/create2'
 import imageCompression from 'browser-image-compression';
 
-class UploadPhotoFile extends Component {
+class CreateUploadPhotoFile extends Component {
 
 
     handleLoadLocalFile = (event) => {
@@ -40,7 +40,7 @@ class UploadPhotoFile extends Component {
                             <span className="file-icon">
                                 <i className="fas fa-plus"></i>
                             </span>
-                            <span className="file-label">Choose a different photo</span>
+                            <span className="file-label">UPLOAD IMAGE</span>
                         </span>
                     </label>
                 </div>
@@ -49,14 +49,14 @@ class UploadPhotoFile extends Component {
     }
 }
 
-UploadPhotoFile.propTypes = {
+CreateUploadPhotoFile.propTypes = {
     onFileLoaded: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFileLoaded: (file) => dispatch(loadPhotoFile(file)),
+        onFileLoaded: (file) => dispatch(createUploadPhotoFile(file)),
     };
 };
 
-export default connect(null, mapDispatchToProps)(UploadPhotoFile);
+export default connect(null, mapDispatchToProps)(CreateUploadPhotoFile);

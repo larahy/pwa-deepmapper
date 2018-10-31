@@ -4,8 +4,6 @@ import StandaloneSearchBox from 'react-google-maps/lib/components/places/Standal
 
 import './Search.scss'
 
-// import GoogleMap from '../Maps/GoogleMap'
-
 class Search extends Component {
     static propTypes = {
         onSelectAddress: PropTypes.func,

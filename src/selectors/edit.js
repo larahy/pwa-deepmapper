@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect'
-import {propertyOrEmptyString, propertyOrNull} from './common'
+import {propertyOrEmptyObject, propertyOrEmptyString, propertyOrNull} from './common'
 import {Scopes} from '../constants/attributes'
 
 export const getEditablePlacecast = state => state.edit.placecast
@@ -11,8 +11,11 @@ export const getEditablePhotoSrc = createSelector([getEditablePlacecast], placec
 export const getEditableTitle = createSelector([getEditablePlacecast], placecast => {
     return propertyOrEmptyString(placecast, 'title')
 })
-export const getNewPhotoFile = createSelector([getEdit], edit => {
-    return propertyOrEmptyString(edit, 'newPhotoFile')
+export const getNewPhotoSrc = createSelector([getEdit], edit => {
+    return propertyOrEmptyString(edit, 'newPhotoSrc')
+})
+export const getNewAddress = createSelector([getEdit], edit => {
+    return propertyOrEmptyObject(edit, 'newAddress')
 })
 export const getIsEditing = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'isEditing')

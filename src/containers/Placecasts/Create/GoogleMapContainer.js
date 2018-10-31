@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {getAddress} from '../../../selectors/create'
-import {updatePlacecastCoordinates} from '../../../actions/create'
 import GoogleMap from '../../../components/Maps/GoogleMap'
+import {editAddress} from '../../../actions/edit'
 
 export const mapStateToProps = (state, ownProps) => {
     return {
@@ -13,7 +13,7 @@ export const mapStateToProps = (state, ownProps) => {
 export const mapDispatchToProps = dispatch => {
     return {
         onUpdatePosition: coords => {
-            dispatch(updatePlacecastCoordinates(coords))
+            dispatch(editAddress(coords))
         }
     }
 }

@@ -13,7 +13,6 @@ import {findAttributeValueFor} from '../helpers/queries'
 export const getCreate = state => propertyOrNull(state, Scopes.CREATE)
 
 export const getCreateAttributes = state => propertyOrEmptyArray(state, [Scopes.CREATE, 'attributes'])
-export const getAddress = state => propertyOrEmptyObject(state, [Scopes.CREATE, 'address'])
 
 const getCreateAttributesForTag = tag => createSelector(
     [getCreateAttributes],
@@ -30,7 +29,11 @@ export const getTitle = createSelector(
     attributes => findAttributeValueFor(attributes, 'title'))
 
 export const getPhotoSrc = createSelector([getCreate], create => {
-    return propertyOrEmptyString(create, 'photoFile')
+    return propertyOrEmptyString(create, 'photoSrc')
+})
+
+export const getAddress = createSelector([getCreate], create => {
+    return propertyOrEmptyObject(create, 'address')
 })
 
 export const getAudioSrc = createSelector([getCreate], create => {
@@ -54,4 +57,3 @@ export const getHeading = createSelector([getAddress], create => {
 export const getZoom = createSelector([getAddress], create => {
     return propertyOrZero(create, 'zoom')
 })
-// export const getAddress = createSelector([getCreate], create => propertyOrEmptyObject(create, 'address'))
