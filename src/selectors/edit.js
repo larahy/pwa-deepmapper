@@ -8,6 +8,9 @@ export const getEdit = state => propertyOrNull(state, Scopes.EDIT)
 export const getEditablePhotoSrc = createSelector([getEditablePlacecast], placecast => {
     return propertyOrEmptyString(placecast, 'photoSrc')
 })
+export const getEditableTitle = createSelector([getEditablePlacecast], placecast => {
+    return propertyOrEmptyString(placecast, 'title')
+})
 export const getNewPhotoFile = createSelector([getEdit], edit => {
     return propertyOrEmptyString(edit, 'newPhotoFile')
 })

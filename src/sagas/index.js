@@ -1,8 +1,8 @@
 import {takeLatest} from 'redux-saga/effects';
 import {fetchPlacecastsRequested} from '../actions/placecasts';
-import {uploadRequested} from '../actions/s3';
+import {uploadPhotoRequested, uploadRequested} from '../actions/s3';
 import {placecastsWorkerSaga} from './placecasts'
-import {uploadSaga} from './s3'
+import {uploadPhotoSaga, uploadSaga} from './s3'
 import {loginSaga} from './session'
 import {loginRequested} from '../actions/session'
 import {fetchDependenciesRequested} from '../actions/dependencies'
@@ -18,5 +18,6 @@ export function* watcherSaga() {
     yield takeLatest(fetchLoggedInExpertRequested, fetchLoggedInExpertSaga);
     yield takeLatest(fetchDependenciesRequested, fetchDependencies);
     yield takeLatest(becomeAnExpertRequested, applicationSaga);
+    yield takeLatest(uploadPhotoRequested, uploadPhotoSaga);
 
 }

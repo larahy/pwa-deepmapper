@@ -1,11 +1,14 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux';
-import {updateIsEditing} from '../../actions/edit'
-import { getDisplaySaveOrCancelButtons} from '../../selectors/edit'
 import './styles.scss'
 
-class SaveOrCancelButtons extends React.Component {
+export default class SaveOrCancelButtons extends React.Component {
+
+    static propTypes = {
+        displaySelf: PropTypes.bool,
+        onSave: PropTypes.func,
+        onCancel: PropTypes.func,
+    }
 
     constructor(props) {
         super(props)
@@ -34,25 +37,4 @@ class SaveOrCancelButtons extends React.Component {
         )
     }
 }
-
-SaveOrCancelButtons.propTypes = {
-    displaySelf: PropTypes.bool,
-    onSave: PropTypes.func,
-    onCancel: PropTypes.func,
-}
-
-const mapStateToProps = (state) => {
-    return {
-        displaySelf: getDisplaySaveOrCancelButtons(state)
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSave: (value) => dispatch(updateIsEditing(value)),
-        onCancel: (value) => dispatch(updateIsEditing(value))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SaveOrCancelButtons);
 

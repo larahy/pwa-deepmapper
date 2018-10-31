@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import {populateEdit, selectPhotoSuccess, updateIsEditing} from '../actions/edit'
+import {cancelPhotoEdit, populateEdit, selectPhotoSuccess, updateIsEditing} from '../actions/edit'
+import {uploadPhotoFailed, uploadPhotoSucceeded} from '../actions/s3'
 const initialState = {
     placecast: {},
     isEditing: false,
@@ -16,5 +17,14 @@ export const EditReducer = handleActions({
     },
     [updateIsEditing]: (state, action) => {
         return ({ ...state, isEditing: action.payload, displayEditVisualsButton: false } )
+    },
+    [uploadPhotoSucceeded]: (state) => {
+        return ({ ...state, isEditing: false, displaySaveOrCancelButtons: false, displayEditVisualsButton: true} )
+    },
+    [uploadPhotoFailed]: (state, action) => {
+        return ({ ...state, isEditing: false, errors: action.error } )
+    },
+    [cancelPhotoEdit]: (state) => {
+        return ({ ...state, isEditing: false, newPhotoFile: null, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
     },
 }, initialState)

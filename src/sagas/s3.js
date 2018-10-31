@@ -1,7 +1,7 @@
 import {call, put, select} from 'redux-saga/effects';
 import {
     fetchBucketContentsSucceeded,
-    fetchBucketContentsFailed, uploadSucceeded, uploadFailed,
+    fetchBucketContentsFailed, uploadSucceeded, uploadFailed, uploadPhotoSucceeded, uploadPhotoFailed,
 } from '../actions/s3'
 import Promise from 'bluebird'
 import {snakeCase, words} from 'lodash'
@@ -17,6 +17,7 @@ import {
     getZoom
 } from '../selectors/create'
 import {postPlacecastSaga} from './placecasts'
+import {getEditableTitle, getNewPhotoFile} from '../selectors/edit'
 
 var AWS = require('aws-sdk');
 
@@ -82,7 +83,7 @@ const putObject = function putObject(file, filename) {
 }
 
 
-function uploadPhoto({placecast}) {
+function uploadPhotoAndAudio({placecast}) {
     let photoFileName
     let audioFileName = `${snakeCase(placecast.title)}.mpeg`
     const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
@@ -122,7 +123,7 @@ export function* uploadSaga() {
     ]
     const placecast = {heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc}
     try {
-        const response = yield call(uploadPhoto, {placecast});
+        const response = yield call(uploadPhotoAndAudio, {placecast});
         yield put({type: uploadSucceeded().type, response});
         yield call(postPlacecastSaga, { response })
     } catch (error) {
@@ -131,4 +132,42 @@ export function* uploadSaga() {
     }
 
 }
+
+function uploadPhoto({placecast}) {
+    let photoFileName
+    const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
+    return Promise.resolve(compressedPhotoFilePromise)
+        .then((file) => {
+            const fileType = words(file.type, '[^\\/]+$')
+            photoFileName = `${snakeCase(placecast.title)}.${fileType[0]}`
+            return putObject(file, photoFileName)
+        })
+        .then(response => {
+            photoFileName = response.Key
+            return {photoFileName}
+        })
+        .catch(err => {
+            console.log('error', err)
+        })
+
+}
+
+export function* uploadPhotoSaga() {
+    const [ photoSrc, title ] = yield [
+        select(getNewPhotoFile),
+        select(getEditableTitle)
+    ]
+    const placecast = {title, photoSrc}
+    try {
+        const response = yield call(uploadPhoto, {placecast});
+        console.log('resp', response)
+        yield put({type: uploadPhotoSucceeded().type, response});
+    } catch (error) {
+        console.log('error', error)
+        yield put({type: uploadPhotoFailed().type, error});
+    }
+
+}
+
+
 

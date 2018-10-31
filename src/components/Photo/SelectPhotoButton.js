@@ -19,6 +19,7 @@ class SelectPhotoButton extends Component {
                 return compressedFile
             })
             .catch(function (error) {
+                //TODO: HANDLE ERRORS HERE//
                 console.log(error.message);
             });
         return Promise.resolve(compressedFilePromise)

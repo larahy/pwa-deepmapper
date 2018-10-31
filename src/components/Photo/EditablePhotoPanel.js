@@ -2,7 +2,9 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import SelectPhotoButton from './SelectPhotoButton'
 import EditPlacecastVisualsButton from '../Placecasts/EditPlacecastVisualsButton'
-import SaveOrCancelButtons from '../Placecasts/SaveOrCancelButtons'
+import {uploadPhotoRequested} from '../../actions/s3'
+import {cancelPhotoEdit} from '../../actions/edit'
+import SaveOrCancelButtonsContainer from '../../containers/Placecasts/SaveOrCancelButtonsContainer'
 
 
 class EditablePhotoPanel extends React.Component {
@@ -18,7 +20,9 @@ class EditablePhotoPanel extends React.Component {
             <Fragment>
                 <EditPlacecastVisualsButton />
                 {mainElement}
-                <SaveOrCancelButtons />
+                <SaveOrCancelButtonsContainer
+                    onCancel={dispatch => (dispatch(cancelPhotoEdit()))}
+                    onSave={dispatch => (dispatch(uploadPhotoRequested()))}/>
             </Fragment>
         )
     }

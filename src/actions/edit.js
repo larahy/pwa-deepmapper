@@ -22,3 +22,4 @@ export const selectPhotoThunk = (file) => (dispatch) => {
 }
 
 export const updateIsEditing = createAction('UPDATE_IS_EDITING')
+export const cancelPhotoEdit = createAction('CANCEL_PHOTO_EDIT')
