@@ -27,7 +27,6 @@ export const s3Reducer = handleActions({
         return { ...state, fetching: false, items: null, error: action.error }
     },
     [uploadFailed]: (state, action) => {
-        console.log('action', action.error.message)
         return {...state, error: action.error.message, uploadProcessing: false }
     },
 }, initialState)

@@ -5,9 +5,9 @@ import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import {CreateSequenceInstructions} from '../../components/Placecasts/Create/CreateSequenceInstructions'
+import {CreateSequenceInstructions} from '../../Unused/CreateSequenceInstructions'
 import {step3Skipped} from '../../actions/create2'
-import {audioStepCompleted} from '../../actions/create2'
+import {audioAdded} from '../../actions/create2'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
 import {Headers} from '../../constants/attributes'
 import {goToCreatePhotoPage} from '../../actions/navigation'
@@ -122,7 +122,7 @@ class AudioPage2 extends Component {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        loadAudio: (file) => dispatch(audioStepCompleted(file)),
+        loadAudio: (file) => dispatch(audioAdded(file)),
     }
 }
 

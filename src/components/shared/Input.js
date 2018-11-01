@@ -69,7 +69,7 @@ export default class Input extends Field {
     render() {
         const {value} = this.state
         const {name, description, type, maxLength, disabled, errors} = this.props
-        const inputClasses = !isEmpty(errors) ? 'input is-primary is-danger' : 'input is-primary'
+        const inputClasses = !isEmpty(errors) ? 'input is-danger' : 'input'
         // const helperClasses = !isEmpty(errors) ? 'help is-danger' : 'help'
         const inputElement = (
             <div className="control">

@@ -1,11 +1,9 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome} from '@fortawesome/free-solid-svg-icons'
+import {faHome, faPlus} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
-import UploadPhotoFile from '../Photo/CreateUploadPhotoFile'
-
 
 export default class Footer extends React.Component {
     static propTypes = {
@@ -32,7 +30,10 @@ export default class Footer extends React.Component {
     }
 
     render() {
-        const createIcon = this.props.isLoggedIn ? <UploadPhotoFile/> : null
+        const createIcon = this.props.isLoggedIn ?
+            <Link to="/create" className="navbar-item">
+                <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
+            </Link> : null
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
@@ -41,9 +42,6 @@ export default class Footer extends React.Component {
                     <a className="navbar-item" onClick={this.handleGoHome}>
                         <span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>
                     </a>
-                    {/*<Link to="/" className="navbar-item">*/}
-                    {/*<span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>*/}
-                    {/*</Link>*/}
                     {createIcon}
                     <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
@@ -56,10 +54,8 @@ export default class Footer extends React.Component {
                     <div className="navbar-end">
 
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
-                        <NavLink to='/create/info' className="navbar-item" activeClassName='menu selected'>CREATE</NavLink>
                         <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-                        <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become
-                            anExpert</NavLink>
+                        <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become anExpert</NavLink>
                         <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
                     </div>
                 </div>

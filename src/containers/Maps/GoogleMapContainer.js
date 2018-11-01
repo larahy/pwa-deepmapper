@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
-import {getAddress} from '../../../selectors/create'
-import GoogleMap from '../../../components/Maps/GoogleMap'
-import {editAddress} from '../../../actions/edit'
+import {getAddress} from '../../selectors/create'
+import GoogleMap from '../../components/Maps/GoogleMap'
+import {editAddress} from '../../actions/edit'
 
 export const mapStateToProps = (state, ownProps) => {
     return {

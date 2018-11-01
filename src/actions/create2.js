@@ -47,14 +47,15 @@ export const step3SkippedThunk = () => dispatch => {
     dispatch(goToCreateReviewPage())
 }
 
-export const audioStepCompletedSuccess = createAction('AUDIO_STEP_COMPLETED_SUCCESS')
-export const audioStepCompleted = (audioSrc) => {
-    return audioStepCompletedThunk(audioSrc)
+export const audioAddedSuccess = createAction('AUDIO_ADDED_SUCCESS')
+export const audioAdded = (audioSrc) => {
+    return audioAddedThunk(audioSrc)
 }
-export const audioStepCompletedThunk = (audioSrc) => (dispatch) => {
-    dispatch(audioStepCompletedSuccess(audioSrc))
+export const audioAddedThunk = (audioSrc) => (dispatch) => {
+    dispatch(audioAddedSuccess(audioSrc))
     dispatch(goToCreateReviewPage())
 }
+
 
 //REVIEW/EDIT//
 

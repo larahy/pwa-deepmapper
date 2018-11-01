@@ -1,5 +1,7 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSave, faTrashAlt, faEye} from '@fortawesome/free-solid-svg-icons'
 
 export default class SaveOrPublishOrDeleteIcons extends React.Component {
 
@@ -34,13 +36,12 @@ export default class SaveOrPublishOrDeleteIcons extends React.Component {
 
     render() {
         const {isPublishable} = this.props
-        console.log('is publishable', isPublishable)
         const publishButtonClasses = isPublishable ? 'button is-primary' : 'button'
         return (
             <Fragment>
-                <a className='button' onClick={this.onSave}> Save</a>
-                <a className={publishButtonClasses} disabled={!isPublishable} onClick={this.onPublish}> Publish</a>
-                <a className='button' onClick={this.onDelete}> Delete</a>
+                <a className='button' onClick={this.onSave}><span className="icon"><FontAwesomeIcon icon={faSave}/></span></a>
+                <a className={publishButtonClasses} disabled={!isPublishable} onClick={this.onPublish}><span className="icon"><FontAwesomeIcon icon={faEye}/></span></a>
+                <a className='button' onClick={this.onDelete}><span className="icon"><FontAwesomeIcon icon={faTrashAlt}/></span></a>
             </Fragment>
         )
     }

@@ -1,14 +1,14 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react'
-import GoogleMapsWrapper from '../containers/Placecasts/Create/GoogleMapsWrapper'
-import NotifyingSearchBar from '../containers/Placecasts/Create/NotifyingSearchBar'
+import GoogleMapsWrapper from '../containers/Maps/GoogleMapsWrapper'
+import NotifyingSearchBar from '../containers/Maps/NotifyingSearchBar'
 import {getAddress} from '../selectors/create'
 import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
 import {streetViewStepCompleted} from '../actions/create'
-import NotifyingStreetViewContainer from '../containers/Placecasts/Create/NotifyingStreetViewContainer'
+import NotifyingStreetViewContainer from '../containers/Maps/NotifyingStreetViewContainer'
 import {Headers} from '../constants/attributes'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 import {goToCreateAudioPage} from '../actions/navigation'

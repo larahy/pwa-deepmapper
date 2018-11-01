@@ -9,7 +9,6 @@ export default class ReactGoogleMapsMarkers extends React.Component {
         const { latLng } = evt;
         const lat = latLng.lat();
         const lng = latLng.lng();
-        console.log(lat, lng);
     };
     render() {
         return (

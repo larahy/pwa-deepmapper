@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
 import PropTypes from 'prop-types'
 import {getAddress, isReadyToSubmitInfo} from '../../selectors/create'
-import SearchBar from '../../containers/Placecasts/Create/NotifyingSearchBar'
-import UpdatableInfoFields from '../../containers/Placecasts/Create/UpdatableInfoFields'
-import GoogleMapsWrapper from '../../containers/Placecasts/Create/GoogleMapsWrapper'
+import SearchBar from '../../containers/Maps/NotifyingSearchBar'
+import UpdatableInfoFields from '../../containers/Placecasts/UpdatableInfoFields'
+import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
 import {Headers} from '../../constants/attributes'
-import CreateSequenceContinueButtonContainer from '../../containers/Placecasts/CreateSequenceContinueButtonContainer'
+import CreateSequenceContinueButtonContainer from '../../Unused/CreateSequenceContinueButtonContainer'
 import {step1Completed} from '../../actions/create2'
-import {CreateSequenceInstructions} from '../../components/Placecasts/Create/CreateSequenceInstructions'
+import {CreateSequenceInstructions} from '../../Unused/CreateSequenceInstructions'
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 

@@ -36,14 +36,12 @@ class Search extends Component {
     render() {
         return (
             <Fragment>
-                <div className="column">
-                    <StandaloneSearchBox
-                        ref={this.onSearchBoxMounted}
-                        onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
-                    >
-                        <input type='text' placeholder='Type an address...' className='searchBox'/>
-                    </StandaloneSearchBox>
-                </div>
+                <StandaloneSearchBox
+                    ref={this.onSearchBoxMounted}
+                    onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
+                >
+                    <input type='text' placeholder='Type an address...' className='searchBox'/>
+                </StandaloneSearchBox>
             </Fragment>
         )
     }

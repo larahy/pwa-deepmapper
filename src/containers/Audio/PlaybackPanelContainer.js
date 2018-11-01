@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import PlaybackPanel from '../../../components/Audio/PlaybackPanel'
+import PlaybackPanel from '../../components/Audio/PlaybackPanel'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {

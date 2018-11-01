@@ -20,11 +20,26 @@ export const getNewAddress = createSelector([getEdit], edit => {
 export const getIsEditing = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'isEditing')
 })
+export const getIsEditingAudio = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'isEditingAudio')
+})
 
 export const getDisplayEditVisualsButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayEditVisualsButton')
 })
 
+export const getDisplayEditAudioButton = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'displayEditAudioButton')
+})
+
 export const getDisplaySaveOrCancelButtons = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displaySaveOrCancelButtons')
+})
+
+export const getDisplaySaveOrCancelAudioButtons = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'displaySaveOrCancelAudioButtons')
+})
+
+export const getNewAudioSrc = createSelector([getEdit], edit => {
+    return propertyOrEmptyString(edit, 'newAudioSrc')
 })

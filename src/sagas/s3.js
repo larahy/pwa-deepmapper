@@ -165,7 +165,6 @@ export function* uploadPhotoSaga() {
     const placecast = {title, photoSrc}
     try {
         const response = yield call(uploadPhoto, {placecast});
-        console.log('resp', response)
         yield put({type: uploadPhotoSucceeded().type, response});
     } catch (error) {
         console.log('error', error)
@@ -199,7 +198,6 @@ export function* uploadAudioSaga() {
     const placecast = {title, audioSrc}
     try {
         const response = yield call(uploadAudio, {placecast});
-        console.log('resp', response)
         yield put({type: uploadAudioSucceeded().type, response});
     } catch (error) {
         console.log('error', error)

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import SaveOrCancelButtons from '../../components/Placecasts/SaveOrCancelButtons'
-import {getDisplaySaveOrCancelButtons} from '../../selectors/edit'
+import SaveOrCancelButtons from '../components/Placecasts/SaveOrCancelButtons'
+import {getDisplaySaveOrCancelButtons} from '../selectors/edit'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {

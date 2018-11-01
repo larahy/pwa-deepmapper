@@ -2,6 +2,8 @@ import { push } from 'react-router-redux'
 import {updateCurrentViewTo} from './placecasts'
 
 export const goToHomePage = () => push('/')
+export const goToCreatePage = () => push('/create')
+
 export const goToCreatePhotoPage = () => push('/create/photo')
 export const goToCreateAudioPage = () => push('/create/audio')
 export const goToCreateStreetViewPage = () => push('/create/street-view')

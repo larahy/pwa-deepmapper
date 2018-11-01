@@ -1,8 +1,8 @@
 import {connect} from 'react-redux'
-import StreetView from '../../../components/Placecasts/Create/StreetView'
-import {getAddress} from '../../../selectors/create'
-import {editAddress} from '../../../actions/edit'
-import {getIsEditing} from '../../../selectors/edit'
+import StreetView from '../../components/Maps/StreetView'
+import {getAddress} from '../../selectors/create'
+import {editAddress} from '../../actions/edit'
+import {getIsEditing} from '../../selectors/edit'
 
 
 export const mapStateToProps = (state) => {

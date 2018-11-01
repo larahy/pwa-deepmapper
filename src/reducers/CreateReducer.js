@@ -83,7 +83,6 @@ export const CreateReducer = handleActions({
         }
     },
     [postPlacecastFailed().type]: (state, action) => {
-        console.log('action in post failure', )
         return { ...state,
             uploadProcessing: false,
             published: false,

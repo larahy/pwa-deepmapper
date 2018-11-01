@@ -1,9 +1,8 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import EditPlacecastVisualsButton from '../Placecasts/EditPlacecastVisualsButton'
-import SaveOrCancelButtonsContainer from '../../containers/Placecasts/SaveOrCancelButtonsContainer'
 import {cancelMapEdit, saveNewAddress} from '../../actions/edit'
-import NotifyingStreetViewContainer from '../../containers/Placecasts/Create/NotifyingStreetViewContainer'
+import NotifyingStreetViewContainer from '../../containers/Maps/NotifyingStreetViewContainer'
+import EditVisualsButtonsContainer from '../../containers/Placecasts/EditVisualsButtonsContainer'
 
 class EditableStreetView extends React.Component {
 
@@ -12,17 +11,10 @@ class EditableStreetView extends React.Component {
         return (
             <Fragment>
                 <section>
-                    <SaveOrCancelButtonsContainer
+                    <EditVisualsButtonsContainer
                         onCancel={dispatch => (dispatch(cancelMapEdit()))}
                         onSave={dispatch => (dispatch(saveNewAddress(newAddress)))}/>
-                </section>
-                <section>
-                    <EditPlacecastVisualsButton/>
-                </section>
-                <section className='section'>
-                    <div className='container'>
-                        <NotifyingStreetViewContainer/>
-                    </div>
+                    <NotifyingStreetViewContainer/>
                 </section>
             </Fragment>
         )

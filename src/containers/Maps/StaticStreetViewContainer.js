@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
-import StreetView from '../../../components/Placecasts/Create/StreetView'
-import {getAddress} from '../../../selectors/create'
+import StreetView from '../../components/Maps/StreetView'
+import {getAddress} from '../../selectors/create'
 
 export const mapStateToProps = (state, ownProps) => {
     return {

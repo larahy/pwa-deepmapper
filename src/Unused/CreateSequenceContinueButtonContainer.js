@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import CreateSequenceContinueButton from '../../components/Placecasts/Create/CreateSequenceContinueButton'
+import CreateSequenceContinueButton from './CreateSequenceContinueButton'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
