@@ -5,7 +5,7 @@ import vmsg from 'vmsg';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
-import {CreateSequenceInstructions} from '../../Unused/CreateSequenceInstructions'
+import {CreateSequenceInstructions} from '../CreateSequenceInstructions'
 import {step3Skipped} from '../../actions/create2'
 import {audioAdded} from '../../actions/create2'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'

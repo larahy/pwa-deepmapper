@@ -75,3 +75,6 @@ export const publishPlacecastThunk = () => (dispatch) => {
     dispatch(uploadRequested())
 }
 
+export const populateCreate = createAction('POPULATE_CREATE')
+
+

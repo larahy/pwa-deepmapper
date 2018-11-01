@@ -8,9 +8,9 @@ import UpdatableInfoFields from '../../containers/Placecasts/UpdatableInfoFields
 import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
 import {Headers} from '../../constants/attributes'
-import CreateSequenceContinueButtonContainer from '../../Unused/CreateSequenceContinueButtonContainer'
+import CreateSequenceContinueButtonContainer from '../CreateSequenceContinueButtonContainer'
 import {step1Completed} from '../../actions/create2'
-import {CreateSequenceInstructions} from '../../Unused/CreateSequenceInstructions'
+import {CreateSequenceInstructions} from '../CreateSequenceInstructions'
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
 

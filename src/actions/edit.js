@@ -1,5 +1,6 @@
 import createAction from 'redux-actions/es/createAction'
 import { goToEditPlacecastPage} from './navigation'
+import {populateCreate} from './create2'
 
 export const updateIsEditing = createAction('UPDATE_IS_EDITING')
 export const populateEdit = createAction('POPULATE_EDIT')
@@ -9,6 +10,7 @@ export const editPlacecast = ({placecast}) => {
 }
 export const editPlacecastThunk = (placecast) => (dispatch) => {
     dispatch(populateEdit(placecast))
+    dispatch(populateCreate(placecast))
     dispatch(goToEditPlacecastPage())
 }
 //PHOTO //

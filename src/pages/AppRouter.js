@@ -3,7 +3,7 @@
 import React, {Fragment} from 'react';
 import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 import PlacecastsPage from './PlacecastsPage'
-import NewCreatePage from './CreateSequence2/NewCreatePage'
+import NewCreatePage from './NewCreatePage'
 import MapPage from '../components/Maps/Mapbox/MapPage'
 import LoginPage from './LoginPage'
 import {AboutPage} from './AboutPage'

@@ -1,27 +1,19 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {publishPlacecast, savePlacecast} from '../../actions/create2'
-import MapContainer from '../../containers/Maps/GoogleMapContainer'
-import {
-    getAddress,
-    getAudioSrc,
-    getPhotoSrc,
-    getTitle,
-} from '../../selectors/create'
+import {publishPlacecast, savePlacecast} from '../actions/create2'
 import PropTypes from 'prop-types'
-import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
-import {Headers} from '../../constants/attributes'
-import {goToCreateAudioPage} from '../../actions/navigation'
-import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
-import {getCurrentView} from '../../selectors/placecasts'
-import {updateCurrentViewTo} from '../../actions/placecasts'
-import SaveOrPublishOrDeleteIconsContainer from '../../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
-import EditablePhotoPanelContainer from '../../containers/Photo/EditablePhotoPanelContainer'
-import EditableMapContainer from '../../containers/Maps/EditableMapContainer'
-import EditableStreetViewContainer from '../../containers/Maps/EditableStreetViewContainer'
-import EditableTitleAndSearchBarContainer from '../../containers/Placecasts/EditableTitleAndSearchBarContainer'
-import EditableAudioPanelContainer from '../../containers/Audio/EditableAudioPanelContainer'
+import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
+import {Headers} from '../constants/attributes'
+import {goToCreateAudioPage, goToMyDeepMapper} from '../actions/navigation'
+import IndividualPlacecastViewToggleContainer from '../containers/Placecasts/IndividualPlacecastViewToggleContainer'
+import {getCurrentView} from '../selectors/placecasts'
+import SaveOrPublishOrDeleteIconsContainer from '../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
+import EditablePhotoPanelContainer from '../containers/Photo/EditablePhotoPanelContainer'
+import EditableMapContainer from '../containers/Maps/EditableMapContainer'
+import EditableStreetViewContainer from '../containers/Maps/EditableStreetViewContainer'
+import EditableTitleAndSearchBarContainer from '../containers/Placecasts/EditableTitleAndSearchBarContainer'
+import EditableAudioPanelContainer from '../containers/Audio/EditableAudioPanelContainer'
 
 class NewCreatePage extends Component {
 
@@ -40,7 +32,7 @@ class NewCreatePage extends Component {
                     displayBackButton={true}
                     displayNextButton={false}
                     title={Headers.DEEPMAPPER}
-                    onBack={goToCreateAudioPage()}/>
+                    onBack={goToMyDeepMapper()}/>
                 <section className="section">
                     <div className='container info-area'>
                         <div className="columns is-mobile">
@@ -78,11 +70,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        changeViewTo: (view) => dispatch(updateCurrentViewTo(view)),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCreatePage);
+export default connect(mapStateToProps)(NewCreatePage);
 

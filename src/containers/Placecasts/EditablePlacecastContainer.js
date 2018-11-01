@@ -1,19 +1,19 @@
 import {connect} from 'react-redux'
-
 import {getCurrentView} from '../../selectors/placecasts'
 import EditablePlacecast from '../../components/Placecasts/EditblePlacecast'
-import {getEditablePlacecast} from '../../selectors/edit'
+import {updateCurrentViewTo} from '../../actions/placecasts'
 
 export const mapStateToProps = (state) => {
     return {
-        placecast: getEditablePlacecast(state),
         currentView: getCurrentView(state)
     }
 }
 
-export const mapDispatchToProps = () => {
-    return {}
-}
+const mapDispatchToProps = dispatch => {
+    return {
+        changeViewTo: (view) => dispatch(updateCurrentViewTo(view)),
+    };
+};
 
 let EditablePlacecastContainer = connect(
     mapStateToProps,

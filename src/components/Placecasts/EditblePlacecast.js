@@ -1,75 +1,63 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {isEmpty} from 'lodash'
-import StaticStreetViewContainer from '../../containers/Maps/StaticStreetViewContainer'
-import ExpertProfileContainer from '../../containers/Experts/ExpertProfileContainer'
-import MapContainer from '../../containers/Maps/GoogleMapContainer'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
 import {Headers} from '../../constants/attributes'
-import {goToMyDeepMapper} from '../../actions/navigation'
-import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'
+import { goToMyDeepMapper} from '../../actions/navigation'
 import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import EditablePhotoPanelContainer from '../../containers/Photo/EditablePhotoPanelContainer'
-import PlaybackPanel from '../Audio/PlaybackPanel'
-import {TitleAndCoordinates} from './TitleAndCoordinates'
+import EditableStreetViewContainer from '../../containers/Maps/EditableStreetViewContainer'
+import EditableMapContainer from '../../containers/Maps/EditableMapContainer'
+import EditableTitleAndSearchBarContainer from '../../containers/Placecasts/EditableTitleAndSearchBarContainer'
+import SaveOrPublishOrDeleteIconsContainer from '../../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
+import {publishPlacecast, savePlacecast} from '../../actions/create2'
+import EditableAudioPanelContainer from '../../containers/Audio/EditableAudioPanelContainer'
 
 class EditablePlacecast extends React.Component {
     static propTypes = {
-        placecast: PropTypes.object,
         currentView: PropTypes.string
     }
-
     render() {
-        const {placecast = {}} = this.props
-        if (isEmpty(placecast)) {
-            return <div>Loading...</div>;
-        }
-        else {
-            const {title, address, audioSrc, user_id} = placecast
-            const {currentView} = this.props
-            const streetViewElement = currentView === 'street-view' ?
-                <StaticStreetViewContainer address={address}/> : null
-            const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer /> : null
-            const expertElement = currentView === 'expert' ? <ExpertProfileContainer id={user_id}/> : null
-            const mapElement = currentView === 'map' ?
-                <MapContainer
-                    address={address}
-                    isDraggable={false}
-                    containerElement={<div style={{height: '400px'}}/>}
-                    mapElement={<div style={{height: '100%'}}/>}
-                />
-                : null
-            return (
-                <Fragment>
-                    <HeaderWithNavigationContainer
-                        displayBackButton={true}
-                        displayNextButton={false}
-                        title={Headers.MY_DEEPMAPPER}
-                        onBack={goToMyDeepMapper()}/>
-                    <GoogleMapsWrapper
-                        googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
-                        loadingElement={<div style={{height: '100%'}}/>}
-                        containerElement={<div style={{height: '50px'}}/>}
-                        mapElement={<span style={{display: 'none'}}/>}
-                    >
-                        <TitleAndCoordinates address={address} title={title}/>
-                        <IndividualPlacecastViewToggleContainer />
-                        <div className="columns is-desktop">
-                            <div className='column is-6 is-offset-3'>
-                                <div className='box'>
-                                    {photoElement}
-                                    {streetViewElement}
-                                    {mapElement}
-                                    {expertElement}
-                                </div>
-                                <PlaybackPanel src={audioSrc} />
+        const {currentView} = this.props
+        const streetViewElement = currentView === 'street-view' ? <EditableStreetViewContainer/> : null
+        const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer/> : null
+        const mapElement = currentView === 'map' ? <EditableMapContainer/> : null
+        return (
+            <Fragment>
+                <HeaderWithNavigationContainer
+                    displayBackButton={true}
+                    displayNextButton={false}
+                    title={Headers.DEEPMAPPER}
+                    onBack={goToMyDeepMapper()}/>
+                <section className="section">
+                    <div className='container info-area'>
+                        <div className="columns is-mobile">
+                            <div className="column is-two-thirds">
+                                <EditableTitleAndSearchBarContainer/>
+                            </div>
+                            <div className="column">
+                                <SaveOrPublishOrDeleteIconsContainer onDelete={() => {}} onSave={dispatch => (dispatch(savePlacecast()))} onPublish={dispatch => (dispatch(publishPlacecast()))}/>
                             </div>
                         </div>
-                    </GoogleMapsWrapper>
-                </Fragment>
-            )
-        }
+                    </div>
+                    <br></br>
+                    <div className='container audio-area'>
+                        <h3>Audio Area</h3>
+                        <EditableAudioPanelContainer/>
+                    </div>
+                    <br></br>
+                    <div className='container visuals-area'>
+                        <h3>Visuals Area</h3>
+                        <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
+                        {photoElement}
+                        {streetViewElement}
+                        {mapElement}
+                    </div>
+
+                </section>
+            </Fragment>
+        )
     }
 }
+
 
 export default EditablePlacecast

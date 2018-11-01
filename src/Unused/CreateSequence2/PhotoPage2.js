@@ -6,7 +6,7 @@ import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNav
 import UploadPhotoFile from '../../components/Photo/CreateUploadPhotoFile'
 import {step2Skipped} from '../../actions/create2'
 import {getPhotoSrc} from '../../selectors/create'
-import {CreateSequenceInstructions} from '../../Unused/CreateSequenceInstructions'
+import {CreateSequenceInstructions} from '../CreateSequenceInstructions'
 import {Headers} from '../../constants/attributes'
 
 class PhotoPage2 extends Component {
