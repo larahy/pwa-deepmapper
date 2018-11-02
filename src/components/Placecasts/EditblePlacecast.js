@@ -37,7 +37,7 @@ class EditablePlacecast extends React.Component {
                             <div className="column">
                                 <SaveOrPublishOrDeleteIconsContainer
                                     onDelete={() => {}}
-                                    onSave={dispatch => (dispatch(savePlacecast()))}
+                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.EDIT)))}
                                     onPublish={dispatch => (dispatch(publishPlacecast(Scopes.EDIT)))}/>
                             </div>
                         </div>
