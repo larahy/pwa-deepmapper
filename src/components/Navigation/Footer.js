@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink, Link} from 'react-router-dom'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faHome, faPlus, faUser} from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
 
@@ -34,6 +34,10 @@ export default class Footer extends React.Component {
             <Link to="/create" className="navbar-item">
                 <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
             </Link> : null
+        const myDeepmapperIcon = this.props.isLoggedIn ?
+            <Link to="/my-deepmapper" className="navbar-item">
+                <span className="icon is-large"><FontAwesomeIcon icon={faUser}/></span>
+            </Link> : null
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
@@ -43,6 +47,7 @@ export default class Footer extends React.Component {
                         <span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>
                     </a>
                     {createIcon}
+                    {myDeepmapperIcon}
                     <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
                         <span></span>

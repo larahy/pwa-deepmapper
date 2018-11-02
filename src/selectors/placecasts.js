@@ -26,8 +26,32 @@ export const getPlacecasts = createSelector(
     }
 )
 
-export const getFilteredPlacecasts = createSelector(
+export const getAllPlacecastsForLoggedInUser = createSelector(
     [getPlacecasts, getLoggedInUserId],
+    (placecasts, id) => {
+        return filter(placecasts, placecast => {
+            return placecast.user_id === id
+        })
+    })
+
+export const getPublishedPlacecasts = createSelector(
+    [getPlacecasts],
+    (placecasts) => {
+        return filter(placecasts, placecast => {
+            return placecast.published === true
+        })
+    })
+
+export const getDraftPlacecastsForLoggedInUser = createSelector(
+    [getAllPlacecastsForLoggedInUser],
+    (placecasts) => {
+        return filter(placecasts, placecast => {
+            return placecast.published === false
+        })
+    })
+
+export const getPublishedPlacecastsForLoggedInUser = createSelector(
+    [getPublishedPlacecasts, getLoggedInUserId],
     (placecasts, id) => {
         return filter(placecasts, placecast => {
             return placecast.user_id === id

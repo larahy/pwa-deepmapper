@@ -2,15 +2,15 @@ import {connect} from 'react-redux'
 
 import {fetchDependencies} from '../../helpers/fetchDependencies'
 import {Dependencies} from '../../constants/attributes'
-import {getFilteredPlacecasts, getPlacecasts} from '../../selectors/placecasts'
+import {getPublishedPlacecasts} from '../../selectors/placecasts'
 import PlacecastTiles from '../../components/Placecasts/PlacecastTiles'
 import {getLoggedInUserId} from '../../selectors/session'
 
 export const mapStateToProps = (state, ownProps) => {
     return {
         filtered: ownProps.filtered || false,
-        placecasts: getPlacecasts(state),
-        filteredPlacecasts: getFilteredPlacecasts(state),
+        placecasts: getPublishedPlacecasts(state),
+        filteredPlacecasts: ownProps.filteredPlacecasts,
         loggedInExpert: getLoggedInUserId(state)
     }
 }
