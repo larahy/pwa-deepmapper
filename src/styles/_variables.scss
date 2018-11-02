@@ -1,4 +1,10 @@
 // Set your brand colors
+$sky: #CAEBF2;
+$carbon: #A9A9A9;
+$watermelon: #FF3B3F;
+$neutral: #EFEFEF;
+$dark: #323232;
+
 $myBlue: #59A4C0;
 $myMauve: #7F656A;
 $nancysBlushes: #F9B8B7;
@@ -10,12 +16,13 @@ $greatWhite: #E7E7DE;
 $railings: #2F3236;
 $cabbageWhite: #E9F1E9;
 $wevet: #F7F3EC;
+
 // Update Bulma's global variables
 $family-sans-serif: "Lato", sans-serif;
-$grey-dark: $railings;
-$grey-light: $greatWhite;
-$primary: $myBlue;
-$link: $myBlue;
+$grey-dark: $dark;
+$grey-light: $neutral;
+$primary: $sky;
+$link: $sky;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 

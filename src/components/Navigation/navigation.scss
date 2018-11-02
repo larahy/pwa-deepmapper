@@ -1,10 +1,17 @@
+@import "../../styles/variables";
+
 nav.navbar {
-    background-color: #fafafa;
+    border-bottom: 1px solid $carbon;
 }
 nav#navbarTop {
+    display: flex;
+    justify-content: center; 
     align-items: center;
-    padding-top: 6px;
-    min-height: 3.25rem
+    min-height: 3.25rem;
+
+    .title {
+      font-size: 7vw!important;
+    }
 }
 .footer {
     padding: 0rem !important;

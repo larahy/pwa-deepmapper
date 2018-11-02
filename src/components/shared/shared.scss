@@ -1,0 +1,52 @@
+@import "../../styles/variables";
+
+.input-control input {
+  text-align: center;
+}
+
+.input-control .is-primary {
+  border: none;
+  border-bottom: 1px solid $carbon!important;
+  border-radius: 0;
+}
+
+.input-control .is-danger {
+  border: none;
+  border-bottom: 1px solid $watermelon!important;
+  border-radius: 0;
+}
+
+.input-field {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.input-error {
+  text-align: center;
+}
+
+// .form div .input-field:last-child {
+//   border: 1px solid $carbon!important;
+//   margin-top: 30px;
+//   height: 150px;
+// }
+
+// .form div .input-field:last-child .is-primary {
+//   border-bottom: none!important;
+// }
+
+// .form div .input-field:last-child .is-danger {
+//   border-bottom: none!important;
+// }
+
+// .form div .input-field:last-child .input-error:last-child {
+//   border-top: 1px solid $watermelon;
+//   line-height: 15px;
+// }
+
+.form div .input-field:last-child .input-control textarea {
+  border: 1px solid $carbon;
+  min-height: 148px!important;
+  font-size: 1rem;
+  text-align: center;
+}

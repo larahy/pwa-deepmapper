@@ -4,6 +4,7 @@ import Promise from 'bluebird'
 import {find, isEmpty} from 'lodash'
 import Field from './Field'
 import {Validations} from '../../constants/attributes'
+import './shared.scss';
 
 
 export default class Input extends Field {
@@ -61,18 +62,18 @@ export default class Input extends Field {
         if (!isEmpty(errors)) {
             const message = this.errorMessageFactories[errors[0]].bind(this)()
             return (
-                <div className='has-text-danger'>{message}</div>
+                <div className='has-text-danger input-error'>{message}</div>
             )
         }
     }
 
     render() {
         const {value} = this.state
-        const {name, description, type, maxLength, disabled, errors} = this.props
-        const inputClasses = !isEmpty(errors) ? 'input is-danger' : 'input'
+        const {name, shortDescription, type, maxLength, disabled, errors} = this.props
+        const inputClasses = !isEmpty(errors) ? 'input is-danger' : 'input is-primary'
         // const helperClasses = !isEmpty(errors) ? 'help is-danger' : 'help'
         const inputElement = (
-            <div className="control">
+            <div className="input-control">
                 <input
                     className={inputClasses}
                     ref={element => this.storeInputElement(element)}
@@ -84,7 +85,7 @@ export default class Input extends Field {
                     onChange={this.handleChange}
                     maxLength={maxLength}
                     disabled={disabled}
-                    placeholder={description}
+                    placeholder={shortDescription}
                 />
             </div>)
 
@@ -96,7 +97,7 @@ export default class Input extends Field {
         // )
 
         return (
-            <div className="field">
+            <div className="input-field">
                 {/*{labelElement}*/}
                 {inputElement}
                 {/*{helperElement}*/}

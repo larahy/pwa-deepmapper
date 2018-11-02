@@ -6,7 +6,6 @@ import Field from './Field'
 import {Validations} from '../../constants/attributes'
 
 
-
 export default class Textarea extends Field {
     static propTypes = {
         ...Field.propTypes,
@@ -62,20 +61,21 @@ export default class Textarea extends Field {
         if (!isEmpty(errors)) {
             const message = this.errorMessageFactories[errors[0]].bind(this)()
             return (
-                <div className='validation-error'>{message}</div>
+                <div className='has-text-danger input-error'>{message}</div>
             )
         }
     }
 
     render() {
         const {value} = this.state
-        const {name, description, type, maxLength, disabled, helperText} = this.props
-
+        const {name, shortDescription, type, maxLength, disabled, errors} = this.props
+        const inputClasses = !isEmpty(errors) ? 'textarea is-danger' : 'textarea is-primary'
         const inputElement = (
-            <div className="control">
+            <div className="input-control">
                 <textarea
-                    className='textarea is-medium is-primary'
+                    className={inputClasses}
                     ref={element => this.storeInputElement(element)}
+                    placeholder={shortDescription}
                     type={type}
                     id={name}
                     name={name}
@@ -87,18 +87,19 @@ export default class Textarea extends Field {
                 />
             </div>)
 
-        const labelElement = (
-            <label className="label is-uppercase" htmlFor={name}>{description}</label>
-        )
-        const helperElement = (
-            <p className="help">{helperText}</p>
-        )
+        // const labelElement = (
+        //     <label className="label is-uppercase" htmlFor={name}>{description}</label>
+        // )
+
+        // const helperElement = (
+        //     <p className="help">{helperText}</p>
+        // )
 
         return (
-            <div className="field">
-                {labelElement}
+            <div className="input-field">
+                {/*labelElement*/}
                 {inputElement}
-                {helperElement}
+                {/*helperElement*/}
                 {this.getValidationErrorElement()}
                 {this.props.children}
             </div>

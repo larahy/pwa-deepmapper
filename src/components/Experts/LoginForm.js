@@ -32,7 +32,7 @@ export default class LoginForm extends React.Component {
                     <NotifyingInput
                         name={Fields.EMAIL}
                         description={Fields.EMAIL}
-                        shortDescription='email address'
+                        shortDescription='Email'
                         type={Fields.EMAIL}
                         placeholder={Fields.EMAIL}
                         validations={[
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component {
                     <NotifyingInput
                         name={Fields.PASSWORD}
                         description={Fields.PASSWORD}
-                        shortDescription={Fields.PASSWORD}
+                        shortDescription='Password'
                         placeholder={Fields.PASSWORD}
                         type={Fields.PASSWORD}
                         validations={[{name: Validations.MANDATORY}]}
@@ -52,7 +52,7 @@ export default class LoginForm extends React.Component {
                     />
                 </div>
 
-                <button type='submit' className='button'>
+                <button type='submit' className='button form-btn'>
                     Login
                 </button>
 

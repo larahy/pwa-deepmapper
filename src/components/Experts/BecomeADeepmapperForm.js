@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 
 import {Validations, Scopes, Fields} from '../../constants/attributes'
 import NotifyingInput from '../../containers/Shared/NotifyingInput'
+import NotifyingTextArea from '../../containers/Shared/NotifyingTextArea'
+
+import './experts.scss';
 
 export default class BecomeADeepmapperForm extends React.Component {
     static propTypes = {
@@ -38,19 +41,8 @@ export default class BecomeADeepmapperForm extends React.Component {
                     <NotifyingInput
                         name={Fields.LAST_NAME}
                         description={Fields.LAST_NAME}
-                        shortDescription='Surname'
+                        shortDescription='Last Name'
                         placeholder={Fields.LAST_NAME}
-                        type='text'
-                        validations={[
-                            {name: Validations.MANDATORY},
-                        ]}
-                        scope={Scopes.APPLICATION}
-                    />
-                    <NotifyingInput
-                        name={Fields.BIO}
-                        description={Fields.BIO}
-                        shortDescription='biography'
-                        placeholder={Fields.BIO}
                         type='text'
                         validations={[
                             {name: Validations.MANDATORY},
@@ -60,7 +52,7 @@ export default class BecomeADeepmapperForm extends React.Component {
                     <NotifyingInput
                         name={Fields.EMAIL}
                         description={Fields.EMAIL}
-                        shortDescription='email address'
+                        shortDescription='Email'
                         type={Fields.EMAIL}
                         placeholder={Fields.EMAIL}
                         validations={[
@@ -78,10 +70,21 @@ export default class BecomeADeepmapperForm extends React.Component {
                         validations={[{name: Validations.MANDATORY}]}
                         scope={Scopes.APPLICATION}
                     />
+                    <NotifyingTextArea
+                        name={Fields.BIO}
+                        description={Fields.BIO}
+                        shortDescription='Write something about you...'
+                        placeholder={Fields.BIO}
+                        type='text'
+                        validations={[
+                            {name: Validations.MANDATORY},
+                        ]}
+                        scope={Scopes.APPLICATION}
+                    />
                 </div>
 
-                <button type='submit' className='button'>
-                    BecomeADeepmapper
+                <button type='submit' className='button form-btn'>
+                    SUBMIT
                 </button>
 
             </form>
