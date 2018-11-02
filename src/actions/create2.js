@@ -3,7 +3,6 @@ import {
     goToCreateAudioPage,
     goToCreatePhotoPage, goToCreateReviewPage,
 } from './navigation'
-import {uploadRequested} from './s3'
 
 //STEP 1 //
 export const step1CompletedSuccess = createAction('INFO_STEP_COMPLETED_SUCCESS')
@@ -60,19 +59,23 @@ export const audioAddedThunk = (audioSrc) => (dispatch) => {
 //REVIEW/EDIT//
 
 export const savePlacecastSuccess = createAction('SAVE_PLACECAST_SUCCESS')
-export const savePlacecast = () => {
-    return savePlacecastThunk()
+export const savePlacecastRequested = createAction('SAVE_PLACECAST_REQUESTED')
+export const savePlacecastFailed = createAction('SAVE_PLACECAST_FAILED')
+export const savePlacecast = (phase) => {
+    return savePlacecastThunk(phase)
 }
-export const savePlacecastThunk = () => (dispatch) => {
-    dispatch(savePlacecastSuccess())
+export const savePlacecastThunk = (phase) => (dispatch) => {
+    dispatch(savePlacecastRequested(phase))
 }
 
 export const publishPlacecastSuccess = createAction('PUBLISH_PLACECAST_SUCCESS')
-export const publishPlacecast = () => {
-    return publishPlacecastThunk()
+export const publishPlacecastRequested = createAction('PUBLISH_PLACECAST_REQUESTED')
+export const publishPlacecastFailed = createAction('PUBLISH_PLACECAST_FAILED')
+export const publishPlacecast = (phase) => {
+    return publishPlacecastThunk(phase)
 }
-export const publishPlacecastThunk = () => (dispatch) => {
-    dispatch(uploadRequested())
+export const publishPlacecastThunk = (phase) => (dispatch) => {
+    dispatch(publishPlacecastRequested(phase))
 }
 
 export const populateCreate = createAction('POPULATE_CREATE')

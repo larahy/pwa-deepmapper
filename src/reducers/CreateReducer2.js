@@ -9,6 +9,8 @@ import {
     audioAddedSuccess, populateCreate
 } from '../actions/create2'
 import {saveNewAddress, saveNewAudio} from '../actions/edit'
+import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
+import {concat, isEmpty} from 'lodash'
 
 const initialState = {
     attributes: [],
@@ -36,11 +38,13 @@ export const CreateReducer = handleActions({
     [photoSkippedSuccess]: state => ({...state, photoSkipped: true}),
     [audioSkippedSuccess]: state => ({...state, audioSkipped: true}),
     [populateCreate]: (state, action) => {
+        const audioSrc = !isEmpty(action.payload.audioFilename) ? action.payload.audioSrc : null
+        const photoSrc = !isEmpty(action.payload.photoFilename) ? action.payload.photoSrc : null
         return {
             ...state,
             address: action.payload.address,
-            audioSrc: action.payload.audioSrc,
-            photoSrc: action.payload.photoSrc,
+            audioSrc: audioSrc,
+            photoSrc: photoSrc,
             title: action.payload.title,
             attributes: [{
                 name: 'title',
@@ -49,5 +53,11 @@ export const CreateReducer = handleActions({
                 errors: []
             }]
         }
+    },
+    [postPlacecastSucceeded]: () =>  {
+        return initialState
+    },
+    [postPlacecastFailed]: (state, action) => {
+        return { ...state, errors: concat(state.errors, action.payload.response.data)}
     },
 }, initialState)

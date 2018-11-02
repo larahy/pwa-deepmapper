@@ -9,7 +9,8 @@ export default class SaveOrPublishOrDeleteIcons extends React.Component {
         onDelete: PropTypes.func,
         onSave: PropTypes.func,
         onPublish: PropTypes.func,
-        isPublishable: PropTypes.bool
+        isPublishable: PropTypes.bool,
+        isSavable: PropTypes.bool
     }
 
     constructor(props) {
@@ -35,12 +36,13 @@ export default class SaveOrPublishOrDeleteIcons extends React.Component {
     }
 
     render() {
-        const {isPublishable} = this.props
+        const {isPublishable, isSavable} = this.props
         const publishButtonClasses = isPublishable ? 'button is-primary' : 'button'
+        const saveButtonClasses = isSavable ? 'button is-primary' : 'button'
         return (
             <Fragment>
-                <a className='button' onClick={this.onSave}><span className="icon"><FontAwesomeIcon icon={faSave}/></span></a>
-                <a className={publishButtonClasses} disabled={!isPublishable} onClick={this.onPublish}><span className="icon"><FontAwesomeIcon icon={faEye}/></span></a>
+                <a className={saveButtonClasses} disabled={!isSavable} onClick={this.onSave}><span className="icon"><FontAwesomeIcon icon={faSave}/></span></a>
+                <a className={publishButtonClasses}  disabled={!isPublishable}  onClick={this.onPublish}><span className="icon"><FontAwesomeIcon icon={faEye}/></span></a>
                 <a className='button' onClick={this.onDelete}><span className="icon"><FontAwesomeIcon icon={faTrashAlt}/></span></a>
             </Fragment>
         )

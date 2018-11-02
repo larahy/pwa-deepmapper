@@ -7,6 +7,7 @@ import {getAddress, getAudioSrc, getPhotoSrc, getTitle} from '../../selectors/cr
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
+        isSavable: !isEmpty(getTitle(state)),
         isPublishable:
             !isEmpty(getPhotoSrc(state))
             && !isEmpty(getAudioSrc(state))

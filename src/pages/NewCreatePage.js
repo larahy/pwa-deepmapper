@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {publishPlacecast, savePlacecast} from '../actions/create2'
 import PropTypes from 'prop-types'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
-import {Headers} from '../constants/attributes'
+import {Headers, Scopes} from '../constants/attributes'
 import {goToCreateAudioPage, goToMyDeepMapper} from '../actions/navigation'
 import IndividualPlacecastViewToggleContainer from '../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import {getCurrentView} from '../selectors/placecasts'
@@ -40,7 +40,10 @@ class NewCreatePage extends Component {
                                 <EditableTitleAndSearchBarContainer/>
                             </div>
                             <div className="column">
-                                <SaveOrPublishOrDeleteIconsContainer onDelete={() => {}} onSave={dispatch => (dispatch(savePlacecast()))} onPublish={dispatch => (dispatch(publishPlacecast()))}/>
+                                <SaveOrPublishOrDeleteIconsContainer
+                                    onDelete={() => {}}
+                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
                             </div>
                         </div>
                     </div>

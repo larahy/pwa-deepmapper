@@ -32,6 +32,22 @@ export const getPhotoSrc = createSelector([getCreate], create => {
     return propertyOrEmptyString(create, 'photoSrc')
 })
 
+export const getPhotoFilename = createSelector([getCreate], create => {
+    return propertyOrEmptyString(create, 'photoFilename')
+})
+
+export const getAudioFilename = createSelector([getCreate], create => {
+    return propertyOrEmptyString(create, 'audioFilename')
+})
+
+export const getCloudfrontPhotoUrl = createSelector([getPhotoFilename], filename => {
+    return `http://d31dl1irjvblxj.cloudfront.net/${filename}`
+})
+
+export const getCloudfrontAudioUrl = createSelector([getAudioFilename], filename => {
+    return `http://d31dl1irjvblxj.cloudfront.net/${filename}`
+})
+
 export const getAddress = createSelector([getCreate], create => {
     return propertyOrEmptyObject(create, 'address')
 })

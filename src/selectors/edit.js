@@ -43,3 +43,15 @@ export const getDisplaySaveOrCancelAudioButtons = createSelector([getEdit], edit
 export const getNewAudioSrc = createSelector([getEdit], edit => {
     return propertyOrEmptyString(edit, 'newAudioSrc')
 })
+
+export const getPlacecastId = createSelector([getEditablePlacecast], placecast => {
+    return propertyOrEmptyString(placecast, 'id')
+})
+
+export const getPhotoEdited = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'photoEdited')
+})
+
+export const getAudioEdited = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'audioEdited')
+})
