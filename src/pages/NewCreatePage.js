@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {publishPlacecast, savePlacecast} from '../actions/create2'
+import {deletePlacecast, publishPlacecast, savePlacecast} from '../actions/create2'
 import PropTypes from 'prop-types'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 import {Headers, Scopes} from '../constants/attributes'
@@ -41,7 +41,7 @@ class NewCreatePage extends Component {
                             </div>
                             <div className="column">
                                 <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={() => {}}
+                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
                                     onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
                                     onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
                             </div>

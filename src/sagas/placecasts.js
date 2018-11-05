@@ -139,7 +139,6 @@ function putPlacecast({placecast}) {
         'zoom': parseInt(zoom),
         'published': publish
     })
-    console.log('data ', data)
     return axios({
         method: 'put',
         url: `${apiUrl}/api/v1/placecasts/${id}`,

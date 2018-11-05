@@ -9,7 +9,7 @@ import EditableStreetViewContainer from '../../containers/Maps/EditableStreetVie
 import EditableMapContainer from '../../containers/Maps/EditableMapContainer'
 import EditableTitleAndSearchBarContainer from '../../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import SaveOrPublishOrDeleteIconsContainer from '../../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
-import {publishPlacecast, savePlacecast} from '../../actions/create2'
+import {deletePlacecast, publishPlacecast, savePlacecast} from '../../actions/create2'
 import EditableAudioPanelContainer from '../../containers/Audio/EditableAudioPanelContainer'
 
 class EditablePlacecast extends React.Component {
@@ -36,7 +36,7 @@ class EditablePlacecast extends React.Component {
                             </div>
                             <div className="column">
                                 <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={() => {}}
+                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.EDIT)))}
                                     onSave={dispatch => (dispatch(savePlacecast(Scopes.EDIT)))}
                                     onPublish={dispatch => (dispatch(publishPlacecast(Scopes.EDIT)))}/>
                             </div>

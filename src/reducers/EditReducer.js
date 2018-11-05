@@ -13,7 +13,7 @@ import {
     updateIsEditingAudio
 } from '../actions/edit'
 import {uploadPhotoFailed, uploadPhotoSucceeded} from '../actions/s3'
-import {uploadPhotoFileSuccess, publishPlacecastSuccess} from '../actions/create2'
+import {uploadPhotoFileSuccess, publishPlacecastSuccess, deletePlacecastSuccess} from '../actions/create2'
 import {putPlacecastFailed, putPlacecastSucceeded} from '../actions/placecasts'
 import {concat} from 'lodash'
 const initialState = {
@@ -77,6 +77,9 @@ export const EditReducer = handleActions({
     },
     [putPlacecastFailed]: (state, action) => {
         return { ...state, errors: concat(state.errors, action.payload.response.data)}
+    },
+    [deletePlacecastSuccess]: () =>  {
+        return initialState
     },
 
 }, initialState)

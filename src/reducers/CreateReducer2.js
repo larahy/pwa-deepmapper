@@ -6,7 +6,7 @@ import {
     selectPlacecastAddress,
     uploadPhotoFileSuccess,
     audioSkippedSuccess,
-    audioAddedSuccess, populateCreate
+    audioAddedSuccess, populateCreate, deletePlacecastSuccess
 } from '../actions/create2'
 import {saveNewAddress, saveNewAudio} from '../actions/edit'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
@@ -59,5 +59,8 @@ export const CreateReducer = handleActions({
     },
     [postPlacecastFailed]: (state, action) => {
         return { ...state, errors: concat(state.errors, action.payload.response.data)}
+    },
+    [deletePlacecastSuccess]: () =>  {
+        return initialState
     },
 }, initialState)

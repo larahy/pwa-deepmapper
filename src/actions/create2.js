@@ -1,7 +1,7 @@
 import {createAction} from 'redux-actions'
 import {
     goToCreateAudioPage,
-    goToCreatePhotoPage, goToCreateReviewPage,
+    goToCreatePhotoPage, goToCreateReviewPage, goToMyDeepMapper,
 } from './navigation'
 
 //STEP 1 //
@@ -56,7 +56,7 @@ export const audioAddedThunk = (audioSrc) => (dispatch) => {
 }
 
 
-//REVIEW/EDIT//
+//REVIEW/EDIT/DELETE//
 
 export const savePlacecastSuccess = createAction('SAVE_PLACECAST_SUCCESS')
 export const savePlacecastRequested = createAction('SAVE_PLACECAST_REQUESTED')
@@ -77,6 +77,18 @@ export const publishPlacecast = (phase) => {
 export const publishPlacecastThunk = (phase) => (dispatch) => {
     dispatch(publishPlacecastRequested(phase))
 }
+
+export const deletePlacecastSuccess = createAction('DELETE_PLACECAST_SUCCESS')
+export const deletePlacecastRequested = createAction('DELETE_PLACECAST_REQUESTED')
+export const deletePlacecastFailed = createAction('DELETE_PLACECAST_FAILED')
+export const deletePlacecast = (phase) => {
+    return deletePlacecastThunk(phase)
+}
+export const deletePlacecastThunk = (phase) => (dispatch) => {
+    dispatch(deletePlacecastRequested(phase))
+    dispatch(goToMyDeepMapper())
+}
+
 
 export const populateCreate = createAction('POPULATE_CREATE')
 
