@@ -2,8 +2,6 @@ import {call, put, select} from 'redux-saga/effects';
 import {
     fetchBucketContentsSucceeded,
     fetchBucketContentsFailed,
-    uploadSucceeded,
-    uploadFailed,
     uploadPhotoSucceeded,
     uploadPhotoFailed,
     uploadAudioSucceeded, uploadAudioFailed,
@@ -13,15 +11,8 @@ import {snakeCase, words} from 'lodash'
 import imageCompression from 'browser-image-compression'
 import {
     getAudioSrc,
-    getHeading,
-    getLatitude,
-    getLongitude,
-    getPhotoSrc,
-    getPitch,
     getTitle,
-    getZoom
 } from '../selectors/create'
-import {postPlacecastSaga} from './placecasts'
 import {getEditableTitle, getNewPhotoSrc} from '../selectors/edit'
 
 var AWS = require('aws-sdk');
@@ -88,7 +79,7 @@ const putObject = function putObject(file, filename) {
 }
 
 
-function uploadPhotoAndAudio({placecast}) {
+export function uploadPhotoAndAudio({placecast}) {
     let photoFileName
     let audioFileName = `${snakeCase(placecast.title)}.mpeg`
     const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
@@ -115,30 +106,35 @@ function uploadPhotoAndAudio({placecast}) {
 
 }
 
-export function* uploadSaga() {
-    const [ heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc ] = yield [
-        select(getHeading),
-        select(getPitch),
-        select(getZoom),
-        select(getLatitude),
-        select(getLongitude),
-        select(getTitle),
-        select(getPhotoSrc),
-        select(getAudioSrc),
-    ]
-    const placecast = {heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc}
-    try {
-        const response = yield call(uploadPhotoAndAudio, {placecast});
-        yield put({type: uploadSucceeded().type, response});
-        yield call(postPlacecastSaga, { response })
-    } catch (error) {
-        console.log('error', error)
-        yield put({type: uploadFailed().type, error});
-    }
+// export function* uploadSaga(action) {
+//     const phase = action.payload
+//     const [ heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc ] = yield [
+//         select(getHeading),
+//         select(getPitch),
+//         select(getZoom),
+//         select(getLatitude),
+//         select(getLongitude),
+//         select(getTitle),
+//         select(getPhotoSrc),
+//         select(getAudioSrc),
+//     ]
+//     const placecast = {heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc}
+//     try {
+//         const response = yield call(uploadPhotoAndAudio, {placecast});
+//         yield put({type: uploadSucceeded().type, response});
+//         if (phase === 'create') {
+//             yield call(postPlacecastSaga, { response })
+//         } else if (phase === 'edit') {
+//             yield call(putPlacecastSaga, { response })
+//         }
+//     } catch (error) {
+//         console.log('error', error)
+//         yield put({type: uploadFailed().type, error});
+//     }
+//
+// }
 
-}
-
-function uploadPhoto({placecast}) {
+export function uploadPhoto({placecast}) {
     let photoFileName
     const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
     return Promise.resolve(compressedPhotoFilePromise)
@@ -174,7 +170,7 @@ export function* uploadPhotoSaga() {
 }
 
 
-function uploadAudio({placecast}) {
+export function uploadAudio({placecast}) {
     let audioFileName = `${snakeCase(placecast.title)}.mpeg`
     return fetchFile(placecast.audioSrc, audioFileName)
         .then((file) => {
@@ -182,7 +178,7 @@ function uploadAudio({placecast}) {
         })
         .then(response => {
             audioFileName = response.Key
-            return audioFileName
+            return {audioFileName}
         })
         .catch(err => {
             console.log('error', err)
