@@ -47,7 +47,7 @@
     height: 2px;
     left: 0;
     top: 0;
-    background-color: $myBlue;
+    background-color: $sky;
   }
 }
 
@@ -203,7 +203,7 @@
     cursor: pointer;
     position: relative;
     .progress {
-      background-color: $myBlue;
+      background-color: $sky;
       border-radius: inherit;
       position: absolute;
       pointer-events: none;
@@ -211,7 +211,7 @@
         height: 16px;
         width: 16px;
         border-radius: 8px;
-        background-color: $myBlue;
+        background-color: $sky;
         position: absolute;
         pointer-events: all;
         box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.32);

@@ -60,6 +60,11 @@ export default class IndividualPlacecastViewToggle extends Component {
                                 <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
                             </a>
                         </li>
+                        <li className={mapElementClasses}>
+                            <a>
+                                <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
+                            </a>
+                        </li>
                         {expertElementLink}
                     </ul>
                 </div>

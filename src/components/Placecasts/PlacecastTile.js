@@ -37,8 +37,10 @@ class PlacecastTile extends React.Component {
                     <div>
                         <PhotoPanel sourceUrl={photoSrc}/>
                     </div>
-                    <div>{title}</div>
-                    <div>{coordinates}</div>
+                    <div className='placecast-tile-info'>
+                        <div>{title}</div>
+                        <div>{coordinates}</div>
+                    </div>
                 </a>
             </div>
         )

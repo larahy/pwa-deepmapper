@@ -43,14 +43,10 @@ class PlacecastTiles extends React.Component {
                     {placecastsLoadingMessage}
                     <div className='home-icons'>
                         <div className='list-icon'>
-                            <span>
-                                <FontAwesomeIcon icon={faListUl}/>
-                            </span>
+                            <span><FontAwesomeIcon icon={faListUl}/></span>
                         </div>
                         <div className='map-icon'>
-                            <span>
-                                <FontAwesomeIcon icon={faMapMarkerAlt}/>
-                            </span>
+                            <span><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
                         </div>
                     </div>
                     <div className='placecast-tiles'>
