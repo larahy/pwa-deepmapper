@@ -34,11 +34,11 @@ class PlacecastTile extends React.Component {
         return (
             <div>
                 <a onClick={onClick}>
-                    <div>{title}</div>
-                    <div>{coordinates}</div>
                     <div>
                         <PhotoPanel sourceUrl={photoSrc}/>
                     </div>
+                    <div>{title}</div>
+                    <div>{coordinates}</div>
                 </a>
             </div>
         )

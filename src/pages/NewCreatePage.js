@@ -14,6 +14,7 @@ import EditableMapContainer from '../containers/Maps/EditableMapContainer'
 import EditableStreetViewContainer from '../containers/Maps/EditableStreetViewContainer'
 import EditableTitleAndSearchBarContainer from '../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import EditableAudioPanelContainer from '../containers/Audio/EditableAudioPanelContainer'
+import './NewCreatePage.scss';
 
 class NewCreatePage extends Component {
 
@@ -33,13 +34,13 @@ class NewCreatePage extends Component {
                     displayNextButton={false}
                     title={Headers.DEEPMAPPER}
                     onBack={goToMyDeepMapper()}/>
-                <section className="section">
-                    <div className='container info-area'>
-                        <div className="columns is-mobile">
-                            <div className="column is-two-thirds">
+                <section className="create-section">
+                    <div className='something'>
+                        <div className="lalala">
+                            <div className="lululu">
                                 <EditableTitleAndSearchBarContainer/>
                             </div>
-                            <div className="column">
+                            <div className="kakaka">
                                 <SaveOrPublishOrDeleteIconsContainer
                                     onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
                                     onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}

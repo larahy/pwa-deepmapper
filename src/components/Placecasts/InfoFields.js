@@ -36,6 +36,7 @@ export default class InfoFields extends React.Component {
                     name='title'
                     description='TITLE'
                     type='text'
+                    placeholder='Placeholder'
                     validations={[
                         {name: Validations.MANDATORY}
                     ]}

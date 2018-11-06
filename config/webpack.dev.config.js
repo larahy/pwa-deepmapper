@@ -7,7 +7,7 @@ const config = {
         compress: true,
         historyApiFallback: true,
         hot: false,
-        port: 9000
+        port: 8080
     }
 };
 

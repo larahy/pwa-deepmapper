@@ -58,17 +58,6 @@ figure.image.is-4by3 {
   margin-bottom: 10px;
 }
 
-.audio-area {
-  border: solid 3px $nancysBlushes;
-}
-.visuals-area {
-  border: solid 3px $calamine;
-}
-
-.info-area {
-  border: solid 3px $myBlue;
-}
-
 audio {
   height: 80px;
 }
@@ -79,6 +68,19 @@ textarea:focus,
 button:focus {
   outline: none!important;
   box-shadow: none!important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $carbon;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $carbon;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $carbon;
 }
 
 .form-btn {

@@ -39,8 +39,13 @@ class Search extends Component {
                 <StandaloneSearchBox
                     ref={this.onSearchBoxMounted}
                     onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
-                >
-                    <input type='text' placeholder='Type an address...' className='searchBox'/>
+                > 
+                    <div className='input-field'>
+                        <div className='input-control'>
+                            <input type='text' placeholder='Location' className='is-primary searchBox'/>
+                        </div>
+                    </div>
+                    
                 </StandaloneSearchBox>
             </Fragment>
         )

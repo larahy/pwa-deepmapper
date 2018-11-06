@@ -69,7 +69,7 @@ export default class Input extends Field {
 
     render() {
         const {value} = this.state
-        const {name, shortDescription, type, maxLength, disabled, errors} = this.props
+        const {name, shortDescription, type, maxLength, disabled, errors, placeholder} = this.props
         const inputClasses = !isEmpty(errors) ? 'input is-danger' : 'input is-primary'
         // const helperClasses = !isEmpty(errors) ? 'help is-danger' : 'help'
         const inputElement = (
@@ -85,7 +85,7 @@ export default class Input extends Field {
                     onChange={this.handleChange}
                     maxLength={maxLength}
                     disabled={disabled}
-                    placeholder={shortDescription}
+                    placeholder={shortDescription || placeholder}
                 />
             </div>)
 

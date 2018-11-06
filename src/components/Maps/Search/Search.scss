@@ -1,9 +1,10 @@
+@import "../../../styles/variables";
+
 .searchBox {
   box-sizing: border-box;
   border: 1px solid transparent;
-  background: #1b2c3c12;
   width: 100%;
-  height: 40px;
+  height: 30px;
   padding: 0 12px;
   font-size: 16px;
   outline: none;
@@ -19,6 +20,31 @@
 .street-view-view {
   width: 300px;
   height: 300px;
+}
+
+input {
+  text-align: center;
+}
+
+.input .is-primary {
+  border: none;
+  border-bottom: 1px solid $carbon!important;
+  border-radius: 0;
+}
+
+.input-control .is-danger {
+  border: none;
+  border-bottom: 1px solid $watermelon!important;
+  border-radius: 0;
+}
+
+.input-field {
+  width: 80%;
+  margin: 15px auto;
+}
+
+.input-error {
+  text-align: center;
 }
 
 @media screen and (max-width: 375px) {
