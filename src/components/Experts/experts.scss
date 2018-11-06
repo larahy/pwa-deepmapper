@@ -9,3 +9,19 @@
   margin: 0 auto;
   border: 1px solid $carbon!important;
 }
+
+.view-toggle {
+  color: $dark!important;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.view-toggle li {
+  margin-right: 5px;
+}
+
+.view-toggle .active-toggle {
+  text-decoration: underline;
+  font-weight: 600;
+}

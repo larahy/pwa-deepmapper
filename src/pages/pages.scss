@@ -1,0 +1,33 @@
+@import "../styles//variables";
+
+.home-icons {
+  display: flex;
+  border-bottom: 1px solid $carbon;
+  color: $carbon;
+}
+
+.list-icon {
+  width: 50%;
+  height: 40px;
+  border-right: 1px solid $carbon;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.list-icon span {
+  margin: 0 auto;
+  font-size: 1.2em;
+}
+
+.map-icon {
+  width: 50%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+.map-icon span {
+  margin: 0 auto;
+}

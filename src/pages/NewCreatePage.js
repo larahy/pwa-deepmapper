@@ -14,7 +14,6 @@ import EditableMapContainer from '../containers/Maps/EditableMapContainer'
 import EditableStreetViewContainer from '../containers/Maps/EditableStreetViewContainer'
 import EditableTitleAndSearchBarContainer from '../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import EditableAudioPanelContainer from '../containers/Audio/EditableAudioPanelContainer'
-import './NewCreatePage.scss';
 
 class NewCreatePage extends Component {
 

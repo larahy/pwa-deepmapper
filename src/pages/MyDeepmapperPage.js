@@ -10,6 +10,9 @@ import {
 } from '../selectors/placecasts'
 import connect from 'react-redux/es/connect/connect'
 import {getMyDeepmapperCurrentFeedView} from '../selectors/experts'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faListUl, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import './pages.scss'
 
 class MyDeepmapperPage extends React.Component {
     static propTypes = {
@@ -30,6 +33,14 @@ class MyDeepmapperPage extends React.Component {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MY_DEEPMAPPER}/>
+                <div className='home-icons'>
+                    <div className='list-icon'>
+                        <span><FontAwesomeIcon icon={faListUl}/></span>
+                    </div>
+                    <div className='map-icon'>
+                        <span><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
+                    </div>
+                </div>
                 <MyDeepmapperFeedViewToggleContainer/>
                 {publishedPlacecastsElement}
                 {draftPlacecastsElement}
