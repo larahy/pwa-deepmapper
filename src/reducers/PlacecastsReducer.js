@@ -3,14 +3,15 @@ import {
     fetchPlacecastsSucceeded,
     fetchPlacecastsFailed,
     fetchPlacecastsRequested,
-    updateCurrentViewTo
+    updateCurrentViewTo, updateHomepageCurrentFeedViewTo
 } from '../actions/placecasts';
 
 const initialState = {
     fetching: false,
     items: [],
     error: null,
-    currentView: 'photo'
+    currentView: 'photo',
+    currentFeedView: 'list'
 };
 
 export const PlacecastsReducer = handleActions({
@@ -27,5 +28,8 @@ export const PlacecastsReducer = handleActions({
     },
     [updateCurrentViewTo]: (state, action ) => {
         return { ...state, currentView: action.payload }
+    },
+    [updateHomepageCurrentFeedViewTo]: (state, action ) => {
+        return { ...state, currentFeedView: action.payload }
     },
 }, initialState)

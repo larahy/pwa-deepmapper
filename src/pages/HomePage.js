@@ -3,9 +3,8 @@ import FilterablePlacecastTiles from '../containers/Placecasts/FilterablePlaceca
 import {fetchDependencies} from '../helpers/fetchDependencies'
 import {Dependencies, Headers} from '../constants/attributes'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faListUl, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './pages.scss'
+import HomepageFeedViewToggleContainer from '../containers/Placecasts/HomePageToggleContainer'
 
 let HomePage = class extends React.Component {
     static displayName = 'Home'
@@ -14,14 +13,7 @@ let HomePage = class extends React.Component {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.DEEPMAPPER}/>
-                <div className='home-icons'>
-                    <div className='list-icon'>
-                        <span><FontAwesomeIcon icon={faListUl}/></span>
-                    </div>
-                    <div className='map-icon'>
-                        <span><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
-                    </div>
-                </div>
+                <HomepageFeedViewToggleContainer />
                 <FilterablePlacecastTiles />
             </Fragment>
         )

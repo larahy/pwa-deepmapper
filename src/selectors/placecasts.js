@@ -8,6 +8,7 @@ export const getPlacecastsItems = state => propertyOrEmptyArray(state, [Scopes.P
 export const getCurrentView = state => propertyOrEmptyString(state, [Scopes.PLACECASTS, 'currentView'])
 export const getPlacecastErrors = state => propertyOrEmptyObject(state, [Scopes.PLACECASTS, 'error'])
 export const isFetchingPlacecasts = state => propertyOrNull(state, [Scopes.PLACECASTS, 'fetching'])
+export const getHomepageCurrentFeedView = state => propertyOrEmptyString(state, [Scopes.PLACECASTS, 'currentFeedView'])
 
 export const getPlacecasts = createSelector(
     getPlacecastsItems,

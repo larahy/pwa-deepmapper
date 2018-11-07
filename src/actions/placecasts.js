@@ -10,3 +10,5 @@ export const putPlacecastRequested = createAction('PUT_PLACECAST_REQUESTED')
 export const putPlacecastSucceeded = createAction('PUT_PLACECAST_SUCCEEDED')
 export const putPlacecastFailed = createAction('PUT_PLACECAST_FAILURE')
 export const updateCurrentViewTo = createAction('UPDATE_CURRENT_VIEW_TO')
+export const updateHomepageCurrentFeedViewTo = createAction('UPDATE_HOMEPAGE_CURRENT_FEED_VIEW_TO')
+
