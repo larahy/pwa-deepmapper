@@ -25,49 +25,46 @@ export default class IndividualPlacecastViewToggle extends Component {
         return this.props.changeViewTo(view)
     }
 
-
     render() {
-        const {currentView, displayExpertView} = this.props
+        const { currentView, displayExpertView } = this.props
 
+        const splitPerc = displayExpertView ? '25%' : '34%';
         const streetViewElementClasses = currentView === 'street-view' ? 'is-active' : ''
         const photoElementClasses = currentView === 'photo' ? 'is-active' : ''
         const mapElementClasses = currentView === 'map' ? 'is-active' : ''
         const expertElementClasses = currentView === 'expert' ? 'is-active' : ''
-        const expertElementLink = displayExpertView ?
-            <li className={expertElementClasses}>
-                <a onClick={() => this.toggleOn('expert')}>
-                    <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
-                </a>
-            </li> :
-            null
+        // const expertElementLink = displayExpertView ?
+        //     <li className={expertElementClasses}>
+        //         <p onClick={() => this.toggleOn('expert')}>
+        //             <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
+        //         </p>
+        //     </li> :
+        //     null
         return (
             <Fragment>
-
-                <div className="tabs is-toggle is-fullwidth is-large">
-                    <ul>
-                        <li className={photoElementClasses}>
-                            <a onClick={() => this.toggleOn('photo')}>
-                                <span className="icon is-large"><FontAwesomeIcon icon={faImage}/></span>
-                            </a>
-                        </li>
-                        <li className={streetViewElementClasses}>
-                            <a onClick={() => this.toggleOn('street-view')}>
-                                <span className="icon is-large"><FontAwesomeIcon icon={faStreetView}/></span>
-                            </a>
-                        </li>
-                        <li className={mapElementClasses}>
-                            <a onClick={() => this.toggleOn('map')}>
-                                <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
-                            </a>
-                        </li>
-                        <li className={mapElementClasses}>
-                            <a>
-                                <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
-                            </a>
-                        </li>
-                        {expertElementLink}
-                    </ul>
-                </div>
+                <ul className="create-toggle-list">
+                    <li style={{ width: splitPerc }} className={photoElementClasses}>
+                        <p onClick={() => this.toggleOn('photo')}>
+                            <span className="icon is-large"><FontAwesomeIcon icon={faImage}/></span>
+                        </p>
+                    </li>
+                    <li style={{ width: splitPerc }} className={streetViewElementClasses}>
+                        <p onClick={() => this.toggleOn('street-view')}>
+                            <span className="icon is-large"><FontAwesomeIcon icon={faStreetView}/></span>
+                        </p>
+                    </li>
+                    <li style={{ width: splitPerc }} className={mapElementClasses}>
+                        <p onClick={() => this.toggleOn('map')}>
+                            <span className="icon is-large"><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
+                        </p>
+                    </li>
+                    {displayExpertView && 
+                      <li style={{ width: splitPerc }} className={expertElementClasses}>
+                          <p onClick={() => this.toggleOn('expert')}>
+                              <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
+                          </p>
+                      </li>}
+                </ul>
             </Fragment>
         )
     }

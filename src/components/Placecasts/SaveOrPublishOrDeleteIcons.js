@@ -37,13 +37,13 @@ export default class SaveOrPublishOrDeleteIcons extends React.Component {
 
     render() {
         const {isPublishable, isSavable} = this.props
-        const publishButtonClasses = isPublishable ? 'button is-primary' : 'button'
-        const saveButtonClasses = isSavable ? 'button is-primary' : 'button'
+        const publishButtonClasses = isPublishable ? 'create-top-button button-active' : 'create-top-button'
+        const saveButtonClasses = isSavable ? 'create-top-button button-active' : 'create-top-button'
         return (
             <Fragment>
                 <a className={saveButtonClasses} disabled={!isSavable} onClick={this.onSave}><span className="icon"><FontAwesomeIcon icon={faSave}/></span></a>
                 <a className={publishButtonClasses}  disabled={!isPublishable}  onClick={this.onPublish}><span className="icon"><FontAwesomeIcon icon={faEye}/></span></a>
-                <a className='button' onClick={this.onDelete}><span className="icon"><FontAwesomeIcon icon={faTrashAlt}/></span></a>
+                <a className='create-top-button button-active' onClick={this.onDelete}><span className="icon"><FontAwesomeIcon icon={faTrashAlt}/></span></a>
             </Fragment>
         )
     }

@@ -34,31 +34,25 @@ class NewCreatePage extends Component {
                     title={Headers.DEEPMAPPER}
                     onBack={goToMyDeepMapper()}/>
                 <section className="create-section">
-                    <div className='something'>
-                        <div className="lalala">
-                            <div className="lululu">
-                                <EditableTitleAndSearchBarContainer/>
-                            </div>
-                            <div className="kakaka">
-                                <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
-                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
-                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
-                            </div>
-                        </div>
+                    <div className='create-top-section'>  
+                          <div className="create-top-input">
+                              <EditableTitleAndSearchBarContainer/>
+                          </div>
+                          <div className="create-top-buttons">
+                              <SaveOrPublishOrDeleteIconsContainer
+                                  onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
+                                  onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                  onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                          </div>
                     </div>
-                    <br></br>
-                    <div className='container audio-area'>
-                        <h3>Audio Area</h3>
-                        <EditableAudioPanelContainer/>
-                    </div>
-                    <br></br>
-                    <div className='container visuals-area'>
-                        <h3>Visuals Area</h3>
+                    <div className='create-mid-section'>
                         <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
                         {photoElement}
                         {streetViewElement}
                         {mapElement}
+                    </div>
+                    <div className='create-bottom-section'>
+                        <EditableAudioPanelContainer/>
                     </div>
 
                 </section>

@@ -60,8 +60,8 @@ export default class Footer extends React.Component {
 
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
                         <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-                        <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become anExpert</NavLink>
-                        <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>PLACECASTS</NavLink>
+                        <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
+                        <NavLink to='/placecasts' className="navbar-item" activeClassName='menu selected'>Placecasts</NavLink>
                     </div>
                 </div>
             </nav>

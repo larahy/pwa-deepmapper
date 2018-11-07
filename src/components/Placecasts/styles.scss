@@ -43,3 +43,38 @@ a.button.is-fullwidth.is-white.skip {
   padding: 10px;
   color: $dark;
 }
+
+.create-top-button {
+  color: $dark;
+  opacity: 0.3;
+  margin-right: 15px;
+  font-size: 1.8em;
+}
+
+.button-active {
+  opacity: 1;
+}
+
+.create-toggle-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.create-toggle-list li {
+  border: 1px solid $carbon;
+  text-align: center;
+  color: $carbon;
+  font-size: 1.2em;
+}
+
+.create-toggle-list li:first-child {
+  border-left: none;
+}
+
+.create-toggle-list li:last-child {
+  border-right: none;
+}
+
+.create-toggle-list .is-active {
+  color: $dark;
+}
