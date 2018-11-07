@@ -9,6 +9,7 @@ import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import './pages.scss'
 import HomepageFeedViewToggleContainer from '../containers/Placecasts/HomePageToggleContainer'
 import {getHomepageCurrentFeedView,} from '../selectors/placecasts'
+import StaticMapContainer from '../containers/Maps/StaticMapContainer'
 
 let HomePage = class extends React.Component {
     static displayName = 'Home'
@@ -21,7 +22,7 @@ let HomePage = class extends React.Component {
 
         const mainElement = currentView === 'list'
             ? <FilterablePlacecastTiles/>
-            : null
+            : <StaticMapContainer />
         return (
             <Fragment>
                 <SimpleHeader title={Headers.DEEPMAPPER}/>
