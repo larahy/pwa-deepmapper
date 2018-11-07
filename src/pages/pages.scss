@@ -3,6 +3,7 @@
 .create-section {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .create-top-section {
@@ -52,4 +53,9 @@
 
 .map-icon span {
   margin: 0 auto;
+}
+
+.create-bottom-section {
+  display: flex;
+  flex-direction: row;
 }

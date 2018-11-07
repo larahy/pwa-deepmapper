@@ -1,5 +1,17 @@
 @import "../../styles/variables";
 
+.record-section {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-microphone {
+  padding: 0 5px;
+}
+
 .player {
   position: relative;
   height: 60px;

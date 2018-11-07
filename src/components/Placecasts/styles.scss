@@ -47,7 +47,7 @@ a.button.is-fullwidth.is-white.skip {
 .create-top-button {
   color: $dark;
   opacity: 0.3;
-  margin-right: 15px;
+  margin-right: 17px;
   font-size: 1.8em;
 }
 
@@ -63,11 +63,11 @@ a.button.is-fullwidth.is-white.skip {
 .create-toggle-list li {
   border: 1px solid $carbon;
   text-align: center;
-  color: $carbon;
+  color: $dark;
   font-size: 1.2em;
 }
 
-.create-toggle-list li:first-child {
+.create-toggle-list li {
   border-left: none;
 }
 
@@ -76,5 +76,22 @@ a.button.is-fullwidth.is-white.skip {
 }
 
 .create-toggle-list .is-active {
-  color: $dark;
+  background: $sky;
+}
+
+.photo-edit-icons {
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.overlay-icon i {
+  font-size: 1.2em;
+  background: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
 }

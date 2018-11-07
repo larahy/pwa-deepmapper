@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import './styles.scss'
 
@@ -36,14 +36,30 @@ export default class EditVisualsButtons extends React.Component {
 
     render() {
         const {displayEdit, displaySaveOrCancel} = this.props
-        const editButtonClasses = displayEdit ? 'button' : 'is-hidden'
-        const savOrCancelButtonClasses = displaySaveOrCancel ? 'button' : 'is-hidden'
+        const editButtonClasses = displayEdit ? '' : 'is-hidden'
+        const savOrCancelButtonClasses = displaySaveOrCancel ? '' : 'is-hidden'
+
         return (
-            <Fragment>
-                <a className={editButtonClasses} onClick={this.onEdit}>Edit</a>
-                <a className={savOrCancelButtonClasses} onClick={this.onSave}> Save</a>
-                <a className={savOrCancelButtonClasses} onClick={this.onCancel}> Cancel</a>
-            </Fragment>
+            <div className='photo-edit-icons'>
+                <div className='overlay-icon'>
+                    <i 
+                        className={`fas fa-pen ${editButtonClasses}`} 
+                        onClick={this.onEdit} 
+                    />
+                </div>
+                <div className='overlay-icon'>
+                    <i 
+                        className={`fas fa-save ${savOrCancelButtonClasses}`} 
+                        onClick={this.onSave} 
+                    />
+                </div>
+                <div className='overlay-icon'>
+                    <i 
+                        className={`fas fa-pen ${savOrCancelButtonClasses}`} 
+                        onClick={this.onCancel} 
+                    />
+                </div>
+            </div>
         )
     }
 }

@@ -7,6 +7,7 @@ import vmsg from 'vmsg';
 import {isEmpty} from 'lodash'
 import connect from 'react-redux/es/connect/connect'
 import {editAudio} from '../../actions/edit'
+import './Audio.scss'
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -71,21 +72,28 @@ class AudioRecorder extends Component {
         const {isRecording, recording} = this.state;
         const recordingElement = isRecording ?
             //TODO INSERT TIMER HERE//
-            <a className='button is-danger' onClick={this.record}>
-                STOP RECORDING
-            </a>
+            <div>
+              <div className='record-button'>
+                Stop recording
+                <i className='fas fa-stop' onClick={this.record} />
+              </div>
+            </div>
             :
-            <a className='button' onClick={this.record}>
-                START RECORDING
-            </a>
+            <div>
+              <div className='record-button'>
+                Start recording
+                <i className='fas fa-microphone' onClick={this.record} />
+              </div>
+            </div>
+
         const uploadElement = isEmpty(recording) ?
             <a className="button">
                 <div className="file">
                     <label className="file-label">
                         <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture/>
                         <span className="file-cta">
-                             <span className="file-icon"><i className="fas fa-upload"></i></span>
-                             <span className="file-label">UPLOAD AUDIO</span>
+                        <span className="file-icon"><i className="fas fa-upload"></i></span>
+                        <span className="file-label">UPLOAD AUDIO</span>
                         </span>
                     </label>
                 </div>
@@ -93,7 +101,7 @@ class AudioRecorder extends Component {
             : null
         return (
             <Fragment>
-                <div className="buttons has-addons">
+                <div className="record-section">
                     {recordingElement}
                     {uploadElement}
                 </div>

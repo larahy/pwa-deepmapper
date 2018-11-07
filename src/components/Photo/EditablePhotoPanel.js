@@ -14,10 +14,9 @@ class EditablePhotoPanel extends React.Component {
         const mainElement = sourceUrl === '' && newPhotoSrc === '' || isEditing
             ? <EditUploadPhotoFile/>
             :
-            <div>
-                <figure className="image is-128x128">
-                    <img src={src}/>
-                </figure>
+            <div className='upload-image'>
+                <img src={src}/>
+                
                 <EditVisualsButtonsContainer
                     onCancel={dispatch => (dispatch(cancelPhotoEdit()))}
                     onSave={dispatch => (dispatch(uploadPhotoFileSuccess(newPhotoSrc)))}/>

@@ -4,6 +4,7 @@ import Promise from 'bluebird'
 import connect from 'react-redux/es/connect/connect'
 import imageCompression from 'browser-image-compression';
 import {editUploadPhotoFile} from '../../actions/edit'
+import './Photo.scss'
 
 class EditUploadPhotoFile extends Component {
 
@@ -33,17 +34,17 @@ class EditUploadPhotoFile extends Component {
 
     render() {
         return (
-            <div className="field navbar-item">
-                <div className="file is-centered">
-                    <label className="file-label">
-                        <input className="file-input" type="file" accept="image/*" onChange={this.handleLoadLocalFile}/>
-                        <span className="file-cta">
-                            <span className="file-icon">
-                                <i className="fas fa-upload"></i>
-                            </span>
-                        </span>
-                    </label>
-                </div>
+            <div className='upload-image'>
+                <label className="file-label">
+                    <input 
+                        className="file-input" type="file" 
+                        accept="image/*" 
+                        onChange={this.handleLoadLocalFile}
+                    />
+                    <div className='overlay-icon'>
+                        <i className="fas fa-upload" />
+                    </div>
+                </label>
             </div>
         );
     }

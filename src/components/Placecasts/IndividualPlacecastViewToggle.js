@@ -33,13 +33,6 @@ export default class IndividualPlacecastViewToggle extends Component {
         const photoElementClasses = currentView === 'photo' ? 'is-active' : ''
         const mapElementClasses = currentView === 'map' ? 'is-active' : ''
         const expertElementClasses = currentView === 'expert' ? 'is-active' : ''
-        // const expertElementLink = displayExpertView ?
-        //     <li className={expertElementClasses}>
-        //         <p onClick={() => this.toggleOn('expert')}>
-        //             <span className="icon is-large"><FontAwesomeIcon icon={faInfo}/></span>
-        //         </p>
-        //     </li> :
-        //     null
         return (
             <Fragment>
                 <ul className="create-toggle-list">
