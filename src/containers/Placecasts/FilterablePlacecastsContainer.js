@@ -1,7 +1,4 @@
 import {connect} from 'react-redux'
-
-import {fetchDependencies} from '../../helpers/fetchDependencies'
-import {Dependencies} from '../../constants/attributes'
 import {getPublishedPlacecasts} from '../../selectors/placecasts'
 import PlacecastTiles from '../../components/Placecasts/PlacecastTiles'
 import {getLoggedInUserId} from '../../selectors/session'
@@ -24,8 +21,6 @@ let FilterablePlacecastTiles = connect(
     mapDispatchToProps
 )(PlacecastTiles)
 
-FilterablePlacecastTiles = fetchDependencies([
-    Dependencies.PLACECASTS
-])(FilterablePlacecastTiles)
+
 
 export default FilterablePlacecastTiles
