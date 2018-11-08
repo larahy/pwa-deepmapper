@@ -3,7 +3,6 @@
 .create-section {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 .create-top-section {
@@ -58,4 +57,5 @@
 .create-bottom-section {
   display: flex;
   flex-direction: row;
+  padding: 1rem 10px 1.5rem 10px;
 }

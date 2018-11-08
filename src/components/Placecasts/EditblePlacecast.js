@@ -28,32 +28,26 @@ class EditablePlacecast extends React.Component {
                     displayNextButton={false}
                     title={Headers.DEEPMAPPER}
                     onBack={goToMyDeepMapper()}/>
-                <section className="section">
-                    <div className='container info-area'>
-                        <div className="columns is-mobile">
-                            <div className="column is-two-thirds">
-                                <EditableTitleAndSearchBarContainer/>
-                            </div>
-                            <div className="column">
-                                <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.EDIT)))}
-                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.EDIT)))}
-                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.EDIT)))}/>
-                            </div>
+                <section className="create-section">
+                    <div className='create-top-section'>  
+                        <div className="create-top-input">
+                            <EditableTitleAndSearchBarContainer/>
+                        </div>
+                        <div className="create-top-buttons">
+                            <SaveOrPublishOrDeleteIconsContainer
+                                onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
+                                onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
                         </div>
                     </div>
-                    <br></br>
-                    <div className='container audio-area'>
-                        <h3>Audio Area</h3>
-                        <EditableAudioPanelContainer/>
-                    </div>
-                    <br></br>
-                    <div className='container visuals-area'>
-                        <h3>Visuals Area</h3>
+                    <div className='create-mid-section'>
                         <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
                         {photoElement}
                         {streetViewElement}
                         {mapElement}
+                    </div>
+                    <div className='create-bottom-section'>
+                        <EditableAudioPanelContainer/>
                     </div>
 
                 </section>

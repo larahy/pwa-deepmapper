@@ -73,31 +73,26 @@ class AudioRecorder extends Component {
         const recordingElement = isRecording ?
             //TODO INSERT TIMER HERE//
             <div>
-              <div className='record-button'>
-                Stop recording
-                <i className='fas fa-stop' onClick={this.record} />
+              <div className='record-button' onClick={this.record}>
+                <i className='fas fa-stop' />
               </div>
             </div>
             :
             <div>
-              <div className='record-button'>
-                Start recording
-                <i className='fas fa-microphone' onClick={this.record} />
+              <div className='record-button' onClick={this.record}>
+                <i className='fas fa-microphone' />
               </div>
             </div>
 
         const uploadElement = isEmpty(recording) ?
-            <a className="button">
-                <div className="file">
-                    <label className="file-label">
-                        <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture/>
-                        <span className="file-cta">
-                        <span className="file-icon"><i className="fas fa-upload"></i></span>
-                        <span className="file-label">UPLOAD AUDIO</span>
-                        </span>
-                    </label>
-                </div>
-            </a>
+            
+            <div className="audio-upload">
+                <label className="file-label">
+                    <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture/>
+                    <i className="fas fa-upload"></i>
+                </label>
+            </div>
+            
             : null
         return (
             <Fragment>

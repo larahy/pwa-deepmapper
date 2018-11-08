@@ -36,13 +36,24 @@ export default class EditAudioButtons extends React.Component {
 
     render() {
         const {displayEdit, displaySaveOrCancel} = this.props
-        const editButtonClasses = displayEdit ? 'button' : 'is-hidden'
-        const savOrCancelButtonClasses = displaySaveOrCancel ? 'button' : 'is-hidden'
+        const editButtonClasses = displayEdit ? '' : 'is-hidden'
+        const savOrCancelButtonClasses = displaySaveOrCancel ? '' : 'is-hidden'
         return (
             <Fragment>
-                <a className={editButtonClasses} onClick={this.onEdit}>Edit</a>
-                <a className={savOrCancelButtonClasses} onClick={this.onSave}> Save</a>
-                <a className={savOrCancelButtonClasses} onClick={this.onCancel}> Cancel</a>
+                <div className='audio-player-buttons'>
+                    <i 
+                        className={`fas fa-pen ${editButtonClasses}`} 
+                        onClick={this.onEdit} 
+                    />
+                    <i 
+                        className={`fas fa-save ${savOrCancelButtonClasses}`} 
+                        onClick={this.onSave} 
+                    />
+                    <i 
+                        className={`fas fa-times ${savOrCancelButtonClasses}`} 
+                        onClick={this.onCancel} 
+                    />
+                </div>
             </Fragment>
         )
     }

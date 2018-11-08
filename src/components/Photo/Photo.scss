@@ -3,7 +3,8 @@
 .upload-image {
   width: 100%;
   height: 375px;
-  background: $neutral;
+  background: #fafafa;
+  border-bottom: 1px solid $carbon;
 }
 
 .upload-image img {

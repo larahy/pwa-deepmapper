@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {saveNewAudio} from '../../actions/edit'
 import EditAudioButtonsContainer from '../../containers/Audio/EditAudioButtonsContainer'
+import PlaybackPanel from './PlaybackPanel';
 
 class EditableAudioPlayback extends React.Component {
 
@@ -10,7 +11,8 @@ class EditableAudioPlayback extends React.Component {
         const src = newAudioSrc ? newAudioSrc : audioSrc
         return (
             <Fragment>
-                <audio controls src={src}/>
+                {/* <audio controls src={src}/> */}
+                <PlaybackPanel src={src} />
                 <EditAudioButtonsContainer
                     onSave={dispatch => (dispatch(saveNewAudio(newAudioSrc)))}/>
             </Fragment>

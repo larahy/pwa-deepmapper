@@ -1,15 +1,51 @@
 @import "../../styles/variables";
 
+.audio-player-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.audio-player-buttons i {
+  font-size: 1.4em;
+  padding: 7px;
+}
+
 .record-section {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.fa-microphone {
-  padding: 0 5px;
+.record-button {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $watermelon;
+  background: $watermelon;
+  border-radius: 50%;
+  padding: 7px;
+  color: $neutral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+}
+
+.audio-upload {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $dark;
+  border-radius: 50%;
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
 }
 
 .player {
@@ -59,7 +95,7 @@
     height: 2px;
     left: 0;
     top: 0;
-    background-color: $sky;
+    background-color: $carbon;
   }
 }
 
@@ -194,17 +230,21 @@
 }
 
 .media {
-  padding: 0 0.75rem;
+  width: 100%;
+  padding: 5px;
 }
 
 .audio.audio-player {
-  min-width: 200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   user-select: none;
   -webkit-user-select: none;
   background-color: #fff;
+  a {
+    background: #fff!important
+  }
   .play-pause-btn {
     cursor: pointer;
     padding-left: 2px;
@@ -215,7 +255,7 @@
     cursor: pointer;
     position: relative;
     .progress {
-      background-color: $sky;
+      background-color: $carbon;
       border-radius: inherit;
       position: absolute;
       pointer-events: none;
@@ -223,7 +263,7 @@
         height: 16px;
         width: 16px;
         border-radius: 8px;
-        background-color: $sky;
+        background-color: $carbon;
         position: absolute;
         pointer-events: all;
         box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.32);
