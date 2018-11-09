@@ -11,17 +11,34 @@
 }
 
 .view-toggle {
-  color: $dark!important;
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  justify-content: center;
+  color: $watermelon;
+  margin: 20px;
 }
 
 .view-toggle li {
-  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid $watermelon;
+  border-radius: 3px;
+}
+
+.view-toggle li:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.view-toggle li:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .view-toggle .active-toggle {
-  text-decoration: underline;
-  font-weight: 600;
+  background: $watermelon;
+  color: #fff;
+}
+
+.expert-container {
+  padding: 10px;
 }

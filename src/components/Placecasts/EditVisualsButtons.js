@@ -55,7 +55,7 @@ export default class EditVisualsButtons extends React.Component {
                 </div>
                 <div className='overlay-icon'>
                     <i 
-                        className={`fas fa-pen ${savOrCancelButtonClasses}`} 
+                        className={`fas fa-times ${savOrCancelButtonClasses}`} 
                         onClick={this.onCancel} 
                     />
                 </div>

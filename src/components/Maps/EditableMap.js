@@ -15,12 +15,12 @@ class EditableMap extends React.Component {
         const mainElement = isEditing ?
             <GoogleMapContainer
                 isDraggable={true}
-                containerElement={<div style={{height: '400px'}}/>}
+                containerElement={<div style={{height: '375px'}}/>}
                 mapElement={<div style={{height: '100%'}}/>}
             />
             : <GoogleMapContainer
                 isDraggable={false}
-                containerElement={<div style={{height: '400px'}}/>}
+                containerElement={<div style={{height: '375px'}}/>}
                 mapElement={<div style={{height: '100%'}}/>}
             />
         return (
@@ -31,7 +31,7 @@ class EditableMap extends React.Component {
                     containerElement={<div style={{height: '100%'}}/>}
                     mapElement={<span style={{display: 'none'}}/>}>
 
-                    <section className='section'>
+                    <section>
                         <EditVisualsButtonsContainer
                             onCancel={dispatch => (dispatch(cancelMapEdit()))}
                             onSave={dispatch => (dispatch(saveNewAddress(newAddress)))}/>

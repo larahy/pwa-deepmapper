@@ -61,7 +61,7 @@ class ReviewPage extends Component {
         const mapElement = currentView === 'map' ?
             <MapContainer
                 isDraggable={false}
-                containerElement={<div style={{height: `400px`}}/>}
+                containerElement={<div style={{height: `375px`}}/>}
                 mapElement={<div style={{height: `100%`}}/>}
             />
             : null

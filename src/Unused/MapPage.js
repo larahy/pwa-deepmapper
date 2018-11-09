@@ -54,7 +54,7 @@ class CreateMapPage extends Component {
         const mapElement = this.state.showMap ?
             <GoogleMapContainer
                 isDraggable={true}
-                containerElement={<div style={{ height: `400px` }} />}
+                containerElement={<div style={{ height: `375px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
             : null

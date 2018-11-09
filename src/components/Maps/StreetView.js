@@ -60,7 +60,8 @@ export default class StreetViewStreetView extends Component {
         const streetViewPanoramaOptions = {
             position: {lat: address.lat, lng: address.lng},
             pov: {heading: heading, pitch: pitch},
-            zoom: zoom
+            zoom: zoom,
+            fullscreenControl: false
         };
 
         return (

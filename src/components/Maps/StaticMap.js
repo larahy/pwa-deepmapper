@@ -24,7 +24,7 @@ class StaticMap extends React.Component {
 
     render() {
         const {openItem} = this.state
-        const containerElement = <div style={{height: '400px'}}/>
+        const containerElement = <div style={{height: '375px'}}/>
         const mapElement = <div style={{height: '100%'}}/>
         const loadingElement = <div style={{height: '100%'}}/>
         const {placecasts} = this.props

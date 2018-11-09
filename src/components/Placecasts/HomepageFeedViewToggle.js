@@ -29,11 +29,21 @@ export default class HomepageFeedViewToggle extends Component {
         return (
             <Fragment>
                 <div className='home-icons'>
-                    <div className={`list-icon ${listElementClasses}`}>
-                        <span onClick={() => this.toggleOn('list')}><FontAwesomeIcon icon={faListUl}/></span>
+                    <div 
+                        className={`list-icon ${listElementClasses}`} 
+                        onClick={() => this.toggleOn('list')}
+                    >
+                        <span>
+                            <FontAwesomeIcon icon={faListUl}/>
+                        </span>
                     </div>
-                    <div className={`map-icon ${mapElementClasses}`}>
-                        <span onClick={() => this.toggleOn('map')}><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
+                    <div 
+                        className={`map-icon ${mapElementClasses}`} 
+                        onClick={() => this.toggleOn('map')}
+                    >
+                        <span>
+                            <FontAwesomeIcon icon={faMapMarkerAlt}/>
+                        </span>
                     </div>
                 </div>
             </Fragment>

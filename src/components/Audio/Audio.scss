@@ -241,13 +241,19 @@
   align-items: center;
   user-select: none;
   -webkit-user-select: none;
-  background-color: #fff;
-  a {
-    background: #fff!important
+  background: $watermelon;
+  padding: 10px;
+  border-radius: 10px 20px;
+  span {
+    background: transparent;
+    border: none;
   }
   .play-pause-btn {
     cursor: pointer;
     padding-left: 2px;
+    .icon {
+      color: #fff;
+    }
   }
   .slider {
     flex-grow: 1;
@@ -263,7 +269,7 @@
         height: 16px;
         width: 16px;
         border-radius: 8px;
-        background-color: $carbon;
+        background-color: #fff;
         position: absolute;
         pointer-events: all;
         box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.32);
@@ -274,7 +280,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     line-height: 18px;
-    color: $railings;
+    color: #fff;
     display: flex;
     flex-grow: 1;
     justify-content: space-between;

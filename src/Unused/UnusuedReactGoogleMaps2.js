@@ -12,7 +12,7 @@ const { InfoBox } = require('react-google-maps/lib/components/addons/InfoBox');
 const StyledMapWithAnInfoBox = compose(
     withProps({
         loadingElement: <div style={{ height: '100%' }} />,
-        containerElement: <div style={{ height: '400px' }} />,
+        containerElement: <div style={{ height: '375px' }} />,
         mapElement: <div style={{ height: '100%' }} />,
         center: { lat: 25.03, lng: 121.6 },
     }),
@@ -30,13 +30,13 @@ const StyledMapWithAnInfoBox = compose(
         defaultCenter={props.center}
     >
         {/*<InfoBox*/}
-            {/*options={{ closeBoxURL: '', enableEventPropagation: true }}*/}
+        {/*options={{ closeBoxURL: '', enableEventPropagation: true }}*/}
         {/*>*/}
-            {/*<div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: '12px' }}>*/}
-                {/*<div style={{ fontSize: '16px', fontColor: '#08233B' }}>*/}
-                    {/*Hello, Taipei!*/}
-                {/*</div>*/}
-            {/*</div>*/}
+        {/*<div style={{ backgroundColor: 'yellow', opacity: 0.75, padding: '12px' }}>*/}
+        {/*<div style={{ fontSize: '16px', fontColor: '#08233B' }}>*/}
+        {/*Hello, Taipei!*/}
+        {/*</div>*/}
+        {/*</div>*/}
         {/*</InfoBox>*/}
         <Marker
             position={{ lat: 22.6273, lng: 120.3014 }}

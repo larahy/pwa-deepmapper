@@ -28,29 +28,31 @@ class EditablePlacecast extends React.Component {
                     displayNextButton={false}
                     title={Headers.DEEPMAPPER}
                     onBack={goToMyDeepMapper()}/>
-                <section className="create-section">
-                    <div className='create-top-section'>  
-                        <div className="create-top-input">
-                            <EditableTitleAndSearchBarContainer/>
+                <div style={{height: '100%'}}>
+                    <section className="create-section">
+                        <div className='create-top-section'>  
+                            <div className="create-top-input">
+                                <EditableTitleAndSearchBarContainer/>
+                            </div>
+                            <div className="create-top-buttons">
+                                <SaveOrPublishOrDeleteIconsContainer
+                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
+                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                            </div>
                         </div>
-                        <div className="create-top-buttons">
-                            <SaveOrPublishOrDeleteIconsContainer
-                                onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
-                                onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
-                                onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                        <div className='create-mid-section'>
+                            <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
+                            {photoElement}
+                            {streetViewElement}
+                            {mapElement}
                         </div>
-                    </div>
-                    <div className='create-mid-section'>
-                        <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
-                        {photoElement}
-                        {streetViewElement}
-                        {mapElement}
-                    </div>
-                    <div className='create-bottom-section'>
-                        <EditableAudioPanelContainer/>
-                    </div>
+                        <div className='create-bottom-section'>
+                            <EditableAudioPanelContainer/>
+                        </div>
 
-                </section>
+                    </section>
+                </div>
             </Fragment>
         )
     }

@@ -33,7 +33,7 @@ class MapPage extends Component {
                 bearing: 0,
                 pitch: 0,
                 width: 500,
-                height: 500,
+                height: 500
             },
             popupInfo: null
         };

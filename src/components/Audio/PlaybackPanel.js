@@ -84,14 +84,16 @@ export default class PlaybackPanel extends React.Component {
 
         return <div className="media">
             <div className="audio audio-player">
-                <a className="button is-medium is-white play-pause-btn" onClick={this.togglePlay}>
+                <span className="button is-medium play-pause-btn" onClick={this.togglePlay}>
                     <span className="icon is-medium">
                         <FontAwesomeIcon icon={this.state.playPauseIcon}/>
                     </span>
-                </a>
+                </span>
 
                 <div className="controls">
-                    <span className="current-time">{currentTime}</span>
+                    <span className="current-time">
+                      {currentTime.replace(/\./g, ':')}
+                    </span>
                     <div className="slider" data-direction="horizontal">
                         <div className="progress" style={progress}>
                             <div draggable={true} className="pin" id="progress-pin" onDragEndCapture={this.getCoefficient} ></div>

@@ -36,7 +36,7 @@ class IndividualPlacecast extends React.Component {
                 <MapContainer
                     address={address}
                     isDraggable={false}
-                    containerElement={<div style={{height: '400px'}}/>}
+                    containerElement={<div style={{height: '375px'}}/>}
                     mapElement={<div style={{height: '100%'}}/>}
                 />
                 : null
@@ -50,23 +50,27 @@ class IndividualPlacecast extends React.Component {
                     <GoogleMapsWrapper
                         googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyDKpfsVMb71XPzA7NDqPFtBU3zWLATe07g&v=3.exp&libraries=geometry,drawing,places'
                         loadingElement={<div style={{height: '100%'}}/>}
-                        containerElement={<div style={{height: '50px'}}/>}
+                        containerElement={<div style={{height: '100%'}}/>}
                         mapElement={<span style={{display: 'none'}}/>}
                     >
-                        <div>{title}</div>
-                        <div>{coordinates}</div>
-                        <IndividualPlacecastViewToggleContainer/>
-                        <div className="columns is-desktop">
-                            <div className='column is-6 is-offset-3'>
-                                <div className='box'>
-                                    {photoElement}
-                                    {streetViewElement}
-                                    {mapElement}
-                                    {expertElement}
+                        <section className='create-section'>
+                            <div className='create-mid-section'>
+                                <IndividualPlacecastViewToggleContainer/>
+                                {photoElement}
+                                {streetViewElement}
+                                {mapElement}
+                                {expertElement}
+                                <div className='placecast-header'>
+                                    <h2>{title}</h2>
+                                    <p>{coordinates}</p>
                                 </div>
+                            </div>
+
+                            <div className='create-bottom-section'>
+                                
                                 <PlaybackPanel src={audioSrc} />
                             </div>
-                        </div>
+                        </section>
                     </GoogleMapsWrapper>
                 </Fragment>
             )
