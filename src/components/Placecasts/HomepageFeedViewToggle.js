@@ -23,8 +23,8 @@ export default class HomepageFeedViewToggle extends Component {
     render() {
         const {currentView} = this.props
 
-        const mapElementClasses = currentView === 'map' ? 'active-toggle' : ''
-        const listElementClasses = currentView === 'list' ? 'active-toggle' : ''
+        const mapElementClasses = currentView === 'map' ? 'active-toggle' : '';
+        const listElementClasses = currentView === 'list' ? 'active-toggle' : '';
 
         return (
             <Fragment>
