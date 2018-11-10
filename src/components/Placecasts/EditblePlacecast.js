@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
 import {Headers, Scopes} from '../../constants/attributes'
-import { goToMyDeepMapper} from '../../actions/navigation'
+import {goToMyDeepMapperThunk} from '../../actions/navigation'
 import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import EditablePhotoPanelContainer from '../../containers/Photo/EditablePhotoPanelContainer'
 import EditableStreetViewContainer from '../../containers/Maps/EditableStreetViewContainer'
@@ -27,7 +27,7 @@ class EditablePlacecast extends React.Component {
                     displayBackButton={true}
                     displayNextButton={false}
                     title={Headers.DEEPMAPPER}
-                    onBack={goToMyDeepMapper()}/>
+                    onBack={goToMyDeepMapperThunk()}/>
                 <div style={{height: '100%'}}>
                     <section className="create-section">
                         <div className='create-top-section'>  

@@ -8,12 +8,14 @@ import PropTypes from 'prop-types'
 export default class Footer extends React.Component {
     static propTypes = {
         isLoggedIn: PropTypes.bool,
-        onGoHome: PropTypes.func
+        onGoHome: PropTypes.func,
+        onGoCreate: PropTypes.func
     }
 
     constructor() {
         super()
         this.handleGoHome = this.handleGoHome.bind(this)
+        this.handleGoCreate = this.handleGoCreate.bind(this)
     }
 
     componentDidMount() {
@@ -29,11 +31,16 @@ export default class Footer extends React.Component {
         this.props.onGoHome()
     }
 
+    handleGoCreate() {
+        this.props.onGoCreate()
+    }
+
+
     render() {
         const createIcon = this.props.isLoggedIn ?
-            <Link to="/create" className="navbar-item">
+            <a className="navbar-item" onClick={this.handleGoCreate}>
                 <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
-            </Link> : null
+            </a> : null
         const myDeepmapperIcon = this.props.isLoggedIn ?
             <Link to="/my-deepmapper" className="navbar-item">
                 <span className="icon is-large"><FontAwesomeIcon icon={faUser}/></span>

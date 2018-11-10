@@ -1,5 +1,6 @@
 import { push } from 'react-router-redux'
 import {updateCurrentViewTo} from './placecasts'
+import {deletePlacecastSuccess} from './create2'
 
 export const goToHomePage = () => push('/')
 export const goToCreatePage = () => push('/create')
@@ -20,4 +21,14 @@ export const goToPlacecastPage = ({id}) => {
 export const goToHomePageThunk = () => (dispatch) => {
     dispatch(updateCurrentViewTo('photo'))
     dispatch(goToHomePage())
+}
+
+export const goToMyDeepMapperThunk = () => (dispatch) => {
+    dispatch(deletePlacecastSuccess())
+    dispatch(goToMyDeepMapper())
+}
+
+export const goToCreateThunk = () => (dispatch) => {
+    dispatch(deletePlacecastSuccess())
+    dispatch(goToCreatePage())
 }
