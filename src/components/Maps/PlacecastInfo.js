@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types'
-import './map.scss'
 import {Link} from 'react-router-dom'
 
 class PlacecastInfo extends PureComponent {

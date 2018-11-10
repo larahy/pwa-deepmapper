@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
 import PropTypes from 'prop-types'
 import PlacecastPin from './PlacecastPin';
-import PlacecastInfo from './PlacecastInfo';
-import {getPlacecastErrors, getPlacecasts, isFetchingPlacecasts} from '../../../selectors/placecasts'
-import {fetchPlacecastsRequested} from '../../../actions/placecasts'
-import {SimpleHeader} from '../../Navigation/SimpleHeader'
-import {Headers} from '../../../constants/attributes'
+import PlacecastInfo from '../../components/Maps/PlacecastInfo';
+import {getPlacecastErrors, getPlacecasts, isFetchingPlacecasts} from '../../selectors/placecasts'
+import {fetchPlacecastsRequested} from '../../actions/placecasts'
+import {SimpleHeader} from '../../components/Navigation/SimpleHeader'
+import {Headers} from '../../constants/attributes'
 
 
 /* eslint-disable no-undef */
@@ -84,10 +84,7 @@ class MapPage extends Component {
     render() {
         const {placecasts = []} = this.props;
         const {viewport} = this.state;
-        const {fetching, error} = this.props;
-        if (error) {
-            return <div>Error! {error.message}</div>;
-        }
+        const {fetching} = this.props;
 
         if (fetching) {
             return <div>Loading...</div>;

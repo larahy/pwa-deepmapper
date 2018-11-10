@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'
 import {GoogleMap, InfoWindow, Marker} from 'react-google-maps'
-import PlacecastInfo from './Mapbox/PlacecastInfo'
+import PlacecastInfo from './PlacecastInfo'
 // import marker from '../../images/marker.png'
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
