@@ -27,9 +27,9 @@ class MapPage extends Component {
         super(props);
         this.state = {
             viewport: {
-                latitude: 51.5675,
-                longitude: 0,
-                zoom: 5.5,
+                latitude: 51.507279,
+                longitude: -0.146685,
+                zoom: 10.5,
                 bearing: 0,
                 pitch: 0,
                 width: 500,

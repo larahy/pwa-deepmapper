@@ -8,6 +8,7 @@ import {isEmpty} from 'lodash'
 import connect from 'react-redux/es/connect/connect'
 import {editAudio} from '../../actions/edit'
 import './Audio.scss'
+import AudioRecorderTimer from './AudioRecorderTimer';
 
 const recorder = new vmsg.Recorder({
     wasmURL: 'https://unpkg.com/vmsg@0.3.0/vmsg.wasm'
@@ -71,12 +72,15 @@ class AudioRecorder extends Component {
     render() {
         const {isRecording, recording} = this.state;
         const recordingElement = isRecording ?
-            //TODO INSERT TIMER HERE//
-            <div>
-              <div className='record-button' onClick={this.record}>
-                <i className='fas fa-stop' />
+            <Fragment>
+              
+              <div>
+                <div className='record-button' onClick={this.record}>
+                  <i className='fas fa-stop' />
+                </div>
               </div>
-            </div>
+                {isRecording && <AudioRecorderTimer />}
+            </Fragment>
             :
             <div>
               <div className='record-button' onClick={this.record}>

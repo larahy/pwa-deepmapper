@@ -27,6 +27,14 @@ export default class Footer extends React.Component {
         });
     }
 
+    handleHideMenuOnClick = () => {
+        var burger = document.querySelector('.burger');
+        var menu = document.querySelector('#' + burger.dataset.target);
+        
+        burger.classList.remove('is-active');
+        menu.classList.remove('is-active');
+    }
+
     handleGoHome() {
         this.props.onGoHome()
     }
@@ -48,7 +56,6 @@ export default class Footer extends React.Component {
         return (
 
             <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
-
                 <div className="navbar-brand">
                     <a className="navbar-item" onClick={this.handleGoHome}>
                         <span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>
@@ -64,11 +71,10 @@ export default class Footer extends React.Component {
 
                 <div id="navbarExampleTransparentExample" className="navbar-menu">
                     <div className="navbar-end">
-
-                        <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
-                        <NavLink to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-                        <NavLink to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
-                        <NavLink to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox</NavLink>
+                        <NavLink onClick={this.handleHideMenuOnClick} to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
+                        <NavLink onClick={this.handleHideMenuOnClick} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
+                        <NavLink onClick={this.handleHideMenuOnClick} to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
+                        <NavLink onClick={this.handleHideMenuOnClick} to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox map</NavLink>
                     </div>
                 </div>
             </nav>
