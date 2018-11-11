@@ -49,7 +49,7 @@ class StaticMap extends React.Component {
                     containerElement={containerElement}
                     mapElement={mapElement}>
 
-                    <GoogleMap defaultZoom={8} center={{ lat: 51.5675, lng: 0 }}>
+                    <GoogleMap defaultZoom={12} center={{ lat: 51.507279, lng: -0.146685 }}>
                         {placecasts.map((placecast) => (
                             <Fragment key={placecast.id}>
                                 <Marker

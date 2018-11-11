@@ -34,9 +34,9 @@ export default class InfoFields extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <NotifyingInput
                     name='title'
-                    description='TITLE'
+                    description='title'
                     type='text'
-                    placeholder='Placeholder'
+                    placeholder='Placecast Title'
                     validations={[
                         {name: Validations.MANDATORY}
                     ]}
@@ -44,7 +44,6 @@ export default class InfoFields extends React.Component {
                     tags={[Tags.INFO]}
                     helperText='Title is compulsory'
                 />
-                {/*<button type="submit" className="button">alternative button</button>*/}
             </form>
         )
     }
