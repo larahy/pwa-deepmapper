@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import Footer from '../../components/Navigation/Footer'
 import {isLoggedIn} from '../../selectors/session'
 import {goToCreateThunk, goToHomePageThunk} from '../../actions/navigation'
+import {logoutThunk} from '../../actions/session'
 
 
 export const mapStateToProps = (state, ownProps) => {
@@ -15,6 +16,7 @@ export const mapDispatchToProps = (dispatch) => {
     return {
         onGoHome: () => dispatch(goToHomePageThunk()),
         onGoCreate: () => dispatch(goToCreateThunk()),
+        onLogout: () => dispatch(logoutThunk()),
     }
 }
 

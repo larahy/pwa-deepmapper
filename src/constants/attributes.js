@@ -20,8 +20,12 @@ export const Headers = {
     AUDIO: 'AUDIO',
     STREET_VIEW: 'STREET VIEW',
     REVIEW: 'REVIEW',
-    LOGIN: 'LOGIN'
+    LOGIN: 'LOGIN',
+    ABOUT: 'ABOUT',
+    EDIT: 'EDIT PLACECAST',
+    CREATE: 'CREATE PLACECAST'
 }
+
 
 export const Validity = {
     UNTOUCHED: 'untouched',

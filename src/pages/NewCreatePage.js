@@ -31,7 +31,7 @@ class NewCreatePage extends Component {
                 <HeaderWithNavigationContainer
                     displayBackButton={true}
                     displayNextButton={false}
-                    title={Headers.DEEPMAPPER}
+                    title={Headers.CREATE}
                     onBack={goToMyDeepMapper()}/>
                 <section className="create-section">
                     <div className='create-top-section'>  

@@ -26,7 +26,7 @@ class EditablePlacecast extends React.Component {
                 <HeaderWithNavigationContainer
                     displayBackButton={true}
                     displayNextButton={false}
-                    title={Headers.DEEPMAPPER}
+                    title={Headers.EDIT}
                     onBack={goToMyDeepMapperThunk()}/>
                 <div style={{height: '100%'}}>
                     <section className="create-section">
