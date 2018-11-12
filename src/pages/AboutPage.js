@@ -1,7 +1,11 @@
 import React, {Fragment} from 'react';
+import {SimpleHeader} from '../components/Navigation/SimpleHeader'
+import {Headers} from '../constants/attributes'
 
 const AboutPage = () => (
     <Fragment>
+        <SimpleHeader title={Headers.ABOUT}/>
+
         <section className="hero is-info is-medium is-bold">
             <div className="hero-body about-page">
                 <div className="container has-text-centered">
