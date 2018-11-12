@@ -74,7 +74,3 @@ export const RequestStatus = {
     SUCCEEDED: 'succeeded',
     FAILED: 'failed'
 }
-
-
-
-

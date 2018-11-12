@@ -85,3 +85,34 @@ nav#navbarTop {
 .header-nav-title {
   width: 60%!important;
 }
+
+.footer-navbar-container {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  background: $neutral;
+  align-items: center;
+  padding: 10px;
+}
+
+.footer-navbar-container ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-navbar-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer-navbar-burger span {
+  width: 25px;
+  height: 2px;
+  background: $dark;
+  margin: 3px 0;
+}
