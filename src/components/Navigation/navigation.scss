@@ -3,6 +3,7 @@
 nav.navbar {
     border-bottom: 1px solid $carbon;
 }
+
 nav#navbarTop {
     display: flex;
     justify-content: center; 
@@ -88,31 +89,79 @@ nav#navbarTop {
 
 .footer-navbar-container {
   position: fixed;
-  bottom: 0px;
+  bottom: -1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 40px;
-  background: $neutral;
+  height: 45px;
+  background: #fff;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
+  border-top: 1px solid $neutral;
 }
 
 .footer-navbar-container ul {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .footer-navbar-burger {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 5px;
 }
 
 .footer-navbar-burger span {
-  width: 25px;
+  width: 22px;
   height: 2px;
   background: $dark;
-  margin: 3px 0;
+  margin: 2px 0;
+  transition: 0.4s;
+}
+
+.footer-navbar-close span:first-child {
+  -webkit-transform: rotate(-45deg) translate(-5px, 5px) ;
+  transform: rotate(-45deg) translate(-5px, 5px) ;
+}
+
+.footer-navbar-close span:not(:first-child):not(:last-child) {
+  opacity: 0;
+}
+
+.footer-navbar-close span:last-child {
+  -webkit-transform: rotate(45deg) translate(-3px, -4px) ;
+  transform: rotate(45deg) translate(-3px, -4px) ;
+}
+
+.footer-navbar-menu {
+  position: absolute;
+  background: #fff;
+  right: 0;
+  bottom: 45px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-left: 1px solid $neutral;
+  border-top: 1px solid $neutral;
+  padding: 5px;
+  opacity: 0;
+}
+
+.menu-active {
+  opacity: 1;
+}
+
+.footer-navbar-icons li {
+  font-size: 1.3em;
+}
+
+.footer-navbar-items .navbar-item {
+  border-bottom: 1px solid $neutral;
+}
+
+.footer-navbar-items .navbar-item:last-child {
+  border-bottom: none!important;
 }

@@ -67,7 +67,7 @@ a.button.is-fullwidth.is-white.skip {
   font-size: 1.2em;
 }
 
-.create-toggle-list li {
+.create-toggle-list li:first-child {
   border-left: none;
 }
 
@@ -100,7 +100,7 @@ a.button.is-fullwidth.is-white.skip {
 .placecast-header {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 2px 10px;
   color: $dark;
 }
 

@@ -13,60 +13,31 @@ export default class Footer extends React.Component {
         onGoCreate: PropTypes.func
     }
 
-<<<<<<< HEAD
-=======
-    constructor() {
-        super()
-        this.handleGoHome = this.handleGoHome.bind(this)
-        this.handleGoCreate = this.handleGoCreate.bind(this)
-        this.handleLogout = this.handleLogout.bind(this)
+    state = {
+        menuIcons: ['faHome', 'faPlus', 'faUser'],
+        isMenuActive: false
     }
 
->>>>>>> 0c1cfa58868162559f726b24c1d16dc7ab80187c
-    componentDidMount() {
-        // var burger = document.querySelector('.burger');
-        // var menu = document.querySelector('#' + burger.dataset.target);
-        // burger.addEventListener('click', function () {
-        //     burger.classList.toggle('is-active');
-        //     menu.classList.toggle('is-active');
-        // });
+    handleToggleMenu = () => {
+        this.setState({ isMenuActive: !this.state.isMenuActive });
     }
 
-    handleHideMenuOnClick = () => {
-        var burger = document.querySelector('.burger');
-        var menu = document.querySelector('#' + burger.dataset.target);
-        
-        burger.classList.remove('is-active');
-        menu.classList.remove('is-active');
+    handleLogout = () => {
+        this.props.onLogout();
     }
 
-    // Remove this
-    handleGoHome = () => {
-        this.props.onGoHome()
-    }
-
-    handleGoCreate = () => {
-        this.props.onGoCreate()
-    }
-
-<<<<<<< HEAD
-=======
-    handleLogout() {
-        this.props.onLogout()
-        this.handleHideMenuOnClick()
-    }
-
-
->>>>>>> 0c1cfa58868162559f726b24c1d16dc7ab80187c
     render() {
-        const createIcon = this.props.isLoggedIn ?
-            <a className="navbar-item" onClick={this.handleGoCreate}>
-                <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
-            </a> : null
-        const myDeepmapperIcon = this.props.isLoggedIn ?
-            <Link to="/my-deepmapper" className="navbar-item">
-                <span className="icon is-large"><FontAwesomeIcon icon={faUser}/></span>
-            </Link> : null
+        const { isMenuActive } = this.state;
+        const { isLoggedIn, onGoHome, onGoCreate } = this.props;
+
+        // const createIcon = this.props.isLoggedIn ?
+        //     <a className="navbar-item" onClick={this.handleGoCreate}>
+        //         <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
+        //     </a> : null
+        // const myDeepmapperIcon = this.props.isLoggedIn ?
+        //     <Link to="/my-deepmapper" className="navbar-item">
+        //         <span className="icon is-large"><FontAwesomeIcon icon={faUser}/></span>
+        //     </Link> : null
         const loginLogoutLink = this.props.isLoggedIn ?
             <a onClick={this.handleLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
             :
@@ -78,64 +49,43 @@ export default class Footer extends React.Component {
             <NavLink onClick={this.handleHideMenuOnClick} to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
 
         return (
-
-            // <nav id="navbarBottom" className="navbar is-fixed-bottom has-shadow footer">
-            //     <div className="navbar-brand">
-            //         <a className="navbar-item" onClick={this.handleGoHome}>
-            //             <span className="icon is-large"><FontAwesomeIcon icon={faHome}/></span>
-            //         </a>
-            //         {createIcon}
-            //         {myDeepmapperIcon}
-            //         <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
-            //             <span></span>
-            //             <span></span>
-            //             <span></span>
-            //         </div>
-            //     </div>
-
-            //     <div id="navbarExampleTransparentExample" className="navbar-menu">
-            //         <div className="navbar-end">
-            //             <NavLink onClick={this.handleHideMenuOnClick} to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
-            //             <NavLink onClick={this.handleHideMenuOnClick} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-            //             <NavLink onClick={this.handleHideMenuOnClick} to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
-            //             <NavLink onClick={this.handleHideMenuOnClick} to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox map</NavLink>
-            //         </div>
-            //     </div>
-            // </nav>
-
             <nav className='footer-navbar-container'>
                 <ul className='footer-navbar-icons'>
                     <li>
-                        <FontAwesomeIcon icon={faHome}/>
+                        <FontAwesomeIcon 
+                            icon={faHome} 
+                            onClick={onGoHome} />
                     </li>
                     <li>
-                        {createIcon}
+                        {isLoggedIn && 
+                          <FontAwesomeIcon 
+                              icon={faPlus} 
+                              onClick={onGoCreate} />}
                     </li>
                     <li>
-                        {myDeepmapperIcon}
+                        {isLoggedIn &&
+                          <Link to="/my-deepmapper">
+                              <FontAwesomeIcon icon={faUser} />
+                          </Link>}
                     </li>
-                    {/* <div className="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                    <li 
+                        className={`footer-navbar-burger ${isMenuActive? 'footer-navbar-close' : ''}`}
+                        onClick={this.handleToggleMenu}>
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div> */}
+                    </li>
                 </ul>
-                <div className='footer-navbar-burger'>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
 
-                <div id="navbarExampleTransparentExample" className="navbar-menu">
-                    <div className="navbar-end">
-                        <NavLink onClick={this.handleHideMenuOnClick} to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
+                <div className={`footer-navbar-menu ${isMenuActive ? 'menu-active' : ''}`}>
+                    <div className="footer-navbar-items" onClick={this.handleToggleMenu}>
+                        <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
                         {loginLogoutLink}
                         {applicationLink}
-                        <NavLink onClick={this.handleHideMenuOnClick} to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox map</NavLink>
+                        <NavLink to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox map</NavLink>
                     </div>
                 </div>
             </nav>
-
         )
     }
 }
