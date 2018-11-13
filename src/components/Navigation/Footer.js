@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
@@ -21,7 +21,6 @@ export default class Footer extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
-            console.log(this.props.isLoggedIn);
             this.props.isLoggedIn 
                 ? this.setState({ selectedIcon: 'user' })
                 : this.setState({ selectedIcon: 'home' })
@@ -39,17 +38,13 @@ export default class Footer extends React.Component {
         this.setState({ selectedIcon: icon });
     }
 
-    handleLogout = () => {
-        this.props.onLogout();
-    }
-
     render() {
         const { isMenuActive, selectedIcon } = this.state;
-        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper } = this.props;
+        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper, onLogout } = this.props;
 
         // Clean this up and use conditional rendering as well
         const loginLogoutLink = this.props.isLoggedIn ?
-            <a onClick={this.handleLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
+            <a onClick={onLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
             :
             <NavLink onClick={this.handleHideMenuOnClick} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
 

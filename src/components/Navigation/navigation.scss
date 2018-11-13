@@ -85,6 +85,7 @@ nav#navbarTop {
 
 .header-nav-title {
   width: 60%!important;
+  white-space: nowrap;
 }
 
 .footer-navbar-container {
@@ -147,11 +148,11 @@ nav#navbarTop {
   border-left: 1px solid $neutral;
   border-top: 1px solid $neutral;
   padding: 5px;
-  opacity: 0;
+  visibility: hidden;
 }
 
 .menu-active {
-  opacity: 1;
+  visibility: visible;
 }
 
 .footer-navbar-icons li {

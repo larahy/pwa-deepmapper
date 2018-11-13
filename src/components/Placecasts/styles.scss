@@ -109,6 +109,17 @@ a.button.is-fullwidth.is-white.skip {
   font-weight: 600;
 }
 
+.home-icons {
+  background: #fff;
+}
+
 .active-toggle {
   background: $neutral;
+}
+
+.sticky-home-icons {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9;
 }
