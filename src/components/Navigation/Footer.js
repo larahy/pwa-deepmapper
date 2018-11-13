@@ -10,16 +10,33 @@ export default class Footer extends React.Component {
         isLoggedIn: PropTypes.bool,
         onGoHome: PropTypes.func,
         onLogout: PropTypes.func,
-        onGoCreate: PropTypes.func
+        onGoCreate: PropTypes.func,
+        onGoMyDeepmapper: PropTypes.func
     }
 
     state = {
-        menuIcons: ['faHome', 'faPlus', 'faUser'],
+        selectedIcon: 'home',
         isMenuActive: false
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
+            console.log(this.props.isLoggedIn);
+            this.props.isLoggedIn 
+                ? this.setState({ selectedIcon: 'user' })
+                : this.setState({ selectedIcon: 'home' })
+        }
+    }
+
     handleToggleMenu = () => {
-        this.setState({ isMenuActive: !this.state.isMenuActive });
+        this.setState({ 
+            isMenuActive: !this.state.isMenuActive,
+            selectedIcon: ''
+        });
+    }
+
+    handleSelectIcon = (icon) => {
+        this.setState({ selectedIcon: icon });
     }
 
     handleLogout = () => {
@@ -27,22 +44,14 @@ export default class Footer extends React.Component {
     }
 
     render() {
-        const { isMenuActive } = this.state;
-        const { isLoggedIn, onGoHome, onGoCreate } = this.props;
+        const { isMenuActive, selectedIcon } = this.state;
+        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper } = this.props;
 
-        // const createIcon = this.props.isLoggedIn ?
-        //     <a className="navbar-item" onClick={this.handleGoCreate}>
-        //         <span className="icon is-large"><FontAwesomeIcon icon={faPlus}/></span>
-        //     </a> : null
-        // const myDeepmapperIcon = this.props.isLoggedIn ?
-        //     <Link to="/my-deepmapper" className="navbar-item">
-        //         <span className="icon is-large"><FontAwesomeIcon icon={faUser}/></span>
-        //     </Link> : null
+        // Clean this up and use conditional rendering as well
         const loginLogoutLink = this.props.isLoggedIn ?
             <a onClick={this.handleLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
             :
             <NavLink onClick={this.handleHideMenuOnClick} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
-
 
         const applicationLink = this.props.isLoggedIn ?
             null :
@@ -51,22 +60,28 @@ export default class Footer extends React.Component {
         return (
             <nav className='footer-navbar-container'>
                 <ul className='footer-navbar-icons'>
-                    <li>
+                    <li
+                        className={selectedIcon === 'home' ? 'icon-selected' : ''}
+                        onClick={() => this.handleSelectIcon('home')}>
                         <FontAwesomeIcon 
                             icon={faHome} 
                             onClick={onGoHome} />
                     </li>
-                    <li>
+                    <li 
+                        className={selectedIcon === 'create' ? 'icon-selected' : ''}
+                        onClick={() => this.handleSelectIcon('create')}>
                         {isLoggedIn && 
                           <FontAwesomeIcon 
                               icon={faPlus} 
                               onClick={onGoCreate} />}
                     </li>
-                    <li>
+                    <li
+                        className={selectedIcon === 'user' ? 'icon-selected' : ''}
+                        onClick={() => this.handleSelectIcon('user')}>
                         {isLoggedIn &&
-                          <Link to="/my-deepmapper">
-                              <FontAwesomeIcon icon={faUser} />
-                          </Link>}
+                            <FontAwesomeIcon 
+                                icon={faUser} 
+                                onClick={onGoMyDeepmapper} />}
                     </li>
                     <li 
                         className={`footer-navbar-burger ${isMenuActive? 'footer-navbar-close' : ''}`}
