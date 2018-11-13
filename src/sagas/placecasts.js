@@ -21,6 +21,8 @@ import {
 import {getLoggedInUserId, getToken} from '../selectors/session'
 import {goToMyDeepMapper} from '../actions/navigation'
 import {getPlacecastId} from '../selectors/edit'
+import {addError} from '../actions/Errors'
+import {ErrorCodes} from '../constants/attributes'
 
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -187,5 +189,6 @@ export function* putPlacecastSaga(response) {
 
     } catch (error) {
         yield put(putPlacecastFailed(error))
+        yield put(addError(ErrorCodes.SOMETHING_WENT_WRONG))
     }
 }

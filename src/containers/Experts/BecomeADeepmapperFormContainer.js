@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import BecomeADeepmapperForm from '../../components/Experts/BecomeADeepmapperForm'
 import {becomeAnExpertRequested} from '../../actions/experts'
-
 export const mapDispatchToProps = dispatch => {
     return {
         onSubmit: () => dispatch(becomeAnExpertRequested())

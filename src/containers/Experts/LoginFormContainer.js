@@ -4,7 +4,7 @@ import {loginRequested} from '../../actions/session'
 
 export const mapDispatchToProps = dispatch => {
     return {
-        onLogin: () => dispatch(loginRequested())
+        onLogin: () => dispatch(loginRequested()),
     }
 }
 

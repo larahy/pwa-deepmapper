@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import { call, put, select } from 'redux-saga/effects'
 /* eslint-disable no-undef */
 const apiUrl = API_URL
@@ -14,13 +15,13 @@ import {getLoginEmail, getLoginPassword, isReadyToLogin} from '../selectors/logi
 import axios from 'axios'
 import {fetchLoggedInExpertSaga} from './experts'
 import {goToMyDeepMapper} from '../actions/navigation'
+import {addError} from '../actions/Errors'
 
 function login({email, password}) {
     return axios.post(`${apiUrl}/api/v1/session`, {
         'email': email,
         'password': password
     })
-
 }
 
 
@@ -33,15 +34,17 @@ export function* loginSaga () {
             select(getLoginEmail),
             select(getLoginPassword)
         ]
-        const response = yield call(login, { email, password })
-        if (response.status === 200) {
+        try {
+            const response = yield call(login, { email, password })
             yield put(loginSucceeded(response.data.content))
             yield call(fetchLoggedInExpertSaga)
             yield put(goToMyDeepMapper());
 
-        } else {
-            yield put(loginFailed(response))
+        } catch (error) {
+            yield put(loginFailed())
+            yield put(addError(error.response.data.code));
         }
+
     }
 }
 

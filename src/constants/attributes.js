@@ -8,7 +8,20 @@ export const Scopes = {
     EXPERTS: 'experts',
     APPLICATION: 'application',
     PLACECASTS: 'placecasts',
-    EDIT: 'edit'
+    EDIT: 'edit',
+    ERROR: 'error'
+}
+
+export const ErrorCodes = {
+    EMAIL_ALREADY_EXISTS: 'users_email_unique',
+    SOMETHING_WENT_WRONG: 'something_went_wrong',
+    NON_EXISTENT_USER: 'NOT_FOUND',
+}
+
+export const ErrorMessageFactory = {
+    [ErrorCodes.EMAIL_ALREADY_EXISTS]: 'This email address is already registered. Please login to proceed',
+    [ErrorCodes.SOMETHING_WENT_WRONG]: 'We are sorry, an error has occurred. Please try again.',
+    [ErrorCodes.NON_EXISTENT_USER]: 'Oh dear, it seems we dont have you in the system, please apply to become an expert'
 }
 
 export const Headers = {
