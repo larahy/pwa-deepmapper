@@ -28,6 +28,10 @@ export const getDisplayEditVisualsButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayEditVisualsButton')
 })
 
+export const getDisplayBinButton = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'displayBinButton')
+})
+
 export const getDisplayEditAudioButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayEditAudioButton')
 })
