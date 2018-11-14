@@ -1,0 +1,111 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Deepmapper",
+    "scope": "/",
+    "display": "standalone",
+    "start_url": "https://inspiring-montalcini-3785db.netlify.com/",
+    "short_name": "Deepmapper",
+    "theme_color": "#FF3B3F",
+    "description": "Your source for Placecasts - A medium to expand your historical knowledge",
+    "orientation": "any",
+    "background_color": "#fff",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [ {
+            "src": "/meta/a316bacc-db51-5bf3-0771-2500009ba989.webPlatform.png",
+            "sizes": "44x44",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/5188a038-6da2-1143-6177-92f3cb11b0cd.webPlatform.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/ef538dad-e780-4476-97aa-216fd50b7ba0.webPlatform.png",
+            "sizes": "1240x600",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/30c2c04d-7727-98a6-18b0-263d2ebaa347.webPlatform.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/16874d22-5d4b-88c4-4c8f-2a4817a9896b.webPlatform.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/922529d4-d7b7-b036-b5f8-737b3ce56aef.webPlatform.png",
+            "sizes": "88x88",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/544faf00-58af-884d-aefa-ac97587da8ee.webPlatform.png",
+            "sizes": "24x24",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/6feaf4a4-8364-9247-340b-f0cfcaf17ae8.webPlatform.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/513b499a-2ec9-3fe3-e2d6-a4e97849ddeb.webPlatform.png",
+            "sizes": "620x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/76141984-6e02-5160-b155-f16879b7e208.webPlatform.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/92e1a012-62e1-ba49-7573-0bacdfb5d7ca.webPlatform.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/9d422741-e063-b05a-f9b5-0b1ebd89374f.webPlatform.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/b040e939-ad21-2f77-50b1-4f20e57f476d.webPlatform.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/1ac36cc6-bd25-6e4d-807b-325ae2802ae1.webPlatform.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/e1c61975-3664-6dee-a02d-858003d718f3.webPlatform.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/6348dce9-7d70-9950-854d-8424714542bf.webPlatform.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/b6ed366d-c49e-8f94-d068-44d5fc21bba9.webPlatform.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/66f5aa8e-f5ba-39a5-cff8-be818bbef214.webPlatform.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/meta/8ad8b655-4d6e-e52a-8db0-2fd3c72949be.webPlatform.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        }
+    ]
+}

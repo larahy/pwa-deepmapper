@@ -1,7 +1,7 @@
 // /* eslint-disable */
 
 import React, {Fragment} from 'react';
-import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
+import {Route, Switch, Redirect, BrowserRouter} from 'react-router-dom';
 import PlacecastsPage from './PlacecastsPage'
 import NewCreatePage from './NewCreatePage'
 import MapPage from '../Unused/Mapbox/MapPage'
@@ -17,7 +17,7 @@ import EditPlacecastPage from './EditPlacecastPage'
 
 
 const AppRouter = () => (
-    <HashRouter >
+    <BrowserRouter >
         <Fragment>
             <Switch>
                 <Route path='/' component={HomePage} exact={true}/>
@@ -39,7 +39,7 @@ const AppRouter = () => (
             </Switch>
             <FooterContainer />
         </Fragment>
-    </HashRouter>
+    </BrowserRouter>
 );
 
 export {AppRouter};

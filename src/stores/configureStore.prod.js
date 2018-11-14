@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import {AppReducer} from '../reducers/AppReducer';
-import { createHashHistory } from 'history'
-export const history = createHashHistory();
+import { createBrowserHistory } from 'history'
+export const history = createBrowserHistory();
 import {connectRouter, routerMiddleware} from 'connected-react-router'
 import thunk from 'redux-thunk';
 import promiseMiddleware from 'redux-promise-middleware';
