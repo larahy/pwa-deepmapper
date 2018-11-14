@@ -1,15 +1,9 @@
 /* global window */
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
 import PropTypes from 'prop-types'
-import PlacecastPin from '../../components/Maps/PlacecastPin';
 import PlacecastInfo from '../../components/Maps/PlacecastInfo';
-import {getPlacecastErrors, getPlacecasts, isFetchingPlacecasts} from '../../selectors/placecasts'
-import {fetchPlacecastsRequested} from '../../actions/placecasts'
-import {SimpleHeader} from '../../components/Navigation/SimpleHeader'
-import {Headers} from '../../constants/attributes'
-
+import PlacecastPin from './PlacecastPin'
 
 /* eslint-disable no-undef */
 const mapboxApiToken = MAPBOX_API_TOKEN
@@ -21,7 +15,7 @@ const navStyle = {
     padding: '10px'
 };
 
-class MapPage extends Component {
+export default class Mapbox extends Component {
 
     constructor(props) {
         super(props);
@@ -29,7 +23,7 @@ class MapPage extends Component {
             viewport: {
                 latitude: 51.507279,
                 longitude: -0.146685,
-                zoom: 10.5,
+                zoom: 12,
                 bearing: 0,
                 pitch: 0,
                 width: 500,
@@ -40,7 +34,6 @@ class MapPage extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchPlacecastsRequested());
         window.addEventListener('resize', this._resize);
         this._resize();
     }
@@ -92,7 +85,6 @@ class MapPage extends Component {
 
         return (
             <div>
-                <SimpleHeader title={Headers.DEEPMAPPER}/>
                 <MapGL
                     {...viewport}
                     mapStyle="mapbox://styles/larahy/cjms4f3saa8rt2smznqkpiia3"
@@ -113,22 +105,8 @@ class MapPage extends Component {
 
 }
 
-MapPage.propTypes = {
-    width: PropTypes.number,
-    height: PropTypes.number,
-    containerComponent: PropTypes.object,
+Mapbox.propTypes = {
     placecasts: PropTypes.array,
-    dispatch: PropTypes.func,
     fetching: PropTypes.bool,
     error: PropTypes.object,
 }
-
-const mapStateToProps = (state) => {
-    return {
-        placecasts: getPlacecasts(state),
-        fetching: isFetchingPlacecasts(state),
-        error: getPlacecastErrors(state)
-    };
-};
-
-export default connect(mapStateToProps)(MapPage);
