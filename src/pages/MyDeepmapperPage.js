@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import {SimpleHeader} from '../components/Navigation/SimpleHeader'
-import {Headers} from '../constants/attributes'
+import {Dependencies, Headers} from '../constants/attributes'
 import FilterablePlacecastTiles from '../containers/Placecasts/FilterablePlacecastsContainer'
 import MyDeepmapperFeedViewToggleContainer from '../containers/Experts/MyDeepmapperFeedViewToggleContainer'
 import PropTypes from 'prop-types'
@@ -13,12 +13,15 @@ import {getMyDeepmapperCurrentFeedView} from '../selectors/experts'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faListUl, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './pages.scss'
+import {fetchDependencies} from '../helpers/fetchDependencies'
 
-class MyDeepmapperPage extends React.Component {
+
+let MyDeepmapperPage = class extends React.Component {
     state = {
         isMenuSticky: false
     }
 
+    static displayName = 'MyDeepmapper'
     static propTypes = {
         currentView: PropTypes.string,
         draftPlacecasts: PropTypes.array,
@@ -78,5 +81,9 @@ const mapStateToProps = (state) => {
     };
 };
 
+MyDeepmapperPage = fetchDependencies([
+    Dependencies.PLACECASTS,
+    Dependencies.EXPERTS
+])(MyDeepmapperPage)
 
 export default connect(mapStateToProps)(MyDeepmapperPage);

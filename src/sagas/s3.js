@@ -106,34 +106,6 @@ export function uploadPhotoAndAudio({placecast}) {
 
 }
 
-// export function* uploadSaga(action) {
-//     const phase = action.payload
-//     const [ heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc ] = yield [
-//         select(getHeading),
-//         select(getPitch),
-//         select(getZoom),
-//         select(getLatitude),
-//         select(getLongitude),
-//         select(getTitle),
-//         select(getPhotoSrc),
-//         select(getAudioSrc),
-//     ]
-//     const placecast = {heading, pitch, zoom, lat, lng, title, photoSrc, audioSrc}
-//     try {
-//         const response = yield call(uploadPhotoAndAudio, {placecast});
-//         yield put({type: uploadSucceeded().type, response});
-//         if (phase === 'create') {
-//             yield call(postPlacecastSaga, { response })
-//         } else if (phase === 'edit') {
-//             yield call(putPlacecastSaga, { response })
-//         }
-//     } catch (error) {
-//         console.log('error', error)
-//         yield put({type: uploadFailed().type, error});
-//     }
-//
-// }
-
 export function uploadPhoto({placecast}) {
     let photoFileName
     const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional

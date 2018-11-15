@@ -10,16 +10,16 @@ const AboutPage = () => (
             <div className="hero-body about-page">
                 <div className="container has-text-centered">
                     <p className="title is-2">Inner Geography</p>
-                    <p className="subtitle is-4">Deepmapper is a tool that allows a city's inhabitants to create and maintain a deep map - a navigable cultural map of the city populated with unique user-generated 'placecasts' - short, place-specific podcasts.</p>
+                    <p className="subtitle is-4">Deepmapper is a podcast platform with a difference. Our podcasts are short (only a few minutes each) and place-specific (each one has GPS coordinates attached to it). We call them “placecasts”.</p>
                 </div>
             </div>
         </section>
         <section className="section">
             <div className="container">
-                <h2 className="subtitle">Each city's community of deepmappers will be made up of citizens who are passionate about their city's history, architecture, politics, art, literature and local lore - both professionally (scholars, writers) and as amateurs.</h2>
-                <h2 className="subtitle">Deepmappers maintain the quality of their deep map through a democratic process of voting - each submitted placecast must be majority-voted by the rest of the city's deepmappers. This system will also ensure diversity of content, subject-matter and perspectives.</h2>
-                <h2 className="subtitle">Each city's deep map will be enjoyed by visitors and citizens alike. It is a unique map of the city’s ‘inner geography’ – the stories, knowledge, observations and alternative perspectives that pervade all places. This human dimension of the city has so far been locked up inside the minds of its citizens. Deepmapper makes it publicly accessible for the first time.</h2>
-                <h2 className="subtitle">Launching in Autumn 2018, Deepmapper exemplifies technology at its most positive and important.</h2>
+                <h2 className="subtitle">Using Deepmapper, researchers, writers and storytellers can attach their narratives directly onto individual objects in the real world. For our users, those places are then transfigured by those narratives - whether they’re stories, local histories, architectural explanations, rare facts, original ideas, or full-blown poetic visions.</h2>
+                <h2 className="subtitle">Placecasts are powerful. In aggregate, they have the power to change how the world actually appears to us. And when the world changes, we change.</h2>
+                <h2 className="subtitle">This power therefore brings with it responsibility. Our platform aims to represent the whole - though rapidly thinning - spectrum of worldviews, cultures, languages, dialects and unique personal visions (even the really weird ones). Homogeneity, monoculture and groupthink is spreading across the world at an accelerating rate. We set up Deepmapper in order to counter that force. </h2>
+                <h2 className="subtitle">Ultimately, there are as many ways of seeing the world as there are people. Deepmapper aims to make available to all as many of those individual points of view as possible. Deepmapper is an ark for the full diversity of human narrative and vision.</h2>
             </div>
         </section>
     </Fragment>

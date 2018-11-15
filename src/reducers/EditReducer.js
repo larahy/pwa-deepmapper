@@ -35,7 +35,7 @@ export const EditReducer = handleActions({
         return ({ ...state, newPhotoSrc: action.payload, isEditing: false, displayEditVisualsButton: false, displaySaveOrCancelButtons: true } )
     },
     [uploadPhotoFileSuccess]: (state) => {
-        return ({ ...state, newPhotoSrc: null, isEditing: false, displaySaveOrCancelButtons: false, displayEditVisualsButton: true, photoEdited: true } )
+        return ({ ...state, newPhotoSrc: null, isEditing: false, displayBinButton: true, displayEditVisualsButton: false, photoEdited: true } )
     },
     [updateIsEditing]: (state) => {
         return ({ ...state, isEditing: true, displayEditVisualsButton: false } )
@@ -50,7 +50,7 @@ export const EditReducer = handleActions({
         return ({ ...state, isEditing: false, errors: action.error } )
     },
     [cancelPhotoEdit]: (state) => {
-        return ({ ...state, isEditing: false, newPhotoSrc: null, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
+        return ({ ...state, isEditing: true, newPhotoSrc: null, displayEditVisualsButton: false, displayBinButton: false } )
     },
     [cancelMapEdit]: (state) => {
         return ({ ...state, isEditing: false, newAddress: null, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )

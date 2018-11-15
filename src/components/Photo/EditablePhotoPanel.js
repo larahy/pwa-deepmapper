@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {cancelPhotoEdit} from '../../actions/edit'
 import {uploadPhotoFileSuccess} from '../../actions/create2'
 import EditUploadPhotoFile from './EditUploadPhotoFile'
-import EditVisualsButtonsContainer from '../../containers/Placecasts/EditVisualsButtonsContainer'
+import EditPhotoButtonsContainer from '../../containers/Placecasts/EditPhotoButtonsContainer'
 
 class EditablePhotoPanel extends React.Component {
 
@@ -17,7 +17,7 @@ class EditablePhotoPanel extends React.Component {
             <div className='upload-image'>
                 <img src={src}/>
                 
-                <EditVisualsButtonsContainer
+                <EditPhotoButtonsContainer
                     onCancel={dispatch => (dispatch(cancelPhotoEdit()))}
                     onSave={dispatch => (dispatch(uploadPhotoFileSuccess(newPhotoSrc)))}/>
             </div>

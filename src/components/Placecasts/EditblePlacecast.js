@@ -36,9 +36,9 @@ class EditablePlacecast extends React.Component {
                             </div>
                             <div className="create-top-buttons">
                                 <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
-                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
-                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.EDIT)))}
+                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.EDIT)))}
+                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.EDIT)))}/>
                             </div>
                         </div>
                         <div className='create-mid-section'>

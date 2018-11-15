@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-
 import FilterablePlacecastTiles from '../containers/Placecasts/FilterablePlacecastsContainer'
 import {fetchDependencies} from '../helpers/fetchDependencies'
 import {Dependencies, Headers} from '../constants/attributes'
@@ -9,7 +8,7 @@ import {SimpleHeader} from '../components/Navigation/SimpleHeader'
 import './pages.scss'
 import HomepageFeedViewToggleContainer from '../containers/Placecasts/HomePageToggleContainer'
 import {getHomepageCurrentFeedView,} from '../selectors/placecasts'
-import StaticMapContainer from '../containers/Maps/StaticMapContainer'
+import MapboxContainer from '../containers/Maps/MapboxContainer'
 
 let HomePage = class extends React.Component {
     static displayName = 'Home'
@@ -22,7 +21,7 @@ let HomePage = class extends React.Component {
 
         const mainElement = currentView === 'list'
             ? <FilterablePlacecastTiles/>
-            : <StaticMapContainer />
+            : <MapboxContainer />
         return (
             <Fragment>
                 <SimpleHeader title={Headers.DEEPMAPPER}/>

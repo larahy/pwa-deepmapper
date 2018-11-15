@@ -11,7 +11,7 @@ export const ApplicationReducer = handleActions({
     [becomeAnExpertSucceeded().type]: (state) => {
         return { ...state, applicationSuccess: true}
     },
-    [becomeAnExpertFailed().type]: (state) => {
-        return { ...state, applicationSuccess: false}
+    [becomeAnExpertFailed]: (state, action) => {
+        return { ...state, applicationSuccess: false, brenda: action}
     },
 }, initialState)

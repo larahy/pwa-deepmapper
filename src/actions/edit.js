@@ -1,6 +1,6 @@
 import createAction from 'redux-actions/es/createAction'
 import { goToEditPlacecastPage} from './navigation'
-import {populateCreate} from './create2'
+import {populateCreate, uploadPhotoFileSuccess} from './create2'
 
 export const updateIsEditing = createAction('UPDATE_IS_EDITING')
 export const populateEdit = createAction('POPULATE_EDIT')
@@ -21,6 +21,7 @@ export const editUploadPhotoFile = (file) => {
 }
 export const editUploadPhotoFileThunk = (file) => (dispatch) => {
     dispatch(editUploadPhotoFileSuccess(file))
+    dispatch(uploadPhotoFileSuccess(file))
 }
 export const cancelPhotoEdit = createAction('CANCEL_PHOTO_EDIT')
 //MAP && STREET VIEW//
