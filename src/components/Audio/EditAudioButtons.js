@@ -6,16 +6,14 @@ export default class EditAudioButtons extends React.Component {
 
     static propTypes = {
         displayEdit: PropTypes.bool,
-        displaySaveOrCancel: PropTypes.bool,
+        displayBin: PropTypes.bool,
         onEdit: PropTypes.func,
-        onSave: PropTypes.func,
         onCancel: PropTypes.func,
     }
 
     constructor(props) {
         super(props)
         this.onEdit = this.onEdit.bind(this)
-        this.onSave = this.onSave.bind(this)
         this.onCancel = this.onCancel.bind(this)
     }
 
@@ -24,20 +22,15 @@ export default class EditAudioButtons extends React.Component {
         this.props.onEdit()
     }
 
-    onSave(event) {
-        event.preventDefault()
-        this.props.onSave()
-    }
-
     onCancel(event) {
         event.preventDefault()
         this.props.onCancel()
     }
 
     render() {
-        const {displayEdit, displaySaveOrCancel} = this.props
+        const {displayEdit, displayBin} = this.props
         const editButtonClasses = displayEdit ? '' : 'is-hidden'
-        const savOrCancelButtonClasses = displaySaveOrCancel ? '' : 'is-hidden'
+        const binButtonClasses = displayBin ? '' : 'is-hidden'
         return (
             <Fragment>
                 <div className='audio-player-buttons'>
@@ -46,11 +39,7 @@ export default class EditAudioButtons extends React.Component {
                         onClick={this.onEdit} 
                     />
                     <i 
-                        className={`fas fa-save ${savOrCancelButtonClasses}`} 
-                        onClick={this.onSave} 
-                    />
-                    <i 
-                        className={`fas fa-times ${savOrCancelButtonClasses}`} 
+                        className={`fas fa-trash ${binButtonClasses}`}
                         onClick={this.onCancel} 
                     />
                 </div>

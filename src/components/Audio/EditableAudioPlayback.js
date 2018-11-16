@@ -11,7 +11,6 @@ class EditableAudioPlayback extends React.Component {
         const src = newAudioSrc ? newAudioSrc : audioSrc
         return (
             <Fragment>
-                {/* <audio controls src={src}/> */}
                 <PlaybackPanel src={src} />
                 <EditAudioButtonsContainer
                     onSave={dispatch => (dispatch(saveNewAudio(newAudioSrc)))}/>
@@ -23,7 +22,6 @@ class EditableAudioPlayback extends React.Component {
 EditableAudioPlayback.propTypes = {
     audioSrc: PropTypes.string,
     newAudioSrc: PropTypes.string,
-    isEditing: PropTypes.bool
 }
 
 export default EditableAudioPlayback;

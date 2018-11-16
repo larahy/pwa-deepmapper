@@ -10,10 +10,9 @@ import Promise from 'bluebird'
 import {snakeCase, words} from 'lodash'
 import imageCompression from 'browser-image-compression'
 import {
-    getAudioSrc,
     getTitle,
 } from '../selectors/create'
-import {getEditableTitle, getNewPhotoSrc} from '../selectors/edit'
+import {getEditableTitle, getNewAudioSrc, getNewPhotoSrc} from '../selectors/edit'
 
 var AWS = require('aws-sdk');
 
@@ -79,11 +78,11 @@ const putObject = function putObject(file, filename) {
 }
 
 
-export function uploadPhotoAndAudio({placecast}) {
+export function uploadPhotoAndAudio({title, newPhotoSrc, newAudioSrc}) {
     let photoFileName
-    let audioFileName = `${snakeCase(placecast.title)}.mpeg`
-    const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
-    return fetchFile(placecast.audioSrc, audioFileName)
+    let audioFileName = `${snakeCase(title)}.mpeg`
+    const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(newPhotoSrc) // maxSizeMB, maxWidthOrHeight are optional
+    return fetchFile(newAudioSrc, audioFileName)
         .then((file) => {
             return putObject(file, audioFileName)
         })
@@ -93,7 +92,7 @@ export function uploadPhotoAndAudio({placecast}) {
         })
         .then((file) => {
             const fileType = words(file.type, '[^\\/]+$')
-            photoFileName = `${snakeCase(placecast.title)}.${fileType[0]}`
+            photoFileName = `${snakeCase(title)}.${fileType[0]}`
             return putObject(file, photoFileName)
         })
         .then(response => {
@@ -106,13 +105,13 @@ export function uploadPhotoAndAudio({placecast}) {
 
 }
 
-export function uploadPhoto({placecast}) {
+export function uploadPhoto({title, newPhotoSrc}) {
     let photoFileName
-    const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(placecast.photoSrc) // maxSizeMB, maxWidthOrHeight are optional
+    const compressedPhotoFilePromise = imageCompression.getFilefromDataUrl(newPhotoSrc) // maxSizeMB, maxWidthOrHeight are optional
     return Promise.resolve(compressedPhotoFilePromise)
         .then((file) => {
             const fileType = words(file.type, '[^\\/]+$')
-            photoFileName = `${snakeCase(placecast.title)}.${fileType[0]}`
+            photoFileName = `${snakeCase(title)}.${fileType[0]}`
             return putObject(file, photoFileName)
         })
         .then(response => {
@@ -142,9 +141,9 @@ export function* uploadPhotoSaga() {
 }
 
 
-export function uploadAudio({placecast}) {
-    let audioFileName = `${snakeCase(placecast.title)}.mpeg`
-    return fetchFile(placecast.audioSrc, audioFileName)
+export function uploadAudio({newAudioSrc, title}) {
+    let audioFileName = `${snakeCase(title)}.mpeg`
+    return fetchFile(newAudioSrc, audioFileName)
         .then((file) => {
             return putObject(file, audioFileName)
         })
@@ -160,7 +159,7 @@ export function uploadAudio({placecast}) {
 
 export function* uploadAudioSaga() {
     const [ audioSrc, title ] = yield [
-        select(getAudioSrc),
+        select(getNewAudioSrc),
         select(getTitle)
     ]
     const placecast = {title, audioSrc}

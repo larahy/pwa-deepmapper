@@ -1,6 +1,6 @@
 import InfoFields from '../../components/Placecasts/InfoFields'
 import {connect} from 'react-redux'
-import {infoStepCompleted} from '../../actions/create'
+import {infoStepCompleted} from '../../actions/create2'
 
 export const mapStateToProps = (_, ownProps) => {
     return  {

@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux'
 import {updateCurrentViewTo} from './placecasts'
-import {deletePlacecastSuccess} from './create2'
+import {deletePlacecastSuccess} from './edit'
 
 export const goToHomePage = () => push('/')
 export const goToCreatePage = () => push('/create')

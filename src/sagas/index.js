@@ -9,10 +9,10 @@ import {fetchDependenciesRequested} from '../actions/dependencies'
 import {fetchDependencies} from './dependencies'
 import {becomeAnExpertRequested, fetchExpertsRequested, fetchLoggedInExpertRequested} from '../actions/experts'
 import {applicationSaga, fetchExpertsSaga, fetchLoggedInExpertSaga} from './experts'
-import {deletePlacecastRequested, publishPlacecastRequested, savePlacecastRequested} from '../actions/create2'
 import {publishPlacecastSaga} from './publish'
 import {savePlacecastSaga} from './save'
 import {deletePlacecastSaga} from './delete'
+import {deletePlacecastRequested, publishPlacecastRequested, savePlacecastRequested} from '../actions/edit'
 
 export function* watcherSaga() {
     yield takeLatest(fetchPlacecastsRequested, placecastsWorkerSaga);

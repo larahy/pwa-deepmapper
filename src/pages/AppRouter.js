@@ -1,5 +1,3 @@
-// /* eslint-disable */
-
 import React, {Fragment} from 'react';
 import {Route, Switch, Redirect, HashRouter} from 'react-router-dom';
 import PlacecastsPage from './PlacecastsPage'
@@ -17,7 +15,7 @@ import EditPlacecastPage from './EditPlacecastPage'
 
 
 const AppRouter = () => (
-    <HashRouter >
+    <HashRouter>
         <Fragment>
             <Switch>
                 <Route path='/' component={HomePage} exact={true}/>

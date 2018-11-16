@@ -1,6 +1,4 @@
 import React, {Component, Fragment} from 'react';
-// import {isEmpty} from 'lodash'
-// import PropTypes from 'prop-types'
 import SearchBar from '../../containers/Maps/NotifyingSearchBar'
 import UpdatableInfoFields from '../../containers/Placecasts/UpdatableInfoFields'
 import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'

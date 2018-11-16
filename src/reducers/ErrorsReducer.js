@@ -5,7 +5,6 @@ const initialState = {}
 
 export const ErrorsReducer = handleActions({
     [addError]: (state, action) => {
-        console.log('action ', action.payload)
         return {...state, code: action.payload}
     },
     [removeError]: () => {

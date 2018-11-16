@@ -8,10 +8,6 @@ export default class InfoFields extends React.Component {
     static propTypes = {
         onNext: PropTypes.func
     }
-    static defaultProps = {
-        onNext: () => {
-        }
-    }
 
     constructor() {
         super()

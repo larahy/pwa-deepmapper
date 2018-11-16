@@ -27,11 +27,18 @@ export const getIsEditingAudio = createSelector([getEdit], edit => {
 export const getDisplayEditVisualsButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayEditVisualsButton')
 })
+export const getDisplayEditPhotoButton = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'displayEditPhotoButton')
+})
 
 export const getDisplayBinButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayBinButton')
 })
 
+
+export const getDisplayAudioBinButton = createSelector([getEdit], edit => {
+    return propertyOrNull(edit, 'displayAudioBinButton')
+})
 export const getDisplayEditAudioButton = createSelector([getEdit], edit => {
     return propertyOrNull(edit, 'displayEditAudioButton')
 })

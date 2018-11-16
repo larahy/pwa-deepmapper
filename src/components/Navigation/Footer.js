@@ -21,8 +21,7 @@ export default class Footer extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
-            console.log(this.props.isLoggedIn);
-            this.props.isLoggedIn 
+            this.props.isLoggedIn
                 ? this.setState({ selectedIcon: 'user' })
                 : this.setState({ selectedIcon: 'home' })
         }
@@ -51,11 +50,11 @@ export default class Footer extends React.Component {
         const loginLogoutLink = this.props.isLoggedIn ?
             <a onClick={this.handleLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
             :
-            <NavLink onClick={this.handleHideMenuOnClick} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
+            <NavLink onClick={this.handleToggleMenu} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
 
         const applicationLink = this.props.isLoggedIn ?
             null :
-            <NavLink onClick={this.handleHideMenuOnClick} to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
+            <NavLink onClick={this.handleToggleMenu} to='/apply' className="navbar-item" activeClassName='menu selected'>Become an Expert</NavLink>
 
         return (
             <nav className='footer-navbar-container'>
@@ -97,7 +96,6 @@ export default class Footer extends React.Component {
                         <NavLink to='/about' className="navbar-item" activeClassName='menu selected'>About</NavLink>
                         {loginLogoutLink}
                         {applicationLink}
-                        <NavLink to='/mapbox-map' className="navbar-item" activeClassName='menu selected'>Mapbox map</NavLink>
                     </div>
                 </div>
             </nav>

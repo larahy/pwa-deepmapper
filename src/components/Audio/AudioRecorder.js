@@ -2,11 +2,9 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types'
 import vmsg from 'vmsg';
-// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import {faMicrophone, faFileUpload, faStop, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {isEmpty} from 'lodash'
 import connect from 'react-redux/es/connect/connect'
-import {editAudio} from '../../actions/edit'
+import {editAudioRecording} from '../../actions/edit'
 import './Audio.scss'
 import AudioRecorderTimer from './AudioRecorderTimer';
 
@@ -111,7 +109,7 @@ class AudioRecorder extends Component {
 
 export const mapDispatchToProps = (dispatch) => {
     return {
-        loadAudio: (file) => dispatch(editAudio(file)),
+        loadAudio: (file) => dispatch(editAudioRecording(file)),
     }
 }
 
