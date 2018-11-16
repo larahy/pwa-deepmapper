@@ -7,6 +7,7 @@ import './Search.scss'
 class Search extends Component {
     static propTypes = {
         onSelectAddress: PropTypes.func,
+        hasPreviousAddress: PropTypes.bool
     }
 
     state = {
@@ -34,18 +35,20 @@ class Search extends Component {
     onSearchBoxMounted = ref => (this.searchBox = ref)
 
     render() {
+        const placeholder = this.props.hasPreviousAddress ? 'Edit your Placecast address here' :
+            'Search Placecast Address'
         return (
             <Fragment>
                 <StandaloneSearchBox
                     ref={this.onSearchBoxMounted}
                     onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
-                > 
+                >
                     <div className='input-field'>
                         <div className='input-control'>
-                            <input type='text' placeholder='Location' className='is-primary searchBox'/>
+                            <input type='text' placeholder={placeholder} className='is-primary searchBox'/>
                         </div>
                     </div>
-                    
+
                 </StandaloneSearchBox>
             </Fragment>
         )

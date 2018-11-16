@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
-import {photoStepCompleted} from '../actions/create'
+import {photoStepCompleted} from './create'
 import {getPhotoSrc} from '../selectors/create'
 import PropTypes from 'prop-types'
-import UploadPhotoFile from '../components/Photo/CreateUploadPhotoFile'
+import UploadPhotoFile from './CreateUploadPhotoFile'
 import PhotoPanel from '../components/Photo/PhotoPanel'
 import {Headers} from '../constants/attributes'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'

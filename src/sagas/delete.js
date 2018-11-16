@@ -1,12 +1,12 @@
 import {call, put, select} from 'redux-saga/effects';
 import {ErrorCodes, Scopes} from '../constants/attributes'
-import {deletePlacecastFailed, deletePlacecastSuccess} from '../actions/create2'
 import {getToken} from '../selectors/session'
 import {getPlacecastId} from '../selectors/edit'
 import {updateCurrentViewTo} from '../actions/placecasts'
 import {goToMyDeepMapper} from '../actions/navigation'
 import axios from 'axios'
 import {addError} from '../actions/Errors'
+import {deletePlacecastFailed, deletePlacecastSuccess} from '../actions/edit'
 /* eslint-disable no-undef */
 const apiUrl = API_URL
 

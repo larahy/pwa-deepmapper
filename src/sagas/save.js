@@ -1,89 +1,89 @@
 import {
-    getAudioSrc,
-    getPhotoSrc,
     getTitle,
 } from '../selectors/create'
-import {uploadFailed, uploadSucceeded} from '../actions/s3'
+import {uploadSucceeded} from '../actions/s3'
 import {postPlacecastSaga, putPlacecastSaga} from './placecasts'
 import {call, put, select} from 'redux-saga/effects';
-import {isEmpty} from 'lodash';
 import {Scopes} from '../constants/attributes'
 import {uploadAudio, uploadPhoto, uploadPhotoAndAudio} from './s3'
-import {getAudioEdited, getPhotoEdited} from '../selectors/edit'
+import {getAudioEdited, getNewAudioSrc, getNewPhotoSrc, getPhotoEdited} from '../selectors/edit'
 import {postPlacecastFailed, putPlacecastFailed} from '../actions/placecasts'
+import {addError} from '../actions/Errors'
 
 export function* savePlacecastSaga(action) {
     const phase = action.payload
-    const [ audioEdited, photoEdited, title, photoSrc, audioSrc] = yield [
+    const [ audioEdited, photoEdited, title, newAudioSrc, newPhotoSrc] = yield [
         select(getAudioEdited),
         select(getPhotoEdited),
         select(getTitle),
-        select(getPhotoSrc),
-        select(getAudioSrc),
+        select(getNewAudioSrc),
+        select(getNewPhotoSrc),
     ]
-    const placecast = {title, photoSrc, audioSrc}
-    if (phase === Scopes.CREATE && !isEmpty(photoSrc) && !isEmpty(audioSrc)) {
+    if (phase === Scopes.CREATE && photoEdited && audioEdited) {
         try {
-            const s3Response = yield call(uploadPhotoAndAudio, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadPhotoAndAudio, {title, newPhotoSrc, newAudioSrc});
+            yield put(uploadSucceeded(s3Response))
 
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            console.log('error', error.response)
+            yield put(addError(error.response))
         }
-    } else if (phase === Scopes.CREATE && !isEmpty(audioSrc) && isEmpty(photoSrc)) {
+    } else if (phase === Scopes.CREATE && audioEdited && !photoEdited) {
         try {
-            const s3Response = yield call(uploadAudio, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadAudio, {title, newAudioSrc});
+            yield put(uploadSucceeded(s3Response))
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
             console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            yield put(addError(error.response))
         }
-    } else if (phase === Scopes.CREATE && isEmpty(audioSrc) && !isEmpty(photoSrc)) {
+    } else if (phase === Scopes.CREATE && !audioEdited && photoEdited) {
         try {
-            const s3Response = yield call(uploadPhoto, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadPhoto, {title, newPhotoSrc});
+            yield put(uploadSucceeded(s3Response))
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
             console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            yield put(addError(error.response))
         }
-    } else if (phase === Scopes.CREATE && isEmpty(audioSrc) && isEmpty(photoSrc)) {
+    } else if (phase === Scopes.CREATE && !audioEdited && !photoEdited) {
         try {
             yield call(postPlacecastSaga, {publish: false })
         } catch (error) {
             console.log('error', error)
             yield put(postPlacecastFailed(error));
+            yield put(addError(error.response))
+
         }
     } else if (phase === Scopes.EDIT && audioEdited && photoEdited) {
         try {
-            const s3Response = yield call(uploadPhotoAndAudio, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadPhotoAndAudio, {title, newPhotoSrc, newAudioSrc});
+            yield put(uploadSucceeded(s3Response))
 
             yield call(putPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
             console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            yield put(addError(error.response))
         }
     } else if (phase === Scopes.EDIT && audioEdited && !photoEdited) {
         try {
-            const s3Response = yield call(uploadAudio, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadAudio, {title, newAudioSrc});
+            yield put(uploadSucceeded(s3Response))
             yield call(putPlacecastSaga, {...s3Response, publish: false})
         } catch (error) {
             console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            yield put(addError(error.response))
         }
     } else if (phase === Scopes.EDIT && !audioEdited && photoEdited) {
         try {
-            const s3Response = yield call(uploadPhoto, {placecast});
-            yield put({type: uploadSucceeded().type, s3Response});
+            const s3Response = yield call(uploadPhoto, {title, newPhotoSrc});
+            yield put(uploadSucceeded(s3Response))
             yield call(putPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
             console.log('error', error)
-            yield put({type: uploadFailed().type, error});
+            yield put(addError(error.response))
+
         }
     } else if (phase === Scopes.EDIT && !audioEdited && !photoEdited) {
         try {
@@ -91,6 +91,7 @@ export function* savePlacecastSaga(action) {
         } catch (error) {
             console.log('error', error)
             yield put(putPlacecastFailed(error));
+            yield put(addError(error.response))
         }
     }
 

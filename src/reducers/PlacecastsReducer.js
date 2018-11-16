@@ -15,7 +15,7 @@ const initialState = {
 };
 
 export const PlacecastsReducer = handleActions({
-    [fetchPlacecastsRequested]: (state, ) => {
+    [fetchPlacecastsRequested]: (state) => {
         return { ...state, fetching: true, error: null }
     },
 

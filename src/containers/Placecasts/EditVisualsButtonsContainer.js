@@ -9,7 +9,7 @@ export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
         displayEdit:  getDisplayEditVisualsButton(state),
-        displaySaveOrCancel: getDisplaySaveOrCancelButtons(state)
+        displaySave: getDisplaySaveOrCancelButtons(state)
     }
 }
 

@@ -1,11 +1,10 @@
 /* eslint-disable */
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
-import {deletePlacecast, publishPlacecast, savePlacecast} from '../actions/create2'
 import PropTypes from 'prop-types'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'
 import {Headers, Scopes} from '../constants/attributes'
-import {goToCreateAudioPage, goToMyDeepMapper} from '../actions/navigation'
+import {goToMyDeepMapper} from '../actions/navigation'
 import IndividualPlacecastViewToggleContainer from '../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import {getCurrentView} from '../selectors/placecasts'
 import SaveOrPublishOrDeleteIconsContainer from '../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
@@ -14,6 +13,7 @@ import EditableMapContainer from '../containers/Maps/EditableMapContainer'
 import EditableStreetViewContainer from '../containers/Maps/EditableStreetViewContainer'
 import EditableTitleAndSearchBarContainer from '../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import EditableAudioPanelContainer from '../containers/Audio/EditableAudioPanelContainer'
+import {deletePlacecast, publishPlacecast, savePlacecast} from '../actions/edit'
 
 class NewCreatePage extends Component {
 

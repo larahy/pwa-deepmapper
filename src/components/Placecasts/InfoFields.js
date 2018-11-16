@@ -8,10 +8,6 @@ export default class InfoFields extends React.Component {
     static propTypes = {
         onNext: PropTypes.func
     }
-    static defaultProps = {
-        onNext: () => {
-        }
-    }
 
     constructor() {
         super()
@@ -36,7 +32,7 @@ export default class InfoFields extends React.Component {
                     name='title'
                     description='title'
                     type='text'
-                    placeholder='Placecast Title'
+                    placeholder='Type Placecast Title'
                     validations={[
                         {name: Validations.MANDATORY}
                     ]}

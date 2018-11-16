@@ -10,12 +10,11 @@ import {
     addPlacecastPOV,
     streetViewStepCompletedSuccess,
     loadPhotoFileSuccess
-} from '../actions/create'
-import { attributesReducersFor } from './AttributesReducer'
+} from './create'
+import { attributesReducersFor } from '../reducers/AttributesReducer'
 import {uploadFailed, uploadRequested, uploadSucceeded} from '../actions/s3'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
 import {Scopes} from '../constants/attributes'
-import {saveNewAddressCoordinates} from '../actions/edit'
 const initialState = {
     photoSkipped: false,
     audioSkipped: false,

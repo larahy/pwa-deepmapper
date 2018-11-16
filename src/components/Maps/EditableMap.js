@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import GoogleMapsWrapper from '../../containers/Maps/GoogleMapsWrapper'
 import GoogleMapContainer from '../../containers/Maps/GoogleMapContainer'
-import {cancelMapEdit, saveNewAddress} from '../../actions/edit'
+import {saveNewAddress} from '../../actions/edit'
 import EditVisualsButtonsContainer from '../../containers/Placecasts/EditVisualsButtonsContainer'
 /* eslint-disable no-undef */
 const googleMapsApiKey = GOOGLE_MAPS_API_KEY
@@ -33,7 +33,6 @@ class EditableMap extends React.Component {
 
                     <section>
                         <EditVisualsButtonsContainer
-                            onCancel={dispatch => (dispatch(cancelMapEdit()))}
                             onSave={dispatch => (dispatch(saveNewAddress(newAddress)))}/>
                         {mainElement}
                     </section>

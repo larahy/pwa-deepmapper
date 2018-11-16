@@ -2,7 +2,7 @@ import {createSelector} from 'reselect'
 import {propertyOrEmptyArray, propertyOrEmptyObject, propertyOrEmptyString, propertyOrNull} from './common'
 import {Scopes} from '../constants/attributes'
 import {getLoggedInUserId} from './session'
-import {filter} from 'lodash'
+import {filter, sortBy, reverse} from 'lodash'
 
 export const getPlacecastsItems = state => propertyOrEmptyArray(state, [Scopes.PLACECASTS, 'items'])
 export const getCurrentView = state => propertyOrEmptyString(state, [Scopes.PLACECASTS, 'currentView'])
@@ -26,17 +26,15 @@ export const getPlacecasts = createSelector(
         })
     }
 )
-
-export const getAllPlacecastsForLoggedInUser = createSelector(
-    [getPlacecasts, getLoggedInUserId],
-    (placecasts, id) => {
-        return filter(placecasts, placecast => {
-            return placecast.user_id === id
-        })
+export const getPlacecastsOrderedByDate = createSelector(
+    [getPlacecasts], (placecasts) => {
+        return reverse(sortBy(placecasts, placecast => {
+            return placecast.created_at
+        }))
     })
 
 export const getPublishedPlacecasts = createSelector(
-    [getPlacecasts],
+    [getPlacecastsOrderedByDate],
     (placecasts) => {
         return filter(placecasts, placecast => {
             return placecast.published === true
@@ -44,17 +42,17 @@ export const getPublishedPlacecasts = createSelector(
     })
 
 export const getDraftPlacecastsForLoggedInUser = createSelector(
-    [getAllPlacecastsForLoggedInUser],
-    (placecasts) => {
+    [getPlacecastsOrderedByDate, getLoggedInUserId],
+    (placecasts, id) => {
         return filter(placecasts, placecast => {
-            return placecast.published === false
+            return placecast.published === false &&  placecast.user_id === id
         })
     })
 
 export const getPublishedPlacecastsForLoggedInUser = createSelector(
-    [getPublishedPlacecasts, getLoggedInUserId],
+    [getPlacecastsOrderedByDate, getLoggedInUserId],
     (placecasts, id) => {
         return filter(placecasts, placecast => {
-            return placecast.user_id === id
+            return placecast.user_id === id && placecast.published === true
         })
     })

@@ -7,7 +7,7 @@ import connect from 'react-redux/es/connect/connect'
 import {isEmpty} from 'lodash'
 
 import PropTypes from 'prop-types'
-import {streetViewStepCompleted} from '../actions/create'
+import {streetViewStepCompleted} from './create'
 import NotifyingStreetViewContainer from '../containers/Maps/NotifyingStreetViewContainer'
 import {Headers} from '../constants/attributes'
 import HeaderWithNavigationContainer from '../containers/Shared/HeaderWithNavigationContainer'

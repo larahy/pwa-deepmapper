@@ -9,8 +9,8 @@ import EditableStreetViewContainer from '../../containers/Maps/EditableStreetVie
 import EditableMapContainer from '../../containers/Maps/EditableMapContainer'
 import EditableTitleAndSearchBarContainer from '../../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import SaveOrPublishOrDeleteIconsContainer from '../../containers/Placecasts/SaveOrPublishOrDeleteIconsContainer'
-import {deletePlacecast, publishPlacecast, savePlacecast} from '../../actions/create2'
 import EditableAudioPanelContainer from '../../containers/Audio/EditableAudioPanelContainer'
+import {deletePlacecast, publishPlacecast, savePlacecast} from '../../actions/edit'
 
 class EditablePlacecast extends React.Component {
     static propTypes = {

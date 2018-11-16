@@ -3,17 +3,17 @@ import {isEmpty} from 'lodash'
 
 import SaveOrPublishOrDeleteIcons from '../../components/Placecasts/SaveOrPublishOrDeleteIcons'
 import {getAddress, getAudioSrc, getPhotoSrc, getTitle} from '../../selectors/create'
+import {getNewAudioSrc, getNewPhotoSrc} from '../../selectors/edit'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
         isSavable: !isEmpty(getTitle(state)),
         isPublishable:
-            !isEmpty(getPhotoSrc(state))
-            && !isEmpty(getAudioSrc(state))
+            (!isEmpty(getPhotoSrc(state)) || !isEmpty(getNewPhotoSrc(state)))
+            && (!isEmpty(getAudioSrc(state)) || !isEmpty(getNewAudioSrc(state)))
             && !isEmpty(getAddress(state))
             && !isEmpty(getTitle(state))
-
     }
 }
 

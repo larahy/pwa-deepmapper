@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {isEmpty} from 'lodash'
 import PropTypes from 'prop-types'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
-import UploadPhotoFile from '../../components/Photo/CreateUploadPhotoFile'
+import UploadPhotoFile from '../CreateUploadPhotoFile'
 import {step2Skipped} from '../../actions/create2'
 import {getPhotoSrc} from '../../selectors/create'
 import {CreateSequenceInstructions} from '../CreateSequenceInstructions'

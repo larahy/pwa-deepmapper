@@ -1,16 +1,10 @@
 import {handleActions} from 'redux-actions';
 import {attributesReducersFor} from './AttributesReducer'
 import {Scopes} from '../constants/attributes'
-import {
-    photoSkippedSuccess,
-    selectPlacecastAddress,
-    uploadPhotoFileSuccess,
-    audioSkippedSuccess,
-    audioAddedSuccess, populateCreate, deletePlacecastSuccess
-} from '../actions/create2'
-import {saveNewAddress, saveNewAudio} from '../actions/edit'
+import {saveNewAddress, deletePlacecastSuccess} from '../actions/edit'
 import {postPlacecastFailed, postPlacecastSucceeded} from '../actions/placecasts'
 import {concat, isEmpty} from 'lodash'
+import {populateCreate, selectPlacecastAddress} from '../actions/create2'
 
 const initialState = {
     attributes: [],
@@ -20,23 +14,12 @@ const initialState = {
 
 export const CreateReducer = handleActions({
     ...attributesReducersFor(Scopes.CREATE),
-    [uploadPhotoFileSuccess]: (state, action) => {
-        return ({...state, photoSrc: action.payload})
-    },
     [selectPlacecastAddress]: (state, action) => {
         return ({...state, address: action.payload})
-    },
-    [audioAddedSuccess]: (state, action) => {
-        return {...state, audioSrc: action.payload}
     },
     [saveNewAddress]: (state, action) => {
         return ({...state, address: action.payload})
     },
-    [saveNewAudio]: (state, action) => {
-        return ({...state, audioSrc: action.payload})
-    },
-    [photoSkippedSuccess]: state => ({...state, photoSkipped: true}),
-    [audioSkippedSuccess]: state => ({...state, audioSkipped: true}),
     [populateCreate]: (state, action) => {
         const audioSrc = !isEmpty(action.payload.audioFilename) ? action.payload.audioSrc : null
         const photoSrc = !isEmpty(action.payload.photoFilename) ? action.payload.photoSrc : null

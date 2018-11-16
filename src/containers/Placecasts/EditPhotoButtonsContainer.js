@@ -1,29 +1,28 @@
 import {connect} from 'react-redux'
 import {
-    getDisplayBinButton,
-    getDisplayEditVisualsButton,
+    getDisplayBinButton, getDisplayEditPhotoButton,
 } from '../../selectors/edit'
-import {updateIsEditing} from '../../actions/edit'
+import {cancelPhotoEdit, updateIsEditingPhoto} from '../../actions/edit'
 import EditPhotoButtons from '../../components/Placecasts/EditPhotoButtons'
 
 export const mapStateToProps = (state, ownProps) => {
     return  {
         ...ownProps,
-        displayEdit:  getDisplayEditVisualsButton(state),
+        displayEdit:  getDisplayEditPhotoButton(state),
         displayBin: getDisplayBinButton(state),
     }
 }
 
-export const mapDispatchToProps = (dispatch, ownProps) => {
+export const mapDispatchToProps = (dispatch) => {
     return {
-        onEdit: () => dispatch(updateIsEditing()),
-        onCancel: () => dispatch(ownProps.onCancel)
+        onEdit: () => dispatch(updateIsEditingPhoto()),
+        onCancel: () => dispatch(cancelPhotoEdit())
     }
 }
 
-const EditVisualsButtonsContainer = connect(
+const EditPhotoButtonsContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(EditPhotoButtons)
 
-export default EditVisualsButtonsContainer
+export default EditPhotoButtonsContainer

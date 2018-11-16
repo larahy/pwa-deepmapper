@@ -38,7 +38,7 @@ export default class EditPhotoButtons extends React.Component {
                     <i className={`fas fa-pen ${editButtonClasses}`} onClick={this.onEdit} />
                 </div>
                 <div className='overlay-icon'>
-                    <i className={`fas fa-times ${binButtonClasses}`} onClick={this.onCancel} />
+                    <i className={`fas fa-trash ${binButtonClasses}`} onClick={this.onCancel} />
                 </div>
             </div>
         )

@@ -6,17 +6,15 @@ export default class EditVisualsButtons extends React.Component {
 
     static propTypes = {
         displayEdit: PropTypes.bool,
-        displaySaveOrCancel: PropTypes.bool,
+        displaySave: PropTypes.bool,
         onEdit: PropTypes.func,
         onSave: PropTypes.func,
-        onCancel: PropTypes.func,
     }
 
     constructor(props) {
         super(props)
         this.onEdit = this.onEdit.bind(this)
         this.onSave = this.onSave.bind(this)
-        this.onCancel = this.onCancel.bind(this)
     }
 
     onEdit(event) {
@@ -29,15 +27,11 @@ export default class EditVisualsButtons extends React.Component {
         this.props.onSave()
     }
 
-    onCancel(event) {
-        event.preventDefault()
-        this.props.onCancel()
-    }
 
     render() {
-        const {displayEdit, displaySaveOrCancel} = this.props
+        const {displayEdit, displaySave} = this.props
         const editButtonClasses = displayEdit ? '' : 'is-hidden'
-        const savOrCancelButtonClasses = displaySaveOrCancel ? '' : 'is-hidden'
+        const saveButtonClasses = displaySave ? '' : 'is-hidden'
 
         return (
             <div className='photo-edit-icons'>
@@ -49,14 +43,8 @@ export default class EditVisualsButtons extends React.Component {
                 </div>
                 <div className='overlay-icon'>
                     <i 
-                        className={`fas fa-save ${savOrCancelButtonClasses}`} 
+                        className={`fas fa-save ${saveButtonClasses}`}
                         onClick={this.onSave} 
-                    />
-                </div>
-                <div className='overlay-icon'>
-                    <i 
-                        className={`fas fa-times ${savOrCancelButtonClasses}`} 
-                        onClick={this.onCancel} 
                     />
                 </div>
             </div>
