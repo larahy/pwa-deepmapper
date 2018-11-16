@@ -19,8 +19,8 @@
 //     attributes: [],
 //     placecast: {},
 //     isEditing: false,
-//     displayEditVisualsButton: true,
-//     displaySaveOrCancelButtons: false,
+//     displayEditButton: true,
+//     displaySaveButton: false,
 //
 //     photoEdited: false,
 //     displayBinButton: false,
@@ -69,14 +69,14 @@
 //             photoEdited: true,
 //             isEditing: false,
 //             newPhotoSrc: action.payload,
-//             displayEditVisualsButton: false,
+//             displayEditButton: false,
 //             displayBinButton: true } )
 //     },
 //     [cancelPhotoEdit]: (state) => {
 //         return ({ ...state,
 //             photoEdited: false,
 //             newPhotoSrc: null, isEditing: false,
-//             displayEditVisualsButton: true,
+//             displayEditButton: true,
 //             displayBinButton: false } )
 //     },
 //
@@ -84,17 +84,17 @@
 //         return { ...state, placecast: action.payload }
 //     },
 //     [updateIsEditing]: (state) => {
-//         return ({ ...state, isEditing: true, displayEditVisualsButton: false } )
+//         return ({ ...state, isEditing: true, displayEditButton: false } )
 //     },
 //     [cancelMapEdit]: (state) => {
-//         return ({ ...state, isEditing: false, newAddress: null, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
+//         return ({ ...state, isEditing: false, newAddress: null, displaySaveButton: false, displayEditButton: true } )
 //     },
 //     [editAddress]: (state, action) => {
 //         const mergedaddress = { ...state.newAddress, ...action.payload };
-//         return ({ ...state, newAddress: mergedaddress, displaySaveOrCancelButtons: true, displayEditVisualsButton: false } )
+//         return ({ ...state, newAddress: mergedaddress, displaySaveButton: true, displayEditButton: false } )
 //     },
 //     [saveNewAddress]: (state) => {
-//         return ({ ...state, isEditing: false, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
+//         return ({ ...state, isEditing: false, displaySaveButton: false, displayEditButton: true } )
 //     },
 //     [publishPlacecastSuccess]: () => initialState,
 //     [putPlacecastSucceeded]: () =>  {

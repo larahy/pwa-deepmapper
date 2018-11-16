@@ -28,7 +28,6 @@ export const cancelPhotoEdit = createAction('CANCEL_PHOTO_EDIT')
 //MAP && STREET VIEW//
 export const editAddress = createAction('EDIT_ADDRESS')
 
-export const cancelMapEdit = createAction('CANCEL_MAP_EDIT')
 export const saveNewAddress = createAction('SAVE_NEW_ADDRESS')
 export const updatePlacecastCoordinates = createAction('UPDATE_PLACECAST_COORDINATES')
 

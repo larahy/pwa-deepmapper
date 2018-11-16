@@ -3,20 +3,24 @@ import {
     cancelPhotoEdit,
     populateEdit,
     updateIsEditing,
-    cancelMapEdit,
     editAddress,
     saveNewAddress,
     cancelAudioEdit,
     editAudio,
     updateIsEditingAudio, editPhoto, publishPlacecastSuccess, deletePlacecastSuccess, updateIsEditingPhoto
 } from '../actions/edit'
-import {postPlacecastSucceeded, putPlacecastFailed, putPlacecastSucceeded} from '../actions/placecasts'
+import {
+    postPlacecastSucceeded,
+    putPlacecastFailed,
+    putPlacecastSucceeded,
+    updateCurrentViewTo
+} from '../actions/placecasts'
 import {concat} from 'lodash'
 const initialState = {
     placecast: {},
     isEditing: false,
-    displayEditVisualsButton: true,
-    displaySaveOrCancelButtons: false,
+    displayEditButton: true,
+    displaySaveButton: false,
 
     photoEdited: false,
     displayEditPhotoButton: true,
@@ -65,17 +69,17 @@ export const EditReducer = handleActions({
         return { ...state, placecast: action.payload }
     },
     [updateIsEditing]: (state) => {
-        return ({ ...state, isEditing: true, displayEditVisualsButton: false } )
-    },
-    [cancelMapEdit]: (state) => {
-        return ({ ...state, isEditing: false, newAddress: null, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
+        return ({ ...state, isEditing: true, displayEditButton: false, displaySaveButton: true} )
     },
     [editAddress]: (state, action) => {
         const mergedaddress = { ...state.newAddress, ...action.payload };
-        return ({ ...state, newAddress: mergedaddress, displaySaveOrCancelButtons: true, displayEditVisualsButton: false } )
+        return ({ ...state, newAddress: mergedaddress} )
+    },
+    [updateCurrentViewTo]: (state) => {
+        return ({ ...state, isEditing: false, displayEditButton: true, displaySaveButton: false} )
     },
     [saveNewAddress]: (state) => {
-        return ({ ...state, isEditing: false, displaySaveOrCancelButtons: false, displayEditVisualsButton: true } )
+        return ({ ...state, isEditing: false, displaySaveButton: false, displayEditButton: true } )
     },
     [publishPlacecastSuccess]: () => initialState,
     [putPlacecastSucceeded]: () =>  {

@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {cancelMapEdit, saveNewAddress} from '../../actions/edit'
+import {saveNewAddress} from '../../actions/edit'
 import NotifyingStreetViewContainer from '../../containers/Maps/NotifyingStreetViewContainer'
 import EditVisualsButtonsContainer from '../../containers/Placecasts/EditVisualsButtonsContainer'
 
@@ -12,7 +12,6 @@ class EditableStreetView extends React.Component {
             <Fragment>
                 <section>
                     <EditVisualsButtonsContainer
-                        onCancel={dispatch => (dispatch(cancelMapEdit()))}
                         onSave={dispatch => (dispatch(saveNewAddress(newAddress)))}/>
                     <NotifyingStreetViewContainer/>
                 </section>
