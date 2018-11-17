@@ -14,14 +14,18 @@ export const Scopes = {
 
 export const ErrorCodes = {
     EMAIL_ALREADY_EXISTS: 'users_email_unique',
-    SOMETHING_WENT_WRONG: 'something_went_wrong',
+    PLACECASTS_TITLE_ALREADY_EXISTS: 'Conflict',
+    SOMETHING_WENT_WRONG: 'Internal Server Error',
     NON_EXISTENT_USER: 'NOT_FOUND',
+    INCORRECT_CREDENTIALS: 'Unauthorized'
 }
 
 export const ErrorMessageFactory = {
     [ErrorCodes.EMAIL_ALREADY_EXISTS]: 'This email address is already registered. Please login to proceed',
     [ErrorCodes.SOMETHING_WENT_WRONG]: 'We are sorry, an error has occurred. Please try again.',
-    [ErrorCodes.NON_EXISTENT_USER]: 'Oh dear, it seems we dont have you in the system, please apply to become an expert'
+    [ErrorCodes.NON_EXISTENT_USER]: 'Oh dear, it seems we dont have you in the system, please apply to become an expert',
+    [ErrorCodes.INCORRECT_CREDENTIALS]: 'Either your password or email is incorrect, please check and try again.',
+    [ErrorCodes.PLACECASTS_TITLE_ALREADY_EXISTS]: 'Oh dear! A placecast with that title already exists'
 }
 
 export const Headers = {

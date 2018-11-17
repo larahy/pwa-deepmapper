@@ -75,7 +75,7 @@ export function* applicationSaga () {
         }
         catch(error) {
             yield put(becomeAnExpertFailed())
-            yield put(addError(error.response.data.content.message))
+            yield put(addError(error.response))
         }
 
     }

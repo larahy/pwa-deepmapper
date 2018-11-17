@@ -104,6 +104,7 @@ export function* postPlacecastSaga(response) {
         yield put(updateCurrentViewTo('photo'));
         yield put(goToMyDeepMapper());
     } catch (error) {
+        yield put(addError(error.response));
         yield put(postPlacecastFailed(error))
     }
 }

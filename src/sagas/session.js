@@ -42,7 +42,7 @@ export function* loginSaga () {
 
         } catch (error) {
             yield put(loginFailed())
-            yield put(addError(error.response.data.code));
+            yield put(addError(error.response));
         }
 
     }

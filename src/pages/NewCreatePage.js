@@ -14,18 +14,36 @@ import EditableStreetViewContainer from '../containers/Maps/EditableStreetViewCo
 import EditableTitleAndSearchBarContainer from '../containers/Placecasts/EditableTitleAndSearchBarContainer'
 import EditableAudioPanelContainer from '../containers/Audio/EditableAudioPanelContainer'
 import {deletePlacecast, publishPlacecast, savePlacecast} from '../actions/edit'
+import {isEmpty} from 'lodash'
+import {getError} from '../selectors/errors'
+import Error from '../components/shared/Error'
+import {removeError} from '../actions/Errors'
 
 class NewCreatePage extends Component {
 
     static propTypes = {
-        currentView: PropTypes.string
+        removeError: PropTypes.func,
+        currentView: PropTypes.string,
+        error: PropTypes.object
+    }
+    constructor() {
+        super()
+        this.handleRemoveError = this.handleRemoveError.bind(this)
+    }
+    handleRemoveError(event) {
+        this.props.removeError()
+        event.preventDefault()
     }
 
+
+
     render() {
-        const {currentView} = this.props
+        const {currentView, error} = this.props
         const streetViewElement = currentView === 'street-view' ? <EditableStreetViewContainer/> : null
         const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer/> : null
         const mapElement = currentView === 'map' ? <EditableMapContainer/> : null
+        const modalClasses = !isEmpty(error) ? 'modal is-active' : 'modal'
+
         return (
             <Fragment>
                 <HeaderWithNavigationContainer
@@ -54,6 +72,13 @@ class NewCreatePage extends Component {
                     <div className='create-bottom-section'>
                         <EditableAudioPanelContainer/>
                     </div>
+                    <div className={modalClasses}>
+                        <div className="modal-background" onClick={event => this.handleRemoveError(event)}></div>
+                        <div className="modal-content">
+                            <Error/>
+                        </div>
+                        <button className="modal-close is-large" onClick={event => this.handleRemoveError(event)} aria-label="close"></button>
+                    </div>
 
                 </section>
             </Fragment>
@@ -61,12 +86,20 @@ class NewCreatePage extends Component {
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
+        error: getError(state),
         currentView: getCurrentView(state)
     };
 };
 
+export const mapDispatchToProps = (dispatch) => {
+    return {
+        removeError: () => dispatch(removeError()),
+    }
+}
 
-export default connect(mapStateToProps)(NewCreatePage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewCreatePage);
 

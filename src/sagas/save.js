@@ -7,7 +7,7 @@ import {call, put, select} from 'redux-saga/effects';
 import {Scopes} from '../constants/attributes'
 import {uploadAudio, uploadPhoto, uploadPhotoAndAudio} from './s3'
 import {getAudioEdited, getNewAudioSrc, getNewPhotoSrc, getPhotoEdited} from '../selectors/edit'
-import {postPlacecastFailed, putPlacecastFailed} from '../actions/placecasts'
+import {putPlacecastFailed} from '../actions/placecasts'
 import {addError} from '../actions/Errors'
 
 export function* savePlacecastSaga(action) {
@@ -26,7 +26,6 @@ export function* savePlacecastSaga(action) {
 
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error.response)
             yield put(addError(error.response))
         }
     } else if (phase === Scopes.CREATE && audioEdited && !photoEdited) {
@@ -35,7 +34,6 @@ export function* savePlacecastSaga(action) {
             yield put(uploadSucceeded(s3Response))
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error)
             yield put(addError(error.response))
         }
     } else if (phase === Scopes.CREATE && !audioEdited && photoEdited) {
@@ -44,18 +42,10 @@ export function* savePlacecastSaga(action) {
             yield put(uploadSucceeded(s3Response))
             yield call(postPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error)
             yield put(addError(error.response))
         }
     } else if (phase === Scopes.CREATE && !audioEdited && !photoEdited) {
-        try {
-            yield call(postPlacecastSaga, {publish: false })
-        } catch (error) {
-            console.log('error', error)
-            yield put(postPlacecastFailed(error));
-            yield put(addError(error.response))
-
-        }
+        yield call(postPlacecastSaga, {publish: false })
     } else if (phase === Scopes.EDIT && audioEdited && photoEdited) {
         try {
             const s3Response = yield call(uploadPhotoAndAudio, {title, newPhotoSrc, newAudioSrc});
@@ -63,7 +53,6 @@ export function* savePlacecastSaga(action) {
 
             yield call(putPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error)
             yield put(addError(error.response))
         }
     } else if (phase === Scopes.EDIT && audioEdited && !photoEdited) {
@@ -72,7 +61,6 @@ export function* savePlacecastSaga(action) {
             yield put(uploadSucceeded(s3Response))
             yield call(putPlacecastSaga, {...s3Response, publish: false})
         } catch (error) {
-            console.log('error', error)
             yield put(addError(error.response))
         }
     } else if (phase === Scopes.EDIT && !audioEdited && photoEdited) {
@@ -81,7 +69,6 @@ export function* savePlacecastSaga(action) {
             yield put(uploadSucceeded(s3Response))
             yield call(putPlacecastSaga, {...s3Response, publish: false })
         } catch (error) {
-            console.log('error', error)
             yield put(addError(error.response))
 
         }
@@ -89,7 +76,6 @@ export function* savePlacecastSaga(action) {
         try {
             yield call(putPlacecastSaga, { publish: false })
         } catch (error) {
-            console.log('error', error)
             yield put(putPlacecastFailed(error));
             yield put(addError(error.response))
         }
