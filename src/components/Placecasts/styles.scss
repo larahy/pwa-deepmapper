@@ -63,7 +63,7 @@ a.button.is-fullwidth.is-white.skip {
 .create-toggle-list li {
   border: 1px solid $carbon;
   text-align: center;
-  color: $watermelon;
+  color: $dark;
   font-size: 1.2em;
 }
 
@@ -76,7 +76,8 @@ a.button.is-fullwidth.is-white.skip {
 }
 
 .create-toggle-list .is-active {
-  background: $neutral;
+  color: $watermelon;
+  // background: $neutral;
 }
 
 .photo-edit-icons {
@@ -114,7 +115,8 @@ a.button.is-fullwidth.is-white.skip {
 }
 
 .active-toggle {
-  background: $neutral;
+  color: $watermelon!important;
+  // background: $neutral;
 }
 
 .sticky-home-icons {

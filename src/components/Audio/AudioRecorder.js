@@ -68,42 +68,37 @@ class AudioRecorder extends Component {
 
 
     render() {
-        const {isRecording, recording} = this.state;
-        const recordingElement = isRecording ?
-            <Fragment>
-              
-              <div>
-                <div className='record-button' onClick={this.record}>
-                  <i className='fas fa-stop' />
-                </div>
-              </div>
-                {isRecording && <AudioRecorderTimer />}
-            </Fragment>
-            :
-            <div>
-              <div className='record-button' onClick={this.record}>
-                <i className='fas fa-microphone' />
-              </div>
-            </div>
+        const { isRecording, recording } = this.state;
 
-        const uploadElement = isEmpty(recording) ?
-            
-            <div className="audio-upload">
-                <label className="file-label">
-                    <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture/>
-                    <i className="fas fa-upload"></i>
-                </label>
-            </div>
-            
-            : null
         return (
-            <Fragment>
-                <div className="record-section">
-                    {recordingElement}
-                    {uploadElement}
-                </div>
-            </Fragment>
-        )
+            <div className="record-section">
+                {isRecording && 
+                  <Fragment>
+                    <div className='record-button' onClick={this.record}>
+                      <i className='fas fa-stop' />
+                    </div>
+                  
+                    <AudioRecorderTimer />
+                  </Fragment>}
+
+                {!isRecording && 
+                  <div className='record-upload-audio'>
+                      <div className='record-button-container'>
+                          <div className='record-button' onClick={this.record}>
+                              <i className='fas fa-microphone' />
+                          </div>
+                      </div>
+                      <div className='audio-upload-container'>
+                          <div className="audio-upload">
+                              <label className="file-label">
+                                  <input className="file-input" type="file" accept="audio/*" onChange={this.onAudioChosen} capture/>
+                                  <i className="fas fa-upload"></i>
+                              </label>
+                          </div>
+                      </div>
+                  </div>}
+            </div>
+        );
     }
 }
 

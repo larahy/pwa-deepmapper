@@ -34,8 +34,8 @@
 }
 
 .audio-upload {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border: 1px solid $dark;
   border-radius: 50%;
   padding: 7px;
@@ -45,7 +45,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4em;
+  font-size: 1.1em;
+  position: relative;
+  left: 20px;
+}
+
+.record-upload-audio {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.record-button-container {
+  display: flex;
+  width: 55%;
+  justify-content: flex-end;
+}
+
+.audio-upload-container {
+  display: flex;
+  width: 45%;
+  align-items: center;
 }
 
 .player {

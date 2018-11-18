@@ -148,11 +148,11 @@ nav#navbarTop {
   border-left: 1px solid $neutral;
   border-top: 1px solid $neutral;
   padding: 5px;
-  visibility: hidden;
+  display: none;
 }
 
 .menu-active {
-  visibility: visible;
+  display: flex;
 }
 
 .footer-navbar-icons li {

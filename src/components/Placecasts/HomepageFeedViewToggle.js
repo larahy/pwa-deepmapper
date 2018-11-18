@@ -61,6 +61,6 @@ export default class HomepageFeedViewToggle extends Component {
                     </div>
                 </div>
             </Fragment>
-        )
+        );
     }
 }
