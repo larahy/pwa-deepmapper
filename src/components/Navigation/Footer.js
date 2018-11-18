@@ -38,17 +38,13 @@ export default class Footer extends React.Component {
         this.setState({ selectedIcon: icon });
     }
 
-    handleLogout = () => {
-        this.props.onLogout();
-    }
-
     render() {
         const { isMenuActive, selectedIcon } = this.state;
-        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper } = this.props;
+        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper, onLogout } = this.props;
 
         // Clean this up and use conditional rendering as well
         const loginLogoutLink = this.props.isLoggedIn ?
-            <a onClick={this.handleLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
+            <a onClick={onLogout} className="navbar-item" activeClassName='menu selected'>Logout</a>
             :
             <NavLink onClick={this.handleToggleMenu} to='/login' className="navbar-item" activeClassName='menu selected'>Login</NavLink>
 

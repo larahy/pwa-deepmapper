@@ -12,21 +12,18 @@ export default class MyDeepmapperFeedViewToggle extends Component {
         super(props)
     }
 
-
     toggleOn(view) {
         return this.props.changeMyDeepmapperFeedViewTo(view)
     }
 
-
     render() {
-        const {currentView} = this.props
-
-        const publishedElementClasses = currentView === 'published' ? 'active-toggle' : ''
-        const draftElementClasses = currentView === 'draft' ? 'active-toggle' : ''
+        const { currentView } = this.props
+        
+        const publishedElementClasses = currentView === 'published' ? 'tab-toggle' : '';
+        const draftElementClasses = currentView === 'draft' ? 'tab-toggle' : '';
 
         return (
             <Fragment>
-
                 <ul className='view-toggle'>
                     <li className={`published-toggle ${publishedElementClasses}`}>
                         <p onClick={() => this.toggleOn('published')}>PUBLISHED</p>
@@ -36,6 +33,6 @@ export default class MyDeepmapperFeedViewToggle extends Component {
                     </li>
                 </ul>
             </Fragment>
-        )
+        );
     }
 }

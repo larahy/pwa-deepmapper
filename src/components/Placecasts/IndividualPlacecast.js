@@ -38,7 +38,8 @@ class IndividualPlacecast extends React.Component {
                         displayBackButton={true}
                         displayNextButton={false}
                         title={Headers.DEEPMAPPER}
-                        onBack={goToHomePageThunk()}/>
+                        onBack={goToHomePageThunk()}
+                    />
 
                     <section className='create-section'>
                         <div className='create-mid-section'>
@@ -54,7 +55,6 @@ class IndividualPlacecast extends React.Component {
                         </div>
 
                         <div className='create-bottom-section'>
-
                             <PlaybackPanel src={audioSrc}/>
                         </div>
                     </section>
@@ -64,4 +64,4 @@ class IndividualPlacecast extends React.Component {
     }
 }
 
-export default IndividualPlacecast
+export default IndividualPlacecast;

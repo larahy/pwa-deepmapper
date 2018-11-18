@@ -15,7 +15,12 @@ import { faListUl, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './pages.scss'
 import {fetchDependencies} from '../helpers/fetchDependencies'
 
+
 let MyDeepmapperPage = class extends React.Component {
+    state = {
+        isMenuSticky: false
+    }
+
     static displayName = 'MyDeepmapper'
     static propTypes = {
         currentView: PropTypes.string,
@@ -23,8 +28,25 @@ let MyDeepmapperPage = class extends React.Component {
         publishedPlacecasts: PropTypes.array,
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        const { isMenuSticky } = this.state;
+
+        if (window.scrollY >= 52 && !isMenuSticky) {
+            this.setState({ isMenuSticky: true });
+        }
+
+        if (window.scrollY <= 52 && isMenuSticky) {
+            this.setState({ isMenuSticky: false });
+        }
+    }
+
     render() {
-        const {currentView, draftPlacecasts, publishedPlacecasts} = this.props
+        const { currentView, draftPlacecasts, publishedPlacecasts } = this.props;
+        const { isMenuSticky } = this.state;
 
         const publishedPlacecastsElement = currentView === 'published'
             ? <FilterablePlacecastTiles filtered={true} filteredPlacecasts={publishedPlacecasts}/>
@@ -35,7 +57,7 @@ let MyDeepmapperPage = class extends React.Component {
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MY_DEEPMAPPER}/>
-                <div className='home-icons'>
+                <div className={`home-icons ${isMenuSticky ? 'sticky-home-icons' : ''}`}>
                     <div className='list-icon'>
                         <span><FontAwesomeIcon icon={faListUl}/></span>
                     </div>

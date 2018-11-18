@@ -34,11 +34,20 @@
   border-bottom-left-radius: 0;
 }
 
-.view-toggle .active-toggle {
+.view-toggle .tab-toggle {
+  background: $watermelon;
+  color: #fff;
+}
+
+.draft-toggle .tab-toggle {
   background: $watermelon;
   color: #fff;
 }
 
 .expert-container {
   padding: 10px;
+}
+
+.expert-container h1 {
+  font-weight: bold;
 }
