@@ -24,10 +24,9 @@ class Error extends React.Component {
 
     render() {
         const {error} = this.props
-
         const errorMessage = isEmpty(error)
             ? null
-            : ErrorMessageFactory[error.code]
+            : ErrorMessageFactory[error.statusText]
         const errorNotification = isEmpty(error) ? null :
             <div className="notification is-danger">
                 <button className="delete" onClick={this.handleCloseNotification}></button>
