@@ -12,12 +12,16 @@
 }
 
 .create-top-input {
-  width: 60%;
+  width: 65%;
 }
 
 .create-top-buttons {
-  width: 40%;
+  width: 35%;
   text-align: center;
+}
+
+.create-mid-section {
+  margin-bottom: 67px;
 }
 
 .home-icons {
@@ -55,9 +59,14 @@
 }
 
 .create-bottom-section {
+  position: fixed;
   display: flex;
   flex-direction: row;
-  padding: 10px 10px 20px 10px;
+  padding: .75rem 0;
+  width: 100%;
+  background: #fff;
+  bottom: 45px;
+  // box-shadow: 1px -3px 6px 0 rgba(0,0,0,.2)
 }
 
 .mapboxgl-popup-content {

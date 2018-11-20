@@ -23,7 +23,7 @@ export default class LoginForm extends React.Component {
         return (
             <Fragment>
 
-                <form className='form' onSubmit={this.handleSubmit} noValidate>
+                <form className='form login-form' onSubmit={this.handleSubmit} noValidate>
                     <div>
                         <NotifyingInput
                             name={Fields.EMAIL}
@@ -48,7 +48,7 @@ export default class LoginForm extends React.Component {
                         />
                     </div>
 
-                    <button type='submit' className='button form-btn'>
+                    <button type='submit' className='button form-btn login-btn'>
                         Login
                     </button>
                 </form>

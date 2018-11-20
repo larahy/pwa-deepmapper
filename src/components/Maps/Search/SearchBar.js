@@ -43,12 +43,11 @@ class Search extends Component {
                     ref={this.onSearchBoxMounted}
                     onPlacesChanged={this.handlePickPlace(this.handleAddLocation)}
                 >
-                    <div className='input-field'>
+                    <div className='input-field map-search-bar'>
                         <div className='input-control'>
                             <input type='text' placeholder={placeholder} className='is-primary searchBox'/>
                         </div>
                     </div>
-
                 </StandaloneSearchBox>
             </Fragment>
         )
