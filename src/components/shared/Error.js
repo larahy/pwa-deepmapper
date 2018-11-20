@@ -29,7 +29,7 @@ class Error extends React.Component {
             : ErrorMessageFactory[error.statusText]
         const errorNotification = isEmpty(error) ? null :
             <div className="notification is-danger">
-                <button className="delete" onClick={this.handleCloseNotification}></button>
+                <button className="delete" onClick={this.handleCloseNotification}>x</button>
                 {errorMessage}
             </div>
         return (

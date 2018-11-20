@@ -77,7 +77,6 @@ class AudioRecorder extends Component {
                     <div className='record-button' onClick={this.record}>
                       <i className='fas fa-stop' />
                     </div>
-                  
                     <AudioRecorderTimer />
                   </Fragment>}
 
