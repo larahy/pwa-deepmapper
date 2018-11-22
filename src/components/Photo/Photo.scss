@@ -1,16 +1,16 @@
 @import '../../styles/variables';
 
 .upload-image {
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   height: 375px;
-  background: #fff;
+  background: $neutral;
   border-bottom: 1px solid $carbon;
 }
 
 .upload-image img {
   position: absolute;
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   height: 375px;
 }
@@ -23,12 +23,42 @@
   font-size: 1.5em;
 }
 
-@media only screen and (min-height: 780px) {
+@media only screen and (min-height: 800px) {
   .upload-image {
     height: 450px;
   }
 
   .upload-image img {
     height: 450px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .upload-image {
+    height: 700px;
+  }
+
+  .upload-image img {
+    height: 700px;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .upload-image {
+    height: 700px;
+  }
+
+  .upload-image img {
+    height: 700px;
+  }
+}
+
+@media only screen and (min-height: 1100px) {
+  .upload-image {
+    height: 1100px;
+  }
+
+  .upload-image img {
+    height: 1100px;
   }
 }

@@ -32,7 +32,7 @@ class PlacecastTile extends React.Component {
         const onClick = editable ? this.goToEditPage : this.goToPlacecastPage
         const coordinates = `[ ${address.lat} , ${address.lng} ]`
         return (
-            <div style={{ marginBottom: '45px' }}>
+            <div className='placecast-item'>
                 <a onClick={onClick}>
                     <div>
                         <PhotoPanel sourceUrl={photoSrc}/>

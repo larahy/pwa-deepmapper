@@ -68,17 +68,17 @@ class AudioRecorder extends Component {
 
 
     render() {
-        const { isRecording, recording } = this.state;
+        const { isRecording } = this.state;
 
         return (
             <div className="record-section">
                 {isRecording && 
-                  <Fragment>
+                  <div className='record-and-timer'>
                     <div className='record-button' onClick={this.record}>
                       <i className='fas fa-stop' />
                     </div>
                     <AudioRecorderTimer />
-                  </Fragment>}
+                  </div>}
 
                 {!isRecording && 
                   <div className='record-upload-audio'>

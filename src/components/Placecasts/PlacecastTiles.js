@@ -36,7 +36,7 @@ class PlacecastTiles extends React.Component {
             })
 
         return (
-            <div>
+            <div className='placecast-content'>
                 <div>
                     {placecastsLoadingMessage}
                     <div className='placecast-tiles'>

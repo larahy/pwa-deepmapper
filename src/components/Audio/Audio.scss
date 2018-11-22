@@ -13,7 +13,7 @@
 
 .record-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -339,16 +339,20 @@ svg, img {
 }
 
 .recorder-controls{
-  //border: 1px solid #59A4C0;
   background-color: whitesmoke;
 }
 
 .recorder-timer-container {
-  position: absolute;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .recorder-timer-container h3 {
   font-size: 1.2em;
   font-weight: bold;
+}
+
+.record-and-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
