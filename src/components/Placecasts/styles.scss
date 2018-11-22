@@ -52,7 +52,7 @@ a.button.is-fullwidth.is-white.skip {
 }
 
 .button-active {
-  opacity: 1;
+  opacity: 1!important;
 }
 
 .create-toggle-list {
@@ -137,6 +137,25 @@ a.button.is-fullwidth.is-white.skip {
   margin: 0 auto;
 }
 
+.placecast-options-menu {
+  position: absolute;
+  background: #fff;
+  right: 0;
+  padding: 5px 10px;
+  border: 1px solid $carbon;
+  border-right: none;
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.32);
+  font-size: 1.3em;
+}
+
+.placecast-options-menu p {
+  opacity: 0.4;
+}
+
+.hide-options-menu {
+  display: none;
+}
+
 @media only screen and (min-width: 1000px) {
   .create-toggle-list {
     border-left: 1px solid $carbon;
@@ -149,6 +168,35 @@ a.button.is-fullwidth.is-white.skip {
     border-radius: 3px;
     background: #fff;
   }
+
+  .hide-options-menu {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .create-top-input {
+    width: 70%!important;
+  }
+
+  .create-top-buttons {
+    width: 30%!important;
+  }
+
+  .placecast-options-menu {
+    position: relative;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    font-size: 1.1em!important;
+  }
+
+  .placecast-options-menu p {
+    border: 1px solid $dark;
+    border-radius: 3px;
+    padding: 3px 10px;
+    margin-right: 3px;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (min-width: 800px) {
@@ -157,5 +205,11 @@ a.button.is-fullwidth.is-white.skip {
     border: 1px solid $carbon;
     border-radius: 3px;
     background: #fff;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .placecast-options-menu {
+    font-size: 1.6em;
   }
 }

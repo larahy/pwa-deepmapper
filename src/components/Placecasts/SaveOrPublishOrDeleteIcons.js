@@ -1,7 +1,5 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faSave, faTrashAlt, faEye} from '@fortawesome/free-solid-svg-icons'
 
 export default class SaveOrPublishOrDeleteIcons extends React.Component {
 
@@ -37,14 +35,31 @@ export default class SaveOrPublishOrDeleteIcons extends React.Component {
 
     render() {
         const {isPublishable, isSavable} = this.props
-        const publishButtonClasses = isPublishable ? 'create-top-button button-active' : 'create-top-button'
-        const saveButtonClasses = isSavable ? 'create-top-button button-active' : 'create-top-button'
+        const publishButtonClasses = isPublishable ? 'button-active' : ''
+        const saveButtonClasses = isSavable ? 'button-active' : ''
         return (
-            <Fragment>
-                <a className={saveButtonClasses} disabled={!isSavable} onClick={this.onSave}><span className="icon"><FontAwesomeIcon icon={faSave}/></span></a>
-                <a className={publishButtonClasses}  disabled={!isPublishable}  onClick={this.onPublish}><span className="icon"><FontAwesomeIcon icon={faEye}/></span></a>
-                <a className='create-top-button button-active' onClick={this.onDelete}><span className="icon"><FontAwesomeIcon icon={faTrashAlt}/></span></a>
-            </Fragment>
+            <div className='placecast-options-menu'>
+                <p 
+                    className={saveButtonClasses} 
+                    disabled={!isSavable} 
+                    onClick={this.onSave}
+                >
+                  Save
+                </p>
+                <p 
+                    className={publishButtonClasses}  
+                    disabled={!isPublishable}  
+                    onClick={this.onPublish}
+                >
+                  Publish
+                </p>
+                <p 
+                    className='button-active' 
+                    onClick={this.onDelete}
+                >
+                  Delete
+                </p>
+            </div>
         )
     }
 }

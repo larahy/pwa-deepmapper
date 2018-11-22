@@ -20,25 +20,33 @@ import Error from '../components/shared/Error'
 import {removeError} from '../actions/Errors'
 
 class NewCreatePage extends Component {
+    state = {
+      isOptionsMenuVisible: false
+    }
 
     static propTypes = {
         removeError: PropTypes.func,
         currentView: PropTypes.string,
         error: PropTypes.object
     }
-    constructor() {
-        super()
-        this.handleRemoveError = this.handleRemoveError.bind(this)
-    }
-    handleRemoveError(event) {
+
+    handleRemoveError = (event) => {
         this.props.removeError()
         event.preventDefault()
     }
 
+    toggleOptionsMenu = (e) => {
+      e.stopPropagation();
+      this.setState({ isOptionsMenuVisible: !this.state.isOptionsMenuVisible });
+    }
 
+    hideOptionsMenu = () => {
+      this.setState({ isOptionsMenuVisible: false });
+    }
 
     render() {
-        const {currentView, error} = this.props
+        const { currentView, error } = this.props;
+        const { isOptionsMenuVisible } = this.state;
         const streetViewElement = currentView === 'street-view' ? <EditableStreetViewContainer/> : null
         const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer/> : null
         const mapElement = currentView === 'map' ? <EditableMapContainer/> : null
@@ -51,16 +59,24 @@ class NewCreatePage extends Component {
                     displayNextButton={false}
                     title={Headers.CREATE}
                     onBack={goToMyDeepMapper()}/>
-                <section className="create-section">
+                <section className="create-section" onClick={this.hideOptionsMenu}>
                     <div className='create-top-section'>  
                           <div className="create-top-input">
                               <EditableTitleAndSearchBarContainer/>
                           </div>
                           <div className="create-top-buttons">
-                              <SaveOrPublishOrDeleteIconsContainer
-                                  onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
-                                  onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
-                                  onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                              <div 
+                                className='options-menu-button' 
+                                onClick={this.toggleOptionsMenu}
+                              >
+                                <i className="fas fa-ellipsis-v"></i>
+                              </div>
+                                <div className={isOptionsMenuVisible ? '' : 'hide-options-menu'}>
+                                <SaveOrPublishOrDeleteIconsContainer
+                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
+                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                                </div>
                           </div>
                     </div>
                     <div className='create-mid-section'>
