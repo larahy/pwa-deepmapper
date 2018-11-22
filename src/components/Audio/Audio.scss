@@ -13,6 +13,7 @@
 
 .record-section {
   width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,13 +31,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 
 .audio-upload {
   width: 35px;
   height: 35px;
-  border: 1px solid $dark;
+  border: 1px solid $border;
   border-radius: 50%;
   padding: 7px;
   display: flex;
@@ -59,13 +60,11 @@
 
 .record-button-container {
   display: flex;
-  width: 55%;
   justify-content: flex-end;
 }
 
 .audio-upload-container {
   display: flex;
-  width: 45%;
   align-items: center;
 }
 
