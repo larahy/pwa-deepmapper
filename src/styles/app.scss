@@ -5,12 +5,12 @@ html {
 }
 
 #app {
-  background: #fff;
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   left: 0;
   right: 0;
   margin: auto;
+  overflow: hidden;
 }
 
 // @media only screen and (min-width: 800px) {

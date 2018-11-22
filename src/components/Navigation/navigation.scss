@@ -94,7 +94,7 @@ nav#navbarTop {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 800px;
+  max-width: 1000px;
   width: 100%;
   height: 46px;
   background: #fff;
@@ -177,5 +177,13 @@ nav#navbarTop {
     .title {
       font-size: 3vw!important;
     }
+  }
+}
+
+// WIP
+@media only screen and (min-width: 800px) {
+  nav#navbarTop {
+    border-left: 1px solid $carbon;
+    border-right: 1px solid $carbon;
   }
 }
