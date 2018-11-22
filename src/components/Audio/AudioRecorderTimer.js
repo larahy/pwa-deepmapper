@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const prettyMs = require('pretty-ms');
+import Time from 'react-time-format';
 
 class AudioRecorderTimer extends Component {
   state = {
@@ -28,7 +28,7 @@ class AudioRecorderTimer extends Component {
   render() {
       return (
           <div className='recorder-timer-container'>
-              <h3>{this.state.time > 0 && prettyMs(this.state.time)}</h3>
+              <Time value={this.state.time} format="mm:ss" />
           </div>
       );
   }
