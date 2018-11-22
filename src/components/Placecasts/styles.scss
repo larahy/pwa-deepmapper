@@ -78,7 +78,6 @@ a.button.is-fullwidth.is-white.skip {
 
 .create-toggle-list .is-active {
   color: $watermelon;
-  // background: $neutral;
 }
 
 .photo-edit-icons {
@@ -119,13 +118,11 @@ a.button.is-fullwidth.is-white.skip {
 
 .active-toggle {
   color: $watermelon!important;
-  // background: $neutral;
 }
 
 .sticky-home-icons {
   position: fixed;
   width: 100%;
-  // max-width: 1000px;
   top: 0;
   z-index: 9;
 }
