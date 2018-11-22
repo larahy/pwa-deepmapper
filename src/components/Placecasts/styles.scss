@@ -83,6 +83,7 @@ a.button.is-fullwidth.is-white.skip {
 
 .photo-edit-icons {
   padding: 20px;
+  margin: 0 auto;
   max-width: 1000px;
   width: 100%;
   position: absolute;
@@ -124,14 +125,40 @@ a.button.is-fullwidth.is-white.skip {
 .sticky-home-icons {
   position: fixed;
   width: 100%;
-  max-width: 1000px;
+  // max-width: 1000px;
   top: 0;
   z-index: 9;
 }
 
 .placecast-item {
-  margin: 10px 2px 40px 2px;
-  border: 1px solid $carbon;
-  border-radius: 3px;
-  background: #fff;
+  margin-bottom: 50px;
+}
+
+.placecast-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1000px) {
+  .create-toggle-list {
+    border-left: 1px solid $carbon;
+    border-right: 1px solid $carbon;
+  }
+
+  .placecast-item {
+    margin: 10px 2px 40px 2px;
+    border: 1px solid $carbon;
+    border-radius: 3px;
+    background: #fff;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .placecast-item {
+    margin: 10px 2px 40px 2px;
+    border: 1px solid $carbon;
+    border-radius: 3px;
+    background: #fff;
+  }
 }

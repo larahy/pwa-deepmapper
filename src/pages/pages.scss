@@ -3,6 +3,9 @@
 .create-section {
   display: flex;
   flex-direction: column;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .create-top-section {
@@ -23,6 +26,7 @@
 
 .create-mid-section {
   margin-bottom: 67px;
+  overflow: hidden;
 }
 
 .home-icons {
@@ -68,9 +72,20 @@
   max-width: 1000px;
   background: #fff;
   bottom: 45px;
-  // box-shadow: 1px -3px 6px 0 rgba(0,0,0,.2)
+  z-index: 2;
 }
 
 .mapboxgl-popup-content {
   padding: 8px 5px 8px 5px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .create-top-section {
+    border-left: 1px solid $carbon;
+    border-right: 1px solid $carbon;
+  }
+
+  .create-bottom-section {
+    box-shadow: 1px -3px 6px 0 rgba(0,0,0,.2);
+  }
 }
