@@ -7,7 +7,7 @@
   right: 0;
   margin-top: 5px!important;
   margin: 0 auto;
-  border: 1px solid $carbon!important;
+  border: 1px solid $border!important;
 }
 
 .view-toggle {
@@ -23,6 +23,7 @@
   padding: 5px;
   border: 1px solid $watermelon;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .view-toggle li:first-child {
@@ -38,6 +39,7 @@
 .view-toggle .tab-toggle {
   background: $watermelon;
   color: #fff;
+  transition: all 0.4s ease;
 }
 
 .draft-toggle .tab-toggle {

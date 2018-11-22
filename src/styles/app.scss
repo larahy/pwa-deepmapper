@@ -1,9 +1,21 @@
 @import '_base.scss';
 
+html {
+  background: #fafafa;
+}
+
 #app {
+  background: #fff;
   max-width: 800px;
   width: 100%;
   left: 0;
   right: 0;
   margin: auto;
 }
+
+// @media only screen and (min-width: 800px) {
+//   #app {
+//     border-left: 1px solid $carbon;
+//     border-right: 1px solid $carbon;
+//   }
+// }

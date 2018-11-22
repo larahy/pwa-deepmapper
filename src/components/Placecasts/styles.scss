@@ -62,7 +62,7 @@ a.button.is-fullwidth.is-white.skip {
 }
 
 .create-toggle-list li {
-  border: 1px solid $carbon;
+  border: 1px solid $border;
   text-align: center;
   color: $dark;
   font-size: 1.2em;
@@ -83,6 +83,7 @@ a.button.is-fullwidth.is-white.skip {
 
 .photo-edit-icons {
   padding: 20px;
+  max-width: 800px;
   width: 100%;
   position: absolute;
   display: flex;
@@ -123,6 +124,7 @@ a.button.is-fullwidth.is-white.skip {
 .sticky-home-icons {
   position: fixed;
   width: 100%;
+  max-width: 800px;
   top: 0;
   z-index: 9;
 }
