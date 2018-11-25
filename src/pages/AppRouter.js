@@ -32,7 +32,7 @@ const AppRouter = () => (
                 <Route path='/login' component={LoginPage}/>
                 <Route path='/my-deepmapper' component={MyDeepmapperPage}/>
                 <Route path='/apply' component={BecomeADeepmapperPage}/>
-                <Route exact path='/placecasts' component={PlacecastsPage}/>
+                <Route path='/placecasts' component={PlacecastsPage} exact={true}/>
                 <Route path='/placecasts/:id' component={PlacecastPage}/>
                 <Route path='/edit-placecast' component={EditPlacecastPage}/>
                 <Redirect to="/"/>

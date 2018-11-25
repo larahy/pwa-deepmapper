@@ -4,7 +4,7 @@
     "name": "Deepmapper",
     "scope": "/",
     "display": "standalone",
-    "start_url": "https://inspiring-montalcini-3785db.netlify.com/",
+    "start_url": "/?start_url=/",
     "short_name": "Deepmapper",
     "theme_color": "#FF3B3F",
     "description": "Your source for Placecasts - A medium to expand your historical knowledge",
