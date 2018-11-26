@@ -1,8 +1,9 @@
-const webpack = require('webpack');
-const CleanWebPackPlugin = require('clean-webpack-plugin');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-const commonPaths = require('./common-paths');
+const webpack = require( 'webpack' );
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const CleanWebPackPlugin = require( 'clean-webpack-plugin' );
+const HtmlWebPackPlugin = require( 'html-webpack-plugin' );
+const ExtractTextWebpackPlugin = require( 'extract-text-webpack-plugin' );
+const commonPaths = require( './common-paths' );
 
 const config = {
     entry: './src/index.js',
@@ -11,8 +12,7 @@ const config = {
         path: commonPaths.outputPath
     },
     module: {
-        rules: [
-            {
+        rules: [ {
                 enforce: 'pre',
                 test: /\.js$/,
                 loader: 'eslint-loader',
@@ -29,17 +29,16 @@ const config = {
             },
             {
                 test: /\.s?css$/,
-                use: ExtractTextWebpackPlugin.extract({
+                use: ExtractTextWebpackPlugin.extract( {
                     fallback: 'style-loader',
-                    use: [
-                        {
+                    use: [ {
                             loader: 'css-loader'
                         },
                         {
                             loader: 'sass-loader'
                         }
                     ]
-                })                
+                } )
                 //exclude: /node_modules/
             },
             {
@@ -51,25 +50,33 @@ const config = {
     },
     plugins: [
         new webpack.ProgressPlugin(),
-        new ExtractTextWebpackPlugin('styles.css'),
-        new webpack.optimize.CommonsChunkPlugin({
+        new ExtractTextWebpackPlugin( 'styles.css' ),
+        new webpack.optimize.CommonsChunkPlugin( {
             filename: 'common.js',
             minChunks: 3,
             name: 'common'
-        }),
-        new CleanWebPackPlugin(['public'], { root: commonPaths.root }),
-        new HtmlWebPackPlugin({
+        } ),
+        new CleanWebPackPlugin( [ 'public' ], {
+            root: commonPaths.root
+        } ),
+        new HtmlWebPackPlugin( {
             template: commonPaths.template,
             favicon: commonPaths.favicon,
             inject: true
-        }),
-        new webpack.DefinePlugin({
-            AWS_ACCESS_KEY_ID: JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
-            AWS_SECRET_ACCESS_KEY: JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
-            GOOGLE_MAPS_API_KEY: JSON.stringify(process.env.GOOGLE_MAPS_API_KEY),
-            MAPBOX_API_TOKEN: JSON.stringify(process.env.MAPBOX_API_TOKEN),
-            API_URL: JSON.stringify(process.env.API_URL)
-        })
+        } ),
+        new webpack.DefinePlugin( {
+            AWS_ACCESS_KEY_ID: JSON.stringify( process.env.AWS_ACCESS_KEY_ID ),
+            AWS_SECRET_ACCESS_KEY: JSON.stringify( process.env.AWS_SECRET_ACCESS_KEY ),
+            GOOGLE_MAPS_API_KEY: JSON.stringify( process.env.GOOGLE_MAPS_API_KEY ),
+            MAPBOX_API_TOKEN: JSON.stringify( process.env.MAPBOX_API_TOKEN ),
+            API_URL: JSON.stringify( process.env.API_URL )
+        } ),
+        new CopyWebpackPlugin( [
+            "src/meta/**.*",
+            "src/js**.*",
+            "src/manifest.json",
+            "src/sw.js"
+        ] )
     ]
 };
 
