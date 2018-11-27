@@ -13,11 +13,26 @@ import EditableAudioPanelContainer from '../../containers/Audio/EditableAudioPan
 import {deletePlacecast, publishPlacecast, savePlacecast} from '../../actions/edit'
 
 class EditablePlacecast extends React.Component {
+    state = {
+        isOptionsMenuVisible: false
+    }
+
     static propTypes = {
         currentView: PropTypes.string
     }
+
+    toggleOptionsMenu = (e) => {
+        e.stopPropagation();
+        this.setState({ isOptionsMenuVisible: !this.state.isOptionsMenuVisible });
+    }
+
+    hideOptionsMenu = () => {
+        this.setState({ isOptionsMenuVisible: false });
+    }
+
     render() {
-        const {currentView} = this.props
+        const { currentView } = this.props;
+        const { isOptionsMenuVisible } = this.state;
         const streetViewElement = currentView === 'street-view' ? <EditableStreetViewContainer/> : null
         const photoElement = currentView === 'photo' ? <EditablePhotoPanelContainer/> : null
         const mapElement = currentView === 'map' ? <EditableMapContainer/> : null
@@ -29,16 +44,24 @@ class EditablePlacecast extends React.Component {
                     title={Headers.EDIT}
                     onBack={goToMyDeepMapperThunk()}/>
                 <div style={{height: '100%'}}>
-                    <section className="create-section">
+                    <section className="create-section" onClick={this.hideOptionsMenu}>
                         <div className='create-top-section'>  
                             <div className="create-top-input">
                                 <EditableTitleAndSearchBarContainer/>
                             </div>
                             <div className="create-top-buttons">
-                                <SaveOrPublishOrDeleteIconsContainer
-                                    onDelete={dispatch => (dispatch(deletePlacecast(Scopes.EDIT)))}
-                                    onSave={dispatch => (dispatch(savePlacecast(Scopes.EDIT)))}
-                                    onPublish={dispatch => (dispatch(publishPlacecast(Scopes.EDIT)))}/>
+                                <div 
+                                    className='options-menu-button' 
+                                    onClick={this.toggleOptionsMenu}
+                                >
+                                    <i className="fas fa-ellipsis-v"></i>
+                                </div>
+                                <div className={isOptionsMenuVisible ? '' : 'hide-options-menu'}>
+                                    <SaveOrPublishOrDeleteIconsContainer
+                                        onDelete={dispatch => (dispatch(deletePlacecast(Scopes.CREATE)))}
+                                        onSave={dispatch => (dispatch(savePlacecast(Scopes.CREATE)))}
+                                        onPublish={dispatch => (dispatch(publishPlacecast(Scopes.CREATE)))}/>
+                                </div>
                             </div>
                         </div>
                         <div className='create-mid-section'>
