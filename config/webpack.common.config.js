@@ -119,7 +119,7 @@ const config = {
                         cacheName: "font-cache"
                     }
                 }, {
-                    urlPattern: /^http.*\.cloudfront.net\/.*\.(?:png|jpg|jpeg|svg|gif)/,
+                    urlPattern: "cloudfront.net\/.*.(?:png|jpg|jpeg|svg|gif)",
                     handler: "cacheFirst",
                     options: {
                         cacheName: "placecast-photos",
