@@ -32,6 +32,7 @@
   height: 100%;
   background: url('../images/city-scape-1.jpg') center center no-repeat;
   background-size: cover;
+  border-top: 1px solid $carbon;
 
   &:before {
     content: '';
@@ -89,7 +90,7 @@ button:focus {
 
 .form-btn {
   width: 90%;
-  position: absolute!important;
+  position: relative;
   left: 0;
   right: 0;
   margin-top: 5px!important;
@@ -100,6 +101,7 @@ button:focus {
 .login-form {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid $carbon;
 }
 
 .login-btn {

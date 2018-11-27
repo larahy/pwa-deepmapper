@@ -1,7 +1,9 @@
 @import "../../styles/variables";
 
-nav.navbar {
-    border-bottom: 1px solid $carbon;
+.is-sticky {
+  position: fixed!important;
+  width: 100%;
+  border-bottom: 1px solid $carbon;
 }
 
 nav#navbarTop {
@@ -13,7 +15,8 @@ nav#navbarTop {
     .title {
       font-size: 7vw!important;
       width: 100%;
-    }
+      margin: 0 auto;
+    } 
 }
 .footer {
     padding: 0rem !important;
@@ -118,6 +121,10 @@ nav#navbarTop {
   transition: 0.4s;
 }
 
+.back-button {
+  position: absolute;
+}
+
 .footer-navbar-close span:first-child {
   -webkit-transform: rotate(-45deg) translate(-5px, 5px) ;
   transform: rotate(-45deg) translate(-5px, 5px) ;
@@ -163,6 +170,15 @@ nav#navbarTop {
 
 .icon-selected {
   color: $watermelon!important;
+}
+
+@media only screen and (min-width: 400px) {
+  nav#navbarTop {
+    .title {
+      max-width: 320px;
+      white-space: normal;
+    }
+  }
 }
 
 @media only screen and (min-width: 600px) {

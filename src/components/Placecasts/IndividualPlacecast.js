@@ -5,7 +5,6 @@ import StaticStreetViewContainer from '../../containers/Maps/StaticStreetViewCon
 import PhotoPanel from '../Photo/PhotoPanel'
 import ExpertProfileContainer from '../../containers/Experts/ExpertProfileContainer'
 import HeaderWithNavigationContainer from '../../containers/Shared/HeaderWithNavigationContainer'
-import {Headers} from '../../constants/attributes'
 import {goToHomePageThunk} from '../../actions/navigation'
 import IndividualPlacecastViewToggleContainer from '../../containers/Placecasts/IndividualPlacecastViewToggleContainer'
 import PlaybackPanel from '../../components/Audio/PlaybackPanel'
@@ -26,7 +25,7 @@ class IndividualPlacecast extends React.Component {
         else {
             const {title, address, audioSrc, photoSrc, user_id} = placecast
             const {currentView} = this.props
-            const coordinates = `[ ${address.lat} , ${address.lng} ]`
+            // const coordinates = `[ ${address.lat} , ${address.lng} ]`;
             const streetViewElement = currentView === 'street-view' ?
                 <StaticStreetViewContainer address={address}/> : null
             const photoElement = currentView === 'photo' ? <PhotoPanel sourceUrl={photoSrc}/> : null
@@ -37,7 +36,7 @@ class IndividualPlacecast extends React.Component {
                     <HeaderWithNavigationContainer
                         displayBackButton={true}
                         displayNextButton={false}
-                        title={Headers.DEEPMAPPER}
+                        title={title}
                         onBack={goToHomePageThunk()}
                     />
 
@@ -48,10 +47,6 @@ class IndividualPlacecast extends React.Component {
                             {streetViewElement}
                             {mapElement}
                             {expertElement}
-                            <div className='placecast-header'>
-                                <h2>{title}</h2>
-                                <p>{coordinates}</p>
-                            </div>
                         </div>
 
                         <div className='create-bottom-section'>

@@ -4,7 +4,7 @@ import PlacecastsPage from './PlacecastsPage'
 import NewCreatePage from './NewCreatePage'
 import MapPage from '../Unused/Mapbox/MapPage'
 import LoginPage from './LoginPage'
-import {AboutPage} from './AboutPage'
+import AboutPage from './AboutPage'
 
 import PlacecastPage from './PlacecastPage'
 import FooterContainer from '../containers/Shared/FooterContainer'

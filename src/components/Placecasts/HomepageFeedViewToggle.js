@@ -42,7 +42,9 @@ export default class HomepageFeedViewToggle extends Component {
 
         return (
             <Fragment>
-                <div className={`home-icons ${isMenuSticky ? 'sticky-home-icons' : ''}`}>
+                <div 
+                    className={`home-icons ${isMenuSticky ? 'sticky-home-icons' : ''}`}
+                >
                     <div 
                         className={`list-icon ${listElementClasses}`} 
                         onClick={() => this.toggleOn('list')}

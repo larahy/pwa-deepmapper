@@ -4,29 +4,48 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faStreetView, faImage, faMapMarkerAlt, faInfo} from '@fortawesome/free-solid-svg-icons'
 
 export default class IndividualPlacecastViewToggle extends Component {
+    state = {
+        isMenuSticky: false
+    }
 
     static propTypes = {
         currentView: PropTypes.string,
         changeViewTo: PropTypes.func,
         displayExpertView: PropTypes.bool,
+        isCreatePage: PropTypes.bool
     }
 
     static defaultProps = {
         displayExpertView: true
     }
 
-
-    constructor(props) {
-        super(props)
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
     }
 
-
     toggleOn(view) {
-        return this.props.changeViewTo(view)
+        return this.props.changeViewTo(view);
+    }
+
+    handleScroll = () => {
+        const { isMenuSticky } = this.state;
+        const { isCreatePage } = this.props;
+
+        let scrollValue = 0;
+        isCreatePage ? scrollValue = 184 : scrollValue = 52;
+
+        if (window.scrollY >= scrollValue && !isMenuSticky) {
+            this.setState({ isMenuSticky: true });
+        }
+
+        if (window.scrollY <= scrollValue && isMenuSticky) {
+            this.setState({ isMenuSticky: false });
+        }
     }
 
     render() {
         const { currentView, displayExpertView } = this.props
+        const { isMenuSticky } = this.state;
 
         const splitPerc = displayExpertView ? '25%' : '34%';
         const streetViewElementClasses = currentView === 'street-view' ? 'is-active' : ''
@@ -35,7 +54,9 @@ export default class IndividualPlacecastViewToggle extends Component {
         const expertElementClasses = currentView === 'expert' ? 'is-active' : ''
         return (
             <Fragment>
-                <ul className="create-toggle-list">
+                <ul 
+                    className={`create-toggle-list ${isMenuSticky ? 'sticky-home-icons' : ''}`}
+                >
                     <li style={{ width: splitPerc }} className={photoElementClasses}>
                         <p onClick={() => this.toggleOn('photo')}>
                             <span className="icon is-large"><FontAwesomeIcon icon={faImage}/></span>

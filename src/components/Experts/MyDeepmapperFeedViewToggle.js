@@ -28,7 +28,7 @@ export default class MyDeepmapperFeedViewToggle extends Component {
                     <li className={`published-toggle ${publishedElementClasses}`}>
                         <p onClick={() => this.toggleOn('published')}>PUBLISHED</p>
                     </li>
-                    <li className={`draf-toggle ${draftElementClasses}`}>
+                    <li className={`draft-toggle ${draftElementClasses}`}>
                         <p onClick={() => this.toggleOn('draft')}>DRAFT</p>
                     </li>
                 </ul>

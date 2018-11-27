@@ -51,7 +51,7 @@ export default class HeaderWithNavigation extends React.Component {
             <Fragment>
                 <nav id="navbarTop" className="navbar has-text-centered">
                     <ul className='header-nav-container'>
-                        <li>
+                        <li className='back-button'>
                             <span>{backButton}</span>
                         </li>
 

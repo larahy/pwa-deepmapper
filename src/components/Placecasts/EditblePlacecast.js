@@ -65,7 +65,10 @@ class EditablePlacecast extends React.Component {
                             </div>
                         </div>
                         <div className='create-mid-section'>
-                            <IndividualPlacecastViewToggleContainer displayExpertView={false}/>
+                            <IndividualPlacecastViewToggleContainer 
+                                displayExpertView={false}
+                                isCreatePage 
+                            />
                             {photoElement}
                             {streetViewElement}
                             {mapElement}

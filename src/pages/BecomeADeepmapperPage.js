@@ -4,12 +4,37 @@ import {Headers} from '../constants/attributes'
 import BecomeADeepmapperFormContainer from '../containers/Experts/BecomeADeepmapperFormContainer'
 
 export default class BecomeADeepmapperPage extends React.Component {
+    state = {
+        isMenuSticky: false
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = () => {
+        const { isMenuSticky } = this.state;
+
+        if (window.scrollY >= 52 && !isMenuSticky) {
+            this.setState({ isMenuSticky: true });
+        }
+
+        if (window.scrollY <= 52 && isMenuSticky) {
+            this.setState({ isMenuSticky: false });
+        }
+    }
 
     render() {
         return (
             <Fragment>
-                <SimpleHeader title={Headers.BECOME_A_DEEPMAPPER}/>
-                <section className="section">
+                <SimpleHeader 
+                    title={Headers.BECOME_A_DEEPMAPPER}
+                    isSticky={this.state.isMenuSticky}
+                />
+                <section 
+                    className="section" 
+                    style={{ borderTop: '1px solid #a9a9a9' }}
+                >
                     <div className="container">
                         <div className="content">
                             <p>Are you a scholar, working in any field? Are you a published writer, in any genre? Or do
