@@ -90,6 +90,7 @@ a.button.is-fullwidth.is-white.skip {
   flex-direction: row;
   justify-content: flex-end;
   z-index: 2;
+  top: 0;
 }
 
 .overlay-icon i {
@@ -123,6 +124,14 @@ a.button.is-fullwidth.is-white.skip {
 .sticky-home-icons {
   position: fixed;
   width: 100%;
+  top: 0;
+  z-index: 9;
+}
+
+.sticky-toggle-icons {
+  position: fixed;
+  width: 100%;
+  max-width: 1000px;
   top: 0;
   z-index: 9;
 }

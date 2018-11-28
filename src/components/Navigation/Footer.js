@@ -1,11 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, HashRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import './navigation.scss'
 import PropTypes from 'prop-types'
 
-export default class Footer extends React.Component {
+class Footer extends React.Component {
+    state = {
+        selectedIcon: 'home',
+        isMenuActive: false
+    }
+
     static propTypes = {
         isLoggedIn: PropTypes.bool,
         onGoHome: PropTypes.func,
@@ -14,12 +19,8 @@ export default class Footer extends React.Component {
         onGoMyDeepmapper: PropTypes.func
     }
 
-    state = {
-        selectedIcon: 'home',
-        isMenuActive: false
-    }
-
     componentDidUpdate(prevProps) {
+        console.log('prevProps', prevProps);
         if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
             this.props.isLoggedIn
                 ? this.setState({ selectedIcon: 'user' })
@@ -39,8 +40,8 @@ export default class Footer extends React.Component {
     }
 
     render() {
-        const { isMenuActive, selectedIcon } = this.state;
-        const { isLoggedIn, onGoHome, onGoCreate, onGoMyDeepmapper, onLogout } = this.props;
+        const { isMenuActive } = this.state;
+        const { isLoggedIn, onLogout } = this.props;
 
         // Clean this up and use conditional rendering as well
         const loginLogoutLink = this.props.isLoggedIn ?
@@ -54,38 +55,34 @@ export default class Footer extends React.Component {
 
         return (
             <nav className='footer-navbar-container'>
-                <ul className='footer-navbar-icons'>
-                    <li
-                        className={selectedIcon === 'home' ? 'icon-selected' : ''}
-                        onClick={() => this.handleSelectIcon('home')}>
-                        <FontAwesomeIcon 
-                            icon={faHome} 
-                            onClick={onGoHome} />
-                    </li>
-                    <li 
-                        className={selectedIcon === 'create' ? 'icon-selected' : ''}
-                        onClick={() => this.handleSelectIcon('create')}>
-                        {isLoggedIn && 
-                          <FontAwesomeIcon 
-                              icon={faPlus} 
-                              onClick={onGoCreate} />}
-                    </li>
-                    <li
-                        className={selectedIcon === 'user' ? 'icon-selected' : ''}
-                        onClick={() => this.handleSelectIcon('user')}>
-                        {isLoggedIn &&
-                            <FontAwesomeIcon 
-                                icon={faUser} 
-                                onClick={onGoMyDeepmapper} />}
-                    </li>
-                    <li 
-                        className={`footer-navbar-burger ${isMenuActive? 'footer-navbar-close' : ''}`}
-                        onClick={this.handleToggleMenu}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </li>
-                </ul>
+                <HashRouter>
+                    <ul className='footer-navbar-icons'>
+                        <li>   
+                            <NavLink to='/' exact activeClassName='icon-selected'>
+                                <FontAwesomeIcon icon={faHome} />
+                            </NavLink>
+                        </li>
+                        <li>
+                            {isLoggedIn && 
+                            <NavLink to='/create' activeClassName='icon-selected'>
+                                <FontAwesomeIcon icon={faPlus} />
+                            </NavLink>}
+                        </li>
+                        <li>
+                            {isLoggedIn && 
+                            <NavLink to='/my-deepmapper' activeClassName='icon-selected'>
+                                <FontAwesomeIcon icon={faUser} />
+                            </NavLink>}
+                        </li>
+                        <li 
+                            className={`footer-navbar-burger ${isMenuActive? 'footer-navbar-close' : ''}`}
+                            onClick={this.handleToggleMenu}>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </li>
+                    </ul>
+                </HashRouter>
 
                 <div className={`footer-navbar-menu ${isMenuActive ? 'menu-active' : ''}`}>
                     <div className="footer-navbar-items" onClick={this.handleToggleMenu}>
@@ -99,3 +96,4 @@ export default class Footer extends React.Component {
     }
 }
 
+export default Footer;

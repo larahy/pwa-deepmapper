@@ -55,7 +55,7 @@ export default class IndividualPlacecastViewToggle extends Component {
         return (
             <Fragment>
                 <ul 
-                    className={`create-toggle-list ${isMenuSticky ? 'sticky-home-icons' : ''}`}
+                    className={`create-toggle-list ${isMenuSticky ? 'sticky-toggle-icons' : ''}`}
                 >
                     <li style={{ width: splitPerc }} className={photoElementClasses}>
                         <p onClick={() => this.toggleOn('photo')}>

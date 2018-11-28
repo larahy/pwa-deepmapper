@@ -12,7 +12,7 @@ class EditablePhotoPanel extends React.Component {
         const mainElement = sourceUrl === '' && newPhotoSrc === '' || isEditing
             ? <EditUploadPhotoFile/>
             :
-            <div className='upload-image'>
+            <div className='image is-square'>
                 <img src={src}/>
                 
                 <EditPhotoButtonsContainer />

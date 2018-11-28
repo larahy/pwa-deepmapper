@@ -15,6 +15,7 @@ export default class HomepageFeedViewToggle extends Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        this.toggleOn('list');
     }
 
     toggleOn(view) {

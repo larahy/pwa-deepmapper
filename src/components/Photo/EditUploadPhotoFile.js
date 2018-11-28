@@ -7,8 +7,6 @@ import {editUploadPhotoFile} from '../../actions/edit'
 import './Photo.scss'
 
 class EditUploadPhotoFile extends Component {
-
-
     handleLoadLocalFile = (event) => {
         event.preventDefault();
         var imageFile = event.target.files[0];
