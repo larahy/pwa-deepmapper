@@ -119,10 +119,23 @@ const config = {
                         cacheName: "font-cache"
                     }
                 }, {
-                    urlPattern: "cloudfront.net\/.*.(?:png|jpg|jpeg|svg|gif)",
+                    urlPattern: new RegExp( "cloudfront.net\/.*.(?:png|jpg|jpeg|svg|gif)" ),
                     handler: "cacheFirst",
                     options: {
                         cacheName: "placecast-photos",
+                        expiration: {
+                            maxEntries: 50,
+                            maxAgeSeconds: 3 * 24 * 60 * 60
+                        },
+                        cacheableResponse: {
+                            statuses: [ 0, 200 ]
+                        }
+                    }
+                }, {
+                    urlPattern: new RegExp( "\/api\/v1\/" ),
+                    handler: "cacheFirst",
+                    options: {
+                        cacheName: "placecasts",
                         expiration: {
                             maxEntries: 50,
                             maxAgeSeconds: 3 * 24 * 60 * 60
