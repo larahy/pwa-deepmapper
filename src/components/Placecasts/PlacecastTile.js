@@ -30,7 +30,7 @@ class PlacecastTile extends React.Component {
         const {editable} = this.props
         const {title, address, photoSrc} = this.props.placecast
         const onClick = editable ? this.goToEditPage : this.goToPlacecastPage
-        const coordinates = `[ ${address.lat} , ${address.lng} ]`
+        const coordinates = `[ ${(address.lat).toPrecision(5)} , ${(address.lng).toPrecision(5)} ]`
         return (
             <div className='placecast-item'>
                 <a onClick={onClick}>
