@@ -41,11 +41,11 @@ export const getAudioFilename = createSelector([getCreate], create => {
 })
 
 export const getCloudfrontPhotoUrl = createSelector([getPhotoFilename], filename => {
-    return `http://d31dl1irjvblxj.cloudfront.net/${filename}`
+    return `https://d31dl1irjvblxj.cloudfront.net/${filename}`
 })
 
 export const getCloudfrontAudioUrl = createSelector([getAudioFilename], filename => {
-    return `http://d31dl1irjvblxj.cloudfront.net/${filename}`
+    return `https://d31dl1irjvblxj.cloudfront.net/${filename}`
 })
 
 export const getAddress = createSelector([getCreate], create => {

@@ -20,8 +20,8 @@ export const getPlacecasts = createSelector(
             const address = {lat, lng, pitch: item.pitch, zoom: item.zoom, heading: item.heading}
             const photoFilename = item.s3_photo_filename
             const audioFilename = item.s3_audio_filename
-            const photoSrc = `http://d31dl1irjvblxj.cloudfront.net/${item.s3_photo_filename}`
-            const audioSrc = `http://d31dl1irjvblxj.cloudfront.net/${item.s3_audio_filename}`
+            const photoSrc = `https://d31dl1irjvblxj.cloudfront.net/${item.s3_photo_filename}`
+            const audioSrc = `https://d31dl1irjvblxj.cloudfront.net/${item.s3_audio_filename}`
             return {...item, audioFilename, photoFilename, address, photoSrc, audioSrc}
         })
     }
