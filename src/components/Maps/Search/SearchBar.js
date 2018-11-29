@@ -36,7 +36,7 @@ class Search extends Component {
 
     render() {
         const placeholder = this.props.hasPreviousAddress ? 'Edit your Placecast address here' :
-            'Search Placecast Address'
+            'Address'
         return (
             <Fragment>
                 <StandaloneSearchBox

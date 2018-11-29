@@ -32,7 +32,7 @@ export default class InfoFields extends React.Component {
                     name='title'
                     description='title'
                     type='text'
-                    placeholder='Type Placecast Title'
+                    placeholder='Title'
                     validations={[
                         {name: Validations.MANDATORY}
                     ]}
