@@ -2,11 +2,11 @@ import {getPlacecastErrors, getPlacecasts, isFetchingPlacecasts} from '../../sel
 import {connect} from 'react-redux'
 import Mapbox from '../../components/Maps/Mapbox'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        placecasts: getPlacecasts(state),
+        placecasts: ownProps.filteredPlacecasts || getPlacecasts(state),
         fetching: isFetchingPlacecasts(state),
-        error: getPlacecastErrors(state)
+        error: getPlacecastErrors(state),
     };
 };
 

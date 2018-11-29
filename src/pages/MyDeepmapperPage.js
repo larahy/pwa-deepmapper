@@ -5,15 +5,15 @@ import FilterablePlacecastTiles from '../containers/Placecasts/FilterablePlaceca
 import MyDeepmapperFeedViewToggleContainer from '../containers/Experts/MyDeepmapperFeedViewToggleContainer'
 import PropTypes from 'prop-types'
 import {
-    getDraftPlacecastsForLoggedInUser,
+    getDraftPlacecastsForLoggedInUser, getHomepageCurrentFeedView,
     getPublishedPlacecastsForLoggedInUser
 } from '../selectors/placecasts'
 import connect from 'react-redux/es/connect/connect'
 import {getMyDeepmapperCurrentFeedView} from '../selectors/experts'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faListUl, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import './pages.scss'
 import {fetchDependencies} from '../helpers/fetchDependencies'
+import HomepageFeedViewToggleContainer from '../containers/Placecasts/HomePageToggleContainer'
+import MapboxContainer from '../containers/Maps/MapboxContainer'
 
 
 let MyDeepmapperPage = class extends React.Component {
@@ -26,6 +26,7 @@ let MyDeepmapperPage = class extends React.Component {
         currentView: PropTypes.string,
         draftPlacecasts: PropTypes.array,
         publishedPlacecasts: PropTypes.array,
+        mapOrList: PropTypes.string
     }
 
     componentDidMount() {
@@ -45,29 +46,25 @@ let MyDeepmapperPage = class extends React.Component {
     }
 
     render() {
-        const { currentView, draftPlacecasts, publishedPlacecasts } = this.props;
-        const { isMenuSticky } = this.state;
-
-        const publishedPlacecastsElement = currentView === 'published'
+        const { currentView, draftPlacecasts, publishedPlacecasts, mapOrList } = this.props;
+        // const { isMenuSticky } = this.state;
+        const placecastsList = currentView === 'published'
             ? <FilterablePlacecastTiles filtered={true} filteredPlacecasts={publishedPlacecasts}/>
-            : null
-        const draftPlacecastsElement = currentView === 'draft'
-            ? <FilterablePlacecastTiles filtered={true} filteredPlacecasts={draftPlacecasts}/>
-            : null
+            : <FilterablePlacecastTiles filtered={true} filteredPlacecasts={draftPlacecasts}/>
+
+        const placecastsMap = currentView === 'published'
+            ? <MapboxContainer filteredPlacecasts={publishedPlacecasts}/>
+            : <MapboxContainer filteredPlacecasts={draftPlacecasts}/>
+        const mainElement = mapOrList === 'list'
+            ? placecastsList
+            : placecastsMap
+
         return (
             <Fragment>
                 <SimpleHeader title={Headers.MY_DEEPMAPPER}/>
-                <div className={`home-icons ${isMenuSticky ? 'sticky-home-icons' : ''}`}>
-                    <div className='list-icon'>
-                        <span><FontAwesomeIcon icon={faListUl}/></span>
-                    </div>
-                    <div className='map-icon'>
-                        <span><FontAwesomeIcon icon={faMapMarkerAlt}/></span>
-                    </div>
-                </div>
+                <HomepageFeedViewToggleContainer/>
                 <MyDeepmapperFeedViewToggleContainer/>
-                {publishedPlacecastsElement}
-                {draftPlacecastsElement}
+                {mainElement}
             </Fragment>
         )
     }
@@ -76,6 +73,7 @@ let MyDeepmapperPage = class extends React.Component {
 const mapStateToProps = (state) => {
     return {
         currentView: getMyDeepmapperCurrentFeedView(state),
+        mapOrList: getHomepageCurrentFeedView(state),
         publishedPlacecasts: getPublishedPlacecastsForLoggedInUser(state),
         draftPlacecasts: getDraftPlacecastsForLoggedInUser(state)
     };
