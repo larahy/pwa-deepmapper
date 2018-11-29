@@ -93,6 +93,18 @@ a.button.is-fullwidth.is-white.skip {
   top: 0;
 }
 
+.map-edit-icons {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
 .overlay-icon i {
   font-size: 1.2em;
   background: #fff;

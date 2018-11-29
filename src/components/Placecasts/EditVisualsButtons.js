@@ -34,7 +34,7 @@ export default class EditVisualsButtons extends React.Component {
         const saveButtonClasses = displaySave ? '' : 'is-hidden'
 
         return (
-            <div className='photo-edit-icons'>
+            <div className='map-edit-icons'>
                 <div className='overlay-icon'>
                     <i 
                         className={`fas fa-pen ${editButtonClasses}`} 
